@@ -52,3 +52,24 @@ De acordo com o site oficial, o usuário identifica primeiro o nível de maturid
 #### 2.2.4 Pontos fracos
 [A PREENCHER]
 ---
+### 2.3 Minha Pegada
+
+#### 2.3.1 Visão geral
+- **Categoria:** Plataforma de gestão ESG e sustentabilidade.
+- **Proposta:** Gerenciar indicadores ambientais, inventários de emissões, metas de descarbonização e relatórios ESG.
+- **Público-alvo:** Empresas de pequeno, médio e grande porte que buscam adequação e conformidade ambiental *(Fonte: https://minhapegada.com.br)*.
+- **Principais funcionalidades:** Inventário GEE completo, Dashboard ESG em tempo real, Relatórios Auditáveis, Metas SBTi e SBCE, Diagnóstico ABNT PR 2030, Ancoragem em Blockchain, Inteligência Artificial para automação de relatórios, interpretação de dados de emissões e sugestão de estratégias de descarbonização *(Fonte: https://minhapegada.com.br)*.
+
+#### 2.3.2 Funcionamento
+A contratação é realizada mediante a escolha de um plano (Starter, Profissional ou Enterprise). O fluxo de conversão direciona o usuário para um atendimento via WhatsApp para alinhamento e avaliação do estágio atual da empresa. Também é possível agendar uma demonstração guiada da plataforma *(Fonte: https://minhapegada.com.br)*.
+
+#### 2.3.3 Pontos fortes
+- **Solução All-in-One:** Centraliza diagnósticos (ABNT PR 2030), relatórios, metas (SBTi) e inventários em um só lugar.
+- **Tecnologia Avançada:** Uso de Blockchain para rastreabilidade/auditoria e IA para automação de relatórios.
+- **Escalabilidade:** Planos estruturados para diferentes tamanhos de empresas (do Starter ao Enterprise).
+- **Conformidade Normativa:** Alinhamento nativo com frameworks e normas reconhecidos no mercado.
+
+#### 2.3.4 Pontos fracos
+- **Fluxo de Vendas Dependente de Contato Manual:** Ausência de self-onboarding imediato no site (exige contato via WhatsApp ou agendamento de demo).
+- **Opacidade de Preços:** Necessidade de consulta prévia para obter os valores exatos dos planos.
+- **Curva de Aprendizado:** Por ser uma plataforma robusta com múltiplos módulos, exige treinamento inicial da equipe usuária.
