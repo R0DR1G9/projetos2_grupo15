@@ -73,3 +73,21 @@ A contratação é realizada mediante a escolha de um plano (Starter, Profission
 - **Fluxo de Vendas Dependente de Contato Manual:** Ausência de self-onboarding imediato no site (exige contato via WhatsApp ou agendamento de demo).
 - **Opacidade de Preços:** Necessidade de consulta prévia para obter os valores exatos dos planos.
 - **Curva de Aprendizado:** Por ser uma plataforma robusta com múltiplos módulos, exige treinamento inicial da equipe usuária.
+
+- ### 2.4 Orkea
+
+#### 2.4.1 Visão geral
+- *Categoria:* Software de gestão e relatórios ESG
+- *Proposta:* Coletar dados, analisar indicadores e gerar relatórios de sustentabilidade.
+- *Público-alvo:* Empresas brasileiras, com destaque para os setores de energia, agro e mineração (para os quais oferecem monitoramento por satélite). (Fonte: orkea.com.br)
+- *Principais funcionalidades:* Cálculo automático de Scope 1, 2 e 3 (GHG Protocol Brasil) com integração a ERPs (SAP, TOTVS); coleta de dados descentralizada por departamento, com IA validando inconsistências em tempo real; redação automática (via IA) dos textos do relatório de sustentabilidade nos frameworks GRI, SASB, TCFD e CVM 193; Score ESG com pilares E/S/G, benchmark setorial e alertas de desvio de metas; assistente de IA especializado em legislação ambiental e ESG brasileira, disponível 24h; integração de dados de satélite e sensoriamento remoto para monitorar uso do solo e biodiversidade. (Fonte: orkea.com.br)
+
+#### 2.4.2 Funcionamento
+De acordo com o site oficial, o processo tem 4 etapas: (1) configuração inicial — inserir dados da empresa, configurar departamentos e escolher frameworks (GRI, GHG, CVM 193), em menos de 1 hora; (2) cada responsável de área acessa a plataforma e insere seus próprios dados diretamente (sem e-mails ou planilhas), com validação em tempo real pela IA; (3) a IA analisa os dados, calcula os scores E/S/G, identifica riscos e compara com benchmarks do setor; (4) o relatório de sustentabilidade completo é gerado automaticamente, restando apenas revisão, aprovação e publicação. (Fonte: orkea.com.br)
+[A PREENCHER — incluir fotos/prints de uso]
+
+#### 2.4.3 Pontos fortes
+- Uso de IA em várias etapas (validação de dados, cálculo de score, redação do relatório) (Fonte: orkea.com.br)
+- Integração com sistemas brasileiros (SAP, TOTVS) e foco na realidade regulatória do Brasil (CVM 193, Lei do Clima) (Fonte: imagem 2 / orkea.com.br)
+- Diferencial exclusivo: uso de dados de satélite e sensoriamento remoto para monitorar uso do solo e biodiversidade — indicado como algo único no mercado pela própria empresa (Fonte: orkea.com.br)
+- Elimina entrada manual de dados via integração direta com ERPs (Fonte: orkea.com.br)
