@@ -30,3 +30,25 @@ Segundo o site oficial, o fluxo é: a empresa coleta dados de suas ações ESG (
 #### 2.1.4 Pontos fracos
 [A PREENCHER]
 ---
+
+### 2.2 ESG Business
+
+#### 2.2.1 Visão geral
+- **Categoria:** Plataforma de gestão ESG
+- **Proposta:** Diagnosticar, planejar, executar e acompanhar a jornada ESG das empresas.
+- **Público-alvo:** Empresas de forma geral e também consultorias/assessorias que gerenciam a jornada ESG de seus clientes (a plataforma é comercializada inclusive como ferramenta de trabalho para consultores). *(Fonte: esgbusiness.com.br)*
+- **Principais funcionalidades:** 5 módulos integrados — diagnóstico (avaliação de maturidade baseada na NBR 2030, com 3 pilares e 14 temas da Agenda 2030), planejamento (alinhamento de expectativas dos stakeholders, dupla materialidade), execução (orçamento, cronograma, responsáveis), monitoramento (metas e KPIs com painéis de acompanhamento) e comprovação (relatórios ESG com indicadores estratégicos). *(Fonte: esgbusiness.com.br)*
+
+#### 2.2.2 Funcionamento
+De acordo com o site oficial, o usuário identifica primeiro o nível de maturidade ESG da organização (ou de clientes, no caso de consultorias) através de uma avaliação baseada na NBR 2030; a partir disso a plataforma gera dashboards, rankings de temas e um "ESG Roadmap"; depois é possível planejar investimentos, executar projetos e gerar relatórios completos de forma rápida e personalizada. *(Fonte: esgbusiness.com.br/software)*
+[A PREENCHER — incluir fotos/prints de uso]
+
+#### 2.2.3 Pontos fortes
+- Plataforma 360º com diagnóstico, dashboards, rankings e ESG Roadmap *(Fonte: imagem 2 / esgbusiness.com.br)*
+- Baseada na NBR 2030 *(Fonte: imagem 2 / esgbusiness.com.br)*
+- 5 módulos integrados cobrindo toda a jornada ESG (diagnosticar → planejar → executar → monitorar → comprovar) *(Fonte: esgbusiness.com.br)*
+- Voltada também para uso por consultorias/assessorias que atendem múltiplos clientes *(Fonte: esgbusiness.com.br)*
+
+#### 2.2.4 Pontos fracos
+[A PREENCHER]
+---
