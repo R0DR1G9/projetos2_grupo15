@@ -129,4 +129,7 @@ Segundo as fontes pesquisadas, o processo tem etapas formalizadas: a empresa se 
 * Módulo específico para dados de carbono (Carbon Action Module), alinhado a frameworks regulatórios como CSRD/ESRS *(Fonte: sevenresiduos.com.br)*
 
 #### 2.5.4 Pontos fracos
-O Carbon Action Module tem custo adicional de EUR 2.500 a EUR 15.000/ano, dependendo do escopo *(Fonte: sevenresiduos.com.br)* — sugerindo que a avaliação completa (além do básico) pode representar custo significativo para empresas menores. 
+* O Carbon Action Module tem custo adicional de EUR 2.500 a EUR 15.000/ano, dependendo do escopo *(Fonte: sevenresiduos.com.br)* — sugerindo que a avaliação completa (além do básico) pode representar custo significativo para empresas menores. 
+* Sobrecarga e duplicidade de esforço do fornecedor (supplier fatigue), obrigado a pagar e responder a múltiplos questionários concorrentes como Sedex e CDP (Fontes: linkana.com, supplychainbrain.com)
+* Demora de 6 a 8 semanas na emissão do Scorecard, o que pode atrasar processos de homologação ou concorrências comerciais urgentes (Fontes: support.ecovadis.com, impactatoesg.com.br)
+  
