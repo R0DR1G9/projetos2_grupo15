@@ -132,4 +132,14 @@ Segundo as fontes pesquisadas, o processo tem etapas formalizadas: a empresa se 
 * O Carbon Action Module tem custo adicional de EUR 2.500 a EUR 15.000/ano, dependendo do escopo *(Fonte: sevenresiduos.com.br)* — sugerindo que a avaliação completa (além do básico) pode representar custo significativo para empresas menores. 
 * Sobrecarga e duplicidade de esforço do fornecedor (supplier fatigue), obrigado a pagar e responder a múltiplos questionários concorrentes como Sedex e CDP (Fontes: linkana.com, supplychainbrain.com)
 * Demora de 6 a 8 semanas na emissão do Scorecard, o que pode atrasar processos de homologação ou concorrências comerciais urgentes (Fontes: support.ecovadis.com, impactatoesg.com.br)
-  
+
+## 3. Benchmark
+
+| Ferramenta | Categoria | Proposta | Diferencial |
+|---|---|---|---|
+| Paresi | Software ESG para PMEs | Coletar dados, organizar indicadores e acompanhar ações ESG em uma única plataforma | Foco em PMEs, plano gratuito, indicadores GRI, ODS e análises com IA |
+| ESG Business | Plataforma de gestão ESG | Diagnosticar, planejar, executar e acompanhar a jornada ESG das empresas | Plataforma 360º com diagnóstico, dashboards, rankings e roadmap ESG, baseada na NBR 2030 |
+| Minha Pegada | Plataforma de sustentabilidade | Gerenciar indicadores ambientais, inventário de emissões, metas e relatórios ESG | Reúne diferentes etapas da gestão ESG em uma plataforma; plano inicial voltado para pequenas empresas |
+| Orkea | Software de gestão e relatórios ESG | Coletar dados, analisar indicadores e gerar relatórios de sustentabilidade | Uso de IA, integração com sistemas brasileiros, foco na realidade regulatória e empresarial do Brasil |
+| EcoVadis | Avaliação e gestão de sustentabilidade | Avaliar o desempenho ESG de empresas e fornecedores e acompanhar riscos da cadeia de valor | Grande base de dados e avaliações personalizadas por setor, tamanho e localização do fornecedor | 
+---
