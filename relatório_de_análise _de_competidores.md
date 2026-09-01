@@ -92,6 +92,23 @@ De acordo com o site oficial, o processo tem 4 etapas: (1) configuração inicia
 - Diferencial exclusivo: uso de dados de satélite e sensoriamento remoto para monitorar uso do solo e biodiversidade — indicado como algo único no mercado pela própria empresa (Fonte: orkea.com.br)
 - Elimina entrada manual de dados via integração direta com ERPs (Fonte: orkea.com.br)
 
+  #### 2.4.4 Pontos fracos
+
+- **1. Limitações de Escopo e Dados de Origem (Efeito *Garbage In, Garbage Out*)**
+
+- **Dependência da Qualidade dos Dados dos Clientes:** Por ser uma plataforma de consolidação de indicadores, a acurácia dos relatórios gerados depende da maturidade operacional do cliente. Se a empresa inserir dados inconsistentes ou não auditados na origem, a plataforma refletirá métricas não confiáveis.
+- **Complexidade no Rastreamento da Cadeia Indireta (Escopo 3 e Fornecedores):** Embora integre tecnologias como sensoriamento remoto, a auditoria de fornecedores de 2º e 3º nível (ex.: pequenos produtores rurais ou transportadores terceirizados) ainda é um gargalo analítico difícil de validar sem verificações de campo.
+
+- **2. Desafios de Governança e Transparência Tecnológica**
+
+- **Transparência em Algoritmos de Impacto e Geoprocessamento:** Ferramentas que utilizam dados de satélite e cruzamento de bases exigem auditoria constante. Se as metodologias de cálculo de pegada de carbono ou de supressão vegetal não forem 100% transparentes ou auditáveis por terceiros, a plataforma corre o risco de ser questionada em auditorias rígidas.
+- **Segurança da Informação e Privacidade de Dados (LGPD):** Plataformas centralizadoras lidam com dados corporativos sensíveis, relatórios financeiros e informações estratégicas de compliance. Qualquer vulnerabilidade em cibersegurança representa um risco direto de governança (letra **G** do ESG).
+
+- **3. Dependência e Alinhamento com Múltiplos Frameworks Globais**
+
+- **Fragmentação de Padrões:** O ecossistema global de ESG exige relatórios em frameworks variados (como GRI, ISSB, CDP, SASB e ISOs). A necessidade de atualizar constantemente as regras de cálculo e formatos para acompanhar mudanças regulatórias cria riscos de desatualização temporária ou inconsistência nos relatórios emitidos.
+* **Riscos Sociais e Internos em Escala (Pilar Social):** Como edtech/greentech em crescimento, os desafios internos de diversidade, inclusão, equidade salarial e retenção de talentos técnicos se tornam pontos críticos de cobrança à medida que a empresa ganha visibilidade no mercado.
+
 
 ### 2.5 EcoVadis
 
