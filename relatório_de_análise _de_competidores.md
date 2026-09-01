@@ -91,3 +91,25 @@ De acordo com o site oficial, o processo tem 4 etapas: (1) configuração inicia
 - Integração com sistemas brasileiros (SAP, TOTVS) e foco na realidade regulatória do Brasil (CVM 193, Lei do Clima) (Fonte: imagem 2 / orkea.com.br)
 - Diferencial exclusivo: uso de dados de satélite e sensoriamento remoto para monitorar uso do solo e biodiversidade — indicado como algo único no mercado pela própria empresa (Fonte: orkea.com.br)
 - Elimina entrada manual de dados via integração direta com ERPs (Fonte: orkea.com.br)
+
+
+### 2.5 EcoVadis
+
+#### 2.5.1 Visão geral
+* **Categoria:** Avaliação e gestão de sustentabilidade
+* **Proposta:** Avaliar o desempenho ESG de empresas e fornecedores e acompanhar riscos da cadeia de valor.
+* **Público-alvo:** Empresas de médio/grande porte com cadeias de fornecimento amplas, e seus fornecedores — atua em 150 setores e mais de 175 países; fundada em 2007, em Paris. Mais de 150.000 empresas avaliadas globalmente até 2024 (750+ brasileiras). Compradores globais como L'Oréal, Carrefour, Renault, Microsoft, SAP e Apple exigem o rating EcoVadis de seus fornecedores. *(Fontes: linkana.com, sevenresiduos.com.br)*
+* **Principais funcionalidades:** Questionário customizado por setor (ex: química recebe peso maior em "pollution prevention"); Scorecard quantitativo de 0 a 100, dividido em 4 temas — Environment, Labor & Human Rights, Ethics e Sustainable Procurement, com peso desigual e benchmark setorial; Carbon Action Module (lançado em 2024) para inventário GHG (escopos 1, 2 e 3), alinhado a SBTi, CDP e ESRS E1. *(Fonte: sevenresiduos.com.br)*
+
+#### 2.5.2 Funcionamento
+Segundo as fontes pesquisadas, o processo tem etapas formalizadas: a empresa se inscreve na plataforma e preenche um questionário customizado conforme seu setor; a EcoVadis avalia com base em evidências documentais, processos internos e dados de fontes externas; ao final, a empresa recebe uma pontuação de 0 a 100 (que resulta também em medalhas, como Prata, Ouro etc., conforme o percentil atingido) e pode consultar recomendações de melhoria. Empresas com boas pontuações entram em uma rede que compradores usam para prospectar fornecedores mais sustentáveis. *(Fontes: linkana.com, solarplex.com.br, intepplasticos.com.br, grafica43.com.br)*
+
+
+#### 2.5.3 Pontos fortes
+* Grande base de dados e avaliações personalizadas por setor, tamanho e localização do fornecedor *(Fonte: imagem 2)*
+* Padrão amplamente reconhecido e exigido internacionalmente — funciona quase como "passaporte comercial" para fornecedores em cadeias globais *(Fonte: solarplex.com.br, sevenresiduos.com.br)*
+* Metodologia baseada em padrões internacionais (GRI, ISO 26000, Pacto Global da ONU) *(Fonte: linkana.com)*
+* Módulo específico para dados de carbono (Carbon Action Module), alinhado a frameworks regulatórios como CSRD/ESRS *(Fonte: sevenresiduos.com.br)*
+
+#### 2.5.4 Pontos fracos
+O Carbon Action Module tem custo adicional de EUR 2.500 a EUR 15.000/ano, dependendo do escopo *(Fonte: sevenresiduos.com.br)* — sugerindo que a avaliação completa (além do básico) pode representar custo significativo para empresas menores. 
