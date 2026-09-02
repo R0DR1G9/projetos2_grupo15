@@ -143,3 +143,10 @@ Segundo as fontes pesquisadas, o processo tem etapas formalizadas: a empresa se 
 | Orkea | Software de gestão e relatórios ESG | Coletar dados, analisar indicadores e gerar relatórios de sustentabilidade | Uso de IA, integração com sistemas brasileiros, foco na realidade regulatória e empresarial do Brasil |
 | EcoVadis | Avaliação e gestão de sustentabilidade | Avaliar o desempenho ESG de empresas e fornecedores e acompanhar riscos da cadeia de valor | Grande base de dados e avaliações personalizadas por setor, tamanho e localização do fornecedor | 
 ---
+## 4. Requisitos obtidos
+
+1. Systema de categorizar ESG, algo que pode ajudar companias em suas jornadas ESG, talvez sendo como um guia, assim como poder avaliar seu progresso no momento
+2. Systema due questionario, usado para determinar onde a compania está na jornada ESG, para poder dar feedback personalizado para usuarios
+3. Systema que coleta informações da compania, usando isto para criar um relatorio que pode ser usado para avançar a compania e suas praticas ESG
+4. Programa assesivel para empresas de diversos tamanhos, o foco é poder ajudar qualquer empresa com sua jornada ESG, qualquer seja seu tamanho
+
