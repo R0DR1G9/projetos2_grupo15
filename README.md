@@ -23,6 +23,11 @@ Plataforma web para pequenas e médias empresas acompanharem seus indicadores, m
 - Rafael Queiroz
 - Fernando Sotero
 - Joao Victor Moraes
+- Paulo Andre
+- Marina Pontes
+- Ana Beatriz
+- Maria Clara
+- Daniel
 
 ## 📄 Documentação
 
