@@ -53,8 +53,7 @@ Tabela comparativa disponível no [documento de análise de competidores](./rela
 
 ### Sprint 02
 
-<!-- TODO: adicionar o print atualizado do quadro da Sprint 02 em assets/ e trocar a linha abaixo por: ![Quadro da Sprint 02](./assets/NOME_DO_ARQUIVO.png) -->
-_print pendente_
+![Quadro da Sprint 01](./assets/imagem_2026-09-22_180543355.png)
 
 ## 🐛 Issue Tracker
 
