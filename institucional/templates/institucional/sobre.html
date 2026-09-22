@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Sobre o projeto — Plataforma ESG{% endblock %}
+
+{% block content %}
+<header class="bg-success bg-gradient text-white py-5 text-center shadow-sm">
+    <div class="container py-3">
+        <h1 class="display-5 fw-bold"><i class="bi bi-info-circle-fill me-2"></i>Sobre o projeto</h1>
+        <p class="lead mb-0">Por que estamos construindo a Plataforma ESG</p>
+    </div>
+</header>
+
+<main class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-9">
+
+            <section class="mb-5">
+                <h2 class="h4 fw-bold text-success mb-3"><i class="bi bi-bullseye me-2"></i>O que estamos construindo</h2>
+                <p>
+                    A Plataforma ESG é um painel web para pequenas e médias empresas acompanharem, em um só lugar,
+                    seus indicadores, metas e ações de sustentabilidade — organizados nos três pilares do ESG
+                    (Ambiental, Social e Governança). A ideia é substituir planilhas soltas e controles manuais
+                    por um diagnóstico simples, com pontuação e progresso visíveis de forma clara.
+                </p>
+            </section>
+
+            <section class="mb-5">
+                <h2 class="h4 fw-bold text-success mb-3"><i class="bi bi-people-fill me-2"></i>Para quem é</h2>
+                <p>
+                    O público-alvo são PMEs que ainda não têm maturidade nem ferramentas de ESG estruturadas —
+                    empresas que precisam entender onde estão e o que priorizar, sem o custo e a complexidade de
+                    soluções corporativas voltadas a grandes companhias.
+                </p>
+            </section>
+
+            <section class="mb-5">
+                <h2 class="h4 fw-bold text-success mb-3"><i class="bi bi-search me-2"></i>Como chegamos até aqui</h2>
+                <p>
+                    Antes de escrever qualquer código, analisamos 5 concorrentes diretos e indiretos no mercado de
+                    ferramentas ESG (Paresi, ESG Business, Minha Pegada, Orkea e EcoVadis) para levantar pontos
+                    fortes, pontos fracos e requisitos que uma solução para PMEs realmente precisa ter. Esse
+                    benchmark está documentado no
+                    <a href="https://github.com/R0DR1G9/projetos2_grupo15/blob/main/relat%C3%B3rio_de_an%C3%A1lise_de_competidores.md" target="_blank">
+                        relatório de análise de competidores</a>.
+                </p>
+            </section>
+
+            <section>
+                <h2 class="h4 fw-bold text-success mb-3"><i class="bi bi-diagram-3-fill me-2"></i>O que já funciona</h2>
+                <p>
+                    A primeira funcionalidade em produção é o
+                    <a href="{% url 'home' %}">diagnóstico de maturidade ESG</a>: um formulário que avalia a empresa
+                    em 12 perguntas (4 por pilar) e calcula a pontuação em Ambiental, Social, Governança e uma nota
+                    geral. É o ponto de partida — nos próximos ciclos, o plano é evoluir para o acompanhamento de
+                    metas, comparativos por período e gestão de ações sustentáveis descritos nos requisitos do
+                    produto.
+                </p>
+            </section>
+
+        </div>
+    </div>
+</main>
+{% endblock %}

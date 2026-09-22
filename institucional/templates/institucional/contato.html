@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Fale conosco — Plataforma ESG{% endblock %}
+
+{% block content %}
+<header class="bg-success bg-gradient text-white py-5 text-center shadow-sm">
+    <div class="container py-3">
+        <h1 class="display-5 fw-bold"><i class="bi bi-envelope-fill me-2"></i>Fale conosco</h1>
+        <p class="lead mb-0">Encontrou um bug? Tem uma sugestão? Manda pra gente.</p>
+    </div>
+</header>
+
+<main class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-7">
+            <div class="card shadow-sm border-0 rounded-4">
+                <div class="card-body p-4 p-md-5">
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+
+                        <div class="mb-3">
+                            <label for="{{ form.nome.id_for_label }}" class="form-label fw-bold">{{ form.nome.label }}</label>
+                            {{ form.nome }}
+                            {% for erro in form.nome.errors %}<div class="text-danger small mt-1">{{ erro }}</div>{% endfor %}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="{{ form.email.id_for_label }}" class="form-label fw-bold">{{ form.email.label }}</label>
+                            {{ form.email }}
+                            {% for erro in form.email.errors %}<div class="text-danger small mt-1">{{ erro }}</div>{% endfor %}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="{{ form.assunto.id_for_label }}" class="form-label fw-bold">{{ form.assunto.label }}</label>
+                            {{ form.assunto }}
+                            {% for erro in form.assunto.errors %}<div class="text-danger small mt-1">{{ erro }}</div>{% endfor %}
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="{{ form.mensagem.id_for_label }}" class="form-label fw-bold">{{ form.mensagem.label }}</label>
+                            {{ form.mensagem }}
+                            {% for erro in form.mensagem.errors %}<div class="text-danger small mt-1">{{ erro }}</div>{% endfor %}
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success btn-lg fw-bold shadow-sm">
+                                <i class="bi bi-send-fill me-2"></i>Enviar mensagem
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

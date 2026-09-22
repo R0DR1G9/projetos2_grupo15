@@ -6,6 +6,15 @@
 
 Plataforma web para pequenas e médias empresas acompanharem seus indicadores, metas e ações de sustentabilidade (ESG — Ambiental, Social e Governança) em um único painel centralizado, inspirada na análise de mercado de ferramentas como Paresi, ESG Business, Minha Pegada, Orkea e EcoVadis.
 
+## 🧭 Páginas do site
+
+| Página | URL | Descrição |
+|---|---|---|
+| Diagnóstico (Início) | `/` | Formulário e resultados do diagnóstico de maturidade ESG |
+| Sobre o projeto | `/sobre/` | O que estamos construindo, para quem, e como chegamos até aqui |
+| Quem somos | `/quem-somos/` | Integrantes da equipe |
+| Fale conosco | `/contato/` | Formulário de contato (bug, sugestão, dúvida) — respostas ficam salvas no banco e são visíveis no `/admin/` |
+
 ## 👥 Equipe
 
 - Rodrigo Barbosa

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Quem somos — Plataforma ESG{% endblock %}
+
+{% block content %}
+<header class="bg-success bg-gradient text-white py-5 text-center shadow-sm">
+    <div class="container py-3">
+        <h1 class="display-5 fw-bold"><i class="bi bi-people-fill me-2"></i>Quem somos</h1>
+        <p class="lead mb-0">A equipe por trás da Plataforma ESG</p>
+    </div>
+</header>
+
+<main class="container py-5">
+    <div class="row justify-content-center mb-4">
+        <div class="col-lg-9 text-center">
+            <p class="text-muted">
+                Somos um grupo de estudantes da Cesar School, trabalhando juntos nas disciplinas de Projeto 2,
+                do levantamento de requisitos até o deploy da aplicação em produção.
+            </p>
+        </div>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+        {% for membro in equipe %}
+            <div class="col-md-4 col-sm-6">
+                <div class="card h-100 text-center border-0 shadow-sm rounded-4">
+                    <div class="card-body p-4">
+                        <div class="mx-auto mb-3 d-flex align-items-center justify-content-center bg-success bg-opacity-10 text-success rounded-circle" style="width: 72px; height: 72px;">
+                            <i class="bi bi-person-fill fs-2"></i>
+                        </div>
+                        <h5 class="card-title fw-bold mb-0">{{ membro.nome }}</h5>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</main>
+{% endblock %}
