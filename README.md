@@ -78,10 +78,11 @@ python manage.py runserver
 
 ## 🎥 Screencasts
 
-- **Uso do sistema:** [link do YouTube]
-<!-- TODO: adicionar link do vídeo mostrando o sistema em uso, com a URL de produção visível na tela -->
-- **Explicação do código:** [link do YouTube]
-<!-- TODO: adicionar link do vídeo explicando o fluxo URL → view → template → model -->
+- **Uso do sistema:**
+- [link do YouTube](https://youtu.be/2ni9VbnhRu0)
+
+- **Explicação do código:**
+- [link do YouTube](https://youtu.be/rq166RePr94)
 
 ## 🔗 Acesso ao Repositório
 
