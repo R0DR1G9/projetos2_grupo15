@@ -46,8 +46,7 @@ _print pendente_
 
 Bugs e pendências são registrados nas [Issues do repositório no GitHub](https://github.com/R0DR1G9/projetos2_grupo15/issues).
 
-<!-- TODO: adicionar o print da tela de Issues em assets/ e trocar a linha abaixo por: ![Issue Tracker](./assets/NOME_DO_ARQUIVO.png) -->
-_print pendente_
+![Quadro da Sprint 01](./assets/imagem_2026-09-22_105105614.png)
 
 ## 🚀 Deploy
 
@@ -77,8 +76,6 @@ python manage.py runserver
 ```bash
   git clone https://github.com/R0DR1G9/projetos2_grupo15.git
 ```
-
-Commits semanais de atualização do projeto.
 
 ## 🛠️ Tecnologias (previstas)
 
