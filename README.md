@@ -33,14 +33,49 @@ Tabela comparativa disponível no [documento de análise de competidores](./rela
 
 ## 🖼️ Quadro da Sprint
 
-![Quadro da Sprint](./assets/imagem_2026-09-22_102016016.png)
+### Sprint 01
+
+![Quadro da Sprint 01](./assets/imagem_2026-09-22_102016016.png)
+
+### Sprint 02
+
+<!-- TODO: adicionar o print atualizado do quadro da Sprint 02 em assets/ e trocar a linha abaixo por: ![Quadro da Sprint 02](./assets/NOME_DO_ARQUIVO.png) -->
+_print pendente_
+
+## 🐛 Issue Tracker
+
+Bugs e pendências são registrados nas [Issues do repositório no GitHub](https://github.com/R0DR1G9/projetos2_grupo15/issues).
+
+<!-- TODO: adicionar o print da tela de Issues em assets/ e trocar a linha abaixo por: ![Issue Tracker](./assets/NOME_DO_ARQUIVO.png) -->
+_print pendente_
+
+## 🚀 Deploy
+
+- **URL em produção:** https://projetos2-grupo15.onrender.com
+- **Como rodar localmente:**
+```bash
+git clone https://github.com/R0DR1G9/projetos2_grupo15.git
+cd projetos2_grupo15
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver
+```
+
+## 🎥 Screencasts
+
+- **Uso do sistema:** [link do YouTube]
+<!-- TODO: adicionar link do vídeo mostrando o sistema em uso, com a URL de produção visível na tela -->
+- **Explicação do código:** [link do YouTube]
+<!-- TODO: adicionar link do vídeo explicando o fluxo URL → view → template → model -->
 
 ## 🔗 Acesso ao Repositório
 
-- **Repositório GitHub:** 
+- **Repositório GitHub:** https://github.com/R0DR1G9/projetos2_grupo15
 - **Como clonar:**
 ```bash
-  git clone 
+  git clone https://github.com/R0DR1G9/projetos2_grupo15.git
 ```
 
 Commits semanais de atualização do projeto.
