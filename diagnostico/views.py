@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
+from django.views.decorators.http import require_POST
 from .forms import DiagnosticoForm
 from .models import DiagnosticoESG
 
@@ -19,16 +20,21 @@ def home(request):
         'form': form
     })
 
+@require_POST
 def salvar_diagnostico(request):
-    if request.method == 'POST':
-        form = DiagnosticoForm(request.POST)
-        if form.is_valid():
-            diagnostico = form.save()
-            resultados = diagnostico.calcular_pontuacao()
-            return JsonResponse({
-                'success': True,
-                'nome_empresa': diagnostico.nome_empresa,
-                'resultados': resultados
-            })
-        return JsonResponse({'success': False, 'errors': form.errors}, status=400)
-    return JsonResponse({'success': False, 'message': 'Método inválido'}, status=405)
+    form = DiagnosticoForm(request.POST)
+    if form.is_valid():
+        diagnostico = form.save()
+        resultados = diagnostico.calcular_pontuacao()
+        return JsonResponse({
+            'success': True,
+            'nome_empresa': diagnostico.nome_empresa,
+            'resultados': resultados
+        })
+    return JsonResponse({'success': False, 'errors': form.errors}, status=400)
+
+@require_POST
+def deletar_diagnostico(request, pk):
+    diagnostico = get_object_or_404(DiagnosticoESG, pk=pk)
+    diagnostico.delete()
+    return JsonResponse({'success': True})

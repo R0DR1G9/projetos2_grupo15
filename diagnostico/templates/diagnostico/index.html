@@ -44,8 +44,13 @@
                     <div class="col-md-6 col-lg-4">
                         <div class="card h-100 shadow-sm border-0 rounded-4">
                             <div class="card-header bg-dark text-white p-3 rounded-top-4 d-flex justify-content-between align-items-center">
-                                <h5 class="card-title mb-0 text-truncate" style="max-width: 200px;">{{ item.objeto.nome_empresa }}</h5>
-                                <span class="badge bg-success fs-6">{{ item.pontuacao.geral }}% ESG</span>
+                                <h5 class="card-title mb-0 text-truncate" style="max-width: 150px;">{{ item.objeto.nome_empresa }}</h5>
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="badge bg-success fs-6">{{ item.pontuacao.geral }}% ESG</span>
+                                    <button class="btn btn-sm btn-outline-danger border-0 p-1 text-white" onclick="deletarDiagnostico({{ item.objeto.pk }})" title="Eliminar diagnóstico">
+                                        <i class="bi bi-trash-fill fs-6"></i>
+                                    </button>
+                                </div>
                             </div>
                             <div class="card-body p-4">
                                 <div class="progress mb-3" style="height: 10px;">
@@ -90,7 +95,7 @@
         {% endif %}
     </main>
 
-    <!-- Modal (Pop-up) com as Perguntas -->
+    <!-- Modal com as Perguntas -->
     <div class="modal fade" id="modalDiagnostico" tabindex="-1" aria-labelledby="modalDiagnosticoLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-scrollable">
             <div class="modal-content rounded-4 border-0">
@@ -205,5 +210,30 @@
                 alert('Ocorreu um erro ao salvar o diagnóstico.');
             });
         });
+
+        function deletarDiagnostico(id) {
+            if (confirm('Tem certeza de que deseja excluir este diagnóstico?')) {
+                const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+                fetch(`/deletar/${id}/`, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': csrfToken,
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        window.location.reload();
+                    } else {
+                        alert('Erro ao excluir o diagnóstico.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro:', error);
+                    alert('Ocorreu um erro ao excluir.');
+                });
+            }
+        }
     </script>
 {% endblock %}
