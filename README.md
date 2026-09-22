@@ -33,9 +33,8 @@ Tabela comparativa disponível no [documento de análise de competidores](./rela
 
 ## 🖼️ Quadro da Sprint
 
-<img width="582" height="250" alt="image" src="https://github.com/user-attachments/assets/784c033d-8d72-47f9-9423-    af2fc720040c" />
+![Quadro da Sprint](./assets/imagem_2026-09-22_09125596.png)
 
-## 🔗 Acesso ao Repositório
 ## 🔗 Acesso ao Repositório
 
 - **Repositório GitHub:** 
