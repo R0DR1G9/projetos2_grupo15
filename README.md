@@ -48,5 +48,5 @@ Commits semanais de atualização do projeto.
 ## 🛠️ Tecnologias (previstas)
 
 - [x] Backend: Django 
-- [ ] Frontend: 
-- [ ] Banco de dados:
+- [x] Frontend: HTML/CSS
+- [X] Banco de dados: Sqlite
