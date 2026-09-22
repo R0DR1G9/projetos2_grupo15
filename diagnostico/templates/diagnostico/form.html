@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma ESG - Avaliação</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        input[type="checkbox"] {
+            width: 1.25em;
+            height: 1.25em;
+            margin-right: 0.5em;
+            cursor: pointer;
+        }
+        .form-check-label {
+            cursor: pointer;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-lg border-0 rounded-4">
+                    <div class="card-header bg-success bg-gradient text-white p-4 rounded-top-4">
+                        <h2 class="h3 mb-1"><i class="bi bi-leaf-fill me-2"></i>Avaliação ESG para Confecções</h2>
+                        <p class="mb-0 text-white-50">Preencha o diagnóstico para analisar o nível de maturidade da sua empresa.</p>
+                    </div>
+                    <div class="card-body p-4 p-md-5">
+                        <form method="post">
+                            {% csrf_token %}
+                            
+                            <div class="mb-4">
+                                <label class="form-label fw-bold h6">Nome da Empresa / Confecção</label>
+                                {{ form.nome_empresa }}
+                            </div>
+
+                            <hr class="my-4">
+
+                            <div class="shadow-sm rounded-3 p-3 bg-body mb-4 border-start border-4 border-success">
+                                <h5 class="text-success fw-bold mb-3"><i class="bi bi-tree me-2"></i>Pilar Ambiental (E)</h5>
+                                <div class="form-check mb-3">
+                                    {{ form.residuos_textesis }}
+                                    <label class="form-check-label">{{ form.residuos_textesis.label }}</label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    {{ form.energia_renovavel }}
+                                    <label class="form-check-label">{{ form.energia_renovavel.label }}</label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    {{ form.uso_agua }}
+                                    <label class="form-check-label">{{ form.uso_agua.label }}</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    {{ form.materias_sustentaveis }}
+                                    <label class="form-check-label">{{ form.materias_sustentaveis.label }}</label>
+                                </div>
+                            </div>
+
+                            <div class="shadow-sm rounded-3 p-3 bg-body mb-4 border-start border-4 border-primary">
+                                <h5 class="text-primary fw-bold mb-3"><i class="bi bi-people me-2"></i>Pilar Social (S)</h5>
+                                <div class="form-check mb-3">
+                                    {{ form.condicoes_trabalho }}
+                                    <label class="form-check-label">{{ form.condicoes_trabalho.label }}</label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    {{ form.diversidade_inclusao }}
+                                    <label class="form-check-label">{{ form.diversidade_inclusao.label }}</label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    {{ form.saude_seguranca }}
+                                    <label class="form-check-label">{{ form.saude_seguranca.label }}</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    {{ form.treinamento_equipe }}
+                                    <label class="form-check-label">{{ form.treinamento_equipe.label }}</label>
+                                </div>
+                            </div>
+
+                            <div class="shadow-sm rounded-3 p-3 bg-body mb-4 border-start border-4 border-dark">
+                                <h5 class="text-dark fw-bold mb-3"><i class="bi bi-building me-2"></i>Pilar Governança (G)</h5>
+                                <div class="form-check mb-3">
+                                    {{ form.rastreabilidade }}
+                                    <label class="form-check-label">{{ form.rastreabilidade.label }}</label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    {{ form.codigo_etica }}
+                                    <label class="form-check-label">{{ form.codigo_etica.label }}</label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    {{ form.combate_corrupcao }}
+                                    <label class="form-check-label">{{ form.combate_corrupcao.label }}</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    {{ form.transparencia_fiscal }}
+                                    <label class="form-check-label">{{ form.transparencia_fiscal.label }}</label>
+                                </div>
+                            </div>
+
+                            <div class="d-grid mt-4">
+                                <button type="submit" class="btn btn-success btn-lg fw-bold shadow-sm">
+                                    <i class="bi bi-calculator me-2"></i>Calcular Diagnóstico ESG
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

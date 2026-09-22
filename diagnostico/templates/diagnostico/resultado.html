@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório ESG - Resultado</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+</head>
+<body class="bg-light">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-lg border-0 rounded-4">
+                    <div class="card-header bg-dark bg-gradient text-white p-4 text-center rounded-top-4">
+                        <h2 class="h3 mb-1"><i class="bi bi-file-earmark-bar-graph me-2"></i>Relatório de Maturidade ESG</h2>
+                        <p class="mb-0 text-white-50">Empresa: <strong>{{ diagnostico.nome_empresa }}</strong></p>
+                    </div>
+                    <div class="card-body p-4 p-md-5">
+                        
+                        <div class="text-center mb-5 p-4 bg-light rounded-4 border shadow-sm">
+                            <h5 class="text-muted text-uppercase fw-bold mb-2">Índice Geral de Maturidade</h5>
+                            <div class="display-2 fw-bold text-success mb-2">{{ resultados.geral }}%</div>
+                            <div class="progress" style="height: 14px;">
+                                <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{ resultados.geral }}%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-4">
+                                <div class="card h-100 border-0 shadow-sm bg-success bg-opacity-10 rounded-3 text-center p-3">
+                                    <div class="text-success fs-1 mb-2"><i class="bi bi-tree"></i></div>
+                                    <h6 class="fw-bold text-success">Ambiental (E)</h6>
+                                    <p class="display-6 fw-bold text-success mb-0">{{ resultados.ambiental }}%</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card h-100 border-0 shadow-sm bg-primary bg-opacity-10 rounded-3 text-center p-3">
+                                    <div class="text-primary fs-1 mb-2"><i class="bi bi-people"></i></div>
+                                    <h6 class="fw-bold text-primary">Social (S)</h6>
+                                    <p class="display-6 fw-bold text-primary mb-0">{{ resultados.social }}%</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card h-100 border-0 shadow-sm bg-dark bg-opacity-10 rounded-3 text-center p-3">
+                                    <div class="text-dark fs-1 mb-2"><i class="bi bi-building"></i></div>
+                                    <h6 class="fw-bold text-dark">Governança (G)</h6>
+                                    <p class="display-6 fw-bold text-dark mb-0">{{ resultados.governanca }}%</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-5">
+                            <a href="{% url 'criar_diagnostico' %}" class="btn btn-outline-success btn-lg px-4 fw-bold">
+                                <i class="bi bi-arrow-left me-2"></i>Novo Diagnóstico
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
