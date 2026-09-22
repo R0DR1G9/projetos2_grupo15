@@ -33,7 +33,7 @@ Tabela comparativa disponível no [documento de análise de competidores](./rela
 
 ## 🖼️ Quadro da Sprint
 
-![Quadro da Sprint](./assets/imagem_2026-09-22_091250596.png)
+![Quadro da Sprint](./assets/imagem_2026-09-22_102016016.png)
 
 ## 🔗 Acesso ao Repositório
 
