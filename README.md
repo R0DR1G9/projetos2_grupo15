@@ -1,6 +1,4 @@
-# [Nome do Projeto] — Plataforma de Gestão ESG para PMEs
-
-> Nome ainda não definido.
+# [Vastra] — Plataforma de Gestão ESG para PMEs
 
 ## 📋 Descrição do Projeto
 
