@@ -43,6 +43,19 @@ Plataforma web para pequenas e médias empresas acompanharem seus indicadores, m
 
 Tabela comparativa disponível no [documento de análise de competidores](./relatório_de_análise_de_competidores.md).
 
+## 📦 Entrega 03
+
+### Histórias implementadas
+
+**H2: Quadro de atividades**
+- Como gestor(a) de uma confecção, quero organizar minhas ações de sustentabilidade em um quadro com colunas de status, para acompanhar o que está aguardando, em andamento e concluído.
+
+**H3: Ranks Bronze, Prata e Ouro**
+- Como gestor(a) de uma confecção, quero ver um rank baseado na minha nota ESG geral, para entender meu nível de maturidade e ter uma meta clara.
+
+**H4: Evolução ESG com diferentes gráficos**
+- Como gestor(a) de uma confecção, quero ver a evolução das minhas notas em diferentes tipos de gráfico, para analisar meu progresso ao longo do tempo.
+
 ## 🖼️ Quadro da Sprint
 
 ### Sprint 01
