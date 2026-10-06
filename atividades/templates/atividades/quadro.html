@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}Quadro de atividades — Plataforma ESG{% endblock %}
+
+{% block extra_head %}
+<style>
+    .coluna-aguardando { border-top: 4px solid #6c757d; }
+    .coluna-andamento  { border-top: 4px solid #0d6efd; }
+    .coluna-concluido  { border-top: 4px solid #198754; }
+    .card-atividade .badge-cat { font-size: .7rem; }
+</style>
+{% endblock %}
+
+{% block content %}
+<header class="bg-success bg-gradient text-white py-5 text-center shadow-sm">
+    <div class="container py-3">
+        <h1 class="display-5 fw-bold"><i class="bi bi-kanban-fill me-2"></i>Quadro de atividades</h1>
+        <p class="lead mb-0">Organize suas ações de sustentabilidade por status</p>
+    </div>
+</header>
+
+<main class="container py-4">
+
+    <!-- Formulário de nova atividade -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <form method="post" class="row g-2 align-items-start" novalidate>
+                {% csrf_token %}
+                <div class="col-md-6">
+                    {{ form.titulo }}
+                    {% for erro in form.titulo.errors %}
+                        <div class="text-danger small mt-1"><i class="bi bi-exclamation-circle me-1"></i>{{ erro }}</div>
+                    {% endfor %}
+                </div>
+                <div class="col-md-3">{{ form.categoria }}</div>
+                <div class="col-md-3 d-grid">
+                    <button type="submit" class="btn btn-success"><i class="bi bi-plus-lg me-1"></i>Adicionar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Colunas -->
+    <div class="row g-3">
+        {% for coluna in colunas %}
+        <div class="col-lg-4">
+            <div class="card shadow-sm h-100 coluna-{{ coluna.chave }}">
+                <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                    <h2 class="h6 fw-bold mb-0">{{ coluna.nome }}</h2>
+                    <span class="badge rounded-pill text-bg-secondary" id="contador-{{ coluna.chave }}">{{ coluna.atividades|length }}</span>
+                </div>
+                <div class="card-body bg-light">
+                    {% for a in coluna.atividades %}
+                    <div class="card card-atividade shadow-sm mb-2">
+                        <div class="card-body p-3">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <span class="fw-semibold">{{ a.titulo }}</span>
+                                <form method="post" action="{% url 'deletar_atividade' a.pk %}" onsubmit="return confirm('Remover esta atividade?');">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-sm btn-link text-danger p-0 ms-2" title="Remover" aria-label="Remover atividade">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </form>
+                            </div>
+                            <span class="badge badge-cat mb-2
+                                {% if a.categoria == 'ambiental' %}text-bg-success{% elif a.categoria == 'social' %}text-bg-info{% else %}text-bg-warning{% endif %}">
+                                {{ a.get_categoria_display }}
+                            </span>
+                            <form method="post" action="{% url 'mudar_status_atividade' a.pk %}">
+                                {% csrf_token %}
+                                <select name="status" class="form-select form-select-sm" onchange="this.form.submit()" aria-label="Mudar status">
+                                    {% for valor, rotulo in status_opcoes %}
+                                        <option value="{{ valor }}" {% if valor == a.status %}selected{% endif %}>{{ rotulo }}</option>
+                                    {% endfor %}
+                                </select>
+                            </form>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p class="text-muted small text-center my-3">Nenhuma atividade aqui.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</main>
+{% endblock %}
