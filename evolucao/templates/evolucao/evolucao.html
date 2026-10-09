@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+
+{% block title %}Evolução ESG — Plataforma ESG{% endblock %}
+
+{% block content %}
+<header class="bg-success bg-gradient text-white py-5 text-center shadow-sm">
+    <div class="container py-3">
+        <h1 class="display-5 fw-bold"><i class="bi bi-graph-up-arrow me-2"></i>Evolução ESG</h1>
+        <p class="lead mb-0">Veja se a sua nota está melhorando a cada diagnóstico</p>
+    </div>
+</header>
+
+<main class="container py-4">
+    {% if not dados_suficientes %}
+        <div class="alert alert-info">
+            <i class="bi bi-info-circle me-1"></i>
+            É preciso ao menos dois diagnósticos para mostrar a evolução.
+            <a href="{% url 'home' %}">Fazer um diagnóstico</a>
+        </div>
+    {% else %}
+        <!-- Resumo -->
+        <div class="row g-3 mb-4 text-center">
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100"><div class="card-body">
+                    <div class="text-muted small">Nota geral atual</div>
+                    <div class="display-5 fw-bold text-success">{{ nota_atual }}%</div>
+                </div></div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100"><div class="card-body">
+                    <div class="text-muted small">Comparado ao diagnóstico anterior</div>
+                    <div class="display-6 fw-bold">
+                        {% if variacao > 0 %}<span class="text-success">▲ +{{ variacao }} pontos</span>
+                        {% elif variacao < 0 %}<span class="text-danger">▼ {{ variacao }} pontos</span>
+                        {% else %}<span class="text-muted">= sem mudança</span>{% endif %}
+                    </div>
+                </div></div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100"><div class="card-body">
+                    <div class="text-muted small">Diagnósticos realizados</div>
+                    <div class="display-5 fw-bold">{{ total }}</div>
+                </div></div>
+            </div>
+        </div>
+
+        <!-- Gráfico -->
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <div class="btn-group mb-2" role="group">
+                    <button class="btn btn-outline-success active" data-tipo="linha">Nota geral</button>
+                    <button class="btn btn-outline-success" data-tipo="barras">Ambiental, Social e Governança</button>
+                    <button class="btn btn-outline-success" data-tipo="radar">Antes e depois</button>
+                </div>
+                <p class="text-muted small mb-3" id="explicacao"></p>
+                <div style="position: relative; height: 360px;">
+                    <canvas id="grafico"></canvas>
+                </div>
+            </div>
+        </div>
+        {{ dados|json_script:"dados-grafico" }}
+    {% endif %}
+</main>
+{% endblock %}
+
+{% block extra_scripts %}
+{% if dados_suficientes %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+const dados = JSON.parse(document.getElementById('dados-grafico').textContent);
+const ultimo = dados.rotulos.length - 1;
+let grafico;
+
+const explicacoes = {
+    linha: 'Cada ponto é um diagnóstico. Se a linha sobe, sua nota geral está melhorando.',
+    barras: 'Compara as três dimensões em cada diagnóstico. Barras mais altas significam notas melhores.',
+    radar: 'Compara o diagnóstico anterior com o mais recente. Quanto maior a área colorida, melhor a nota.'
+};
+
+const eixoPercentual = { min: 0, max: 100, ticks: { callback: v => v + '%' } };
+
+const tooltipDiagnostico = {
+    callbacks: {
+        title: itens => {
+            const i = itens[0].dataIndex;
+            return `${dados.rotulos[i]} — ${dados.empresas[i]} (${dados.datas[i]})`;
+        },
+        label: item => ` ${item.dataset.label}: ${item.parsed.y}%`
+    }
+};
+
+function config(tipo) {
+    if (tipo === 'linha') {
+        return { type: 'line',
+            data: { labels: dados.rotulos, datasets: [{
+                label: 'Nota geral', data: dados.geral,
+                borderColor: '#198754', backgroundColor: 'rgba(25,135,84,0.15)',
+                fill: true, tension: 0.3, pointRadius: 7, pointHoverRadius: 9 }] },
+            options: { maintainAspectRatio: false,
+                scales: { y: eixoPercentual },
+                plugins: { legend: { display: false }, tooltip: tooltipDiagnostico } } };
+    }
+    if (tipo === 'barras') {
+        return { type: 'bar',
+            data: { labels: dados.rotulos, datasets: [
+                { label: 'Ambiental', data: dados.ambiental, backgroundColor: '#198754' },
+                { label: 'Social', data: dados.social, backgroundColor: '#0d6efd' },
+                { label: 'Governança', data: dados.governanca, backgroundColor: '#fd7e14' }] },
+            options: { maintainAspectRatio: false,
+                scales: { y: eixoPercentual },
+                plugins: { legend: { position: 'bottom' }, tooltip: tooltipDiagnostico } } };
+    }
+    const ant = ultimo - 1;
+    return { type: 'radar',
+        data: { labels: ['Ambiental', 'Social', 'Governança'], datasets: [
+            { label: dados.rotulos[ant] + ' (anterior)',
+              data: [dados.ambiental[ant], dados.social[ant], dados.governanca[ant]],
+              borderColor: '#6c757d', backgroundColor: 'rgba(108,117,125,0.15)' },
+            { label: dados.rotulos[ultimo] + ' (atual)',
+              data: [dados.ambiental[ultimo], dados.social[ultimo], dados.governanca[ultimo]],
+              borderColor: '#198754', backgroundColor: 'rgba(25,135,84,0.25)' }] },
+        options: { maintainAspectRatio: false,
+            scales: { r: { min: 0, max: 100, ticks: { stepSize: 25, callback: v => v + '%' } } },
+            plugins: { legend: { position: 'bottom' } } } };
+}
+
+function desenhar(tipo) {
+    if (grafico) grafico.destroy();
+    grafico = new Chart(document.getElementById('grafico'), config(tipo));
+    document.getElementById('explicacao').textContent = explicacoes[tipo];
+}
+
+document.querySelectorAll('[data-tipo]').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-tipo]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        desenhar(btn.dataset.tipo);
+    });
+});
+desenhar('linha');
+</script>
+{% endif %}
+{% endblock %}
