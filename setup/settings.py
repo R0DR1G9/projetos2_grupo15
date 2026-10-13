@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'diagnostico',
     'institucional',
     'atividades',
-    'evolucao' ,
+    'evolucao',
+    'ranking',
 ]
 
 MIDDLEWARE = [

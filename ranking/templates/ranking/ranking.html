@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}Ranking ESG{% endblock %}
+
+{% block content %}
+<header class="bg-success bg-gradient text-white py-5 text-center shadow-sm">
+    <div class="container py-3">
+        <h1 class="display-5 fw-bold"><i class="bi bi-trophy-fill me-2"></i>Ranking ESG</h1>
+        <p class="lead mb-0">Veja quais empresas estão mais avançadas em sustentabilidade</p>
+    </div>
+</header>
+
+<main class="container py-5">
+
+    <!-- Filtro por pilar -->
+    <ul class="nav nav-pills justify-content-center mb-4">
+        {% for chave, nome in pilares %}
+            <li class="nav-item">
+                <a class="nav-link {% if pilar == chave %}active bg-success{% else %}text-success{% endif %}"
+                   href="?pilar={{ chave }}">{{ nome }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    {% if linhas %}
+
+        <!-- Pódio -->
+        <div class="row g-4 justify-content-center mb-5">
+            {% for l in top3 %}
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm rounded-4 text-center h-100">
+                        <div class="card-body p-4">
+                            <div class="display-4">{{ l.medalha.emoji }}</div>
+                            <h5 class="fw-bold mt-2 text-truncate">{{ l.empresa }}</h5>
+                            <span class="badge fs-6 text-white" style="background: {{ l.medalha.cor }};">
+                                {{ l.medalha.nome }}
+                            </span>
+                            <p class="fs-3 fw-bold mt-3 mb-0">{{ l.nota }}%</p>
+                            <small class="text-muted">{{ l.posicao }}º lugar</small>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Tabela completa -->
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-dark">
+                        <tr>
+                            <th class="ps-4">#</th>
+                            <th>Empresa</th>
+                            <th>Nota</th>
+                            <th class="text-center">Ambiental</th>
+                            <th class="text-center">Social</th>
+                            <th class="text-center">Governança</th>
+                            <th class="text-end pe-4">Avaliado em</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for l in linhas %}
+                            <tr>
+                                <td class="ps-4 fw-bold">{{ l.posicao }}º</td>
+                                <td class="fw-semibold">{{ l.empresa }}</td>
+                                <td>
+                                    <span class="badge text-white" style="background: {{ l.medalha.cor }};">
+                                        {{ l.medalha.emoji }} {{ l.medalha.nome }}
+                                    </span>
+                                    <span class="ms-1 fw-bold">{{ l.nota }}%</span>
+                                </td>
+                                <td class="text-center">{{ l.p.medalha_ambiental.emoji }} {{ l.p.ambiental }}%</td>
+                                <td class="text-center">{{ l.p.medalha_social.emoji }} {{ l.p.social }}%</td>
+                                <td class="text-center">{{ l.p.medalha_governanca.emoji }} {{ l.p.governanca }}%</td>
+                                <td class="text-end pe-4 text-muted small">{{ l.data|date:"d/m/Y" }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <p class="text-muted small text-center mt-3 mb-0">
+            🥇 Ouro: 70% ou mais &middot; 🥈 Prata: 40% a 69% &middot; 🥉 Bronze: abaixo de 40%
+        </p>
+
+    {% else %}
+        <div class="text-center py-5 bg-white rounded-4 shadow-sm">
+            <i class="bi bi-trophy fs-1 text-muted"></i>
+            <p class="text-muted mt-2">Ainda não há empresas avaliadas para o ranking.</p>
+            <a href="{% url 'home' %}" class="btn btn-outline-success fw-bold">Fazer um diagnóstico</a>
+        </div>
+    {% endif %}
+</main>
+{% endblock %}

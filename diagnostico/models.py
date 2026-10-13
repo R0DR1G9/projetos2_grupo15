@@ -1,5 +1,16 @@
 from django.db import models
+MEDALHAS = {
+    'ouro':   {'nome': 'Ouro',   'emoji': '🥇', 'cor': '#d4af37'},
+    'prata':  {'nome': 'Prata',  'emoji': '🥈', 'cor': '#9aa0a6'},
+    'bronze': {'nome': 'Bronze', 'emoji': '🥉', 'cor': '#cd7f32'},
+}
 
+def classificar(pct):
+    if pct >= 70:
+        return MEDALHAS['ouro']
+    if pct >= 40:
+        return MEDALHAS['prata']
+    return MEDALHAS['bronze']
 # Create your models here.
 class DiagnosticoESG(models.Model):
     nome_empresa = models.CharField(max_length=150, verbose_name="Nome da Empresa / Confecção")
@@ -32,7 +43,10 @@ class DiagnosticoESG(models.Model):
             'ambiental': round(score_e, 1),
             'social': round(score_s, 1),
             'governanca': round(score_g, 1),
-            'geral': round(score_geral, 1)
+            'geral': round(score_geral, 1),'medalha_geral': classificar(score_geral),
+            'medalha_ambiental': classificar(score_e),
+            'medalha_social': classificar(score_s),
+            'medalha_governanca': classificar(score_g)
         }
     def __str__(self):
         return f"Diagnóstico ESG - {self.nome_empresa}"
