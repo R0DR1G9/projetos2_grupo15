@@ -65,6 +65,8 @@ Tabela comparativa disponível no [documento de análise de competidores](./rela
 
 ## 🖼️ Quadro da Sprint
 
+**Jira:** [Quadro do projeto Vastra](https://rodrigofds26.atlassian.net/jira/software/projects/SCRUM/boards/1) · [Backlog](https://rodrigofds26.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog)
+
 ### Sprint 01
 
 ![Quadro da Sprint 01](./assets/imagem_2026-09-22_102016016.png)
