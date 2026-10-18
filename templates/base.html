@@ -6,67 +6,261 @@
     <title>{% block title %}Plataforma ESG{% endblock %}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Identidade visual do site (cores, cartões, botões e barra lateral) -->
+    <style>
+        :root {
+            /* Paleta */
+            --verde-escuro: #2f3a25;
+            --verde: #3d5a2c;
+            --creme: #faf1e6;
+            --cartao: #fffaf3;
+            --bege: #f1e3d3;
+            --borda: #ead9c6;
+            --terracota: #a24d2c;
+            --terracota-escuro: #86391d;
+            --dourado: #c78a45;
+            --texto: #3a2a20;
+            --texto-suave: #8a7767;
+
+            /* Faz o Bootstrap usar a paleta */
+            --bs-body-bg: var(--creme);
+            --bs-body-color: var(--texto);
+            --bs-body-font-family: 'Nunito', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            --bs-success: #3d5a2c;
+            --bs-success-rgb: 61, 90, 44;
+            --bs-dark-rgb: 47, 58, 37;
+            --bs-light-rgb: 241, 227, 211;
+            --bs-border-color: var(--borda);
+            --bs-link-color-rgb: 162, 77, 44;
+            --bs-link-hover-color-rgb: 134, 57, 29;
+        }
+
+        body { background: var(--creme); color: var(--texto); }
+
+        /* ---------- Layout: barra lateral + conteúdo ---------- */
+        @media (min-width: 992px) {
+            .app { display: grid; grid-template-columns: 280px minmax(0, 1fr); min-height: 100vh; }
+            .sidebar-inner { position: sticky; top: 0; height: 100vh; }
+        }
+        .sidebar { --bs-offcanvas-width: 290px; }
+        .sidebar-inner {
+            height: 100%;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem 1.1rem;
+            background: linear-gradient(180deg, #34402a 0%, #2a3422 100%);
+            color: #f3e7d6;
+            width: 100%;
+        }
+        .sidebar-fechar { position: absolute; top: 1rem; right: 1rem; }
+
+        .marca { display: flex; align-items: center; gap: .75rem; text-decoration: none; color: #fff; margin: .25rem .4rem 2rem; }
+        .marca-logo {
+            flex: none; width: 46px; height: 46px; border-radius: 50%;
+            display: grid; place-items: center;
+            background: linear-gradient(135deg, #d9a05c, #b87a36);
+            color: #fff; font-weight: 800; font-size: 1.2rem;
+        }
+        .marca-texto { display: flex; flex-direction: column; line-height: 1.2; min-width: 0; }
+        .marca-texto strong { font-size: 1.05rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .marca-texto small { color: #bfb299; font-size: .78rem; }
+
+        .menu { display: flex; flex-direction: column; gap: .4rem; }
+        .menu-item {
+            display: flex; align-items: center; gap: .8rem;
+            padding: .75rem 1rem; border-radius: 14px;
+            color: #eadfcb; text-decoration: none; font-weight: 600;
+            border: 1px solid transparent;
+            transition: background .15s, color .15s;
+        }
+        .menu-item i { font-size: 1.15rem; width: 1.4rem; text-align: center; }
+        .menu-item:hover { background: rgba(255, 255, 255, .09); color: #fff; }
+        .menu-item.ativo {
+            background: linear-gradient(135deg, #d29a54, #bb7c38);
+            color: #fff; box-shadow: 0 6px 14px rgba(0, 0, 0, .25);
+        }
+        .menu-item span { white-space: nowrap; }
+        .menu-item.desativado { opacity: .5; cursor: not-allowed; }
+        .menu-item.desativado:hover { background: transparent; color: #eadfcb; }
+        .menu-item em { white-space: nowrap; margin-left: auto; font-style: normal; font-size: .58rem; text-transform: uppercase; letter-spacing: .02em; padding: .1rem .4rem !important; background: rgba(255, 255, 255, .15); padding: .1rem .45rem; border-radius: 999px; }
+
+        .menu-titulo { margin: 1.6rem 1rem .4rem; font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; color: #a99d86; }
+        .menu-secundario .menu-item { padding: .5rem 1rem; font-size: .9rem; font-weight: 600; }
+        .sidebar-rodape { margin-top: auto; padding: 1.5rem 1rem 0; display: flex; gap: 1rem; font-size: 1.2rem; }
+        .sidebar-rodape a { color: #bfb299; }
+        .sidebar-rodape a:hover { color: #fff; }
+
+        .conteudo { display: flex; flex-direction: column; min-height: 100vh; min-width: 0; }
+        .conteudo-corpo { flex: 1 0 auto; }
+
+        /* ---------- Topo ---------- */
+        .topo { display: flex; align-items: center; gap: 1rem; padding: 1.4rem 2rem .6rem; }
+        .topo-saudacao h1 { font-size: 1.5rem; font-weight: 800; margin: 0; color: var(--verde-escuro); }
+        .topo-saudacao p { margin: 0; color: var(--texto-suave); font-size: .95rem; }
+        .topo-direita { margin-left: auto; display: flex; align-items: center; gap: 1rem; }
+        .topo-usuario { color: var(--texto-suave); font-weight: 700; }
+        .avatar {
+            width: 46px; height: 46px; border-radius: 50%;
+            display: grid; place-items: center;
+            background: linear-gradient(135deg, #b8603a, #8f4223);
+            color: #fff; font-weight: 800;
+        }
+        .btn-sino { border: 0; background: transparent; font-size: 1.35rem; color: var(--texto); position: relative; }
+
+        /* Títulos das páginas internas (antes eram faixas verdes grandes) */
+        .conteudo header.bg-success {
+            background: transparent !important; color: var(--texto) !important;
+            text-align: left !important; box-shadow: none !important;
+            margin: 1rem 2rem 0; padding: 0 !important;
+            border-bottom: 1px solid var(--borda);
+        }
+        .conteudo header.bg-success .container { max-width: none; padding: 0 0 1rem !important; }
+        .conteudo header.bg-success h1 { font-size: 1.45rem !important; font-weight: 800; color: var(--verde-escuro); margin-bottom: .25rem !important; }
+        .conteudo header.bg-success .lead { font-size: .98rem; color: var(--texto-suave); margin-bottom: 0 !important; }
+        .conteudo header.bg-success .btn { margin-top: .75rem; }
+        .conteudo header.bg-success .mb-4 { margin-bottom: 0 !important; }
+
+        .conteudo main.container { max-width: none; padding: 1.5rem 2rem !important; margin: 0; }
+        .conteudo .alert-container { padding: .5rem 2rem 0; }
+
+        /* ---------- Componentes do Bootstrap com a nossa cara ---------- */
+        .card { border: 0; border-radius: 18px; background: var(--cartao); box-shadow: 0 2px 12px rgba(94, 62, 30, .09); }
+        .card-header, .card-footer { border-color: var(--borda); }
+        .rounded-4 { border-radius: 18px !important; }
+        .bg-white { background-color: var(--cartao) !important; }
+        .text-muted { color: var(--texto-suave) !important; }
+        .modal-content { border-radius: 18px; background: var(--cartao); border: 0; }
+
+        .btn { border-radius: 12px; font-weight: 700; }
+        .btn-success {
+            --bs-btn-color: #fff; --bs-btn-bg: var(--terracota); --bs-btn-border-color: var(--terracota);
+            --bs-btn-hover-color: #fff; --bs-btn-hover-bg: var(--terracota-escuro); --bs-btn-hover-border-color: var(--terracota-escuro);
+            --bs-btn-active-color: #fff; --bs-btn-active-bg: #6f2e16; --bs-btn-active-border-color: #6f2e16;
+            --bs-btn-disabled-bg: var(--terracota); --bs-btn-disabled-border-color: var(--terracota);
+        }
+        .btn-outline-success {
+            --bs-btn-color: var(--terracota); --bs-btn-border-color: var(--terracota);
+            --bs-btn-hover-color: #fff; --bs-btn-hover-bg: var(--terracota); --bs-btn-hover-border-color: var(--terracota);
+            --bs-btn-active-color: #fff; --bs-btn-active-bg: var(--terracota-escuro); --bs-btn-active-border-color: var(--terracota-escuro);
+        }
+        .btn-light { --bs-btn-bg: #fff; --bs-btn-border-color: var(--borda); }
+
+        .form-control, .form-select { border-radius: 12px; border-color: var(--borda); background-color: #fff; }
+        .form-control:focus, .form-select:focus { border-color: var(--dourado); box-shadow: 0 0 0 .25rem rgba(199, 138, 69, .25); }
+        .form-check-input:checked { background-color: var(--verde); border-color: var(--verde); }
+        .form-check-input:focus { border-color: var(--dourado); box-shadow: 0 0 0 .25rem rgba(199, 138, 69, .25); }
+
+        .alert { border-radius: 14px; border: 0; }
+        .alert-info { --bs-alert-bg: #f3e6d3; --bs-alert-color: #6a4a25; --bs-alert-border-color: #e5cfae; }
+        .text-primary { color: var(--dourado) !important; }
+        .text-warning { color: var(--dourado) !important; }
+        .border-primary { border-color: var(--dourado) !important; }
+        .bg-primary { background-color: var(--dourado) !important; }
+        .text-bg-info { background-color: var(--terracota) !important; color: #fff !important; }
+        .text-bg-warning { background-color: var(--dourado) !important; color: #fff !important; }
+        .progress { background-color: var(--bege); border-radius: 999px; }
+
+        .rodape { padding: 1.2rem 2rem 1.6rem; color: var(--texto-suave); font-size: .85rem; }
+        .rodape a { color: var(--texto-suave); }
+
+        @media (max-width: 575.98px) {
+            .topo, .conteudo header.bg-success { margin-left: 1rem; margin-right: 1rem; }
+            .topo { padding-left: 0; padding-right: 0; }
+            .topo-usuario { display: none; }
+            .conteudo main.container { padding: 1.25rem 1rem !important; }
+            .conteudo .alert-container, .rodape { padding-left: 1rem; padding-right: 1rem; }
+        }
+    </style>
     {% block extra_head %}{% endblock %}
 </head>
-<body class="bg-light d-flex flex-column min-vh-100">
+<body>
+<div class="app">
 
-    <!-- Navegação -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="{% url 'home' %}"><i class="bi bi-tree-fill text-success me-2"></i>Plataforma ESG</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto ms-lg-4">
-                    <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Diagnóstico</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'quadro_atividades' %}">Quadro de atividades</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'evolucao' %}">Evolução ESG</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'ranking' %}">Ranking</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'sobre' %}">Sobre o projeto</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'quem_somos' %}">Quem somos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'contato' %}">Fale conosco</a></li>
-                </ul>
-                <div>
-                    <a href="https://github.com/R0DR1G9/projetos2_grupo15" target="_blank" class="btn btn-outline-light btn-sm me-2">
-                        <i class="bi bi-github me-1"></i>GitHub
-                    </a>
-                    <a href="https://sites.google.com/cesar.school/projeto-2/home?authuser=0" target="_blank" class="btn btn-outline-info btn-sm">
-                        <i class="bi bi-globe me-1"></i>Google Sites
-                    </a>
-                </div>
+    <!-- Barra lateral (no celular vira um menu que abre pelo botão do topo) -->
+    <aside class="sidebar offcanvas-lg offcanvas-start" tabindex="-1" id="menuLateral" aria-label="Menu principal">
+        <div class="sidebar-inner">
+            <button type="button" class="btn-close btn-close-white d-lg-none sidebar-fechar" data-bs-dismiss="offcanvas" data-bs-target="#menuLateral" aria-label="Fechar menu"></button>
+
+            <a class="marca" href="{% url 'inicio' %}">
+                <span class="marca-logo">{{ empresa_nome|slice:":1"|upper }}</span>
+                <span class="marca-texto">
+                    <strong>{{ empresa_nome }}</strong>
+                    <small>Plataforma ESG</small>
+                </span>
+            </a>
+
+            <nav class="menu" aria-label="Seções">
+                <a class="menu-item {% if rota_atual == 'inicio' %}ativo{% endif %}" href="{% url 'inicio' %}"{% if rota_atual == 'inicio' %} aria-current="page"{% endif %}><i class="bi bi-house-door"></i><span>Início</span></a>
+                <a class="menu-item {% if rota_atual == 'home' %}ativo{% endif %}" href="{% url 'home' %}"{% if rota_atual == 'home' %} aria-current="page"{% endif %}><i class="bi bi-clipboard2-check"></i><span>Diagnóstico</span></a>
+                <a class="menu-item {% if rota_atual == 'quadro_atividades' %}ativo{% endif %}" href="{% url 'quadro_atividades' %}"{% if rota_atual == 'quadro_atividades' %} aria-current="page"{% endif %}><i class="bi bi-pencil-square"></i><span>Plano de Ação</span></a>
+                <a class="menu-item {% if rota_atual == 'evolucao' %}ativo{% endif %}" href="{% url 'evolucao' %}"{% if rota_atual == 'evolucao' %} aria-current="page"{% endif %}><i class="bi bi-file-earmark-bar-graph"></i><span>Relatórios</span></a>
+                <span class="menu-item desativado" aria-disabled="true" title="Em breve"><i class="bi bi-journal-text"></i><span>Guias e Modelos</span><em>em breve</em></span>
+                <span class="menu-item desativado" aria-disabled="true" title="Em breve"><i class="bi bi-gear"></i><span>Configurações</span><em>em breve</em></span>
+            </nav>
+
+            <div class="menu-secundario">
+                <div class="menu-titulo">Mais</div>
+                <nav class="menu" aria-label="Mais páginas">
+                    <a class="menu-item {% if rota_atual == 'ranking' %}ativo{% endif %}" href="{% url 'ranking' %}"><i class="bi bi-trophy"></i><span>Ranking</span></a>
+                    <a class="menu-item {% if rota_atual == 'sobre' %}ativo{% endif %}" href="{% url 'sobre' %}"><i class="bi bi-info-circle"></i><span>Sobre o projeto</span></a>
+                    <a class="menu-item {% if rota_atual == 'quem_somos' %}ativo{% endif %}" href="{% url 'quem_somos' %}"><i class="bi bi-people"></i><span>Quem somos</span></a>
+                    <a class="menu-item {% if rota_atual == 'contato' %}ativo{% endif %}" href="{% url 'contato' %}"><i class="bi bi-chat-dots"></i><span>Fale conosco</span></a>
+                </nav>
+            </div>
+
+            <div class="sidebar-rodape">
+                <a href="https://github.com/R0DR1G9/projetos2_grupo15" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub"><i class="bi bi-github"></i></a>
+                <a href="https://sites.google.com/cesar.school/projeto-2/home?authuser=0" target="_blank" rel="noopener" title="Google Sites" aria-label="Google Sites"><i class="bi bi-globe"></i></a>
             </div>
         </div>
-    </nav>
+    </aside>
 
-    {% if messages %}
-        <div class="container mt-3">
-            {% for message in messages %}
-                <div class="alert alert-{{ message.tags|default:'success' }} alert-dismissible fade show" role="alert">
-                    {{ message }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <div class="conteudo">
+        <!-- Topo: saudação, notificações e usuário -->
+        <div class="topo">
+            <button class="btn btn-sm btn-outline-success d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral" aria-controls="menuLateral" aria-label="Abrir menu"><i class="bi bi-list fs-5"></i></button>
+            <div class="topo-saudacao">
+                <h1>Olá, {{ usuario_nome }}!</h1>
+                <p>Sua jornada ESG continua aqui.</p>
+            </div>
+            <div class="topo-direita">
+                <div class="dropdown">
+                    <button class="btn-sino" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Notificações"><i class="bi bi-bell"></i></button>
+                    <div class="dropdown-menu dropdown-menu-end p-3 text-muted small">Nenhuma notificação por enquanto.</div>
                 </div>
-            {% endfor %}
+                <span class="topo-usuario">{{ usuario_nome }}</span>
+                <span class="avatar">{{ usuario_nome|slice:":1"|upper }}</span>
+            </div>
         </div>
-    {% endif %}
 
-    <div class="flex-grow-1">
-        {% block content %}{% endblock %}
+        {% if messages %}
+            <div class="alert-container">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags|default:'success' }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <div class="conteudo-corpo">
+            {% block content %}{% endblock %}
+        </div>
+
+        <footer class="rodape">
+            Plataforma ESG para PMEs &mdash; Projeto acadêmico, Cesar School.
+            &middot; <a href="{% url 'contato' %}">Fale conosco</a>
+        </footer>
     </div>
+</div>
 
-    <!-- Rodapé -->
-    <footer class="bg-dark text-white-50 py-4 mt-5">
-        <div class="container text-center small">
-            <p class="mb-1">Plataforma ESG para PMEs &mdash; Projeto acadêmico, Cesar School.</p>
-            <p class="mb-0">
-                <a href="https://github.com/R0DR1G9/projetos2_grupo15" target="_blank" class="text-white-50">GitHub</a>
-                &middot;
-                <a href="{% url 'contato' %}" class="text-white-50">Fale conosco</a>
-            </p>
-        </div>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    {% block extra_scripts %}{% endblock %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+{% block extra_scripts %}{% endblock %}
 </body>
 </html>
