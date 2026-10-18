@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'atividades',
     'evolucao',
     'ranking',
+    'inicio',
 ]
 
 MIDDLEWARE = [
@@ -67,6 +68,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'inicio.context_processors.layout',
             ],
         },
     },
@@ -134,3 +136,6 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+
+# Nome mostrado no topo do site (ainda não existe login)
+USUARIO_NOME = 'Gestor(a)'

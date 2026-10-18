@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+{% load l10n %}
+
+{% block title %}Início — Plataforma ESG{% endblock %}
+
+{% block extra_head %}
+<style>
+    .anel {
+        --pct: 0;
+        width: 150px; height: 150px; border-radius: 50%; flex: none;
+        background: conic-gradient(var(--verde) calc(var(--pct) * 1%), var(--bege) 0);
+        display: grid; place-items: center;
+    }
+    .anel-interno {
+        width: 114px; height: 114px; border-radius: 50%;
+        background: var(--cartao); display: grid; place-items: center;
+        font-size: 1.9rem; font-weight: 800; color: var(--verde-escuro);
+    }
+    .mini-pilar { border-radius: 16px; padding: 1rem .5rem; text-align: center; height: 100%; }
+    .mini-pilar i { font-size: 1.6rem; }
+    .mini-pilar .valor { font-size: 1.7rem; font-weight: 800; line-height: 1.1; }
+    .mini-pilar .nome { font-size: .8rem; font-weight: 700; color: var(--texto-suave); }
+    .pilar-e { background: #e7eddc; color: #3d5a2c; }
+    .pilar-s { background: #f6e0d6; color: #a24d2c; }
+    .pilar-g { background: #f3e6cf; color: #8a6420; }
+
+    .acao { display: flex; align-items: center; gap: .9rem; padding: .85rem 0; border-bottom: 1px solid var(--borda); }
+    .acao:last-child { border-bottom: 0; }
+    .acao > i { font-size: 1.4rem; color: var(--verde); }
+    .acao-titulo { font-weight: 700; }
+    .chip { display: inline-block; font-size: .72rem; font-weight: 700; padding: .15rem .6rem; border-radius: 999px; }
+    .chip-ambiental { background: #e7eddc; color: #3d5a2c; }
+    .chip-social { background: #f6e0d6; color: #a24d2c; }
+    .chip-governanca { background: #f3e6cf; color: #8a6420; }
+    .chip-status { background: #e3eef0; color: #3c6a73; }
+
+    .dica-imagem {
+        height: 150px; border-radius: 18px 18px 0 0;
+        background: linear-gradient(135deg, #cfd9b8 0%, #e9d9bd 55%, #d9b88a 100%);
+        display: grid; place-items: center; color: var(--verde); font-size: 3.5rem;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<main class="container">
+    <div class="row g-4">
+
+        <!-- Seu score ESG -->
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <h2 class="h5 fw-bold mb-0">Seu score ESG</h2>
+                        {% if score %}
+                            <a href="{% url 'evolucao' %}" class="small fw-bold text-decoration-none">Ver evolução <i class="bi bi-arrow-right"></i></a>
+                        {% endif %}
+                    </div>
+
+                    {% if score %}
+                    <div class="row g-4 align-items-center">
+                        <div class="col-lg-5">
+                            <div class="d-flex align-items-center gap-4">
+                                <div class="anel" style="--pct: {{ score.geral|unlocalize }}">
+                                    <div class="anel-interno">{{ score.geral|floatformat:"-1" }}%</div>
+                                </div>
+                                <div>
+                                    <span class="badge rounded-pill fs-6 text-white mb-2" style="background: {{ score.medalha_geral.cor }};">
+                                        {{ score.medalha_geral.emoji }} {{ score.medalha_geral.nome }}
+                                    </span>
+                                    <div class="small">
+                                        {% if variacao is None %}
+                                            <span class="text-muted">Primeiro diagnóstico de <strong>{{ empresa }}</strong></span>
+                                        {% elif variacao > 0 %}
+                                            <span class="text-success fw-bold"><i class="bi bi-arrow-up"></i> +{{ variacao|floatformat:"-1" }} pontos</span>
+                                            <span class="text-muted">desde o último diagnóstico</span>
+                                        {% elif variacao < 0 %}
+                                            <span class="fw-bold" style="color: var(--terracota);"><i class="bi bi-arrow-down"></i> {{ variacao|floatformat:"-1" }} pontos</span>
+                                            <span class="text-muted">desde o último diagnóstico</span>
+                                        {% else %}
+                                            <span class="text-muted">Igual ao último diagnóstico</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="row g-3">
+                                <div class="col-4"><div class="mini-pilar pilar-e"><i class="bi bi-tree"></i><div class="valor">{{ score.ambiental|floatformat:"-1" }}%</div><div class="nome">Ambiental</div></div></div>
+                                <div class="col-4"><div class="mini-pilar pilar-s"><i class="bi bi-people"></i><div class="valor">{{ score.social|floatformat:"-1" }}%</div><div class="nome">Social</div></div></div>
+                                <div class="col-4"><div class="mini-pilar pilar-g"><i class="bi bi-bank"></i><div class="valor">{{ score.governanca|floatformat:"-1" }}%</div><div class="nome">Governança</div></div></div>
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+                        <div class="text-center py-4">
+                            <i class="bi bi-clipboard2-check fs-1 text-muted"></i>
+                            <p class="mt-2 mb-3">Você ainda não fez o diagnóstico ESG. Responda para ver o seu score aqui.</p>
+                            <a href="{% url 'home' %}" class="btn btn-success">Fazer diagnóstico</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Ações em andamento -->
+        <div class="col-lg-8">
+            <div class="card h-100">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <h2 class="h5 fw-bold mb-0">Ações em andamento</h2>
+                        <a href="{% url 'quadro_atividades' %}" class="small fw-bold text-decoration-none">Ver todas <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                    {% for a in acoes %}
+                        <div class="acao">
+                            <i class="bi bi-check-circle"></i>
+                            <div class="flex-grow-1">
+                                <div class="acao-titulo">{{ a.titulo }}</div>
+                                <span class="chip chip-{{ a.categoria }}">{{ a.get_categoria_display }}</span>
+                            </div>
+                            <span class="chip chip-status">{{ a.get_status_display }}</span>
+                        </div>
+                    {% empty %}
+                        <div class="text-center py-5 text-muted">
+                            <i class="bi bi-pencil-square fs-1"></i>
+                            <p class="mt-2 mb-3">Nenhuma ação em andamento. Organize suas ações no Plano de Ação.</p>
+                            <a href="{% url 'quadro_atividades' %}" class="btn btn-outline-success btn-sm">Ir para o Plano de Ação</a>
+                        </div>
+                    {% endfor %}
+                    {% if total_acoes > 5 %}
+                        <p class="small text-muted mt-3 mb-0">Mostrando 5 de {{ total_acoes }} ações em andamento.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Dica da semana -->
+        <div class="col-lg-4">
+            <div class="card h-100">
+                <div class="dica-imagem"><i class="bi {{ dica.icone }}"></i></div>
+                <div class="card-body p-4 d-flex flex-column">
+                    <h2 class="h5 fw-bold">Dica da semana</h2>
+                    <p class="text-muted">{{ dica.texto }}</p>
+                    <a href="{% url 'quadro_atividades' %}" class="btn btn-success mt-auto">Adicionar ao Plano de Ação</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+{% endblock %}

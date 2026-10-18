@@ -8,7 +8,8 @@ Plataforma web para pequenas e médias empresas acompanharem seus indicadores, m
 
 | Página | URL | Descrição |
 |---|---|---|
-| Diagnóstico (Início) | `/` | Formulário e resultados do diagnóstico de maturidade ESG |
+| Início (painel) | `/` | Painel com score ESG, ações em andamento e dica da semana; menu lateral com navegação |
+| Diagnóstico | `/diagnostico/` | Formulário e resultados do diagnóstico de maturidade ESG |
 | Sobre o projeto | `/sobre/` | O que estamos construindo, para quem, e como chegamos até aqui |
 | Quem somos | `/quem-somos/` | Integrantes da equipe |
 | Fale conosco | `/contato/` | Formulário de contato (bug, sugestão, dúvida) — respostas ficam salvas no banco e são visíveis no `/admin/` |

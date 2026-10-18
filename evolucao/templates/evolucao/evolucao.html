@@ -94,7 +94,7 @@ function config(tipo) {
         return { type: 'line',
             data: { labels: dados.rotulos, datasets: [{
                 label: 'Nota geral', data: dados.geral,
-                borderColor: '#198754', backgroundColor: 'rgba(25,135,84,0.15)',
+                borderColor: '#3d5a2c', backgroundColor: 'rgba(61,90,44,0.15)',
                 fill: true, tension: 0.3, pointRadius: 7, pointHoverRadius: 9 }] },
             options: { maintainAspectRatio: false,
                 scales: { y: eixoPercentual },
@@ -103,9 +103,9 @@ function config(tipo) {
     if (tipo === 'barras') {
         return { type: 'bar',
             data: { labels: dados.rotulos, datasets: [
-                { label: 'Ambiental', data: dados.ambiental, backgroundColor: '#198754' },
-                { label: 'Social', data: dados.social, backgroundColor: '#0d6efd' },
-                { label: 'Governança', data: dados.governanca, backgroundColor: '#fd7e14' }] },
+                { label: 'Ambiental', data: dados.ambiental, backgroundColor: '#3d5a2c' },
+                { label: 'Social', data: dados.social, backgroundColor: '#b4532f' },
+                { label: 'Governança', data: dados.governanca, backgroundColor: '#c78a45' }] },
             options: { maintainAspectRatio: false,
                 scales: { y: eixoPercentual },
                 plugins: { legend: { position: 'bottom' }, tooltip: tooltipDiagnostico } } };
@@ -118,7 +118,7 @@ function config(tipo) {
               borderColor: '#6c757d', backgroundColor: 'rgba(108,117,125,0.15)' },
             { label: dados.rotulos[ultimo] + ' (atual)',
               data: [dados.ambiental[ultimo], dados.social[ultimo], dados.governanca[ultimo]],
-              borderColor: '#198754', backgroundColor: 'rgba(25,135,84,0.25)' }] },
+              borderColor: '#3d5a2c', backgroundColor: 'rgba(61,90,44,0.25)' }] },
         options: { maintainAspectRatio: false,
             scales: { r: { min: 0, max: 100, ticks: { stepSize: 25, callback: v => v + '%' } } },
             plugins: { legend: { position: 'bottom' } } } };
