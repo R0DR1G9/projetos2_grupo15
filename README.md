@@ -80,9 +80,9 @@ Tabela comparativa disponível no [documento de análise de competidores](./rela
 
 ![Backlog da Sprint 03 no JIRA](./assets/jira_backlog_sprint03.png)
 
-### Sprint 03 — Quadro
+### Sprint 03 — Backlog finalizado
 
-<!-- TODO: adicionar aqui o print do quadro da Sprint 03 (SCRUM-40), ex.: ![Quadro da Sprint 03](./assets/NOME_DA_IMAGEM.png) -->
+![Quadro da Sprint 03](./assets/imagem_2026-10-19_141712851.png)
 
 ## 🐛 Issue Tracker
 
