@@ -119,10 +119,9 @@ python manage.py runserver
 
 ### Novas funcionalidades — Entrega 03 (H2, H3 e H4)
 
-Vídeos gravados apenas com as funcionalidades novas (Quadro de atividades, Ranking e Evolução ESG). Os vídeos da Entrega 02 acima continuam valendo para as funcionalidades anteriores.
+Vídeos gravados apenas com as funcionalidades novas (Quadro de atividades, Ranking e Evolução ESG).
 
-- **Uso do sistema** (com a URL do site em produção aparecendo): _link do YouTube em breve_
-- **Explicação do código** (da URL até view, template e model): _link do YouTube em breve_
+- **Uso do sistema e Explicação do código:** [link do YouTube]()
 
 ## 🔗 Acesso ao Repositório
 
