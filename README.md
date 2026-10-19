@@ -121,7 +121,7 @@ python manage.py runserver
 
 Vídeos gravados apenas com as funcionalidades novas (Quadro de atividades, Ranking e Evolução ESG).
 
-- **Uso do sistema e Explicação do código:** [link do YouTube]()
+- **Uso do sistema e Explicação do código:** [link do YouTube](https://youtu.be/0OdchLhlkLc)
 
 ## 🔗 Acesso ao Repositório
 
