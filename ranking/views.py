@@ -14,22 +14,22 @@ def ranking(request):
     if pilar not in dict(PILARES):
         pilar = 'geral'
 
-    # Fica só o diagnóstico mais recente de cada empresa
+    
     ultimos = {}
-    for d in DiagnosticoESG.objects.order_by('data_criacao'):
-        ultimos[d.nome_empresa.strip().lower()] = d
+    for d in DiagnosticoESG.objects.filter(usuario__isnull=False).select_related('usuario').order_by('data_criacao'):
+        ultimos[d.usuario_id] = d
 
     linhas = []
     for d in ultimos.values():
         p = d.calcular_pontuacao()
         linhas.append({
-            'empresa': d.nome_empresa.strip(),
+            'empresa': d.usuario.first_name.strip() or d.usuario.username,
             'p': p,
             'nota': p[pilar],
             'medalha': p['medalha_' + pilar],
             'data': d.data_criacao,
+            'eh_meu': d.usuario_id == request.user.id,
         })
-
     linhas.sort(key=lambda l: (-l['nota'], l['empresa'].lower()))
 
     # Empates dividem a mesma posição

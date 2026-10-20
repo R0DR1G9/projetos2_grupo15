@@ -214,6 +214,16 @@
             </div>
 
             <div class="sidebar-rodape">
+                {% if user.is_authenticated %}
+                <span class="text-white-50 small me-2">{{ user.first_name|default:user.username }}</span>
+                <form method="post" action="{% url 'logout' %}" class="d-inline">
+                {% csrf_token %}
+                    <button type="submit" class="btn btn-outline-warning btn-sm me-2">Sair</button>
+                </form>
+            {% else %}
+                <a href="{% url 'login' %}" class="btn btn-outline-warning btn-sm me-2">Entrar</a>
+                <a href="{% url 'cadastro' %}" class="btn btn-warning btn-sm me-2">Criar conta</a>
+            {% endif %}
                 <a href="https://github.com/R0DR1G9/projetos2_grupo15" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub"><i class="bi bi-github"></i></a>
                 <a href="https://sites.google.com/cesar.school/projeto-2/home?authuser=0" target="_blank" rel="noopener" title="Google Sites" aria-label="Google Sites"><i class="bi bi-globe"></i></a>
             </div>
@@ -233,8 +243,17 @@
                     <button class="btn-sino" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Notificações"><i class="bi bi-bell"></i></button>
                     <div class="dropdown-menu dropdown-menu-end p-3 text-muted small">Nenhuma notificação por enquanto.</div>
                 </div>
-                <span class="topo-usuario">{{ usuario_nome }}</span>
-                <span class="avatar">{{ usuario_nome|slice:":1"|upper }}</span>
+                {% if user.is_authenticated %}
+    <span class="topo-usuario">{{ usuario_nome }}</span>
+    <span class="avatar">{{ usuario_nome|slice:":1"|upper }}</span>
+    <form method="post" action="{% url 'logout' %}" class="m-0">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-sm btn-outline-success"><i class="bi bi-box-arrow-right me-1"></i>Sair</button>
+    </form>
+{% else %}
+    <a href="{% url 'login' %}" class="btn btn-sm btn-outline-success">Entrar</a>
+    <a href="{% url 'cadastro' %}" class="btn btn-sm btn-success">Criar conta</a>
+{% endif %}
             </div>
         </div>
 

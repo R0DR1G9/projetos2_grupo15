@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from diagnostico.models import DiagnosticoESG
+from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def evolucao(request):
-    diagnosticos = list(DiagnosticoESG.objects.order_by('data_criacao'))
+    diagnosticos = list(DiagnosticoESG.objects.filter(usuario=request.user).order_by('data_criacao'))
 
     if len(diagnosticos) < 2:
         return render(request, 'evolucao/evolucao.html', {'dados_suficientes': False})

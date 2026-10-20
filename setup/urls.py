@@ -25,4 +25,5 @@ urlpatterns = [
     path('', include('atividades.urls')),
     path('', include('evolucao.urls')),
     path('', include('ranking.urls')),
+    path('', include('contas.urls')),
 ]

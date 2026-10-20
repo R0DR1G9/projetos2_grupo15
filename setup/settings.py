@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'evolucao',
     'ranking',
     'inicio',
+    'contas',
 ]
 
 MIDDLEWARE = [
@@ -139,3 +140,6 @@ MAILERS = {
 
 # Nome mostrado no topo do site (ainda não existe login)
 USUARIO_NOME = 'Gestor(a)'
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'

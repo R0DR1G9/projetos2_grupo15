@@ -1,5 +1,5 @@
 from datetime import date
-
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
 from atividades.models import Atividade
@@ -17,10 +17,10 @@ DICAS = [
     {"icone": "bi-lightbulb", "texto": "Trocar lâmpadas por LED e desligar máquinas paradas são mudanças pequenas que reduzem a conta de energia."},
 ]
 
-
+@login_required
 def inicio(request):
     # Os dois diagnósticos mais recentes: o atual e o anterior (para a variação)
-    recentes = list(DiagnosticoESG.objects.order_by('-data_criacao')[:2])
+    recentes = list(DiagnosticoESG.objects.filter(usuario=request.user).order_by('-data_criacao')[:2])
 
     score = None
     variacao = None

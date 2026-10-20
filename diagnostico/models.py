@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 MEDALHAS = {
     'ouro':   {'nome': 'Ouro',   'emoji': '🥇', 'cor': '#d4af37'},
     'prata':  {'nome': 'Prata',  'emoji': '🥈', 'cor': '#9aa0a6'},
@@ -31,7 +32,10 @@ class DiagnosticoESG(models.Model):
     transparencia_fiscal = models.BooleanField(default=False, verbose_name="Mantém transparência total em obrigações fiscais, jurídicas e relatórios?")
 
     data_criacao = models.DateTimeField(auto_now_add=True)
-
+    usuario = models.ForeignKey(
+        settings.AUTH_USER_MODEL, null=True, blank=True,
+        on_delete=models.CASCADE, related_name='diagnosticos'
+    )
     def calcular_pontuacao(self):
         score_e = ((int(self.residuos_textesis) + int(self.energia_renovavel) + int(self.uso_agua) + int(self.materias_sustentaveis)) / 4) * 100
         score_s = ((int(self.condicoes_trabalho) + int(self.diversidade_inclusao) + int(self.saude_seguranca) + int(self.treinamento_equipe)) / 4) * 100
