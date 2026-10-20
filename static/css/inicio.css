@@ -1,0 +1,31 @@
+.anel {
+    --pct: 0;
+    width: 150px; height: 150px; border-radius: 50%; flex: none;
+    background: conic-gradient(var(--verde) calc(var(--pct) * 1%), var(--bege) 0);
+    display: grid; place-items: center;
+}
+.anel-interno {
+    width: 114px; height: 114px; border-radius: 50%;
+    background: var(--cartao); display: grid; place-items: center;
+    font-size: 1.9rem; font-weight: 800; color: var(--verde-escuro);
+}
+.mini-pilar { border-radius: 16px; padding: 1rem .5rem; text-align: center; height: 100%; }
+.mini-pilar i { font-size: 1.6rem; }
+.mini-pilar .valor { font-size: 1.7rem; font-weight: 800; line-height: 1.1; }
+.mini-pilar .nome { font-size: .8rem; font-weight: 700; color: var(--texto-suave); }
+
+.acao { display: flex; align-items: center; gap: .9rem; padding: .85rem 0; border-bottom: 1px solid var(--borda); }
+.acao:last-child { border-bottom: 0; }
+.acao > i { font-size: 1.4rem; color: var(--verde); }
+.acao-titulo { font-weight: 700; }
+.chip { display: inline-block; font-size: .72rem; font-weight: 700; padding: .15rem .6rem; border-radius: 999px; }
+.chip-ambiental { background: #e7eddc; color: #3d5a2c; }
+.chip-social { background: #f6e0d6; color: #a24d2c; }
+.chip-governanca { background: #f3e6cf; color: #8a6420; }
+.chip-status { background: #e3eef0; color: #3c6a73; }
+
+.dica-imagem {
+    height: 150px; border-radius: 18px 18px 0 0;
+    background: linear-gradient(135deg, #cfd9b8 0%, #e9d9bd 55%, #d9b88a 100%);
+    display: grid; place-items: center; color: var(--verde); font-size: 3.5rem;
+}

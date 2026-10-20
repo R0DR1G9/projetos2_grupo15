@@ -115,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Recife'
 
 USE_I18N = True
 
@@ -127,7 +127,12 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# Arquivos CSS e JS ficam em static/ (na raiz do projeto), separados dos templates.
+STATICFILES_DIRS = [BASE_DIR / 'static']
+# Sem manifest: o site continua abrindo mesmo se o collectstatic não rodar no deploy.
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+# O WhiteNoise também serve direto de static/ (funciona com ou sem collectstatic).
+WHITENOISE_USE_FINDERS = True
 
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration

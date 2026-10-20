@@ -1,45 +1,10 @@
 {% extends "base.html" %}
-{% load l10n %}
+{% load l10n static %}
 
 {% block title %}Início — Plataforma ESG{% endblock %}
 
 {% block extra_head %}
-<style>
-    .anel {
-        --pct: 0;
-        width: 150px; height: 150px; border-radius: 50%; flex: none;
-        background: conic-gradient(var(--verde) calc(var(--pct) * 1%), var(--bege) 0);
-        display: grid; place-items: center;
-    }
-    .anel-interno {
-        width: 114px; height: 114px; border-radius: 50%;
-        background: var(--cartao); display: grid; place-items: center;
-        font-size: 1.9rem; font-weight: 800; color: var(--verde-escuro);
-    }
-    .mini-pilar { border-radius: 16px; padding: 1rem .5rem; text-align: center; height: 100%; }
-    .mini-pilar i { font-size: 1.6rem; }
-    .mini-pilar .valor { font-size: 1.7rem; font-weight: 800; line-height: 1.1; }
-    .mini-pilar .nome { font-size: .8rem; font-weight: 700; color: var(--texto-suave); }
-    .pilar-e { background: #e7eddc; color: #3d5a2c; }
-    .pilar-s { background: #f6e0d6; color: #a24d2c; }
-    .pilar-g { background: #f3e6cf; color: #8a6420; }
-
-    .acao { display: flex; align-items: center; gap: .9rem; padding: .85rem 0; border-bottom: 1px solid var(--borda); }
-    .acao:last-child { border-bottom: 0; }
-    .acao > i { font-size: 1.4rem; color: var(--verde); }
-    .acao-titulo { font-weight: 700; }
-    .chip { display: inline-block; font-size: .72rem; font-weight: 700; padding: .15rem .6rem; border-radius: 999px; }
-    .chip-ambiental { background: #e7eddc; color: #3d5a2c; }
-    .chip-social { background: #f6e0d6; color: #a24d2c; }
-    .chip-governanca { background: #f3e6cf; color: #8a6420; }
-    .chip-status { background: #e3eef0; color: #3c6a73; }
-
-    .dica-imagem {
-        height: 150px; border-radius: 18px 18px 0 0;
-        background: linear-gradient(135deg, #cfd9b8 0%, #e9d9bd 55%, #d9b88a 100%);
-        display: grid; place-items: center; color: var(--verde); font-size: 3.5rem;
-    }
-</style>
+<link rel="stylesheet" href="{% static 'css/inicio.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -61,11 +26,11 @@
                     <div class="row g-4 align-items-center">
                         <div class="col-lg-5">
                             <div class="d-flex align-items-center gap-4">
-                                <div class="anel" style="--pct: {{ score.geral|unlocalize }}">
+                                <div class="anel" data-pct="{{ score.geral|unlocalize }}">
                                     <div class="anel-interno">{{ score.geral|floatformat:"-1" }}%</div>
                                 </div>
                                 <div>
-                                    <span class="badge rounded-pill fs-6 text-white mb-2" style="background: {{ score.medalha_geral.cor }};">
+                                    <span class="badge rounded-pill fs-6 text-white mb-2 medalha-{{ score.medalha_geral.chave }}">
                                         {{ score.medalha_geral.emoji }} {{ score.medalha_geral.nome }}
                                     </span>
                                     <div class="small">
@@ -75,7 +40,7 @@
                                             <span class="text-success fw-bold"><i class="bi bi-arrow-up"></i> +{{ variacao|floatformat:"-1" }} pontos</span>
                                             <span class="text-muted">desde o último diagnóstico</span>
                                         {% elif variacao < 0 %}
-                                            <span class="fw-bold" style="color: var(--terracota);"><i class="bi bi-arrow-down"></i> {{ variacao|floatformat:"-1" }} pontos</span>
+                                            <span class="fw-bold texto-terracota"><i class="bi bi-arrow-down"></i> {{ variacao|floatformat:"-1" }} pontos</span>
                                             <span class="text-muted">desde o último diagnóstico</span>
                                         {% else %}
                                             <span class="text-muted">Igual ao último diagnóstico</span>
@@ -96,7 +61,7 @@
                         <div class="text-center py-4">
                             <i class="bi bi-clipboard2-check fs-1 text-muted"></i>
                             <p class="mt-2 mb-3">Você ainda não fez o diagnóstico ESG. Responda para ver o seu score aqui.</p>
-                            <a href="{% url 'home' %}" class="btn btn-success">Fazer diagnóstico</a>
+                            <a href="{% url 'novo_diagnostico' %}" class="btn btn-success">Fazer diagnóstico</a>
                         </div>
                     {% endif %}
                 </div>

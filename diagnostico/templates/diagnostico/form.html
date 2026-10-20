@@ -1,114 +1,133 @@
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plataforma ESG - Avaliação</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    <style>
-        input[type="checkbox"] {
-            width: 1.25em;
-            height: 1.25em;
-            margin-right: 0.5em;
-            cursor: pointer;
-        }
-        .form-check-label {
-            cursor: pointer;
-            font-weight: 500;
-        }
-    </style>
-</head>
-<body class="bg-light">
-    <div class="container py-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="card shadow-lg border-0 rounded-4">
-                    <div class="card-header bg-success bg-gradient text-white p-4 rounded-top-4">
-                        <h2 class="h3 mb-1"><i class="bi bi-leaf-fill me-2"></i>Avaliação ESG para Confecções</h2>
-                        <p class="mb-0 text-white-50">Preencha o diagnóstico para analisar o nível de maturidade da sua empresa.</p>
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Novo diagnóstico — Plataforma ESG{% endblock %}
+
+{% block extra_head %}<link rel="stylesheet" href="{% static 'css/diagnostico.css' %}">{% endblock %}
+
+{% block content %}
+<header class="bg-success bg-gradient text-white py-5 text-center shadow-sm">
+    <div class="container py-3">
+        <h1 class="display-5 fw-bold"><i class="bi bi-clipboard2-check me-2"></i>Novo diagnóstico ESG</h1>
+        <p class="lead mb-0">Até {{ total_perguntas }} perguntas em 4 etapas, baseadas em referências reconhecidas.
+            <a href="{% url 'metodologia_diagnostico' %}" class="text-decoration-underline">Como é feito</a></p>
+    </div>
+</header>
+
+<main class="container py-4">
+    <form method="post" id="formDiagnostico" novalidate {% if erro_respostas or form.errors %}data-tem-erro="1"{% endif %}>
+        {% csrf_token %}
+
+        <div class="etapas-topo">
+            <div class="etapa-nomes" id="etapaNomes">
+                <span class="etapa-nome">1. Sua empresa</span>
+                {% for pilar in pilares %}<span class="etapa-nome">{{ forloop.counter|add:1 }}. {{ pilar.nome }}</span>{% endfor %}
+            </div>
+            <div class="progress progress-fino"><div class="progress-bar bg-success" id="barra" data-largura="25"></div></div>
+        </div>
+
+        {% if erro_respostas or form.errors %}
+            <div class="alert alert-danger">
+                <i class="bi bi-exclamation-triangle me-1"></i>
+                {% if form.errors %}Confira os dados da empresa. {% endif %}
+                {% if erro_respostas %}Algumas perguntas ficaram sem resposta. Elas estão destacadas abaixo.{% endif %}
+            </div>
+        {% endif %}
+
+        <!-- Etapa 1: perfil -->
+        <section class="etapa ativa" data-etapa="0">
+            <div class="card"><div class="card-body p-4">
+                <h2 class="h5 fw-bold mb-1">Conte um pouco sobre a empresa</h2>
+                <p class="text-muted small mb-4">O tipo de operação define quais perguntas fazem sentido para você. Campos com * são obrigatórios.</p>
+                <div class="row g-3">
+                    <div class="col-12">
+                        <label class="form-label fw-bold" for="{{ form.nome_empresa.id_for_label }}">Nome da empresa / confecção *</label>
+                        {{ form.nome_empresa }}
+                        {% for e in form.nome_empresa.errors %}<div class="text-danger small mt-1">{{ e }}</div>{% endfor %}
                     </div>
-                    <div class="card-body p-4 p-md-5">
-                        <form method="post">
-                            {% csrf_token %}
-                            
-                            <div class="mb-4">
-                                <label class="form-label fw-bold h6">Nome da Empresa / Confecção</label>
-                                {{ form.nome_empresa }}
-                            </div>
-
-                            <hr class="my-4">
-
-                            <div class="shadow-sm rounded-3 p-3 bg-body mb-4 border-start border-4 border-success">
-                                <h5 class="text-success fw-bold mb-3"><i class="bi bi-tree me-2"></i>Pilar Ambiental (E)</h5>
-                                <div class="form-check mb-3">
-                                    {{ form.residuos_textesis }}
-                                    <label class="form-check-label">{{ form.residuos_textesis.label }}</label>
-                                </div>
-                                <div class="form-check mb-3">
-                                    {{ form.energia_renovavel }}
-                                    <label class="form-check-label">{{ form.energia_renovavel.label }}</label>
-                                </div>
-                                <div class="form-check mb-3">
-                                    {{ form.uso_agua }}
-                                    <label class="form-check-label">{{ form.uso_agua.label }}</label>
-                                </div>
-                                <div class="form-check mb-2">
-                                    {{ form.materias_sustentaveis }}
-                                    <label class="form-check-label">{{ form.materias_sustentaveis.label }}</label>
-                                </div>
-                            </div>
-
-                            <div class="shadow-sm rounded-3 p-3 bg-body mb-4 border-start border-4 border-primary">
-                                <h5 class="text-primary fw-bold mb-3"><i class="bi bi-people me-2"></i>Pilar Social (S)</h5>
-                                <div class="form-check mb-3">
-                                    {{ form.condicoes_trabalho }}
-                                    <label class="form-check-label">{{ form.condicoes_trabalho.label }}</label>
-                                </div>
-                                <div class="form-check mb-3">
-                                    {{ form.diversidade_inclusao }}
-                                    <label class="form-check-label">{{ form.diversidade_inclusao.label }}</label>
-                                </div>
-                                <div class="form-check mb-3">
-                                    {{ form.saude_seguranca }}
-                                    <label class="form-check-label">{{ form.saude_seguranca.label }}</label>
-                                </div>
-                                <div class="form-check mb-2">
-                                    {{ form.treinamento_equipe }}
-                                    <label class="form-check-label">{{ form.treinamento_equipe.label }}</label>
-                                </div>
-                            </div>
-
-                            <div class="shadow-sm rounded-3 p-3 bg-body mb-4 border-start border-4 border-dark">
-                                <h5 class="text-dark fw-bold mb-3"><i class="bi bi-building me-2"></i>Pilar Governança (G)</h5>
-                                <div class="form-check mb-3">
-                                    {{ form.rastreabilidade }}
-                                    <label class="form-check-label">{{ form.rastreabilidade.label }}</label>
-                                </div>
-                                <div class="form-check mb-3">
-                                    {{ form.codigo_etica }}
-                                    <label class="form-check-label">{{ form.codigo_etica.label }}</label>
-                                </div>
-                                <div class="form-check mb-3">
-                                    {{ form.combate_corrupcao }}
-                                    <label class="form-check-label">{{ form.combate_corrupcao.label }}</label>
-                                </div>
-                                <div class="form-check mb-2">
-                                    {{ form.transparencia_fiscal }}
-                                    <label class="form-check-label">{{ form.transparencia_fiscal.label }}</label>
-                                </div>
-                            </div>
-
-                            <div class="d-grid mt-4">
-                                <button type="submit" class="btn btn-success btn-lg fw-bold shadow-sm">
-                                    <i class="bi bi-calculator me-2"></i>Calcular Diagnóstico ESG
-                                </button>
-                            </div>
-                        </form>
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold" for="{{ form.tipo_operacao.id_for_label }}">Tipo de operação *</label>
+                        {{ form.tipo_operacao }}
+                        {% for e in form.tipo_operacao.errors %}<div class="text-danger small mt-1">{{ e }}</div>{% endfor %}
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold" for="{{ form.porte.id_for_label }}">Porte *</label>
+                        {{ form.porte }}
+                        {% for e in form.porte.errors %}<div class="text-danger small mt-1">{{ e }}</div>{% endfor %}
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold" for="{{ form.numero_funcionarios.id_for_label }}">Número de funcionários</label>
+                        {{ form.numero_funcionarios }}
+                        {% for e in form.numero_funcionarios.errors %}<div class="text-danger small mt-1">{{ e }}</div>{% endfor %}
                     </div>
                 </div>
-            </div>
+
+                <div class="opcionais mt-4">
+                    <h3 class="h6 fw-bold mb-1">Dados opcionais</h3>
+                    <p class="text-muted small mb-3">Se souber, preencha. São números reais que enriquecem o seu relatório. Pode deixar em branco.</p>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold" for="{{ form.pct_residuos_reaproveitados.id_for_label }}">% das sobras de tecido reaproveitadas</label>
+                            {{ form.pct_residuos_reaproveitados }}
+                            {% for e in form.pct_residuos_reaproveitados.errors %}<div class="text-danger small mt-1">{{ e }}</div>{% endfor %}
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold" for="{{ form.pct_mulheres_lideranca.id_for_label }}">% de mulheres na liderança</label>
+                            {{ form.pct_mulheres_lideranca }}
+                            {% for e in form.pct_mulheres_lideranca.errors %}<div class="text-danger small mt-1">{{ e }}</div>{% endfor %}
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold" for="{{ form.horas_treinamento_ano.id_for_label }}">Horas de treinamento por pessoa ao ano</label>
+                            {{ form.horas_treinamento_ano }}
+                            {% for e in form.horas_treinamento_ano.errors %}<div class="text-danger small mt-1">{{ e }}</div>{% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div></div>
+        </section>
+
+        <!-- Etapas 2 a 4: pilares -->
+        {% for pilar in pilares %}
+        <section class="etapa" data-etapa="{{ forloop.counter }}">
+            <div class="card"><div class="card-body p-4">
+                <h2 class="h5 fw-bold mb-1"><i class="bi {{ pilar.icone }} me-2"></i>Pilar {{ pilar.nome }} ({{ pilar.sigla }})</h2>
+                <p class="text-muted small mb-3">Marque a frase que melhor descreve a empresa <strong>hoje</strong>. Na dúvida entre dois níveis, escolha o mais baixo.</p>
+
+                {% for sub in pilar.subtemas %}
+                <div class="subtema">
+                    <p class="subtema-titulo">{{ sub.nome }}</p>
+                    {% for p in sub.perguntas %}
+                    <div class="pergunta" data-aplica="{{ p.aplica_texto }}">
+                        <div class="pergunta-texto">{{ p.texto }}</div>
+                        <div class="escala" role="radiogroup" aria-label="{{ p.texto }}">
+                            {% for nivel, nome_nivel, descricao in p.opcoes %}
+                            <label class="nivel">
+                                <input type="radio" name="q_{{ p.id }}" value="{{ nivel }}" {% if p.valor == nivel %}checked{% endif %}>
+                                <span>{{ nome_nivel }}<small>{{ descricao }}</small></span>
+                            </label>
+                            {% endfor %}
+                            {% if p.permite_na %}
+                            <label class="nivel nivel-na">
+                                <input type="radio" name="q_{{ p.id }}" value="na" {% if p.valor == 'na' %}checked{% endif %}>
+                                <span>Não se aplica<small></small></span>
+                            </label>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+            </div></div>
+        </section>
+        {% endfor %}
+
+        <div class="d-flex justify-content-between align-items-center mt-4">
+            <button type="button" class="btn btn-outline-success fw-bold invisivel" id="btnVoltar"><i class="bi bi-arrow-left me-1"></i>Voltar</button>
+            <button type="button" class="btn btn-success fw-bold px-4" id="btnProximo">Próximo <i class="bi bi-arrow-right ms-1"></i></button>
+            <button type="submit" class="btn btn-success fw-bold px-4" id="btnFinalizar" hidden><i class="bi bi-check-circle me-1"></i>Ver meu resultado</button>
         </div>
-    </div>
-</body>
-</html>
+    </form>
+</main>
+{% endblock %}
+
+{% block extra_scripts %}<script src="{% static 'js/diagnostico_form.js' %}"></script>{% endblock %}
