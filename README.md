@@ -9,7 +9,9 @@ Plataforma web para pequenas e médias empresas acompanharem seus indicadores, m
 | Página | URL | Descrição |
 |---|---|---|
 | Início (painel) | `/` | Painel com score ESG, ações em andamento e dica da semana; menu lateral com navegação |
-| Diagnóstico | `/diagnostico/` | Formulário e resultados do diagnóstico de maturidade ESG |
+| Diagnóstico | `/diagnostico/` | Lista de diagnósticos feitos; `/diagnostico/novo/` abre o formulário em 4 etapas (perfil da empresa + 23 perguntas de maturidade, de 0 a 4, adaptadas ao tipo de operação) |
+| Resultado do diagnóstico | `/diagnostico/<id>/` | Nota geral e por pilar/subtema, pontos fortes e próximos passos priorizados, com botão para adicionar cada ação ao Plano de Ação |
+| Metodologia e fontes | `/diagnostico/metodologia/` | Como o diagnóstico foi construído (GRI Têxtil/Vestuário, Higg FEM, OCDE, ISO 26000, B Impact, modelos de maturidade ESG), pesos, limitações e fontes por pergunta |
 | Sobre o projeto | `/sobre/` | O que estamos construindo, para quem, e como chegamos até aqui |
 | Quem somos | `/quem-somos/` | Integrantes da equipe |
 | Fale conosco | `/contato/` | Formulário de contato (bug, sugestão, dúvida) — respostas ficam salvas no banco e são visíveis no `/admin/` |

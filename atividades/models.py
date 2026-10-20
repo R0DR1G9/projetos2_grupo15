@@ -16,6 +16,7 @@ class Atividade(models.Model):
     titulo = models.CharField(max_length=150, verbose_name="Título")
     categoria = models.CharField(max_length=20, choices=CATEGORIAS, default="ambiental", verbose_name="Categoria")
     status = models.CharField(max_length=20, choices=STATUS, default="aguardando", verbose_name="Status")
+    descricao = models.CharField(max_length=300, blank=True, verbose_name="Detalhes")
     data_criacao = models.DateTimeField(auto_now_add=True, verbose_name="Criada em")
 
     class Meta:

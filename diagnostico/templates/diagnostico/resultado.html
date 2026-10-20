@@ -1,65 +1,141 @@
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Relatório ESG - Resultado</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-</head>
-<body class="bg-light">
-    <div class="container py-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="card shadow-lg border-0 rounded-4">
-                    <div class="card-header bg-dark bg-gradient text-white p-4 text-center rounded-top-4">
-                        <h2 class="h3 mb-1"><i class="bi bi-file-earmark-bar-graph me-2"></i>Relatório de Maturidade ESG</h2>
-                        <p class="mb-0 text-white-50">Empresa: <strong>{{ diagnostico.nome_empresa }}</strong></p>
-                    </div>
-                    <div class="card-body p-4 p-md-5">
-                        
-                        <div class="text-center mb-5 p-4 bg-light rounded-4 border shadow-sm">
-                            <h5 class="text-muted text-uppercase fw-bold mb-2">Índice Geral de Maturidade</h5>
-                            <div class="display-2 fw-bold text-success mb-2">{{ resultados.geral }}%</div>
-                            <div class="progress" style="height: 14px;">
-                                <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{ resultados.geral }}%;"></div>
-                            </div>
-                        </div>
+{% extends "base.html" %}
+{% load l10n static %}
 
-                        <div class="row g-3 mb-4">
-                            <div class="col-md-4">
-                                <div class="card h-100 border-0 shadow-sm bg-success bg-opacity-10 rounded-3 text-center p-3">
-                                    <div class="text-success fs-1 mb-2"><i class="bi bi-tree"></i></div>
-                                    <h6 class="fw-bold text-success">Ambiental (E)</h6>
-                                    <p class="display-6 fw-bold text-success mb-0">{{ resultados.ambiental }}%</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card h-100 border-0 shadow-sm bg-primary bg-opacity-10 rounded-3 text-center p-3">
-                                    <div class="text-primary fs-1 mb-2"><i class="bi bi-people"></i></div>
-                                    <h6 class="fw-bold text-primary">Social (S)</h6>
-                                    <p class="display-6 fw-bold text-primary mb-0">{{ resultados.social }}%</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card h-100 border-0 shadow-sm bg-dark bg-opacity-10 rounded-3 text-center p-3">
-                                    <div class="text-dark fs-1 mb-2"><i class="bi bi-building"></i></div>
-                                    <h6 class="fw-bold text-dark">Governança (G)</h6>
-                                    <p class="display-6 fw-bold text-dark mb-0">{{ resultados.governanca }}%</p>
-                                </div>
-                            </div>
-                        </div>
+{% block title %}Resultado — {{ diagnostico.nome_empresa }}{% endblock %}
 
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-5">
-                            <a href="{% url 'criar_diagnostico' %}" class="btn btn-outline-success btn-lg px-4 fw-bold">
-                                <i class="bi bi-arrow-left me-2"></i>Novo Diagnóstico
-                            </a>
-                        </div>
+{% block extra_head %}<link rel="stylesheet" href="{% static 'css/inicio.css' %}"><link rel="stylesheet" href="{% static 'css/diagnostico.css' %}">{% endblock %}
 
+{% block content %}
+<header class="bg-success bg-gradient text-white py-5 text-center shadow-sm">
+    <div class="container py-3">
+        <h1 class="display-5 fw-bold"><i class="bi bi-clipboard2-data me-2"></i>Resultado do diagnóstico</h1>
+        <p class="lead mb-0">{{ diagnostico.nome_empresa }} · {{ diagnostico.data_criacao|date:"d/m/Y" }}</p>
+    </div>
+</header>
+
+<main class="container py-4">
+    <div class="card mb-4"><div class="card-body p-4">
+        <div class="row g-4 align-items-center">
+            <div class="col-lg-4">
+                <div class="d-flex align-items-center gap-4">
+                    <div class="anel anel-grande" data-pct="{{ pontuacao.geral|unlocalize }}"><div class="anel-interno">{{ pontuacao.geral|floatformat:"-1" }}%</div></div>
+                    <div>
+                        <span class="badge rounded-pill fs-6 text-white mb-2 medalha-{{ pontuacao.medalha_geral.chave }}">{{ pontuacao.medalha_geral.emoji }} {{ pontuacao.medalha_geral.nome }}</span>
+                        <div class="small text-muted">Nota ESG geral</div>
+                        {% if diagnostico.porte %}<div class="small mt-2">{{ diagnostico.get_tipo_operacao_display }}<br>{{ diagnostico.get_porte_display }}</div>{% endif %}
                     </div>
                 </div>
             </div>
+
+            {% if pilares %}
+            <div class="col-lg-8"><div class="row g-3">
+                {% for p in pilares %}
+                <div class="col-md-4">
+                    <div class="pilar-card {% if p.chave == 'ambiental' %}pilar-e{% elif p.chave == 'social' %}pilar-s{% else %}pilar-g{% endif %}">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div class="fw-bold"><i class="bi {{ p.icone }} me-1"></i>{{ p.nome }}</div>
+                            <span title="{{ p.medalha.nome }}">{{ p.medalha.emoji }}</span>
+                        </div>
+                        <div class="valor mt-1">{{ p.pct|floatformat:"-1" }}%</div>
+                        {% for s in p.subtemas %}
+                        <div class="sub-linha">
+                            <div class="d-flex justify-content-between"><span>{{ s.nome }}</span><strong>{{ s.pct|floatformat:"-0" }}%</strong></div>
+                            <div class="trilho"><div data-largura="{{ s.pct|unlocalize }}"></div></div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div></div>
+            {% else %}
+            <div class="col-lg-8">
+                <div class="alert alert-info mb-0">
+                    <i class="bi bi-info-circle me-1"></i>Este diagnóstico foi feito no formato antigo (sim ou não), por isso não tem análise detalhada.
+                    Faça um novo diagnóstico para ver notas por subtema, pontos fortes e recomendações.
+                    <div class="mt-2 small">Ambiental {{ pontuacao.ambiental|floatformat:"-1" }}% · Social {{ pontuacao.social|floatformat:"-1" }}% · Governança {{ pontuacao.governanca|floatformat:"-1" }}%</div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        {% if pilares %}
+        <p class="small text-muted mt-3 mb-0">
+            Nota calculada por média ponderada dos níveis de maturidade (0 a 4).{% if nao_se_aplica %} {{ nao_se_aplica }} pergunta(s) marcada(s) como "não se aplica" ficaram fora da conta.{% endif %}
+            <a href="{% url 'metodologia_diagnostico' %}">Ver metodologia e fontes</a>
+        </p>
+        {% endif %}
+    </div></div>
+
+    {% if pilares %}
+    <div class="row g-4">
+        <div class="col-lg-8" id="recomendacoes">
+            <div class="card"><div class="card-body p-4">
+                <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-2">
+                    <h2 class="h5 fw-bold mb-0">O que fazer primeiro</h2>
+                    {% if pendentes %}
+                    <form method="post" action="{% url 'adicionar_ao_plano' diagnostico.pk %}">
+                        {% csrf_token %}<input type="hidden" name="todas" value="1">
+                        <button class="btn btn-success btn-sm fw-bold"><i class="bi bi-plus-circle me-1"></i>Adicionar todas ao Plano de Ação</button>
+                    </form>
+                    {% endif %}
+                </div>
+                <p class="text-muted small">Cada ação é o <strong>próximo passo</strong> para a empresa subir um nível de maturidade, ordenada pelo impacto na nota. Ao adicionar, ela vira uma atividade em "Aguardando início" com o critério de conclusão.</p>
+
+                {% for r in recomendacoes %}
+                <div class="rec">
+                    <div class="rec-corpo">
+                        <div class="mb-1">
+                            <span class="chip chip-{{ r.categoria }}">{{ r.categoria_nome }}</span>
+                            <span class="chip prio-{% if r.prioridade == 'Alta' %}alta{% elif r.prioridade == 'Média' %}media{% else %}baixa{% endif %}">Prioridade {{ r.prioridade|lower }}</span>
+                            <span class="chip chip-prazo"><i class="bi bi-clock me-1"></i>{{ r.prazo }} dias</span>
+                        </div>
+                        <div class="rec-titulo">{{ r.acao }}</div>
+                        <div class="rec-pronto"><strong>Pronto quando:</strong> {{ r.pronto }}.</div>
+                        <div class="rec-fontes">{{ r.subtema }} · de {{ r.nivel_nome }} para {{ r.proximo_nome }} · Base: {{ r.fontes|join:", " }}</div>
+                    </div>
+                    {% if r.no_plano %}
+                        <span class="small fw-bold text-success text-nowrap"><i class="bi bi-check-circle-fill me-1"></i>No plano</span>
+                    {% else %}
+                        <form method="post" action="{% url 'adicionar_ao_plano' diagnostico.pk %}">
+                            {% csrf_token %}<input type="hidden" name="pergunta" value="{{ r.id }}">
+                            <button class="btn btn-outline-success btn-sm fw-bold text-nowrap"><i class="bi bi-plus-lg me-1"></i>Adicionar ao plano</button>
+                        </form>
+                    {% endif %}
+                </div>
+                {% empty %}
+                <div class="alert alert-success mb-0">Todas as áreas respondidas estão em nível Gerenciado ou acima. Continue medindo e melhorando.</div>
+                {% endfor %}
+            </div></div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card mb-4"><div class="card-body p-4">
+                <h2 class="h5 fw-bold mb-2">Pontos fortes</h2>
+                {% for f in pontos_fortes %}
+                    <div class="forte"><i class="bi bi-check-circle-fill"></i><div><div class="fw-bold small">{{ f.subtema }} · {{ f.nivel_nome }}</div><div class="small text-muted">{{ f.descricao }}</div></div></div>
+                {% empty %}
+                    <p class="small text-muted mb-0">Ainda não há áreas em nível Gerenciado ou Integrado. Os primeiros passos estão nas ações ao lado.</p>
+                {% endfor %}
+            </div></div>
+
+            {% if diagnostico.numero_funcionarios is not None or diagnostico.pct_residuos_reaproveitados is not None or diagnostico.pct_mulheres_lideranca is not None or diagnostico.horas_treinamento_ano is not None %}
+            <div class="card mb-4"><div class="card-body p-4">
+                <h2 class="h5 fw-bold mb-3">Seus números</h2>
+                <div class="row g-2">
+                    {% if diagnostico.numero_funcionarios is not None %}<div class="col-6"><div class="dado"><strong>{{ diagnostico.numero_funcionarios }}</strong><span class="small">funcionários</span></div></div>{% endif %}
+                    {% if diagnostico.pct_residuos_reaproveitados is not None %}<div class="col-6"><div class="dado"><strong>{{ diagnostico.pct_residuos_reaproveitados }}%</strong><span class="small">sobras reaproveitadas</span></div></div>{% endif %}
+                    {% if diagnostico.pct_mulheres_lideranca is not None %}<div class="col-6"><div class="dado"><strong>{{ diagnostico.pct_mulheres_lideranca }}%</strong><span class="small">mulheres na liderança</span></div></div>{% endif %}
+                    {% if diagnostico.horas_treinamento_ano is not None %}<div class="col-6"><div class="dado"><strong>{{ diagnostico.horas_treinamento_ano }} h</strong><span class="small">treino/pessoa/ano</span></div></div>{% endif %}
+                </div>
+            </div></div>
+            {% endif %}
         </div>
     </div>
-</body>
-</html>
+    {% endif %}
+
+    <div class="d-flex flex-wrap gap-2 mt-4">
+        <a href="{% url 'novo_diagnostico' %}" class="btn btn-success fw-bold"><i class="bi bi-arrow-repeat me-1"></i>Fazer novo diagnóstico</a>
+        <a href="{% url 'quadro_atividades' %}" class="btn btn-outline-success fw-bold"><i class="bi bi-kanban me-1"></i>Ver Plano de Ação</a>
+        <a href="{% url 'home' %}" class="btn btn-outline-success fw-bold">Todos os diagnósticos</a>
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Metodologia do diagnóstico — Plataforma ESG{% endblock %}
+
+{% block extra_head %}<link rel="stylesheet" href="{% static 'css/diagnostico.css' %}">{% endblock %}
+
+{% block content %}
+<header class="bg-success bg-gradient text-white py-5 text-center shadow-sm">
+    <div class="container py-3">
+        <h1 class="display-5 fw-bold"><i class="bi bi-journal-check me-2"></i>Metodologia e fontes</h1>
+        <p class="lead mb-0">Como o diagnóstico mede a maturidade ESG de uma empresa de moda</p>
+    </div>
+</header>
+
+<main class="container py-4">
+    <div class="card mb-4"><div class="card-body p-4">
+        <h2 class="h5 fw-bold">Como foi construído</h2>
+        <ol class="mb-0">
+            <li><strong>Temas:</strong> partimos dos tópicos que o padrão setorial da GRI para Têxteis e Vestuário aponta como prováveis temas materiais (clima, água e efluentes, químicos perigosos, resíduos e circularidade, trabalho infantil e forçado, saúde e segurança, remuneração e jornada, não discriminação, rastreabilidade, anticorrupção, entre outros) e os cruzamos com o Higg FEM, o Guia da OCDE para cadeias de vestuário, a ISO 26000, o B Impact Assessment e as Normas Regulamentadoras do setor.</li>
+            <li><strong>Escala:</strong> adotamos 5 níveis de maturidade, de Inexistente a Integrado, inspirados em modelos de maturidade ESG publicados (CrossCountry, Oren) e no escalonamento do Higg FEM.</li>
+            <li><strong>Perguntas:</strong> são {{ total_perguntas }}, cada uma com uma descrição concreta para cada nível, para que a resposta seja uma escolha de fato e não uma impressão.</li>
+            <li><strong>Pesos:</strong> peso 3 para temas de risco legal ou de direitos humanos grave (trabalho infantil e forçado, remuneração e jornada, riscos ocupacionais, efluentes, químicos, anticorrupção, terceirizados); peso 2 para tópicos materiais de gestão; peso 1 para práticas de evolução (capacitação, comunidade, dados e transparência).</li>
+            <li><strong>Nota:</strong> média ponderada dos níveis (0 a 4) por pilar. O nível 3, Gerenciado, equivale a 75%. Ouro a partir de 70%, Prata de 40% a 69% e Bronze abaixo de 40%.</li>
+            <li><strong>Ações:</strong> para cada pergunta abaixo do nível Gerenciado, a plataforma sugere o próximo passo para subir um nível, com o critério "pronto quando" e um prazo sugerido (30, 60 ou 90 dias conforme o nível atual).</li>
+        </ol>
+    </div></div>
+
+    <div class="card mb-4"><div class="card-body p-4">
+        <h2 class="h5 fw-bold">Escala de maturidade</h2>
+        <div class="table-responsive">
+        <table class="table tabela-metodologia align-middle mb-0">
+            <thead><tr><th>Nível</th><th>Nome</th><th>Significado</th></tr></thead>
+            <tbody>
+            {% for n, nome, desc in escala %}<tr><td>{{ n }}</td><td class="fw-bold">{{ nome }}</td><td>{{ desc }}</td></tr>{% endfor %}
+            </tbody>
+        </table>
+        </div>
+        <p class="small text-muted mt-3 mb-0">Correspondência aproximada com as referências: Básico ≈ "Compliant" (Oren) e conformidade básica do Higg nível 1; Definido ≈ "ESG Defined" (CrossCountry) e metas do Higg nível 2; Gerenciado ≈ "ESG Managed"; Integrado ≈ "ESG Integrated" e ações avançadas do Higg nível 3.</p>
+    </div></div>
+
+    <div class="card mb-4"><div class="card-body p-4">
+        <h2 class="h5 fw-bold">Perguntas que não se aplicam</h2>
+        <p class="mb-0">O tipo de operação escolhido no início define quais perguntas aparecem. Por exemplo, uma loja de varejo não responde sobre efluentes de tingimento, e uma facção não responde sobre a verificação de outras facções. Perguntas marcadas "não se aplica" ficam fora da conta, para ninguém ser penalizado por algo que não existe no seu negócio.</p>
+    </div></div>
+
+    <div class="card mb-4"><div class="card-body p-4">
+        <h2 class="h5 fw-bold">Fontes consultadas</h2>
+        <ul class="mb-0">
+            {% for f in fontes %}<li class="mb-2"><a href="{{ f.url }}" target="_blank" rel="noopener">{{ f.nome }}</a></li>{% endfor %}
+        </ul>
+    </div></div>
+
+    <div class="card mb-4"><div class="card-body p-4">
+        <h2 class="h5 fw-bold">De onde vem cada pergunta</h2>
+        <div class="table-responsive">
+        <table class="table tabela-metodologia align-middle mb-0">
+            <thead><tr><th>Pilar</th><th>Tema</th><th>Pergunta</th><th>Peso</th><th>Fontes</th></tr></thead>
+            <tbody>
+            {% for l in linhas %}
+            <tr>
+                <td>{{ l.pilar }}</td><td>{{ l.subtema }}</td>
+                <td>{{ l.texto }}{% if l.aplica %}<div class="small text-muted">Aparece para: {{ l.aplica|join:"; " }}</div>{% endif %}</td>
+                <td>{{ l.peso }}</td>
+                <td>{% for f in l.fontes %}<a href="{{ f.url }}" target="_blank" rel="noopener">{{ f.sigla }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        </div>
+    </div></div>
+
+    <div class="alert alert-warning">
+        <h2 class="h6 fw-bold"><i class="bi bi-exclamation-triangle me-1"></i>Limitações</h2>
+        <ul class="mb-0">
+            <li>Este é um instrumento de <strong>autoavaliação orientativa</strong>, construído para um projeto acadêmico. Não é uma certificação, uma auditoria nem um instrumento oficial das entidades citadas.</li>
+            <li>Os temas e níveis são uma <strong>adaptação nossa</strong> a partir das referências. Os pesos e a nota de corte das medalhas são uma decisão metodológica da equipe, não vêm de nenhuma das fontes.</li>
+            <li>A minuta do padrão GRI para Têxteis e Vestuário ainda estava em consulta pública. O Higg FEM, o Guia da OCDE e o Programa ABVTEX foram consultados por descrições públicas e resumos, não pelos questionários completos.</li>
+            <li>As respostas são declaradas pela própria empresa e não são verificadas pela plataforma.</li>
+        </ul>
+    </div>
+</main>
+{% endblock %}

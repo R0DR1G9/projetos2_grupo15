@@ -32,7 +32,7 @@
                         <div class="card-body p-4">
                             <div class="display-4">{{ l.medalha.emoji }}</div>
                             <h5 class="fw-bold mt-2 text-truncate">{{ l.empresa }}</h5>
-                            <span class="badge fs-6 text-white" style="background: {{ l.medalha.cor }};">
+                            <span class="badge fs-6 text-white medalha-{{ l.medalha.chave }}">
                                 {{ l.medalha.nome }}
                             </span>
                             <p class="fs-3 fw-bold mt-3 mb-0">{{ l.nota }}%</p>
@@ -64,7 +64,7 @@
                                 <td class="ps-4 fw-bold">{{ l.posicao }}º</td>
                                 <td class="fw-semibold">{{ l.empresa }}</td>
                                 <td>
-                                    <span class="badge text-white" style="background: {{ l.medalha.cor }};">
+                                    <span class="badge text-white medalha-{{ l.medalha.chave }}">
                                         {{ l.medalha.emoji }} {{ l.medalha.nome }}
                                     </span>
                                     <span class="ms-1 fw-bold">{{ l.nota }}%</span>

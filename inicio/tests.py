@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
 
@@ -6,14 +7,18 @@ from diagnostico.models import DiagnosticoESG
 
 
 class InicioTests(TestCase):
+    def setUp(self):
+        self.user = get_user_model().objects.create_user('gestora', password='senha-forte-123', first_name='Aurora')
+        self.client.force_login(self.user)
+
     def test_inicio_sem_dados_pede_diagnostico(self):
         resp = self.client.get(reverse('inicio'))
         self.assertEqual(resp.status_code, 200)
         self.assertContains(resp, 'Você ainda não fez o diagnóstico')
 
     def test_inicio_mostra_score_e_variacao(self):
-        DiagnosticoESG.objects.create(nome_empresa='Aurora', residuos_textesis=True)
-        DiagnosticoESG.objects.create(nome_empresa='Aurora', residuos_textesis=True, uso_agua=True,
+        DiagnosticoESG.objects.create(usuario=self.user, nome_empresa='Aurora', residuos_textesis=True)
+        DiagnosticoESG.objects.create(usuario=self.user, nome_empresa='Aurora', residuos_textesis=True, uso_agua=True,
                                       codigo_etica=True, saude_seguranca=True)
         resp = self.client.get(reverse('inicio'))
         self.assertContains(resp, 'Seu score ESG')
