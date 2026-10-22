@@ -1,0 +1,88 @@
+{% extends "rede_social/layout.html" %}
+{% block titulo %}Início · Rede Social ESG{% endblock %}
+{% block principal %}
+<section class="rs-card rs-compositor">
+  <form method="post" action="{% url 'rede_social:feed' %}" enctype="multipart/form-data" id="rs-form-post">{% csrf_token %}
+    <label class="rs-sr" for="{{ form.conteudo.id_for_label }}">O que sua empresa está fazendo por ESG?</label>
+    {{ form.conteudo }}
+    {{ form.conteudo.errors }}
+    <div class="rs-preview" id="rs-preview" hidden>
+      <img id="rs-preview-img" alt="Pré-visualização da imagem selecionada">
+      <button class="rs-preview-remover" id="rs-preview-remover" type="button" aria-label="Remover imagem">✕</button>
+    </div>
+    <p class="rs-erro-cliente" id="rs-erro-imagem" role="alert" hidden></p>
+    {{ form.imagem.errors }}
+    <div class="rs-compositor-rodape">
+      <div class="rs-compositor-opcoes">
+        <label class="rs-sr" for="{{ form.pilar.id_for_label }}">Pilar ESG</label>
+        {{ form.pilar }}
+        <label class="rs-upload" for="{{ form.imagem.id_for_label }}">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+          Foto
+          {{ form.imagem }}
+        </label>
+      </div>
+      <button class="rs-btn" type="submit">Publicar</button>
+    </div>
+  </form>
+</section>
+
+<nav class="rs-abas" aria-label="Abas do feed">
+  <a class="{% if aba == 'todos' %}ativa{% endif %}" href="?aba=todos{% if pilar %}&pilar={{ pilar }}{% endif %}">Para você</a>
+  <a class="{% if aba == 'seguindo' %}ativa{% endif %}" href="?aba=seguindo{% if pilar %}&pilar={{ pilar }}{% endif %}">Seguindo</a>
+  <a class="{% if aba == 'empresa' %}ativa{% endif %}" href="?aba=empresa{% if pilar %}&pilar={{ pilar }}{% endif %}">Minha empresa</a>
+</nav>
+
+<nav class="rs-filtros" aria-label="Filtrar por pilar">
+  <a class="rs-chip{% if not pilar %} ativa{% endif %}" href="?aba={{ aba }}">Todos os pilares</a>
+  {% for valor, rotulo in pilares %}
+    <a class="rs-chip{% if pilar == valor %} ativa{% endif %}" href="?aba={{ aba }}&pilar={{ valor }}">{{ rotulo }}</a>
+  {% endfor %}
+</nav>
+
+{% for p in page %}
+  {% include "rede_social/_post.html" %}
+{% empty %}
+  <p class="rs-card rs-vazio">
+    {% if aba == 'seguindo' %}Siga pessoas para ver as publicações delas aqui.
+    {% elif aba == 'empresa' %}Nenhuma publicação da sua empresa. Confira se o campo "empresa" do seu perfil está preenchido.
+    {% else %}Nenhuma publicação ainda. Seja o primeiro a compartilhar!{% endif %}
+  </p>
+{% endfor %}
+{% include "rede_social/_paginacao.html" %}
+
+<script>
+(function () {
+  var input = document.getElementById("{{ form.imagem.id_for_label }}");
+  var caixa = document.getElementById("rs-preview");
+  var img = document.getElementById("rs-preview-img");
+  var erro = document.getElementById("rs-erro-imagem");
+  var LIMITE = 5 * 1024 * 1024; // mantenha igual a TAMANHO_MAXIMO_IMAGEM em models.py
+  if (!input) return;
+
+  function limpar() {
+    if (img.src) URL.revokeObjectURL(img.src);
+    img.removeAttribute("src");
+    input.value = "";
+    caixa.hidden = true;
+  }
+
+  input.addEventListener("change", function () {
+    var arquivo = input.files[0];
+    erro.hidden = true;
+    if (!arquivo) { limpar(); return; }
+    if (arquivo.size > LIMITE) {
+      limpar();
+      erro.textContent = "A imagem é muito grande (máximo de 5 MB).";
+      erro.hidden = false;
+      return;
+    }
+    if (img.src) URL.revokeObjectURL(img.src);
+    img.src = URL.createObjectURL(arquivo);
+    caixa.hidden = false;
+  });
+
+  document.getElementById("rs-preview-remover").addEventListener("click", limpar);
+})();
+</script>
+{% endblock %}

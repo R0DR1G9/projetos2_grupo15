@@ -1,0 +1,105 @@
+/* ==========================================================================
+   Mensagens (Direct) — estilos sob .ms, classes com prefixo ms-
+   Cores combinam com a rede social; ajuste as variáveis abaixo se precisar.
+   ========================================================================== */
+.ms{
+  --ms-verde:#2f4a2a;
+  --ms-acento:#a4512c;
+  --ms-acento-esc:#8a4324;
+  --ms-card:#fffaf3;
+  --ms-borda:#e8dccb;
+  --ms-txt:#2b2a22;
+  --ms-mudo:#6f6a5c;
+  --ms-balao:#f1e8da;
+  color:var(--ms-txt);font-size:15px;line-height:1.45
+}
+.ms *,.ms *::before,.ms *::after{box-sizing:border-box}
+.ms a{color:inherit;text-decoration:none}
+.ms .ms-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.ms h1{font-size:20px;font-weight:800;margin:0}
+.ms h2{font-size:20px;font-weight:800;margin:0 0 6px}
+.ms p{margin:0}
+
+/* ---- estrutura em dois painéis ------------------------------------------ */
+.ms .ms-app{display:grid;grid-template-columns:340px minmax(0,1fr);height:min(760px,calc(100vh - 170px));min-height:480px;max-width:1100px;margin:0 auto;background:var(--ms-card);border:1px solid var(--ms-borda);border-radius:14px;overflow:hidden}
+
+/* ---- lista de conversas -------------------------------------------------- */
+.ms .ms-lista{display:flex;flex-direction:column;min-height:0;border-right:1px solid var(--ms-borda)}
+.ms .ms-lista-topo{padding:16px 16px 8px}
+.ms .ms-busca{padding:0 16px 10px}
+.ms .ms-busca input{width:100%;padding:9px 14px;border:1px solid var(--ms-borda);border-radius:999px;background:#fff;color:var(--ms-txt);font:inherit;font-size:14px}
+.ms .ms-busca input:focus,.ms .ms-form textarea:focus{outline:2px solid rgba(47,74,42,.35);outline-offset:1px}
+.ms .ms-itens{flex:1;min-height:0;overflow-y:auto}
+.ms .ms-secao{padding:10px 16px 4px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--ms-mudo)}
+.ms .ms-item{display:flex;align-items:center;gap:12px;padding:10px 16px;transition:background-color .2s}
+.ms .ms-item:hover{background:rgba(0,0,0,.035)}
+.ms .ms-item.ms-ativo{background:rgba(164,81,44,.10)}
+.ms .ms-item-texto{flex:1;min-width:0;display:flex;flex-direction:column}
+.ms .ms-item-texto strong{font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ms .ms-item-texto small{color:var(--ms-mudo);font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ms .ms-nao-lida .ms-item-texto small{color:var(--ms-txt);font-weight:700}
+.ms .ms-pilula{flex:none;min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:var(--ms-acento);color:#fff;font-size:12px;font-weight:800;line-height:20px;text-align:center}
+.ms .ms-vazio-p{padding:14px 16px;color:var(--ms-mudo);font-size:14px}
+.ms .ms-avatar{display:inline-flex;align-items:center;justify-content:center;flex:none;width:44px;height:44px;border-radius:50%;background:var(--ms-verde);color:#fff;font-weight:700}
+
+/* ---- painel da conversa -------------------------------------------------- */
+.ms .ms-painel{display:flex;flex-direction:column;min-width:0;min-height:0}
+.ms .ms-painel-topo{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--ms-borda)}
+.ms .ms-painel-nome{flex:1;min-width:0;display:flex;flex-direction:column}
+.ms .ms-painel-nome strong{font-weight:800}
+.ms .ms-painel-nome small{color:var(--ms-mudo);font-size:13px}
+.ms .ms-link{font-size:14px;font-weight:700;color:var(--ms-verde)}
+.ms .ms-link:hover{text-decoration:underline}
+.ms .ms-voltar{display:none;font-size:22px;line-height:1;padding:4px 8px 4px 0}
+
+.ms .ms-mensagens{flex:1;min-height:0;overflow-y:auto;padding:14px 16px;display:flex;flex-direction:column;scroll-behavior:smooth}
+.ms .ms-mensagens:focus-visible{outline:none}
+.ms .ms-inicio,.ms .ms-mais{align-self:center;margin:auto;color:var(--ms-mudo);font-size:14px;text-align:center}
+.ms .ms-mais{margin:0 auto 10px;font-weight:700;color:var(--ms-verde)}
+.ms .ms-mais:hover{text-decoration:underline}
+.ms .ms-dia{align-self:center;margin:12px 0 6px;font-size:12px;font-weight:700;color:var(--ms-mudo)}
+
+/* ---- bolhas -------------------------------------------------------------- */
+.ms .ms-linha{display:flex;align-items:flex-end;gap:6px;margin:2px 0;animation:ms-entra .25s cubic-bezier(.22,1,.36,1) backwards}
+.ms .ms-minha{flex-direction:row-reverse}
+.ms .ms-bolha{max-width:70%;padding:8px 13px;border-radius:20px;overflow-wrap:anywhere}
+.ms .ms-dela .ms-bolha{background:var(--ms-balao);border-bottom-left-radius:6px}
+.ms .ms-minha .ms-bolha{background:var(--ms-acento);color:#fff;border-bottom-right-radius:6px}
+.ms .ms-bolha time{display:block;margin-top:2px;font-size:11px;opacity:.65;text-align:right}
+.ms .ms-desfazer{display:none;flex:none;width:24px;height:24px;border:0;border-radius:50%;background:transparent;color:var(--ms-mudo);font-size:12px;cursor:pointer}
+.ms .ms-desfazer:hover{background:rgba(0,0,0,.08);color:#b42318}
+html.ms-js .ms .ms-linha:hover .ms-desfazer,html.ms-js .ms .ms-desfazer:focus-visible{display:inline-block}
+@media (hover:none){html.ms-js .ms .ms-minha .ms-desfazer{display:inline-block;opacity:.6}}
+
+.ms .ms-status{padding:0 18px 4px;text-align:right;font-size:12px;color:var(--ms-mudo);min-height:20px}
+.ms .ms-erro{padding:0 18px 6px;color:#b42318;font-size:13px}
+.ms .ms-erro[hidden]{display:none}
+
+/* ---- caixa de envio ------------------------------------------------------ */
+.ms .ms-form{display:flex;align-items:flex-end;gap:8px;margin:0 14px 14px;padding:6px 6px 6px 16px;border:1px solid var(--ms-borda);border-radius:24px;background:#fff}
+.ms .ms-form textarea{flex:1;min-width:0;max-height:120px;padding:8px 0;border:0;background:transparent;color:var(--ms-txt);font:inherit;resize:none;overflow-y:auto}
+.ms .ms-form textarea:focus{outline:none}
+.ms .ms-form:focus-within{border-color:var(--ms-verde)}
+.ms .ms-enviar,.ms .ms-btn{display:inline-block;border:0;border-radius:999px;background:var(--ms-acento);color:#fff;font:inherit;font-size:14px;font-weight:700;padding:8px 18px;cursor:pointer;transition:background-color .2s,transform .2s}
+.ms .ms-enviar:hover,.ms .ms-btn:hover{background:var(--ms-acento-esc)}
+.ms .ms-enviar:active,.ms .ms-btn:active{transform:scale(.96)}
+.ms .ms-enviar:disabled{opacity:.45;cursor:default}
+
+/* ---- tela sem conversa aberta ------------------------------------------- */
+.ms .ms-painel-vazio{align-items:center;justify-content:center}
+.ms .ms-vazio-grande{text-align:center;padding:24px;max-width:320px}
+.ms .ms-vazio-grande p{color:var(--ms-mudo);margin-bottom:16px}
+.ms .ms-icone{display:inline-flex;align-items:center;justify-content:center;width:72px;height:72px;margin-bottom:12px;border:2px solid var(--ms-txt);border-radius:50%;font-size:30px}
+
+@keyframes ms-entra{from{opacity:0;transform:translateY(6px)}}
+@media (prefers-reduced-motion:reduce){.ms *{animation:none!important;transition:none!important}.ms .ms-mensagens{scroll-behavior:auto}}
+
+/* ---- celular: uma coluna por vez ---------------------------------------- */
+@media (max-width:860px){
+  .ms .ms-app{grid-template-columns:minmax(0,1fr);height:calc(100vh - 150px)}
+  .ms .ms-com-conversa .ms-lista{display:none}
+  .ms .ms-app:not(.ms-com-conversa) .ms-painel{display:none}
+  .ms .ms-lista{border-right:0}
+  .ms .ms-voltar{display:inline-block}
+  .ms .ms-bolha{max-width:82%}
+}

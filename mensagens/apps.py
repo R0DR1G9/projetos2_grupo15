@@ -1,0 +1,7 @@
+from django.apps import AppConfig
+
+
+class MensagensConfig(AppConfig):
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "mensagens"
+    verbose_name = "Mensagens (Direct)"

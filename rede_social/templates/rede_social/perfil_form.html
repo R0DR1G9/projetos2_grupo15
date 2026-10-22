@@ -1,0 +1,12 @@
+{% extends "rede_social/layout.html" %}
+{% block titulo %}Editar perfil · Rede Social ESG{% endblock %}
+{% block principal %}
+<section class="rs-card">
+  <h1>Editar perfil</h1>
+  <form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <button class="rs-btn" type="submit">Salvar</button>
+    <a class="rs-btn rs-btn-sec" href="{% url 'rede_social:perfil' user.get_username %}">Cancelar</a>
+  </form>
+</section>
+{% endblock %}

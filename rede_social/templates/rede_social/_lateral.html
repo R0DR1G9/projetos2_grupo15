@@ -1,0 +1,31 @@
+{% load rede_social_tags %}
+<form class="rs-card rs-busca" method="get" action="{% url 'rede_social:buscar' %}" role="search">
+  <label class="rs-sr" for="busca-q">Buscar</label>
+  <input id="busca-q" type="search" name="q" placeholder="Buscar posts e pessoas" value="{{ q|default:'' }}">
+</form>
+
+<section class="rs-card">
+  <h2>Em alta esta semana</h2>
+  {% for h in lateral.tendencias %}
+    <p><a class="rs-hashtag" href="{% url 'rede_social:hashtag' h.nome %}">#{{ h.nome }}</a>
+       <span class="rs-mudo">{{ h.total }} post{{ h.total|pluralize }}</span></p>
+  {% empty %}
+    <p class="rs-mudo">Ainda não há hashtags em alta.</p>
+  {% endfor %}
+</section>
+
+<section class="rs-card">
+  <h2>Quem seguir</h2>
+  {% for u in lateral.sugestoes %}
+    <div class="rs-sugestao">
+      <a class="rs-avatar rs-avatar-p" href="{% url 'rede_social:perfil' u|login_usuario %}">{{ u|iniciais }}</a>
+      <a class="rs-nome" href="{% url 'rede_social:perfil' u|login_usuario %}">{{ u|nome_usuario }}</a>
+      <form method="post" action="{% url 'rede_social:seguir' u|login_usuario %}">{% csrf_token %}
+        <input type="hidden" name="next" value="{{ request.get_full_path }}">
+        <button class="rs-btn rs-btn-p" type="submit">Seguir</button>
+      </form>
+    </div>
+  {% empty %}
+    <p class="rs-mudo">Nenhuma sugestão no momento.</p>
+  {% endfor %}
+</section>

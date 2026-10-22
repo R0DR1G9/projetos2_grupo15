@@ -1,0 +1,30 @@
+{% extends "rede_social/layout.html" %}
+{% load rede_social_tags %}
+{% block titulo %}Publicação · Rede Social ESG{% endblock %}
+{% block principal %}
+<p><a href="{% url 'rede_social:feed' %}">← Voltar ao feed</a></p>
+{% include "rede_social/_post.html" with detalhe=True %}
+
+<section class="rs-card" id="comentarios">
+  <h2>Comentários ({{ comentarios|length }})</h2>
+  <form method="post" action="{% url 'rede_social:detalhe_post' p.pk %}">{% csrf_token %}
+    <label class="rs-sr" for="{{ form.conteudo.id_for_label }}">Seu comentário</label>
+    {{ form.conteudo }}
+    {{ form.conteudo.errors }}
+    <div class="rs-compositor-rodape"><button class="rs-btn" type="submit">Responder</button></div>
+  </form>
+
+  {% for c in comentarios %}
+    <div class="rs-comentario">
+      <a class="rs-avatar rs-avatar-p" href="{% url 'rede_social:perfil' c.autor|login_usuario %}">{{ c.autor|iniciais }}</a>
+      <div>
+        <a class="rs-nome" href="{% url 'rede_social:perfil' c.autor|login_usuario %}">{{ c.autor|nome_usuario }}</a>
+        <span class="rs-mudo">· {{ c.criado_em|timesince }} atrás</span>
+        <p class="rs-conteudo">{{ c.conteudo|linkificar }}</p>
+      </div>
+    </div>
+  {% empty %}
+    <p class="rs-mudo">Seja o primeiro a comentar.</p>
+  {% endfor %}
+</section>
+{% endblock %}

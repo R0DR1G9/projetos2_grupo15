@@ -1,0 +1,13 @@
+{% comment %}
+  Aba "Rede Social" para o menu/navbar do sistema.
+  Uso (no seu base.html, junto das outras abas):
+      {% include "rede_social/_aba_menu.html" %}
+  Requer o CSS carregado no <head> do seu base.html:
+      <link rel="stylesheet" href="{% static 'rede_social/css/rede_social.css' %}">
+{% endcomment %}
+<a class="rs-aba{% if request.resolver_match.app_name == 'rede_social' %} ativa{% endif %}"
+   href="{% url 'rede_social:feed' %}"
+   {% if request.resolver_match.app_name == 'rede_social' %}aria-current="page"{% endif %}>
+  <svg class="rs-aba-icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.1A8.4 8.4 0 0 1 3.5 11.5 8.5 8.5 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5z"/></svg>
+  Rede Social
+</a>

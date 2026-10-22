@@ -1,0 +1,9 @@
+{% extends "rede_social/layout.html" %}
+{% block titulo %}#{{ tag.nome }} · Rede Social ESG{% endblock %}
+{% block principal %}
+<section class="rs-card"><h1>#{{ tag.nome }}</h1></section>
+{% for p in page %}{% include "rede_social/_post.html" %}{% empty %}
+  <p class="rs-card rs-vazio">Nenhuma publicação com esta hashtag.</p>
+{% endfor %}
+{% include "rede_social/_paginacao.html" %}
+{% endblock %}

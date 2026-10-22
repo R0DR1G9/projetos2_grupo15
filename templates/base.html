@@ -12,7 +12,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/menu-recolhivel.css' %}">
+    <script>try{if(localStorage.getItem('menuRecolhido')==='1')document.documentElement.classList.add('menu-recolhido')}catch(e){}</script>
     {% block extra_head %}{% endblock %}
+    <link rel="stylesheet" href="{% static 'css/animacoes.css' %}">
 </head>
 <body>
 <div class="app">
@@ -35,6 +38,8 @@
                 <a class="menu-item {% if rota_atual == 'home' %}ativo{% endif %}" href="{% url 'home' %}"{% if rota_atual == 'home' %} aria-current="page"{% endif %}><i class="bi bi-clipboard2-check"></i><span>Diagnóstico</span></a>
                 <a class="menu-item {% if rota_atual == 'quadro_atividades' %}ativo{% endif %}" href="{% url 'quadro_atividades' %}"{% if rota_atual == 'quadro_atividades' %} aria-current="page"{% endif %}><i class="bi bi-pencil-square"></i><span>Plano de Ação</span></a>
                 <a class="menu-item {% if rota_atual == 'evolucao' %}ativo{% endif %}" href="{% url 'evolucao' %}"{% if rota_atual == 'evolucao' %} aria-current="page"{% endif %}><i class="bi bi-file-earmark-bar-graph"></i><span>Relatórios</span></a>
+                <a class="menu-item {% if request.resolver_match.app_name == 'rede_social' %}ativo{% endif %}" href="{% url 'rede_social:feed' %}"{% if request.resolver_match.app_name == 'rede_social' %} aria-current="page"{% endif %}><i class="bi bi-chat-square-text"></i><span>Rede Social</span></a>
+                <a class="menu-item {% if request.resolver_match.app_name == 'mensagens' %}ativo{% endif %}" href="{% url 'mensagens:caixa' %}"{% if request.resolver_match.app_name == 'mensagens' %} aria-current="page"{% endif %}><i class="bi bi-send"></i><span>Mensagens</span>{% if mensagens_nao_lidas %}<b style="margin-left:auto;min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:#ffc20e;color:#2b2a22;font-size:12px;font-weight:800;line-height:20px;text-align:center">{{ mensagens_nao_lidas }}</b>{% endif %}</a>
                 <span class="menu-item desativado" aria-disabled="true" title="Em breve"><i class="bi bi-journal-text"></i><span>Guias e Modelos</span><em>em breve</em></span>
                 <span class="menu-item desativado" aria-disabled="true" title="Em breve"><i class="bi bi-gear"></i><span>Configurações</span><em>em breve</em></span>
             </nav>
@@ -70,6 +75,7 @@
         <!-- Topo: saudação, notificações e usuário -->
         <div class="topo">
             <button class="btn btn-sm btn-outline-success d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral" aria-controls="menuLateral" aria-label="Abrir menu"><i class="bi bi-list fs-5"></i></button>
+            <button class="btn btn-sm btn-outline-success d-none d-lg-inline-flex align-items-center" type="button" id="alternarMenu" aria-controls="menuLateral" aria-pressed="false" aria-label="Recolher menu" title="Recolher menu"><i class="bi bi-chevron-double-left"></i></button>
             <div class="topo-saudacao">
                 <h1>Olá, {{ usuario_nome }}!</h1>
                 <p>Sua jornada ESG continua aqui.</p>
@@ -117,6 +123,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="{% static 'js/base.js' %}"></script>
+<script src="{% static 'js/menu-recolhivel.js' %}"></script>
 {% block extra_scripts %}{% endblock %}
 </body>
 </html>
