@@ -1,0 +1,12 @@
+{% extends "mensagens/layout.html" %}
+{% block titulo %}Mensagens{% endblock %}
+{% block painel %}
+<section class="ms-painel ms-painel-vazio" aria-label="Nenhuma conversa aberta">
+  <div class="ms-vazio-grande">
+    <span class="ms-icone" aria-hidden="true">✉</span>
+    <h2>Suas mensagens</h2>
+    <p>Envie mensagens privadas para outras pessoas da plataforma.</p>
+    <a class="ms-btn" href="#ms-q" onclick="document.getElementById('ms-q').focus();return false;">Enviar mensagem</a>
+  </div>
+</section>
+{% endblock %}

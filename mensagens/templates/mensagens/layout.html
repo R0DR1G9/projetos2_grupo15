@@ -1,0 +1,46 @@
+{% extends "mensagens/base.html" %}
+{% load rede_social_tags %}
+{% block conteudo %}
+<div class="ms-app{% if outro %} ms-com-conversa{% endif %}">
+
+  <aside class="ms-lista" aria-label="Conversas">
+    <header class="ms-lista-topo"><h1>Mensagens</h1></header>
+
+    <form class="ms-busca" method="get" action="{% url 'mensagens:caixa' %}" role="search">
+      <label class="ms-sr" for="ms-q">Procurar pessoas</label>
+      <input id="ms-q" type="search" name="q" value="{{ q }}" placeholder="Procurar pessoas para conversar" autocomplete="off">
+    </form>
+
+    <div class="ms-itens">
+      {% if q %}
+        <div class="ms-secao">Pessoas</div>
+        {% for u in pessoas %}
+          <a class="ms-item" href="{% url 'mensagens:conversa' u|login_usuario %}">
+            <span class="ms-avatar">{{ u|iniciais }}</span>
+            <span class="ms-item-texto"><strong>{{ u|nome_usuario }}</strong><small>@{{ u|login_usuario }}</small></span>
+          </a>
+        {% empty %}
+          <p class="ms-vazio-p">Ninguém encontrado para “{{ q }}”.</p>
+        {% endfor %}
+        {% if conversas %}<div class="ms-secao">Conversas</div>{% endif %}
+      {% endif %}
+
+      {% for c in conversas %}
+        <a class="ms-item{% if outro and c.outro.pk == outro.pk %} ms-ativo{% endif %}{% if c.nao_lidas %} ms-nao-lida{% endif %}"
+           href="{% url 'mensagens:conversa' c.outro|login_usuario %}">
+          <span class="ms-avatar">{{ c.outro|iniciais }}</span>
+          <span class="ms-item-texto">
+            <strong>{{ c.outro|nome_usuario }}</strong>
+            <small>{% if c.ultima_de_id == eu.pk %}Você: {% endif %}{{ c.ultima_texto|truncatechars:38 }} · {{ c.rotulo }}</small>
+          </span>
+          {% if c.nao_lidas %}<span class="ms-pilula" aria-label="{{ c.nao_lidas }} não lida{{ c.nao_lidas|pluralize }}">{{ c.nao_lidas }}</span>{% endif %}
+        </a>
+      {% empty %}
+        {% if not q %}<p class="ms-vazio-p">Nenhuma conversa ainda. Procure uma pessoa acima para enviar a primeira mensagem.</p>{% endif %}
+      {% endfor %}
+    </div>
+  </aside>
+
+  {% block painel %}{% endblock %}
+</div>
+{% endblock %}

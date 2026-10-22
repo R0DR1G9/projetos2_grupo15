@@ -1,0 +1,35 @@
+{% extends "mensagens/layout.html" %}
+{% load static rede_social_tags %}
+{% block titulo %}{{ outro|nome_usuario }} · Mensagens{% endblock %}
+{% block painel %}
+<section class="ms-painel" aria-label="Conversa com {{ outro|nome_usuario }}">
+  <header class="ms-painel-topo">
+    <a class="ms-voltar" href="{% url 'mensagens:caixa' %}" aria-label="Voltar para as conversas">←</a>
+    <span class="ms-avatar">{{ outro|iniciais }}</span>
+    <div class="ms-painel-nome"><strong>{{ outro|nome_usuario }}</strong><small>@{{ outro|login_usuario }}</small></div>
+    <a class="ms-link" href="{% url 'rede_social:perfil' outro|login_usuario %}">Ver perfil</a>
+  </header>
+
+  <div class="ms-mensagens" id="ms-mensagens" tabindex="0" aria-live="polite"
+       data-novas-url="{% url 'mensagens:novas' outro|login_usuario %}" data-ultima="{{ ultima_id }}">
+    {% if tem_mais %}<a class="ms-mais" href="?limite={{ limite_proximo }}">Ver mensagens anteriores</a>{% endif %}
+    {% if not mensagens %}<p class="ms-inicio">Comece a conversa com {{ outro|nome_usuario }}.</p>{% endif %}
+    {% for m in mensagens %}
+      {% ifchanged m.criada_em|date:"Y-m-d" %}<div class="ms-dia">{{ m.criada_em|date:"j \d\e F" }}</div>{% endifchanged %}
+      {% include "mensagens/_bolha.html" %}
+    {% endfor %}
+    <div id="ms-fim"></div>
+  </div>
+
+  <div class="ms-status" id="ms-status">{{ status }}</div>
+  <p class="ms-erro" id="ms-erro" role="alert" hidden></p>
+
+  <form class="ms-form" id="ms-form" method="post" action="{% url 'mensagens:conversa' outro|login_usuario %}">
+    {% csrf_token %}
+    {{ form.texto }}
+    <button type="submit" class="ms-enviar">Enviar</button>
+  </form>
+  {% if form.texto.errors %}<p class="ms-erro" role="alert">{{ form.texto.errors|join:" " }}</p>{% endif %}
+</section>
+{% endblock %}
+{% block scripts %}<script src="{% static 'mensagens/js/mensagens.js' %}"></script>{% endblock %}

@@ -1,0 +1,7 @@
+<div class="ms-linha {% if m.remetente_id == eu.pk %}ms-minha{% else %}ms-dela{% endif %}" data-msg-id="{{ m.pk }}">
+  <div class="ms-bolha">
+    <p>{{ m.texto|linebreaksbr }}</p>
+    <time datetime="{{ m.criada_em|date:'c' }}" title="{{ m.criada_em|date:'d/m/Y H:i' }}">{{ m.criada_em|date:"H:i" }}</time>
+  </div>
+  {% if m.remetente_id == eu.pk %}<button type="button" class="ms-desfazer" data-url="{% url 'mensagens:excluir' m.pk %}" aria-label="Desfazer envio" title="Desfazer envio">&#10005;</button>{% endif %}
+</div>

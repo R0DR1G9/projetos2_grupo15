@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'ranking',
     'inicio',
     'contas',
-    'rede_social'
+    'rede_social',
+    'mensagens',
 ]
 
 MIDDLEWARE = [
@@ -71,6 +72,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'inicio.context_processors.layout',
+                'mensagens.context_processors.nao_lidas'
             ],
         },
     },

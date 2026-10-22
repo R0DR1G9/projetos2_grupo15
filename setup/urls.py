@@ -29,6 +29,7 @@ urlpatterns = [
     path('', include('ranking.urls')),
     path('', include('contas.urls')),
     path("social/", include("rede_social.urls")),
+    path("mensagens/", include("mensagens.urls")),
 ]
 
 if settings.DEBUG:

@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{% block titulo %}Mensagens{% endblock %}{% endblock %}
+{% block extra_head %}<link rel="stylesheet" href="{% static 'mensagens/css/mensagens.css' %}">{% endblock %}
+{% block content %}<div class="ms">{% block conteudo %}{% endblock %}</div>{% endblock %}
+{% block extra_scripts %}{% block scripts %}{% endblock %}{% endblock %}
