@@ -1,0 +1,133 @@
+/* ==========================================================================
+   Animações e transições (camada de movimento do sistema)
+   - Carregue DEPOIS dos outros CSS (no base.html ela vem depois do extra_head).
+   - Usa as propriedades individuais `translate` e `rotate` nas entradas, para
+     não brigar com o `transform` dos hovers, do Popper e do Bootstrap.
+   - Tudo é desligado em prefers-reduced-motion (última seção).
+   ========================================================================== */
+:root {
+    --ease-out: cubic-bezier(.22, 1, .36, 1);
+    --ease-in-out: cubic-bezier(.65, 0, .35, 1);
+    --t-rapido: .18s;
+    --t-medio: .3s;
+    --t-lento: .5s;
+}
+
+html { scroll-behavior: smooth; }
+
+/* ---------- Transição suave entre páginas (Chrome/Edge 126+, Safari 18.2+) ----------
+   Outros navegadores ignoram e navegam normalmente. O menu lateral fica "parado". */
+@media (prefers-reduced-motion: no-preference) {
+    @view-transition { navigation: auto; }
+}
+::view-transition-old(root) { animation: vt-saida .16s ease both; }
+::view-transition-new(root) { animation: vt-entrada .34s var(--ease-out) both; }
+@keyframes vt-saida { to { opacity: 0; } }
+@keyframes vt-entrada { from { opacity: 0; } }
+@media (min-width: 992px) {
+    .sidebar-inner { view-transition-name: menu-lateral; }
+}
+
+/* ---------- Entrada dos conteúdos ---------- */
+@keyframes entra-sobe { from { opacity: 0; translate: 0 16px; } }
+@keyframes entra-desce { from { opacity: 0; translate: 0 -10px; } }
+@keyframes entra-lado { from { opacity: 0; translate: 24px 0; } }
+
+.topo { animation: entra-desce .5s var(--ease-out) backwards; }
+.conteudo-corpo > header { animation: entra-sobe .5s var(--ease-out) backwards; }
+
+.conteudo main > .card,
+.conteudo main > section,
+.conteudo main > form,
+.conteudo main > .alert,
+.conteudo main > .table-responsive,
+.conteudo main > .row > * {
+    animation: entra-sobe .55s var(--ease-out) backwards;
+    animation-delay: .08s;
+}
+/* cascata: cada bloco entra um pouquinho depois do anterior */
+.conteudo main > .row > :nth-child(2) { animation-delay: .14s; }
+.conteudo main > .row > :nth-child(3) { animation-delay: .20s; }
+.conteudo main > .row > :nth-child(4) { animation-delay: .26s; }
+.conteudo main > .row > :nth-child(5) { animation-delay: .32s; }
+.conteudo main > .row > :nth-child(6) { animation-delay: .38s; }
+.conteudo main > .row > :nth-child(n+7) { animation-delay: .44s; }
+
+.alert { animation: entra-desce .45s var(--ease-out) backwards; }
+
+/* ---------- Botões ---------- */
+.btn {
+    transition: color var(--t-rapido) ease, background-color var(--t-rapido) ease,
+                border-color var(--t-rapido) ease, box-shadow var(--t-medio) ease,
+                transform var(--t-medio) var(--ease-out);
+}
+.btn:not(:disabled):not(.disabled):hover { transform: translateY(-1px); }
+.btn-success:not(:disabled):hover,
+.btn-outline-success:not(:disabled):hover { box-shadow: 0 6px 14px rgba(162, 77, 44, .28); }
+.btn:not(:disabled):not(.disabled):active { transform: scale(.97); box-shadow: none; transition-duration: .08s; }
+
+a { transition: color var(--t-rapido) ease; }
+
+/* ---------- Cards clicáveis ---------- */
+.card-atividade, a.card, .mini-pilar {
+    transition: transform var(--t-medio) var(--ease-out), box-shadow var(--t-medio) var(--ease-out);
+}
+@media (hover: hover) {
+    .card-atividade:hover, a.card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 26px rgba(94, 62, 30, .15);
+    }
+    .mini-pilar:hover { transform: translateY(-2px); }
+}
+
+/* ---------- Anel e barras de progresso (preenchem ao carregar) ---------- */
+@property --pct { syntax: '<number>'; inherits: false; initial-value: 0; }
+.anel { transition: --pct 1.3s var(--ease-out); }
+[data-largura] { transition: width 1s var(--ease-out); }
+
+/* ---------- Sino de notificações ---------- */
+.btn-sino i { display: inline-block; transform-origin: 50% 0; }
+.btn-sino:hover i, .btn-sino:focus-visible i { animation: sino .7s ease-in-out; }
+@keyframes sino { 20% { rotate: 14deg; } 40% { rotate: -12deg; } 60% { rotate: 7deg; } 80% { rotate: -3deg; } }
+
+/* ---------- Dropdown, modal e menu do celular ---------- */
+.dropdown-menu.show { animation: dropdown-abre .22s var(--ease-out); }
+@keyframes dropdown-abre { from { opacity: 0; translate: 0 -8px; } }
+
+.modal.fade .modal-dialog { transform: translateY(28px) scale(.96); transition: transform .4s var(--ease-out); }
+.modal.show .modal-dialog { transform: none; }
+.modal-backdrop.fade { transition: opacity .3s ease; }
+
+@media (max-width: 991.98px) {
+    .sidebar.offcanvas-lg { transition: transform .42s var(--ease-out); }
+}
+
+/* ---------- Diagnóstico ---------- */
+.js-etapas .etapa.ativa { animation: entra-lado .45s var(--ease-out); }
+.etapa-nome { transition: background-color var(--t-medio) ease, color var(--t-medio) ease, transform var(--t-medio) var(--ease-out); }
+.etapa-nome.atual { transform: scale(1.06); }
+.pergunta { transition: background-color var(--t-medio) ease; }
+.pergunta.erro { animation: tremer .42s ease; }
+@keyframes tremer { 20%, 60% { translate: -6px 0; } 40%, 80% { translate: 6px 0; } }
+.conteudo .nivel span {
+    transition: border-color var(--t-rapido) ease, background-color var(--t-medio) ease,
+                color var(--t-rapido) ease, transform var(--t-medio) var(--ease-out);
+}
+.conteudo .nivel:active span { transform: scale(.97); }
+.conteudo .nivel input:checked + span { transform: translateY(-1px); }
+
+/* ---------- Tabelas e formulários ---------- */
+.table > tbody > tr { transition: background-color var(--t-rapido) ease; }
+.form-control, .form-select { transition: border-color var(--t-medio) ease, box-shadow var(--t-medio) ease, background-color var(--t-medio) ease; }
+
+/* ---------- Respeita quem prefere menos movimento ---------- */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-delay: 0s !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        transition-delay: 0s !important;
+    }
+}

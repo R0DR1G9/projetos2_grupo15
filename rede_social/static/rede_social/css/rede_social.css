@@ -1,0 +1,181 @@
+/* ==========================================================================
+   Rede Social ESG
+   - Tudo fica sob .rs e usa classes com prefixo rs- (não conflita com
+     Bootstrap nem com o base.css do sistema).
+   - Para ajustar as cores ao tema, altere só as variáveis abaixo.
+   ========================================================================== */
+.rs{
+  --rs-verde:#2f4a2a;        /* links, abas ativas, destaques */
+  --rs-verde-esc:#223420;
+  --rs-acento:#a4512c;       /* botão principal (mesmo tom do "Entrar") */
+  --rs-acento-esc:#8a4324;
+  --rs-card:#fffaf3;
+  --rs-borda:#e8dccb;
+  --rs-txt:#2b2a22;
+  --rs-mudo:#6f6a5c;
+  color:var(--rs-txt);font-size:15px;line-height:1.45
+}
+.rs *,.rs *::before,.rs *::after{box-sizing:border-box}
+.rs a{color:var(--rs-verde);text-decoration:none}
+.rs a:hover{text-decoration:underline}
+.rs .rs-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* ---- layout: feed + coluna lateral -------------------------------------- */
+.rs .rs-grade{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:20px;max-width:1000px;margin:0 auto;align-items:start}
+.rs .rs-lateral{display:flex;flex-direction:column;gap:12px}
+.rs .rs-lateral .rs-card{margin-bottom:0}
+.rs h1{font-size:20px;margin:0 0 6px;font-weight:800}
+.rs h2{font-size:16px;margin:0 0 10px;font-weight:700}
+.rs p{margin:0 0 6px}
+.rs .rs-titulo-secao{margin:16px 0 8px}
+.rs .rs-mudo{color:var(--rs-mudo);font-size:13px}
+
+/* ---- card ---------------------------------------------------------------- */
+.rs .rs-card{background:var(--rs-card);border:1px solid var(--rs-borda);border-radius:12px;padding:14px 16px;margin-bottom:12px}
+
+/* ---- avatar, botões, formulários ---------------------------------------- */
+.rs .rs-avatar{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:var(--rs-verde);color:#fff;font-weight:700;flex:none}
+.rs .rs-avatar:hover{text-decoration:none}
+.rs .rs-avatar-p{width:34px;height:34px;font-size:13px}
+.rs .rs-avatar-g{width:84px;height:84px;font-size:28px}
+.rs .rs-nome{font-weight:700;color:var(--rs-txt)}
+.rs .rs-btn{display:inline-block;background:var(--rs-acento);color:#fff;border:0;border-radius:999px;padding:8px 18px;font:inherit;font-size:14px;font-weight:700;cursor:pointer;line-height:1.3}
+.rs .rs-btn:hover{background:var(--rs-acento-esc);color:#fff;text-decoration:none}
+.rs .rs-btn-sec{background:transparent;color:var(--rs-acento);border:1px solid var(--rs-acento)}
+.rs .rs-btn-sec:hover{background:rgba(164,81,44,.08);color:var(--rs-acento-esc)}
+.rs .rs-btn-p{padding:5px 12px;font-size:13px}
+.rs textarea,.rs input[type=text],.rs input[type=url],.rs input[type=search],.rs select{width:100%;padding:10px;border:1px solid var(--rs-borda);border-radius:8px;background:#fff;color:var(--rs-txt);font:inherit}
+.rs textarea:focus,.rs input:focus,.rs select:focus{outline:2px solid rgba(47,74,42,.35);outline-offset:1px}
+.rs textarea{resize:vertical}
+.rs .rs-compositor-rodape{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-top:8px}
+.rs .rs-compositor-rodape select{width:auto}
+.rs .rs-compositor-opcoes{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.rs .rs-upload{position:relative;display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border:1px solid var(--rs-borda);border-radius:999px;background:#fff;color:var(--rs-verde);font-size:14px;font-weight:700;cursor:pointer}
+.rs .rs-upload:hover,.rs .rs-upload:focus-within{border-color:var(--rs-verde);background:rgba(47,74,42,.06)}
+.rs .rs-upload input[type=file]{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);opacity:0}
+.rs .rs-preview{position:relative;display:inline-block;margin-top:10px;max-width:100%}
+.rs .rs-preview[hidden]{display:none}
+.rs .rs-preview img{display:block;max-width:100%;max-height:260px;border-radius:10px;border:1px solid var(--rs-borda)}
+.rs .rs-preview-remover{position:absolute;top:6px;right:6px;width:28px;height:28px;border:0;border-radius:50%;background:rgba(0,0,0,.65);color:#fff;font-size:14px;line-height:1;cursor:pointer}
+.rs .rs-preview-remover:hover{background:rgba(0,0,0,.85)}
+.rs .rs-erro-cliente{color:#b42318;font-size:13px;margin:6px 0 0}
+.rs .errorlist{color:#b42318;list-style:none;padding:0;margin:6px 0;font-size:13px}
+
+/* ---- abas e filtros do feed --------------------------------------------- */
+.rs .rs-abas{display:flex;border-bottom:1px solid var(--rs-borda);margin-bottom:10px}
+.rs .rs-abas a{flex:1;text-align:center;padding:12px;color:var(--rs-mudo);font-weight:700;border-bottom:3px solid transparent}
+.rs .rs-abas a.ativa{color:var(--rs-txt);border-bottom-color:var(--rs-acento)}
+.rs .rs-abas a:hover{text-decoration:none;background:rgba(0,0,0,.03)}
+.rs .rs-filtros{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.rs .rs-chip{padding:4px 12px;border:1px solid var(--rs-borda);border-radius:999px;font-size:13px;color:var(--rs-txt);background:var(--rs-card)}
+.rs .rs-chip.ativa{background:var(--rs-verde);border-color:var(--rs-verde);color:#fff}
+.rs .rs-chip:hover{text-decoration:none}
+
+/* ---- posts --------------------------------------------------------------- */
+.rs .rs-post-repost{color:var(--rs-mudo);font-size:13px;margin:0 0 6px 54px}
+.rs .rs-post-corpo{display:flex;gap:10px}
+.rs .rs-post-texto{flex:1;min-width:0}
+.rs .rs-post-cabecalho{display:flex;flex-wrap:wrap;gap:6px;align-items:baseline}
+.rs .rs-conteudo{margin:6px 0 10px;overflow-wrap:anywhere}
+.rs .rs-hashtag{font-weight:700}
+.rs .rs-post-imagem{display:block;margin:0 0 10px;border-radius:12px;overflow:hidden;border:1px solid var(--rs-borda);background:#f1ebe0}
+.rs .rs-post-imagem:hover{text-decoration:none}
+.rs .rs-post-imagem{cursor:zoom-in}
+.rs .rs-post-imagem img{display:block;width:100%;max-height:480px;object-fit:cover}
+.rs .rs-pilar{font-size:11px;padding:1px 8px;border-radius:999px;border:1px solid var(--rs-borda);margin-left:auto}
+.rs .rs-pilar-ambiental{background:#e5f1e0;color:#2f6a2a}
+.rs .rs-pilar-social{background:#e6eefb;color:#1f5fa8}
+.rs .rs-pilar-governanca{background:#f1e9fb;color:#6a3fa0}
+.rs .rs-acoes{display:flex;flex-wrap:wrap;gap:4px 14px}
+.rs .rs-acoes form{margin:0}
+.rs .rs-acao{background:none;border:0;padding:4px 0;color:var(--rs-mudo);font:inherit;font-size:13px;cursor:pointer}
+.rs .rs-acao:hover{color:var(--rs-acento);text-decoration:none}
+.rs .rs-acao.ativa{color:var(--rs-acento);font-weight:700}
+.rs .rs-acao.rs-perigo:hover{color:#b42318}
+.rs .rs-comentario{display:flex;gap:10px;padding:10px 0;border-top:1px solid var(--rs-borda)}
+.rs .rs-comentario .rs-conteudo{margin:2px 0 0}
+
+/* ---- lateral, perfil, paginação ----------------------------------------- */
+.rs .rs-sugestao{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.rs .rs-sugestao .rs-nome{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rs .rs-perfil-topo{display:flex;gap:16px;align-items:flex-start}
+.rs .rs-perfil-info{flex:1}
+.rs .rs-perfil-info p{margin:4px 0}
+.rs .rs-paginacao{display:flex;justify-content:space-between;align-items:center;padding:8px 0}
+.rs .rs-vazio{text-align:center;color:var(--rs-mudo)}
+
+/* ---- visualizador de imagem (ampliar sem sair da página) ------------------ */
+.rs .rs-lightbox{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(20,18,12,.88);cursor:zoom-out}
+.rs .rs-lightbox[hidden]{display:none}
+.rs .rs-lightbox img{display:block;max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;box-shadow:0 10px 40px rgba(0,0,0,.5);cursor:default}
+.rs .rs-lightbox-fechar{position:absolute;top:14px;right:14px;width:40px;height:40px;border:0;border-radius:50%;background:rgba(255,255,255,.15);color:#fff;font-size:18px;line-height:1;cursor:pointer}
+.rs .rs-lightbox-fechar:hover,.rs .rs-lightbox-fechar:focus-visible{background:rgba(255,255,255,.3)}
+
+@media (max-width:1100px){
+  .rs .rs-grade{grid-template-columns:minmax(0,1fr)}
+  .rs .rs-lateral{order:3}
+}
+@media (max-width:600px){
+  .rs .rs-perfil-topo{flex-wrap:wrap}
+}
+
+/* ==========================================================================
+   Movimento (animações e transições)
+   ========================================================================== */
+@keyframes rs-entra{from{opacity:0;translate:0 12px}}
+@keyframes rs-fundo-entra{from{opacity:0}}
+@keyframes rs-fundo-sai{to{opacity:0}}
+@keyframes rs-pop{0%{transform:scale(1)}40%{transform:scale(1.28)}100%{transform:scale(1)}}
+@keyframes rs-zoom-entra{from{opacity:0;transform:scale(.35)}}
+@keyframes rs-zoom-sai{to{opacity:0;transform:scale(.55)}}
+
+/* entrada em cascata dos cards do feed e da coluna lateral */
+.rs .rs-principal>*{animation:rs-entra .5s cubic-bezier(.22,1,.36,1) backwards}
+.rs .rs-principal>:nth-child(2){animation-delay:.04s}
+.rs .rs-principal>:nth-child(3){animation-delay:.08s}
+.rs .rs-principal>:nth-child(4){animation-delay:.12s}
+.rs .rs-principal>:nth-child(5){animation-delay:.16s}
+.rs .rs-principal>:nth-child(6){animation-delay:.2s}
+.rs .rs-principal>:nth-child(7){animation-delay:.24s}
+.rs .rs-principal>:nth-child(n+8){animation-delay:.28s}
+.rs .rs-lateral>*{animation:rs-entra .5s cubic-bezier(.22,1,.36,1) .1s backwards}
+
+/* botões, chips, abas e ações */
+.rs .rs-btn{transition:background-color .2s,color .2s,border-color .2s,box-shadow .3s ease,transform .3s cubic-bezier(.22,1,.36,1)}
+.rs .rs-btn:hover{transform:translateY(-1px);box-shadow:0 6px 14px rgba(164,81,44,.25)}
+.rs .rs-btn-sec:hover{box-shadow:none}
+.rs .rs-btn:active{transform:scale(.97);box-shadow:none;transition-duration:.08s}
+.rs .rs-acao{transition:color .2s ease,transform .25s cubic-bezier(.22,1,.36,1)}
+.rs .rs-acao:active{transform:scale(.9)}
+.rs .rs-acao.pop{animation:rs-pop .45s cubic-bezier(.34,1.56,.64,1)}
+.rs .rs-acao[aria-busy=true]{cursor:progress}
+.rs .rs-chip,.rs .rs-abas a{transition:background-color .25s ease,color .25s ease,border-color .25s ease}
+.rs .rs-avatar{transition:transform .3s cubic-bezier(.22,1,.36,1)}
+.rs .rs-avatar:hover{transform:scale(1.08)}
+.rs textarea,.rs input,.rs select{transition:border-color .25s ease,box-shadow .25s ease}
+
+/* cards de post */
+.rs .rs-post{transition:box-shadow .35s ease,border-color .35s ease}
+@media (hover:hover){.rs .rs-post:hover{box-shadow:0 10px 24px rgba(94,62,30,.10);border-color:#dccbb3}}
+
+/* upload de foto: botão, pré-visualização e erro */
+.rs .rs-upload{transition:border-color .2s,background-color .2s,transform .3s cubic-bezier(.22,1,.36,1)}
+.rs .rs-upload:hover{transform:translateY(-1px)}
+.rs .rs-preview{animation:rs-entra .35s cubic-bezier(.22,1,.36,1)}
+.rs .rs-erro-cliente{animation:rs-entra .3s cubic-bezier(.22,1,.36,1)}
+
+/* foto do post: leve zoom ao passar o mouse */
+.rs .rs-post-imagem img{transition:transform .6s cubic-bezier(.22,1,.36,1)}
+@media (hover:hover){.rs .rs-post-imagem:hover img{transform:scale(1.025)}}
+
+/* visualizador de fotos: fundo esmaece, a imagem cresce da miniatura */
+.rs .rs-lightbox{animation:rs-fundo-entra .28s ease both}
+.rs .rs-lightbox img{animation:rs-zoom-entra .45s cubic-bezier(.22,1,.36,1) both}
+.rs .rs-lightbox-fechar{transition:background-color .2s,transform .3s cubic-bezier(.22,1,.36,1)}
+.rs .rs-lightbox-fechar:hover{transform:rotate(90deg)}
+.rs .rs-lightbox.fechando{animation:rs-fundo-sai .22s ease both}
+.rs .rs-lightbox.fechando img{animation:rs-zoom-sai .22s ease both}
+
+@media (prefers-reduced-motion:reduce){
+  .rs *,.rs *::before,.rs *::after{animation:none!important;transition:none!important}
+}

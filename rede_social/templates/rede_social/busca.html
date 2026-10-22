@@ -1,0 +1,22 @@
+{% extends "rede_social/layout.html" %}
+{% load rede_social_tags %}
+{% block titulo %}Busca · Rede Social ESG{% endblock %}
+{% block principal %}
+<section class="rs-card"><h1>Busca{% if q %}: “{{ q }}”{% endif %}</h1></section>
+{% if not q %}
+  <p class="rs-card rs-vazio">Digite um termo para buscar publicações e pessoas.</p>
+{% else %}
+  <section class="rs-card">
+    <h2>Pessoas</h2>
+    {% for u in pessoas %}
+      <p><a class="rs-nome" href="{% url 'rede_social:perfil' u|login_usuario %}">{{ u|nome_usuario }}</a>
+         <span class="rs-mudo">@{{ u|login_usuario }}{% if u.perfil_social.empresa %} · {{ u.perfil_social.empresa }}{% endif %}</span></p>
+    {% empty %}<p class="rs-mudo">Nenhuma pessoa encontrada.</p>{% endfor %}
+  </section>
+  <h2 class="rs-titulo-secao">Publicações</h2>
+  {% for p in page %}{% include "rede_social/_post.html" %}{% empty %}
+    <p class="rs-card rs-vazio">Nenhuma publicação encontrada.</p>
+  {% endfor %}
+  {% include "rede_social/_paginacao.html" %}
+{% endif %}
+{% endblock %}

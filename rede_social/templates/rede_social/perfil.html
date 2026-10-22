@@ -1,0 +1,38 @@
+{% extends "rede_social/layout.html" %}
+{% load rede_social_tags %}
+{% block titulo %}{{ alvo|nome_usuario }} · Rede Social ESG{% endblock %}
+{% block principal %}
+<section class="rs-card rs-perfil-topo">
+  <div class="rs-avatar rs-avatar-g">{{ alvo|iniciais }}</div>
+  <div class="rs-perfil-info">
+    <h1>{{ alvo|nome_usuario }}</h1>
+    <p class="rs-mudo">@{{ alvo|login_usuario }}</p>
+    {% if perfil_social.cargo or perfil_social.empresa %}
+      <p>{{ perfil_social.cargo }}{% if perfil_social.cargo and perfil_social.empresa %} · {% endif %}{{ perfil_social.empresa }}</p>
+    {% endif %}
+    {% if perfil_social.bio %}<p>{{ perfil_social.bio }}</p>{% endif %}
+    {% if perfil_social.site %}<p><a href="{{ perfil_social.site }}" rel="nofollow noopener" target="_blank">{{ perfil_social.site }}</a></p>{% endif %}
+    <p class="rs-mudo"><strong>{{ total_posts }}</strong> posts · <strong>{{ total_seguidores }}</strong> seguidores · <strong>{{ total_seguindo }}</strong> seguindo</p>
+  </div>
+  <div>
+    {% if alvo == request.user %}
+      <a class="rs-btn rs-btn-sec" href="{% url 'rede_social:editar_perfil' %}">Editar perfil</a>
+    {% else %}
+      <form method="post" action="{% url 'rede_social:seguir' alvo|login_usuario %}">{% csrf_token %}
+        <input type="hidden" name="next" value="{{ request.get_full_path }}">
+        <button class="rs-btn{% if seguindo %} rs-btn-sec{% endif %}" type="submit">{% if seguindo %}Seguindo ✓{% else %}Seguir{% endif %}</button>
+      </form>
+    {% endif %}
+  </div>
+</section>
+
+<nav class="rs-abas">
+  <a class="{% if aba == 'posts' %}ativa{% endif %}" href="?aba=posts">Publicações</a>
+  <a class="{% if aba == 'curtidas' %}ativa{% endif %}" href="?aba=curtidas">Curtidas</a>
+</nav>
+
+{% for p in page %}{% include "rede_social/_post.html" %}{% empty %}
+  <p class="rs-card rs-vazio">Nada por aqui ainda.</p>
+{% endfor %}
+{% include "rede_social/_paginacao.html" %}
+{% endblock %}

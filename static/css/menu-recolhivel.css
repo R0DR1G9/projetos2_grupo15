@@ -1,0 +1,106 @@
+/* Menu lateral recolhível (só no desktop, >= 992px).
+   No celular o menu continua sendo o painel que abre pelo botão do topo.
+
+   Como a animação funciona:
+   - a largura do menu e a coluna do .app têm valores explícitos nos dois estados
+     (o navegador não anima de "auto" para um número);
+   - os textos não somem com display:none: encolhem (max-width) e esmaecem (opacity);
+   - os ícones ficam parados em relação à barra (só o padding muda), sem "pulo";
+   - as transições só ligam depois do primeiro desenho da página (classe
+     .menu-animavel, adicionada pelo menu-recolhivel.js), para a página não
+     "animar" ao carregar com o menu já recolhido. */
+@media (min-width: 992px) {
+  :root {
+    --menu-largura: 280px;      /* tem de ser igual à 1ª coluna do .app (base.css) */
+    --menu-recolhido: 76px;
+    --menu-tempo: .38s;
+    --menu-ease: cubic-bezier(.22, 1, .36, 1);
+  }
+
+  /* ---- larguras (a coluna do conteúdo acompanha pelo grid) ---- */
+  .app { grid-template-columns: var(--menu-largura) minmax(0, 1fr); }
+  .sidebar {
+    width: var(--menu-largura) !important;
+    min-width: var(--menu-largura) !important;
+    max-width: var(--menu-largura) !important;
+    flex: 0 0 var(--menu-largura) !important;
+  }
+  html.menu-recolhido .app { grid-template-columns: var(--menu-recolhido) minmax(0, 1fr); }
+  html.menu-recolhido .sidebar {
+    width: var(--menu-recolhido) !important;
+    min-width: var(--menu-recolhido) !important;
+    max-width: var(--menu-recolhido) !important;
+    flex: 0 0 var(--menu-recolhido) !important;
+  }
+
+  .sidebar-inner { overflow-x: hidden; }
+  html.menu-recolhido .sidebar-inner { padding-left: 10px; padding-right: 10px; }
+
+  /* ---- logo: some só o texto ---- */
+  .marca-texto { max-width: 14rem; overflow: hidden; }
+  html.menu-recolhido .marca { gap: 0; }
+  html.menu-recolhido .marca-texto { max-width: 0; opacity: 0; }
+
+  /* ---- itens: o ícone fica centralizado na barra de 76px, o texto encolhe ---- */
+  .menu-item i { flex: none; }
+  .menu-item span, .menu-item em { max-width: 14rem; overflow: hidden; }
+  .menu-item em { max-width: 6rem; }
+  html.menu-recolhido .menu-item { gap: 0; padding-right: 0; }
+  html.menu-recolhido .menu-item span,
+  html.menu-recolhido .menu-item em { max-width: 0; opacity: 0; }
+  html.menu-recolhido .menu-item em { margin-left: 0; padding: 0 !important; }
+
+  /* pequeno deslize ao passar o mouse (só com o menu aberto) */
+  html:not(.menu-recolhido) .menu-item:not(.desativado):hover { transform: translateX(3px); }
+
+  /* ---- título "Mais" vira uma linha separadora ---- */
+  .menu-titulo { max-height: 3rem; overflow: hidden; white-space: nowrap; }
+  html.menu-recolhido .menu-titulo { max-height: 0; opacity: 0; margin-top: 0; margin-bottom: 0; }
+  .menu-secundario { border-top: 0 solid rgba(255, 255, 255, .15); }
+  html.menu-recolhido .menu-secundario { border-top-width: 1px; margin-top: 10px; padding-top: 10px; }
+
+  /* ---- rodapé: ficam só os ícones (GitHub e site); Entrar/Sair continuam no topo ---- */
+  html.menu-recolhido .sidebar-rodape {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  html.menu-recolhido .sidebar-rodape .btn,
+  html.menu-recolhido .sidebar-rodape span,
+  html.menu-recolhido .sidebar-rodape form { display: none !important; }
+
+  /* ---- transições (ligadas só depois do 1º desenho) ---- */
+  html.menu-animavel .app { transition: grid-template-columns var(--menu-tempo) var(--menu-ease); }
+  html.menu-animavel .sidebar {
+    transition: width var(--menu-tempo) var(--menu-ease), min-width var(--menu-tempo) var(--menu-ease),
+                max-width var(--menu-tempo) var(--menu-ease), flex-basis var(--menu-tempo) var(--menu-ease);
+  }
+  html.menu-animavel .sidebar-inner { transition: padding var(--menu-tempo) var(--menu-ease); }
+  html.menu-animavel .marca { transition: gap var(--menu-tempo) var(--menu-ease); }
+  html.menu-animavel .menu-item {
+    transition: background .15s, color .15s, transform .25s var(--menu-ease),
+                gap var(--menu-tempo) var(--menu-ease), padding var(--menu-tempo) var(--menu-ease);
+  }
+  /* ao recolher: o texto esmaece rápido; ao expandir: espera abrir espaço e aparece */
+  html.menu-animavel .menu-item span,
+  html.menu-animavel .menu-item em,
+  html.menu-animavel .marca-texto {
+    transition: max-width var(--menu-tempo) var(--menu-ease), opacity .16s ease;
+  }
+  html.menu-animavel:not(.menu-recolhido) .menu-item span,
+  html.menu-animavel:not(.menu-recolhido) .menu-item em,
+  html.menu-animavel:not(.menu-recolhido) .marca-texto {
+    transition: max-width var(--menu-tempo) var(--menu-ease), opacity .26s ease .14s;
+  }
+  html.menu-animavel .menu-titulo {
+    transition: max-height var(--menu-tempo) var(--menu-ease), margin var(--menu-tempo) var(--menu-ease), opacity .16s ease;
+  }
+  html.menu-animavel .menu-secundario {
+    transition: margin-top var(--menu-tempo) var(--menu-ease), padding-top var(--menu-tempo) var(--menu-ease),
+                border-top-width var(--menu-tempo) var(--menu-ease);
+  }
+
+  /* usado pelo script ao medir o layout: sem transições nesse instante */
+  html.menu-medindo * { transition: none !important; }
+}

@@ -1,0 +1,43 @@
+{% load rede_social_tags %}
+<article class="rs-card rs-post" id="post-{{ p.alvo.pk }}">
+  {% if p.repost_de_id %}<div class="rs-post-repost">↻ {{ p.autor|nome_usuario }} repostou</div>{% endif %}
+  {% with a=p.alvo %}
+  <div class="rs-post-corpo">
+    <a class="rs-avatar" href="{% url 'rede_social:perfil' a.autor|login_usuario %}">{{ a.autor|iniciais }}</a>
+    <div class="rs-post-texto">
+      <div class="rs-post-cabecalho">
+        <a class="rs-nome" href="{% url 'rede_social:perfil' a.autor|login_usuario %}">{{ a.autor|nome_usuario }}</a>
+        <span class="rs-mudo">@{{ a.autor|login_usuario }} · {{ a.criado_em|timesince }} atrás</span>
+        <span class="rs-pilar rs-pilar-{{ a.pilar }}">{{ a.get_pilar_display }}</span>
+      </div>
+      {% if a.conteudo %}<p class="rs-conteudo">{{ a.conteudo|linkificar }}</p>{% endif %}
+      {% if a.imagem %}
+        <a class="rs-post-imagem" href="{{ a.imagem.url }}" target="_blank" rel="noopener" data-rs-zoom title="Clique para ampliar">
+          <img src="{{ a.imagem.url }}" loading="lazy" alt="Imagem publicada por {{ a.autor|nome_usuario }}">
+        </a>
+      {% endif %}
+
+      <div class="rs-acoes">
+        <a class="rs-acao" href="{% url 'rede_social:detalhe_post' a.pk %}">Comentar ({{ a.total_comentarios }})</a>
+
+        <form method="post" action="{% url 'rede_social:repostar' a.pk %}">{% csrf_token %}
+          <input type="hidden" name="next" value="{{ request.get_full_path }}">
+          <button class="rs-acao{% if a.repostou %} ativa{% endif %}" type="submit">↻ Repostar ({{ a.total_reposts }})</button>
+        </form>
+
+        <form method="post" action="{% url 'rede_social:curtir' a.pk %}" data-rs-curtir>{% csrf_token %}
+          <input type="hidden" name="next" value="{{ request.get_full_path }}">
+          <button class="rs-acao{% if a.curtiu %} ativa{% endif %}" type="submit" aria-pressed="{% if a.curtiu %}true{% else %}false{% endif %}">{% if a.curtiu %}♥ Curtido{% else %}♡ Curtir{% endif %} ({{ a.total_curtidas }})</button>
+        </form>
+
+        {% if p.autor_id == request.user.id or request.user.is_staff %}
+        <form method="post" action="{% url 'rede_social:excluir_post' p.pk %}" onsubmit="return confirm('Excluir esta publicação?');">{% csrf_token %}
+          <input type="hidden" name="next" value="{% if detalhe %}{% url 'rede_social:feed' %}{% else %}{{ request.get_full_path }}{% endif %}">
+          <button class="rs-acao rs-perigo" type="submit">Excluir</button>
+        </form>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endwith %}
+</article>

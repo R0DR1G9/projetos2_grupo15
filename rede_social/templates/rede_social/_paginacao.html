@@ -1,0 +1,7 @@
+{% if page.has_other_pages %}
+<nav class="rs-paginacao" aria-label="Paginação">
+  {% if page.has_previous %}<a href="?{% if qs %}{{ qs }}&{% endif %}page={{ page.previous_page_number }}">← Mais recentes</a>{% endif %}
+  <span class="rs-mudo">Página {{ page.number }} de {{ page.paginator.num_pages }}</span>
+  {% if page.has_next %}<a href="?{% if qs %}{{ qs }}&{% endif %}page={{ page.next_page_number }}">Mais antigos →</a>{% endif %}
+</nav>
+{% endif %}
