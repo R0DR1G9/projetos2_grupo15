@@ -15,7 +15,6 @@
     /* Faz o Bootstrap usar a paleta */
     --bs-body-bg: var(--creme);
     --bs-body-color: var(--texto);
-    --bs-body-font-family: 'Nunito', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
     --bs-success: #3d5a2c;
     --bs-success-rgb: 61, 90, 44;
     --bs-dark-rgb: 47, 58, 37;

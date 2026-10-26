@@ -1,0 +1,77 @@
+:root {
+    --fonte-titulo: 'Satoshi', 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --fonte-apoio: 'Manrope', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --fonte-corpo: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --bs-body-font-family: var(--fonte-corpo);
+    --bs-body-font-size: 1rem;
+    --bs-body-font-weight: 400;
+}
+
+body { font-family: var(--fonte-corpo); }
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .display-5 {
+    font-family: var(--fonte-titulo);
+}
+
+h3, h4, h5, h6, .h3, .h4, .h5, .h6 { font-weight: 600; }
+
+.conteudo h1,
+.conteudo header.bg-success h1,
+.conteudo .display-5 {
+    font-size: 1.75rem !important;
+    font-weight: 600 !important;
+    line-height: 1.2;
+    letter-spacing: -.01em;
+}
+
+.conteudo .topo-saudacao h1 { font-size: 1.5rem !important; }
+
+.conteudo h2,
+.conteudo .h2 {
+    font-size: 1.375rem !important;
+    font-weight: 500 !important;
+    line-height: 1.25;
+}
+
+.lead,
+.conteudo header.bg-success .lead,
+.topo-saudacao p {
+    font-family: var(--fonte-apoio);
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.text-muted { font-family: var(--fonte-apoio); }
+
+.menu-item { font-size: .9375rem; }
+
+.menu-item,
+.menu-titulo,
+.form-label,
+.form-check-label {
+    font-family: var(--fonte-apoio);
+}
+
+.form-label,
+.form-check-label {
+    font-size: .875rem;
+    font-weight: 500;
+}
+
+.btn {
+    font-family: var(--fonte-apoio);
+    font-size: .875rem;
+    font-weight: 600;
+    letter-spacing: .01em;
+    text-transform: none;
+}
+
+small,
+.rodape,
+.chip {
+    font-family: var(--fonte-apoio);
+    font-size: .75rem;
+    font-weight: 400;
+}
+
+.chip { font-weight: 600; }
