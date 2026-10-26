@@ -57,7 +57,7 @@
   var caixa = document.getElementById("rs-preview");
   var img = document.getElementById("rs-preview-img");
   var erro = document.getElementById("rs-erro-imagem");
-  var LIMITE = 5 * 1024 * 1024; // mantenha igual a TAMANHO_MAXIMO_IMAGEM em models.py
+  var LIMITE = 4 * 1024 * 1024; // mantenha igual a TAMANHO_MAXIMO_IMAGEM em models.py
   if (!input) return;
 
   function limpar() {
@@ -73,7 +73,7 @@
     if (!arquivo) { limpar(); return; }
     if (arquivo.size > LIMITE) {
       limpar();
-      erro.textContent = "A imagem é muito grande (máximo de 5 MB).";
+      erro.textContent = "A imagem é muito grande (máximo de 4 MB).";
       erro.hidden = false;
       return;
     }

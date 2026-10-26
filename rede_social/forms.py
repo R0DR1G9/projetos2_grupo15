@@ -1,5 +1,7 @@
 from django import forms
+from django.core.files.uploadedfile import UploadedFile
 
+from .imagens import reduzir_imagem
 from .models import Comentario, Perfil, Post
 
 
@@ -27,6 +29,12 @@ class PostForm(forms.ModelForm):
 
     def clean_conteudo(self):
         return self.cleaned_data["conteudo"].strip()
+
+    def clean_imagem(self):
+        imagem = self.cleaned_data.get("imagem")
+        if isinstance(imagem, UploadedFile):
+            return reduzir_imagem(imagem)
+        return imagem
 
     def clean(self):
         cleaned = super().clean()

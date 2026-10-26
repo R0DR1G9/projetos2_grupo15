@@ -13,7 +13,7 @@ from django.utils import timezone
 HASHTAG_RE = re.compile(r"(?<![\w&])#(\w+)", re.UNICODE)
 
 # Upload de imagens nos posts
-TAMANHO_MAXIMO_IMAGEM = 5 * 1024 * 1024  # 5 MB
+TAMANHO_MAXIMO_IMAGEM = 4 * 1024 * 1024
 EXTENSOES_IMAGEM = ["jpg", "jpeg", "png", "gif", "webp"]
 
 

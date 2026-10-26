@@ -169,6 +169,9 @@ LOGOUT_REDIRECT_URL = 'home'
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"   # se o seu BASE_DIR for string: os.path.join(BASE_DIR, "media")
 
+if os.environ.get('BLOB_READ_WRITE_TOKEN'):
+    DEFAULT_FILE_STORAGE = 'rede_social.storage.VercelBlobStorage'
+
 if EM_VERCEL:
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     CSRF_TRUSTED_ORIGINS = ['https://*.vercel.app']
