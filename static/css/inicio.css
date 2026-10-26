@@ -10,7 +10,7 @@
     font-size: 1.9rem; font-weight: 800; color: var(--verde-escuro);
 }
 .mini-pilar { border-radius: 16px; padding: 1rem .5rem; text-align: center; height: 100%; }
-.mini-pilar .valor { font-size: 1.7rem; font-weight: 800; line-height: 1.1; }
+.mini-pilar .valor { font-size: clamp(1.2rem, 5.2vw, 1.7rem); font-weight: 800; line-height: 1.1; white-space: nowrap; }
 .mini-pilar .nome { font-size: .8rem; font-weight: 700; color: var(--texto-suave); }
 
 .acao { display: flex; align-items: center; gap: .9rem; padding: .85rem 0; border-bottom: 1px solid var(--borda); }
