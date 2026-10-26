@@ -32,10 +32,7 @@
                 {% for p in pilares %}
                 <div class="col-md-4">
                     <div class="pilar-card {% if p.chave == 'ambiental' %}pilar-e{% elif p.chave == 'social' %}pilar-s{% else %}pilar-g{% endif %}">
-                        <div class="d-flex justify-content-between align-items-start">
-                            <div class="fw-bold"><i class="bi {{ p.icone }} me-1"></i>{{ p.nome }}</div>
-                            <span title="{{ p.medalha.nome }}">{{ p.medalha.emoji }}</span>
-                        </div>
+                        <div class="fw-bold">{{ p.nome }}</div>
                         <div class="valor mt-1">{{ p.pct|floatformat:"-1" }}%</div>
                         {% for s in p.subtemas %}
                         <div class="sub-linha">

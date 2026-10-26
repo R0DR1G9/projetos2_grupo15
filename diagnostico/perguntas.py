@@ -101,7 +101,7 @@ def _p(id, texto, peso, niveis, fontes, acoes, aplica=TODOS, permite_na=False):
 
 PILARES = [
     {
-        "chave": "ambiental", "nome": "Ambiental", "sigla": "E", "icone": "bi-tree",
+        "chave": "ambiental", "nome": "Ambiental", "sigla": "E",
         "subtemas": [
             {"chave": "gestao_ambiental", "nome": "Gestão ambiental", "perguntas": [
                 _p("amb_gestao",
@@ -218,7 +218,7 @@ PILARES = [
         ],
     },
     {
-        "chave": "social", "nome": "Social", "sigla": "S", "icone": "bi-people",
+        "chave": "social", "nome": "Social", "sigla": "S",
         "subtemas": [
             {"chave": "direitos", "nome": "Direitos e condições de trabalho", "perguntas": [
                 _p("soc_trabalho_digno",
@@ -343,7 +343,7 @@ PILARES = [
         ],
     },
     {
-        "chave": "governanca", "nome": "Governança", "sigla": "G", "icone": "bi-building",
+        "chave": "governanca", "nome": "Governança", "sigla": "G",
         "subtemas": [
             {"chave": "etica", "nome": "Ética e integridade", "perguntas": [
                 _p("gov_etica",

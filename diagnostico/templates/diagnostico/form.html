@@ -90,7 +90,7 @@
         {% for pilar in pilares %}
         <section class="etapa" data-etapa="{{ forloop.counter }}">
             <div class="card"><div class="card-body p-4">
-                <h2 class="h5 fw-bold mb-1"><i class="bi {{ pilar.icone }} me-2"></i>Pilar {{ pilar.nome }} ({{ pilar.sigla }})</h2>
+                <h2 class="h5 fw-bold mb-1">Pilar {{ pilar.nome }} ({{ pilar.sigla }})</h2>
                 <p class="text-muted small mb-3">Marque a frase que melhor descreve a empresa <strong>hoje</strong>. Na dúvida entre dois níveis, escolha o mais baixo.</p>
 
                 {% for sub in pilar.subtemas %}

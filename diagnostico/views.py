@@ -79,7 +79,7 @@ def resultado(request, pk):
         for pilar in perguntas.PILARES:
             nota = notas[pilar['chave']]
             pilares.append({
-                'chave': pilar['chave'], 'nome': pilar['nome'], 'sigla': pilar['sigla'], 'icone': pilar['icone'],
+                'chave': pilar['chave'], 'nome': pilar['nome'], 'sigla': pilar['sigla'],
                 'pct': nota['pct'], 'medalha': classificar(nota['pct']), 'subtemas': nota['subtemas'],
             })
         titulos_no_plano = set(Atividade.objects.values_list('titulo', flat=True))
