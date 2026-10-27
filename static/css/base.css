@@ -180,3 +180,7 @@ body { background: var(--creme); color: var(--texto); }
 /* Telas de login e cadastro */
 .caixa-auth { max-width: 460px; }
 .caixa-auth-larga { max-width: 520px; }
+.badge-mensagens {
+    margin-left: auto; min-width: 20px; height: 20px; padding: 0 6px; border-radius: 999px;
+    background: #ffc20e; color: #2b2a22; font-size: 12px; font-weight: 800; line-height: 20px; text-align: center;
+}

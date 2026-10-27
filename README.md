@@ -1,5 +1,7 @@
 # [Vastra] — Plataforma de Gestão ESG para PMEs
 
+[![CI](https://github.com/R0DR1G9/projetos2_grupo15/actions/workflows/ci.yml/badge.svg)](https://github.com/R0DR1G9/projetos2_grupo15/actions/workflows/ci.yml)
+
 ## 📋 Descrição do Projeto
 
 Plataforma web para pequenas e médias empresas acompanharem seus indicadores, metas e ações de sustentabilidade (ESG — Ambiental, Social e Governança) em um único painel centralizado, inspirada na análise de mercado de ferramentas como Paresi, ESG Business, Minha Pegada, Orkea e EcoVadis.
@@ -37,6 +39,7 @@ Plataforma web para pequenas e médias empresas acompanharem seus indicadores, m
 
 - [Documento de Análise de Competidores](./relatório_de_análise_de_competidores.md) — benchmark com 5 concorrentes, pontos fortes/fracos e requisitos levantados
 - [Histórias de Usuário](./historias.md) — 6 histórias no formato Como/Quero/Para, com cenários de validação em BDD (Dado/Quando/Então)
+- [Como contribuir](./CONTRIBUTING.md) — como rodar o projeto, fluxo de branches e Pull Requests, testes e pipeline de CI
 
 ## ✅ Requisitos do Produto (não triviais)
 
