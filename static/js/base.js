@@ -26,4 +26,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!confirm(form.dataset.confirmar)) e.preventDefault();
         });
     });
+
+    document.querySelectorAll('a[data-focar]').forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            const alvo = document.getElementById(link.dataset.focar);
+            if (alvo) alvo.focus();
+        });
+    });
 });

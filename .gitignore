@@ -8,3 +8,5 @@ db.sqlite3
 .env.local
 .vercel/
 staticfiles/
+
+media/

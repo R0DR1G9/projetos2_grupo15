@@ -31,7 +31,7 @@
         </form>
 
         {% if p.autor_id == request.user.id or request.user.is_staff %}
-        <form method="post" action="{% url 'rede_social:excluir_post' p.pk %}" onsubmit="return confirm('Excluir esta publicação?');">{% csrf_token %}
+        <form method="post" action="{% url 'rede_social:excluir_post' p.pk %}" data-confirmar="Excluir esta publicação?">{% csrf_token %}
           <input type="hidden" name="next" value="{% if detalhe %}{% url 'rede_social:feed' %}{% else %}{{ request.get_full_path }}{% endif %}">
           <button class="rs-acao rs-perigo" type="submit">Excluir</button>
         </form>

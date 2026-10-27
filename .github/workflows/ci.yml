@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  testes:
+    name: Testes
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar o código
+        uses: actions/checkout@v4
+
+      - name: Instalar o Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Instalar as dependências
+        run: pip install -r requirements.txt
+
+      - name: Verificar a configuração do Django
+        run: python manage.py check
+
+      - name: Verificar se há migrações pendentes
+        run: python manage.py makemigrations --check --dry-run
+
+      - name: Rodar os testes automatizados
+        run: python manage.py test
