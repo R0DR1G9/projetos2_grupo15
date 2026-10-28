@@ -103,7 +103,7 @@ Bugs e pendências são registrados nas [Issues do repositório no GitHub](https
 
 ## 🚀 Deploy
 
-- **URL em produção:** https://projetos2-grupo15.onrender.com
+- **URL em produção:** https://projetos2-grupo15.vercel.app
 - **Como rodar localmente:**
 ```bash
 git clone https://github.com/R0DR1G9/projetos2_grupo15.git
