@@ -1,37 +1,30 @@
-{% extends "base.html" %}
+{% extends "base_auth.html" %}
 
 {% block title %}Entrar{% endblock %}
 
 {% block content %}
-<div class="container py-5 caixa-auth">
-    <div class="card border-0 shadow-sm rounded-4">
-        <div class="card-body p-4">
-            <h3 class="fw-bold text-center mb-4"><i class="ci ci-log-in text-success me-2"></i>Entrar</h3>
+<h1>Bem-vindo!</h1>
+<p class="auth-subtitulo">Entre na sua conta para continuar.</p>
 
-            {% if form.errors %}
-                <div class="alert alert-danger">Usuário ou senha incorretos.</div>
-            {% endif %}
+{% if form.errors %}
+    <div class="alert alert-danger">Usuário ou senha incorretos.</div>
+{% endif %}
 
-            <form method="post">
-                {% csrf_token %}
-                <input type="hidden" name="next" value="{{ next }}">
-                <div class="mb-3">
-                    <label class="form-label fw-bold">Usuário</label>
-                    <input type="text" name="username" class="form-control" required autofocus>
-                </div>
-                <div class="mb-4">
-                    <label class="form-label fw-bold">Senha</label>
-                    <input type="password" name="password" class="form-control" required>
-                </div>
-                <div class="d-grid">
-                    <button type="submit" class="btn btn-success fw-bold">Entrar</button>
-                </div>
-            </form>
-
-            <p class="text-center text-muted small mt-3 mb-0">
-                Ainda não tem conta? <a href="{% url 'cadastro' %}">Criar conta</a>
-            </p>
-        </div>
+<form method="post">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ next }}">
+    <div class="mb-3">
+        <label class="form-label" for="id_username">Usuário</label>
+        <input type="text" name="username" id="id_username" class="form-control" placeholder="Seu usuário" required autofocus>
     </div>
-</div>
+    <div class="mb-4">
+        <label class="form-label" for="id_password">Senha</label>
+        <input type="password" name="password" id="id_password" class="form-control" placeholder="Digite sua senha" required>
+    </div>
+    <div class="d-grid">
+        <button type="submit" class="btn btn-success fw-bold auth-botao">Entrar</button>
+    </div>
+</form>
+
+<p class="auth-rodape">Ainda não tem uma conta?<a href="{% url 'cadastro' %}">Cadastrar</a></p>
 {% endblock %}

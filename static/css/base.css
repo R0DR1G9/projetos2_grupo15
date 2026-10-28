@@ -78,7 +78,7 @@ body { background: var(--fundo); color: var(--texto); }
 .menu-item span { white-space: nowrap; }
 .menu-item.desativado { opacity: .5; cursor: not-allowed; }
 .menu-item.desativado:hover { background: transparent; color: var(--creme-ouro); }
-.menu-item em { white-space: nowrap; margin-left: auto; font-style: normal; font-size: .58rem; text-transform: uppercase; letter-spacing: .02em; padding: .1rem .4rem !important; background: rgba(250, 228, 178, .2); padding: .1rem .45rem; border-radius: 999px; }
+.menu-item em { white-space: nowrap; margin-left: auto; font-style: normal; font-size: .52rem; text-transform: uppercase; letter-spacing: .02em; padding: .1rem .3rem !important; background: rgba(250, 228, 178, .2); padding: .1rem .45rem; border-radius: 999px; }
 
 .menu-titulo { margin: 1.6rem 1rem .4rem; font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; color: rgba(250, 228, 178, .6); }
 .menu-secundario .menu-item { padding: .5rem 1rem; font-size: .9rem; font-weight: 600; border-color: transparent; }
@@ -192,3 +192,5 @@ body { background: var(--fundo); color: var(--texto); }
     margin-left: auto; min-width: 20px; height: 20px; padding: 0 6px; border-radius: 999px;
     background: var(--laranja); color: #fff; font-size: 12px; font-weight: 800; line-height: 20px; text-align: center;
 }
+
+.cabecalho-vinho th { background: var(--vinho); color: var(--creme-ouro); border-color: var(--vinho); }
