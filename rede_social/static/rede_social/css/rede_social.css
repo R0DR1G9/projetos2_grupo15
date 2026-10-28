@@ -5,14 +5,14 @@
    - Para ajustar as cores ao tema, altere só as variáveis abaixo.
    ========================================================================== */
 .rs{
-  --rs-verde:#2f4a2a;        /* links, abas ativas, destaques */
-  --rs-verde-esc:#223420;
-  --rs-acento:#a4512c;       /* botão principal (mesmo tom do "Entrar") */
-  --rs-acento-esc:#8a4324;
-  --rs-card:#fffaf3;
-  --rs-borda:#e8dccb;
-  --rs-txt:#2b2a22;
-  --rs-mudo:#6f6a5c;
+  --rs-verde:#673a40;        /* links, abas ativas, destaques */
+  --rs-verde-esc:#7d2028;
+  --rs-acento:#673a40;       /* botão principal */
+  --rs-acento-esc:#7d2028;
+  --rs-card:#ffffff;
+  --rs-borda:#ecdcb3;
+  --rs-txt:#2f2123;
+  --rs-mudo:#7a6468;
   color:var(--rs-txt);font-size:15px;line-height:1.45
 }
 .rs *,.rs *::before,.rs *::after{box-sizing:border-box}
@@ -42,24 +42,24 @@
 .rs .rs-btn{display:inline-block;background:var(--rs-acento);color:#fff;border:0;border-radius:999px;padding:8px 18px;font:inherit;font-size:14px;font-weight:700;cursor:pointer;line-height:1.3}
 .rs .rs-btn:hover{background:var(--rs-acento-esc);color:#fff;text-decoration:none}
 .rs .rs-btn-sec{background:transparent;color:var(--rs-acento);border:1px solid var(--rs-acento)}
-.rs .rs-btn-sec:hover{background:rgba(164,81,44,.08);color:var(--rs-acento-esc)}
+.rs .rs-btn-sec:hover{background:rgba(103,58,64,.08);color:var(--rs-acento-esc)}
 .rs .rs-btn-p{padding:5px 12px;font-size:13px}
 .rs textarea,.rs input[type=text],.rs input[type=url],.rs input[type=search],.rs select{width:100%;padding:10px;border:1px solid var(--rs-borda);border-radius:8px;background:#fff;color:var(--rs-txt);font:inherit}
-.rs textarea:focus,.rs input:focus,.rs select:focus{outline:2px solid rgba(47,74,42,.35);outline-offset:1px}
+.rs textarea:focus,.rs input:focus,.rs select:focus{outline:2px solid rgba(214,198,123,.7);outline-offset:1px}
 .rs textarea{resize:vertical}
 .rs .rs-compositor-rodape{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-top:8px}
 .rs .rs-compositor-rodape select{width:auto}
 .rs .rs-compositor-opcoes{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .rs .rs-upload{position:relative;display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border:1px solid var(--rs-borda);border-radius:999px;background:#fff;color:var(--rs-verde);font-size:14px;font-weight:700;cursor:pointer}
-.rs .rs-upload:hover,.rs .rs-upload:focus-within{border-color:var(--rs-verde);background:rgba(47,74,42,.06)}
+.rs .rs-upload:hover,.rs .rs-upload:focus-within{border-color:var(--rs-verde);background:rgba(214,198,123,.18)}
 .rs .rs-upload input[type=file]{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);opacity:0}
 .rs .rs-preview{position:relative;display:inline-block;margin-top:10px;max-width:100%}
 .rs .rs-preview[hidden]{display:none}
 .rs .rs-preview img{display:block;max-width:100%;max-height:260px;border-radius:10px;border:1px solid var(--rs-borda)}
 .rs .rs-preview-remover{position:absolute;top:6px;right:6px;width:28px;height:28px;border:0;border-radius:50%;background:rgba(0,0,0,.65);color:#fff;font-size:14px;line-height:1;cursor:pointer}
 .rs .rs-preview-remover:hover{background:rgba(0,0,0,.85)}
-.rs .rs-erro-cliente{color:#b42318;font-size:13px;margin:6px 0 0}
-.rs .errorlist{color:#b42318;list-style:none;padding:0;margin:6px 0;font-size:13px}
+.rs .rs-erro-cliente{color:#7d2028;font-size:13px;margin:6px 0 0}
+.rs .errorlist{color:#7d2028;list-style:none;padding:0;margin:6px 0;font-size:13px}
 
 /* ---- abas e filtros do feed --------------------------------------------- */
 .rs .rs-abas{display:flex;border-bottom:1px solid var(--rs-borda);margin-bottom:10px}
@@ -78,20 +78,20 @@
 .rs .rs-post-cabecalho{display:flex;flex-wrap:wrap;gap:6px;align-items:baseline}
 .rs .rs-conteudo{margin:6px 0 10px;overflow-wrap:anywhere}
 .rs .rs-hashtag{font-weight:700}
-.rs .rs-post-imagem{display:block;margin:0 0 10px;border-radius:12px;overflow:hidden;border:1px solid var(--rs-borda);background:#f1ebe0}
+.rs .rs-post-imagem{display:block;margin:0 0 10px;border-radius:12px;overflow:hidden;border:1px solid var(--rs-borda);background:#fdf1d8}
 .rs .rs-post-imagem:hover{text-decoration:none}
 .rs .rs-post-imagem{cursor:zoom-in}
 .rs .rs-post-imagem img{display:block;width:100%;max-height:480px;object-fit:cover}
 .rs .rs-pilar{font-size:11px;padding:1px 8px;border-radius:999px;border:1px solid var(--rs-borda);margin-left:auto}
-.rs .rs-pilar-ambiental{background:#e5f1e0;color:#2f6a2a}
-.rs .rs-pilar-social{background:#e6eefb;color:#1f5fa8}
-.rs .rs-pilar-governanca{background:#f1e9fb;color:#6a3fa0}
+.rs .rs-pilar-ambiental{background:#e4e7da;color:#3e462f}
+.rs .rs-pilar-social{background:#f3dcdd;color:#7d2028}
+.rs .rs-pilar-governanca{background:#dcedf4;color:#2d6a80}
 .rs .rs-acoes{display:flex;flex-wrap:wrap;gap:4px 14px}
 .rs .rs-acoes form{margin:0}
 .rs .rs-acao{background:none;border:0;padding:4px 0;color:var(--rs-mudo);font:inherit;font-size:13px;cursor:pointer}
 .rs .rs-acao:hover{color:var(--rs-acento);text-decoration:none}
 .rs .rs-acao.ativa{color:var(--rs-acento);font-weight:700}
-.rs .rs-acao.rs-perigo:hover{color:#b42318}
+.rs .rs-acao.rs-perigo:hover{color:#7d2028}
 .rs .rs-comentario{display:flex;gap:10px;padding:10px 0;border-top:1px solid var(--rs-borda)}
 .rs .rs-comentario .rs-conteudo{margin:2px 0 0}
 
@@ -142,7 +142,7 @@
 
 /* botões, chips, abas e ações */
 .rs .rs-btn{transition:background-color .2s,color .2s,border-color .2s,box-shadow .3s ease,transform .3s cubic-bezier(.22,1,.36,1)}
-.rs .rs-btn:hover{transform:translateY(-1px);box-shadow:0 6px 14px rgba(164,81,44,.25)}
+.rs .rs-btn:hover{transform:translateY(-1px);box-shadow:0 6px 14px rgba(103,58,64,.25)}
 .rs .rs-btn-sec:hover{box-shadow:none}
 .rs .rs-btn:active{transform:scale(.97);box-shadow:none;transition-duration:.08s}
 .rs .rs-acao{transition:color .2s ease,transform .25s cubic-bezier(.22,1,.36,1)}
@@ -156,7 +156,7 @@
 
 /* cards de post */
 .rs .rs-post{transition:box-shadow .35s ease,border-color .35s ease}
-@media (hover:hover){.rs .rs-post:hover{box-shadow:0 10px 24px rgba(94,62,30,.10);border-color:#dccbb3}}
+@media (hover:hover){.rs .rs-post:hover{box-shadow:0 10px 24px rgba(103,58,64,.12);border-color:#ecdcb3}}
 
 /* upload de foto: botão, pré-visualização e erro */
 .rs .rs-upload{transition:border-color .2s,background-color .2s,transform .3s cubic-bezier(.22,1,.36,1)}

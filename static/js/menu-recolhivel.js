@@ -78,7 +78,7 @@
     botao.setAttribute('aria-label', texto);
     botao.setAttribute('title', texto);
     var icone = botao.querySelector('i');
-    if (icone) icone.className = r ? 'bi bi-chevron-double-right' : 'bi bi-chevron-double-left';
+    if (icone) icone.className = r ? 'ci ci-chevron-double-right' : 'ci ci-chevron-double-left';
   }
 
   function atualizarDicas(r) {

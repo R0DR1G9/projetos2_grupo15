@@ -7,14 +7,14 @@ from diagnostico.models import DiagnosticoESG
 
 # Uma dica por semana: a dica muda sozinha a cada semana do ano.
 DICAS = [
-    {"icone": "bi-scissors", "texto": "Reduzir o desperdício de tecido pode gerar economia e diminuir o impacto ambiental da sua produção."},
-    {"icone": "bi-recycle", "texto": "Reaproveite retalhos em novas peças e acessórios, ou doe para ateliês e cooperativas da sua região."},
-    {"icone": "bi-droplet-half", "texto": "Anote o consumo de água todo mês e defina uma meta de redução. O que é medido, melhora."},
-    {"icone": "bi-shield-check", "texto": "Um canal de denúncias simples, como um e-mail ou formulário, já fortalece a governança da empresa."},
-    {"icone": "bi-people", "texto": "Treinamentos curtos de segurança e ergonomia ajudam a prevenir acidentes e melhoram o clima da equipe."},
-    {"icone": "bi-truck", "texto": "Pergunte aos fornecedores a origem das matérias-primas e registre as respostas em uma planilha."},
-    {"icone": "bi-journal-check", "texto": "Escreva um Código de Ética de uma página e compartilhe com todos os colaboradores."},
-    {"icone": "bi-lightbulb", "texto": "Trocar lâmpadas por LED e desligar máquinas paradas são mudanças pequenas que reduzem a conta de energia."},
+    {"icone": "ci-scissors", "texto": "Reduzir o desperdício de tecido pode gerar economia e diminuir o impacto ambiental da sua produção."},
+    {"icone": "ci-recycle", "texto": "Reaproveite retalhos em novas peças e acessórios, ou doe para ateliês e cooperativas da sua região."},
+    {"icone": "ci-droplet", "texto": "Anote o consumo de água todo mês e defina uma meta de redução. O que é medido, melhora."},
+    {"icone": "ci-shield-check", "texto": "Um canal de denúncias simples, como um e-mail ou formulário, já fortalece a governança da empresa."},
+    {"icone": "ci-users", "texto": "Treinamentos curtos de segurança e ergonomia ajudam a prevenir acidentes e melhoram o clima da equipe."},
+    {"icone": "ci-truck", "texto": "Pergunte aos fornecedores a origem das matérias-primas e registre as respostas em uma planilha."},
+    {"icone": "ci-book-open", "texto": "Escreva um Código de Ética de uma página e compartilhe com todos os colaboradores."},
+    {"icone": "ci-bulb", "texto": "Trocar lâmpadas por LED e desligar máquinas paradas são mudanças pequenas que reduzem a conta de energia."},
 ]
 
 @login_required

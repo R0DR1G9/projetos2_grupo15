@@ -18,7 +18,7 @@
                     <div class="d-flex justify-content-between align-items-start mb-3">
                         <h2 class="h5 fw-bold mb-0">Seu score ESG</h2>
                         {% if score %}
-                            <a href="{% url 'evolucao' %}" class="small fw-bold text-decoration-none">Ver evolução <i class="bi bi-arrow-right"></i></a>
+                            <a href="{% url 'evolucao' %}" class="small fw-bold text-decoration-none">Ver evolução <i class="ci ci-arrow-right"></i></a>
                         {% endif %}
                     </div>
 
@@ -37,10 +37,10 @@
                                         {% if variacao is None %}
                                             <span class="text-muted">Primeiro diagnóstico de <strong>{{ empresa }}</strong></span>
                                         {% elif variacao > 0 %}
-                                            <span class="text-success fw-bold"><i class="bi bi-arrow-up"></i> +{{ variacao|floatformat:"-1" }} pontos</span>
+                                            <span class="text-success fw-bold"><i class="ci ci-arrow-up"></i> +{{ variacao|floatformat:"-1" }} pontos</span>
                                             <span class="text-muted">desde o último diagnóstico</span>
                                         {% elif variacao < 0 %}
-                                            <span class="fw-bold texto-terracota"><i class="bi bi-arrow-down"></i> {{ variacao|floatformat:"-1" }} pontos</span>
+                                            <span class="fw-bold texto-terracota"><i class="ci ci-arrow-down"></i> {{ variacao|floatformat:"-1" }} pontos</span>
                                             <span class="text-muted">desde o último diagnóstico</span>
                                         {% else %}
                                             <span class="text-muted">Igual ao último diagnóstico</span>
@@ -59,7 +59,7 @@
                     </div>
                     {% else %}
                         <div class="text-center py-4">
-                            <i class="bi bi-clipboard2-check fs-1 text-muted"></i>
+                            <i class="ci ci-clipboard-check fs-1 text-muted"></i>
                             <p class="mt-2 mb-3">Você ainda não fez o diagnóstico ESG. Responda para ver o seu score aqui.</p>
                             <a href="{% url 'novo_diagnostico' %}" class="btn btn-success">Fazer diagnóstico</a>
                         </div>
@@ -74,11 +74,11 @@
                 <div class="card-body p-4">
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <h2 class="h5 fw-bold mb-0">Ações em andamento</h2>
-                        <a href="{% url 'quadro_atividades' %}" class="small fw-bold text-decoration-none">Ver todas <i class="bi bi-arrow-right"></i></a>
+                        <a href="{% url 'quadro_atividades' %}" class="small fw-bold text-decoration-none">Ver todas <i class="ci ci-arrow-right"></i></a>
                     </div>
                     {% for a in acoes %}
                         <div class="acao">
-                            <i class="bi bi-check-circle"></i>
+                            <i class="ci ci-circle-check"></i>
                             <div class="flex-grow-1">
                                 <div class="acao-titulo">{{ a.titulo }}</div>
                                 <span class="chip chip-{{ a.categoria }}">{{ a.get_categoria_display }}</span>
@@ -87,7 +87,7 @@
                         </div>
                     {% empty %}
                         <div class="text-center py-5 text-muted">
-                            <i class="bi bi-pencil-square fs-1"></i>
+                            <i class="ci ci-note-edit fs-1"></i>
                             <p class="mt-2 mb-3">Nenhuma ação em andamento. Organize suas ações no Plano de Ação.</p>
                             <a href="{% url 'quadro_atividades' %}" class="btn btn-outline-success btn-sm">Ir para o Plano de Ação</a>
                         </div>
@@ -102,7 +102,7 @@
         <!-- Dica da semana -->
         <div class="col-lg-4">
             <div class="card h-100">
-                <div class="dica-imagem"><i class="bi {{ dica.icone }}"></i></div>
+                <div class="dica-imagem"><i class="ci {{ dica.icone }}"></i></div>
                 <div class="card-body p-4 d-flex flex-column">
                     <h2 class="h5 fw-bold">Dica da semana</h2>
                     <p class="text-muted">{{ dica.texto }}</p>

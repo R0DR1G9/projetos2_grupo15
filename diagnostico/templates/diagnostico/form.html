@@ -8,7 +8,7 @@
 {% block content %}
 <header class="bg-success bg-gradient text-white py-5 text-center shadow-sm">
     <div class="container py-3">
-        <h1 class="display-5 fw-bold"><i class="bi bi-clipboard2-check me-2"></i>Novo diagnóstico ESG</h1>
+        <h1 class="display-5 fw-bold"><i class="ci ci-clipboard-check me-2"></i>Novo diagnóstico ESG</h1>
         <p class="lead mb-0">Até {{ total_perguntas }} perguntas em 4 etapas, baseadas em referências reconhecidas.
             <a href="{% url 'metodologia_diagnostico' %}" class="text-decoration-underline">Como é feito</a></p>
     </div>
@@ -28,7 +28,7 @@
 
         {% if erro_respostas or form.errors %}
             <div class="alert alert-danger">
-                <i class="bi bi-exclamation-triangle me-1"></i>
+                <i class="ci ci-triangle-warning me-1"></i>
                 {% if form.errors %}Confira os dados da empresa. {% endif %}
                 {% if erro_respostas %}Algumas perguntas ficaram sem resposta. Elas estão destacadas abaixo.{% endif %}
             </div>
@@ -122,9 +122,9 @@
         {% endfor %}
 
         <div class="d-flex justify-content-between align-items-center mt-4">
-            <button type="button" class="btn btn-outline-success fw-bold invisivel" id="btnVoltar"><i class="bi bi-arrow-left me-1"></i>Voltar</button>
-            <button type="button" class="btn btn-success fw-bold px-4" id="btnProximo">Próximo <i class="bi bi-arrow-right ms-1"></i></button>
-            <button type="submit" class="btn btn-success fw-bold px-4" id="btnFinalizar" hidden><i class="bi bi-check-circle me-1"></i>Ver meu resultado</button>
+            <button type="button" class="btn btn-outline-success fw-bold invisivel" id="btnVoltar"><i class="ci ci-arrow-left me-1"></i>Voltar</button>
+            <button type="button" class="btn btn-success fw-bold px-4" id="btnProximo">Próximo <i class="ci ci-arrow-right ms-1"></i></button>
+            <button type="submit" class="btn btn-success fw-bold px-4" id="btnFinalizar" hidden><i class="ci ci-circle-check me-1"></i>Ver meu resultado</button>
         </div>
     </form>
 </main>

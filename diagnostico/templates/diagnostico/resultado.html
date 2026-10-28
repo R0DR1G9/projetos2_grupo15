@@ -8,7 +8,7 @@
 {% block content %}
 <header class="bg-success bg-gradient text-white py-5 text-center shadow-sm">
     <div class="container py-3">
-        <h1 class="display-5 fw-bold"><i class="bi bi-clipboard2-data me-2"></i>Resultado do diagnóstico</h1>
+        <h1 class="display-5 fw-bold"><i class="ci ci-clipboard-list me-2"></i>Resultado do diagnóstico</h1>
         <p class="lead mb-0">{{ diagnostico.nome_empresa }} · {{ diagnostico.data_criacao|date:"d/m/Y" }}</p>
     </div>
 </header>
@@ -47,7 +47,7 @@
             {% else %}
             <div class="col-lg-8">
                 <div class="alert alert-info mb-0">
-                    <i class="bi bi-info-circle me-1"></i>Este diagnóstico foi feito no formato antigo (sim ou não), por isso não tem análise detalhada.
+                    <i class="ci ci-circle-info me-1"></i>Este diagnóstico foi feito no formato antigo (sim ou não), por isso não tem análise detalhada.
                     Faça um novo diagnóstico para ver notas por subtema, pontos fortes e recomendações.
                     <div class="mt-2 small">Ambiental {{ pontuacao.ambiental|floatformat:"-1" }}% · Social {{ pontuacao.social|floatformat:"-1" }}% · Governança {{ pontuacao.governanca|floatformat:"-1" }}%</div>
                 </div>
@@ -71,7 +71,7 @@
                     {% if pendentes %}
                     <form method="post" action="{% url 'adicionar_ao_plano' diagnostico.pk %}">
                         {% csrf_token %}<input type="hidden" name="todas" value="1">
-                        <button class="btn btn-success btn-sm fw-bold"><i class="bi bi-plus-circle me-1"></i>Adicionar todas ao Plano de Ação</button>
+                        <button class="btn btn-success btn-sm fw-bold"><i class="ci ci-circle-plus me-1"></i>Adicionar todas ao Plano de Ação</button>
                     </form>
                     {% endif %}
                 </div>
@@ -83,18 +83,18 @@
                         <div class="mb-1">
                             <span class="chip chip-{{ r.categoria }}">{{ r.categoria_nome }}</span>
                             <span class="chip prio-{% if r.prioridade == 'Alta' %}alta{% elif r.prioridade == 'Média' %}media{% else %}baixa{% endif %}">Prioridade {{ r.prioridade|lower }}</span>
-                            <span class="chip chip-prazo"><i class="bi bi-clock me-1"></i>{{ r.prazo }} dias</span>
+                            <span class="chip chip-prazo"><i class="ci ci-clock me-1"></i>{{ r.prazo }} dias</span>
                         </div>
                         <div class="rec-titulo">{{ r.acao }}</div>
                         <div class="rec-pronto"><strong>Pronto quando:</strong> {{ r.pronto }}.</div>
                         <div class="rec-fontes">{{ r.subtema }} · de {{ r.nivel_nome }} para {{ r.proximo_nome }} · Base: {{ r.fontes|join:", " }}</div>
                     </div>
                     {% if r.no_plano %}
-                        <span class="small fw-bold text-success text-nowrap"><i class="bi bi-check-circle-fill me-1"></i>No plano</span>
+                        <span class="small fw-bold text-success text-nowrap"><i class="ci ci-circle-check me-1"></i>No plano</span>
                     {% else %}
                         <form method="post" action="{% url 'adicionar_ao_plano' diagnostico.pk %}">
                             {% csrf_token %}<input type="hidden" name="pergunta" value="{{ r.id }}">
-                            <button class="btn btn-outline-success btn-sm fw-bold text-nowrap"><i class="bi bi-plus-lg me-1"></i>Adicionar ao plano</button>
+                            <button class="btn btn-outline-success btn-sm fw-bold text-nowrap"><i class="ci ci-plus me-1"></i>Adicionar ao plano</button>
                         </form>
                     {% endif %}
                 </div>
@@ -108,7 +108,7 @@
             <div class="card mb-4"><div class="card-body p-4">
                 <h2 class="h5 fw-bold mb-2">Pontos fortes</h2>
                 {% for f in pontos_fortes %}
-                    <div class="forte"><i class="bi bi-check-circle-fill"></i><div><div class="fw-bold small">{{ f.subtema }} · {{ f.nivel_nome }}</div><div class="small text-muted">{{ f.descricao }}</div></div></div>
+                    <div class="forte"><i class="ci ci-circle-check"></i><div><div class="fw-bold small">{{ f.subtema }} · {{ f.nivel_nome }}</div><div class="small text-muted">{{ f.descricao }}</div></div></div>
                 {% empty %}
                     <p class="small text-muted mb-0">Ainda não há áreas em nível Gerenciado ou Integrado. Os primeiros passos estão nas ações ao lado.</p>
                 {% endfor %}
@@ -130,8 +130,8 @@
     {% endif %}
 
     <div class="d-flex flex-wrap gap-2 mt-4">
-        <a href="{% url 'novo_diagnostico' %}" class="btn btn-success fw-bold"><i class="bi bi-arrow-repeat me-1"></i>Fazer novo diagnóstico</a>
-        <a href="{% url 'quadro_atividades' %}" class="btn btn-outline-success fw-bold"><i class="bi bi-kanban me-1"></i>Ver Plano de Ação</a>
+        <a href="{% url 'novo_diagnostico' %}" class="btn btn-success fw-bold"><i class="ci ci-reload me-1"></i>Fazer novo diagnóstico</a>
+        <a href="{% url 'quadro_atividades' %}" class="btn btn-outline-success fw-bold"><i class="ci ci-kanban me-1"></i>Ver Plano de Ação</a>
         <a href="{% url 'home' %}" class="btn btn-outline-success fw-bold">Todos os diagnósticos</a>
     </div>
 </main>

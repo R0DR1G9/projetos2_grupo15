@@ -1,0 +1,60 @@
+/* Ícones: coolicons (https://github.com/krystonschwarze/coolicons, licença MIT) */
+.ci {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.125em;
+    background-color: currentColor;
+    -webkit-mask: var(--ci-img) center / contain no-repeat;
+    mask: var(--ci-img) center / contain no-repeat;
+}
+.ci-activity { --ci-img: url('../icones/activity.svg'); }
+.ci-arrow-down { --ci-img: url('../icones/arrow-down.svg'); }
+.ci-arrow-left { --ci-img: url('../icones/arrow-left.svg'); }
+.ci-arrow-right { --ci-img: url('../icones/arrow-right.svg'); }
+.ci-arrow-up { --ci-img: url('../icones/arrow-up.svg'); }
+.ci-bank { --ci-img: url('../icones/bank.svg'); }
+.ci-bell { --ci-img: url('../icones/bell.svg'); }
+.ci-book-open { --ci-img: url('../icones/book-open.svg'); }
+.ci-bulb { --ci-img: url('../icones/bulb.svg'); }
+.ci-chart-bar-vertical { --ci-img: url('../icones/chart-bar-vertical.svg'); }
+.ci-chat-dots { --ci-img: url('../icones/chat-dots.svg'); }
+.ci-chat-text { --ci-img: url('../icones/chat-text.svg'); }
+.ci-chevron-double-left { --ci-img: url('../icones/chevron-double-left.svg'); }
+.ci-chevron-double-right { --ci-img: url('../icones/chevron-double-right.svg'); }
+.ci-circle-check { --ci-img: url('../icones/circle-check.svg'); }
+.ci-circle-info { --ci-img: url('../icones/circle-info.svg'); }
+.ci-circle-plus { --ci-img: url('../icones/circle-plus.svg'); }
+.ci-circle-warning { --ci-img: url('../icones/circle-warning.svg'); }
+.ci-clipboard-check { --ci-img: url('../icones/clipboard-check.svg'); }
+.ci-clipboard-list { --ci-img: url('../icones/clipboard-list.svg'); }
+.ci-clock { --ci-img: url('../icones/clock.svg'); }
+.ci-droplet { --ci-img: url('../icones/droplet.svg'); }
+.ci-file-text { --ci-img: url('../icones/file-text.svg'); }
+.ci-github { --ci-img: url('../icones/github.svg'); }
+.ci-globe { --ci-img: url('../icones/globe.svg'); }
+.ci-house { --ci-img: url('../icones/house.svg'); }
+.ci-kanban { --ci-img: url('../icones/kanban.svg'); }
+.ci-log-in { --ci-img: url('../icones/log-in.svg'); }
+.ci-log-out { --ci-img: url('../icones/log-out.svg'); }
+.ci-mail { --ci-img: url('../icones/mail.svg'); }
+.ci-menu { --ci-img: url('../icones/menu.svg'); }
+.ci-network { --ci-img: url('../icones/network.svg'); }
+.ci-note-edit { --ci-img: url('../icones/note-edit.svg'); }
+.ci-paper-plane { --ci-img: url('../icones/paper-plane.svg'); }
+.ci-plus { --ci-img: url('../icones/plus.svg'); }
+.ci-recycle { --ci-img: url('../icones/recycle.svg'); }
+.ci-reload { --ci-img: url('../icones/reload.svg'); }
+.ci-scissors { --ci-img: url('../icones/scissors.svg'); }
+.ci-search { --ci-img: url('../icones/search.svg'); }
+.ci-settings { --ci-img: url('../icones/settings.svg'); }
+.ci-shield-check { --ci-img: url('../icones/shield-check.svg'); }
+.ci-target { --ci-img: url('../icones/target.svg'); }
+.ci-trash { --ci-img: url('../icones/trash.svg'); }
+.ci-tree { --ci-img: url('../icones/tree.svg'); }
+.ci-triangle-warning { --ci-img: url('../icones/triangle-warning.svg'); }
+.ci-trophy { --ci-img: url('../icones/trophy.svg'); }
+.ci-truck { --ci-img: url('../icones/truck.svg'); }
+.ci-user { --ci-img: url('../icones/user.svg'); }
+.ci-user-plus-corner { --ci-img: url('../icones/user-plus-corner.svg'); }
+.ci-users { --ci-img: url('../icones/users.svg'); }
