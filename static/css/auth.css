@@ -1,0 +1,51 @@
+.pagina-auth { background: var(--fundo); }
+
+.auth { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; }
+
+.auth-marca {
+    background: var(--vinho);
+    color: var(--creme-ouro);
+    padding: 4rem 4rem 3.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.auth-logo {
+    display: inline-block;
+    font-family: var(--fonte-titulo);
+    font-size: clamp(2rem, 3.4vw, 2.9rem);
+    font-weight: 700;
+    letter-spacing: .01em;
+    color: #fff;
+    text-decoration: none;
+}
+.auth-slogan { margin: 1rem 0 0; font-size: 1.2rem; font-weight: 600; line-height: 1.6; }
+.auth-lema { margin: 0; font-size: 1.25rem; line-height: 1.7; color: var(--creme-ouro); opacity: .92; }
+
+.auth-form { display: flex; align-items: center; justify-content: center; padding: 3rem 2rem; }
+.auth-caixa { width: 100%; max-width: 380px; }
+.auth-caixa-larga { max-width: 460px; }
+.auth-caixa h1 { font-size: 2rem; font-weight: 700; color: var(--vinho); margin: 0 0 .35rem; }
+.auth-subtitulo { margin: 0 0 2rem; font-weight: 600; color: var(--texto); }
+
+.auth-caixa .form-label { font-weight: 700; margin-bottom: .35rem; }
+.auth-caixa .form-control {
+    background: var(--creme-ouro);
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: .7rem .9rem;
+    color: var(--texto);
+}
+.auth-caixa .form-control:focus { background: #fff; border-color: var(--ouro); box-shadow: 0 0 0 .25rem rgba(214, 198, 123, .45); }
+.auth-caixa .form-text { color: var(--texto-suave); }
+.auth-botao { padding: .85rem 1rem; font-size: 1.05rem; letter-spacing: .04em; text-transform: uppercase; border-radius: 10px; }
+.auth-rodape { margin: 1.75rem 0 0; text-align: center; font-size: .92rem; font-weight: 600; }
+.auth-rodape a { margin-left: .35rem; font-weight: 700; color: var(--vinho); }
+
+@media (max-width: 767.98px) {
+    .auth { grid-template-columns: 1fr; min-height: 100vh; grid-template-rows: auto 1fr; }
+    .auth-marca { padding: 1.75rem 1.5rem; }
+    .auth-slogan { margin-top: .5rem; font-size: 1rem; }
+    .auth-lema { display: none; }
+    .auth-form { align-items: flex-start; padding: 2rem 1.5rem 3rem; }
+}

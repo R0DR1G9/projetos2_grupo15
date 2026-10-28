@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Vastra{% endblock %} · Vastra</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://api.fontshare.com">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/tipografia.css' %}">
+    <link rel="stylesheet" href="{% static 'css/icones.css' %}">
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+</head>
+<body class="pagina-auth">
+<main class="auth">
+    <section class="auth-marca" aria-label="Apresentação">
+        <div>
+            <a class="auth-logo" href="{% url 'inicio' %}">Vastra</a>
+            <p class="auth-slogan">ESG de forma simples,<br>para a sua empresa de moda.</p>
+        </div>
+        <p class="auth-lema">Diagnostique. Planeje.<br>Acompanhe. Evolua.</p>
+    </section>
+
+    <section class="auth-form">
+        <div class="auth-caixa {% block classe_caixa %}{% endblock %}">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags|default:'success' }}" role="alert">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+            {% block content %}{% endblock %}
+        </div>
+    </section>
+</main>
+</body>
+</html>

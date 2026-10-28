@@ -1,30 +1,30 @@
 .anel {
     --pct: 0;
     width: 150px; height: 150px; border-radius: 50%; flex: none;
-    background: conic-gradient(var(--verde) calc(var(--pct) * 1%), var(--bege) 0);
+    background: conic-gradient(var(--vinho) calc(var(--pct) * 1%), var(--bege) 0);
     display: grid; place-items: center;
 }
 .anel-interno {
     width: 114px; height: 114px; border-radius: 50%;
     background: var(--cartao); display: grid; place-items: center;
-    font-size: 1.9rem; font-weight: 800; color: var(--verde-escuro);
+    font-size: 1.9rem; font-weight: 800; color: var(--vinho);
 }
 .mini-pilar { border-radius: 16px; padding: 1rem .5rem; text-align: center; height: 100%; }
 .mini-pilar .valor { font-size: clamp(1.2rem, 5.2vw, 1.7rem); font-weight: 800; line-height: 1.1; white-space: nowrap; }
-.mini-pilar .nome { font-size: .8rem; font-weight: 700; color: var(--texto-suave); }
+.mini-pilar .nome { font-size: clamp(.66rem, 2.9vw, .8rem); font-weight: 700; color: var(--texto-suave); white-space: nowrap; }
 
 .acao { display: flex; align-items: center; gap: .9rem; padding: .85rem 0; border-bottom: 1px solid var(--borda); }
 .acao:last-child { border-bottom: 0; }
-.acao > i { font-size: 1.4rem; color: var(--verde); }
+.acao > i { font-size: 1.4rem; color: var(--oliva); }
 .acao-titulo { font-weight: 700; }
 .chip { display: inline-block; font-size: .72rem; font-weight: 700; padding: .15rem .6rem; border-radius: 999px; }
-.chip-ambiental { background: #e7eddc; color: #3d5a2c; }
-.chip-social { background: #f6e0d6; color: #a24d2c; }
-.chip-governanca { background: #f3e6cf; color: #8a6420; }
-.chip-status { background: #e3eef0; color: #3c6a73; }
+.chip-ambiental { background: #e4e7da; color: var(--oliva); }
+.chip-social { background: #f3dcdd; color: var(--vinho-escuro); }
+.chip-governanca { background: #dcedf4; color: #2d6a80; }
+.chip-status { background: var(--creme-ouro); color: var(--vinho); }
 
 .dica-imagem {
     height: 150px; border-radius: 18px 18px 0 0;
-    background: linear-gradient(135deg, #cfd9b8 0%, #e9d9bd 55%, #d9b88a 100%);
-    display: grid; place-items: center; color: var(--verde); font-size: 3.5rem;
+    background: linear-gradient(135deg, var(--creme-ouro) 0%, var(--ouro) 100%);
+    display: grid; place-items: center; color: var(--vinho); font-size: 3.5rem;
 }

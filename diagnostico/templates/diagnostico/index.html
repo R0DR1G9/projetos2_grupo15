@@ -10,8 +10,8 @@
     <div class="container py-3">
         <h1 class="display-5 fw-bold">Diagnóstico de Maturidade ESG</h1>
         <p class="lead mb-0">Descubra em que nível a sua empresa está e o que fazer para evoluir</p>
-        <a href="{% url 'novo_diagnostico' %}" class="btn btn-success fw-bold"><i class="bi bi-plus-circle me-1"></i>Iniciar novo diagnóstico</a>
-        <a href="{% url 'metodologia_diagnostico' %}" class="btn btn-outline-success fw-bold"><i class="bi bi-journal-check me-1"></i>Metodologia e fontes</a>
+        <a href="{% url 'novo_diagnostico' %}" class="btn btn-success fw-bold"><i class="ci ci-circle-plus me-1"></i>Iniciar novo diagnóstico</a>
+        <a href="{% url 'metodologia_diagnostico' %}" class="btn btn-outline-success fw-bold"><i class="ci ci-book-open me-1"></i>Metodologia e fontes</a>
     </div>
 </header>
 
@@ -28,7 +28,7 @@
                             <h2 class="h6 fw-bold mb-0 text-truncate">{{ item.objeto.nome_empresa }}</h2>
                             <div class="small text-muted">{{ item.objeto.data_criacao|date:"d/m/Y H:i" }}{% if item.objeto.formato_antigo %} · formato antigo{% endif %}</div>
                         </div>
-                        <button type="button" class="btn btn-sm btn-link text-danger p-0" data-excluir="{{ item.objeto.pk }}" title="Excluir diagnóstico" aria-label="Excluir diagnóstico"><i class="bi bi-trash"></i></button>
+                        <button type="button" class="btn btn-sm btn-link text-danger p-0" data-excluir="{{ item.objeto.pk }}" title="Excluir diagnóstico" aria-label="Excluir diagnóstico"><i class="ci ci-trash"></i></button>
                     </div>
                     <div class="d-flex align-items-center gap-2 my-3">
                         <span class="badge rounded-pill text-white fs-6 medalha-{{ item.pontuacao.medalha_geral.chave }}">{{ item.pontuacao.medalha_geral.emoji }} {{ item.pontuacao.geral|floatformat:"-1" }}%</span>
@@ -49,7 +49,7 @@
     </div>
     {% else %}
     <div class="card"><div class="card-body p-5 text-center">
-        <i class="bi bi-clipboard2-pulse fs-1 texto-terracota"></i>
+        <i class="ci ci-activity fs-1 texto-terracota"></i>
         <h2 class="h5 fw-bold mt-3">Nenhum diagnóstico ainda</h2>
         <p class="text-muted">Responda perguntas em 4 etapas e receba sua nota ESG, pontos fortes e as ações mais importantes para começar.</p>
         <a href="{% url 'novo_diagnostico' %}" class="btn btn-success fw-bold">Fazer meu primeiro diagnóstico</a>

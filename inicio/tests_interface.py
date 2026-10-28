@@ -70,7 +70,7 @@ class InterfaceSemIconesTests(TestCase):
         self.assertEqual(len(cartoes), 3)
         for cartao in cartoes:
             self.assertNotIn('<i', cartao)
-        for icone in ('bi-tree', 'bi-bank'):
+        for icone in ('ci-tree', 'ci-bank'):
             self.assertNotIn(icone, html)
 
 

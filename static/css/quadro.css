@@ -1,5 +1,5 @@
-.coluna-aguardando { border-top: 4px solid #9a8b7c; }
-.coluna-andamento  { border-top: 4px solid #c78a45; }
-.coluna-concluido  { border-top: 4px solid #3d5a2c; }
+.coluna-aguardando { border-top: 4px solid #b7a5a8; }
+.coluna-andamento  { border-top: 4px solid var(--ouro); }
+.coluna-concluido  { border-top: 4px solid var(--oliva); }
 .card-atividade .badge-cat { font-size: .7rem; }
 .atividade-detalhe { font-size: .78rem; color: var(--texto-suave); margin: 0 0 .5rem; }

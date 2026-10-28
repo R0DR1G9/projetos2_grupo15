@@ -25,12 +25,12 @@
                 <div class="col-md-6">
                     {{ form.titulo }}
                     {% for erro in form.titulo.errors %}
-                        <div class="text-danger small mt-1"><i class="bi bi-exclamation-circle me-1"></i>{{ erro }}</div>
+                        <div class="text-danger small mt-1"><i class="ci ci-circle-warning me-1"></i>{{ erro }}</div>
                     {% endfor %}
                 </div>
                 <div class="col-md-3">{{ form.categoria }}</div>
                 <div class="col-md-3 d-grid">
-                    <button type="submit" class="btn btn-success"><i class="bi bi-plus-lg me-1"></i>Adicionar</button>
+                    <button type="submit" class="btn btn-success"><i class="ci ci-plus me-1"></i>Adicionar</button>
                 </div>
             </form>
         </div>
@@ -54,7 +54,7 @@
                                 <form method="post" action="{% url 'deletar_atividade' a.pk %}" data-confirmar="Remover esta atividade?">
                                     {% csrf_token %}
                                     <button type="submit" class="btn btn-sm btn-link text-danger p-0 ms-2" title="Remover" aria-label="Remover atividade">
-                                        <i class="bi bi-trash"></i>
+                                        <i class="ci ci-trash"></i>
                                     </button>
                                 </form>
                             </div>

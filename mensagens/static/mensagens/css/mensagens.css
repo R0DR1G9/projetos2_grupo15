@@ -3,14 +3,14 @@
    Cores combinam com a rede social; ajuste as variáveis abaixo se precisar.
    ========================================================================== */
 .ms{
-  --ms-verde:#2f4a2a;
-  --ms-acento:#a4512c;
-  --ms-acento-esc:#8a4324;
-  --ms-card:#fffaf3;
-  --ms-borda:#e8dccb;
-  --ms-txt:#2b2a22;
-  --ms-mudo:#6f6a5c;
-  --ms-balao:#f1e8da;
+  --ms-verde:#673a40;
+  --ms-acento:#673a40;
+  --ms-acento-esc:#7d2028;
+  --ms-card:#ffffff;
+  --ms-borda:#ecdcb3;
+  --ms-txt:#2f2123;
+  --ms-mudo:#7a6468;
+  --ms-balao:#fdf1d8;
   color:var(--ms-txt);font-size:15px;line-height:1.45
 }
 .ms *,.ms *::before,.ms *::after{box-sizing:border-box}
@@ -28,12 +28,12 @@
 .ms .ms-lista-topo{padding:16px 16px 8px}
 .ms .ms-busca{padding:0 16px 10px}
 .ms .ms-busca input{width:100%;padding:9px 14px;border:1px solid var(--ms-borda);border-radius:999px;background:#fff;color:var(--ms-txt);font:inherit;font-size:14px}
-.ms .ms-busca input:focus,.ms .ms-form textarea:focus{outline:2px solid rgba(47,74,42,.35);outline-offset:1px}
+.ms .ms-busca input:focus,.ms .ms-form textarea:focus{outline:2px solid rgba(214,198,123,.7);outline-offset:1px}
 .ms .ms-itens{flex:1;min-height:0;overflow-y:auto}
 .ms .ms-secao{padding:10px 16px 4px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--ms-mudo)}
 .ms .ms-item{display:flex;align-items:center;gap:12px;padding:10px 16px;transition:background-color .2s}
 .ms .ms-item:hover{background:rgba(0,0,0,.035)}
-.ms .ms-item.ms-ativo{background:rgba(164,81,44,.10)}
+.ms .ms-item.ms-ativo{background:rgba(214,198,123,.25)}
 .ms .ms-item-texto{flex:1;min-width:0;display:flex;flex-direction:column}
 .ms .ms-item-texto strong{font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ms .ms-item-texto small{color:var(--ms-mudo);font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -67,12 +67,12 @@
 .ms .ms-minha .ms-bolha{background:var(--ms-acento);color:#fff;border-bottom-right-radius:6px}
 .ms .ms-bolha time{display:block;margin-top:2px;font-size:11px;opacity:.65;text-align:right}
 .ms .ms-desfazer{display:none;flex:none;width:24px;height:24px;border:0;border-radius:50%;background:transparent;color:var(--ms-mudo);font-size:12px;cursor:pointer}
-.ms .ms-desfazer:hover{background:rgba(0,0,0,.08);color:#b42318}
+.ms .ms-desfazer:hover{background:rgba(0,0,0,.08);color:#7d2028}
 html.ms-js .ms .ms-linha:hover .ms-desfazer,html.ms-js .ms .ms-desfazer:focus-visible{display:inline-block}
 @media (hover:none){html.ms-js .ms .ms-minha .ms-desfazer{display:inline-block;opacity:.6}}
 
 .ms .ms-status{padding:0 18px 4px;text-align:right;font-size:12px;color:var(--ms-mudo);min-height:20px}
-.ms .ms-erro{padding:0 18px 6px;color:#b42318;font-size:13px}
+.ms .ms-erro{padding:0 18px 6px;color:#7d2028;font-size:13px}
 .ms .ms-erro[hidden]{display:none}
 
 /* ---- caixa de envio ------------------------------------------------------ */
