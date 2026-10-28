@@ -15,8 +15,10 @@
     <link rel="stylesheet" href="{% static 'css/tipografia.css' %}">
     <link rel="stylesheet" href="{% static 'css/icones.css' %}">
     <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+    <link rel="stylesheet" href="{% static 'css/auth-animacao.css' %}">
+    <link rel="stylesheet" href="{% static 'css/auth-mobile.css' %}">
 </head>
-<body class="pagina-auth">
+<body class="pagina-auth {% block classe_pagina %}{% endblock %}">
 <main class="auth">
     <section class="auth-marca" aria-label="Apresentação">
         <div>

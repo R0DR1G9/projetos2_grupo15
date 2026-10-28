@@ -1,0 +1,164 @@
+/* ==========================================================================
+   Login e cadastro no celular (telas até 767px)
+
+   Salve em static/css/auth-mobile.css, carregado DEPOIS de auth.css e de
+   auth-animacao.css.
+
+   Ideia: o painel bordô vira um cabeçalho curto com a marca, e o formulário
+   sobe numa "folha" branca de cantos arredondados que se encaixa por cima
+   dele. Campos e botões maiores, para o dedo e para não dar zoom no iPhone.
+   ========================================================================== */
+
+@keyframes auth-folha-sobe {
+    from {
+        opacity: 0;
+        transform: translateY(1.5rem);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@media (max-width: 767.98px) {
+
+    /* Página em coluna: cabeçalho bordô em cima, folha do formulário embaixo */
+    .pagina-auth .auth {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        min-height: 100dvh;
+    }
+
+    /* Cabeçalho bordô (a cor continua vindo do auth.css) */
+    .pagina-auth .auth-marca {
+        display: block;
+        position: relative;
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: none;
+        height: auto;
+        min-height: 0;
+        padding: 2rem 1.5rem 3.5rem;
+    }
+
+    .pagina-auth .auth-logo {
+        display: inline-block;
+        font-size: 2rem;
+        line-height: 1.1;
+    }
+
+    .pagina-auth .auth-slogan {
+        max-width: 20rem;
+        margin: 0.4rem 0 0;
+        font-size: 0.95rem;
+        line-height: 1.4;
+        opacity: 0.88;
+    }
+
+    /* O lema fica só no computador, para o formulário aparecer sem rolar */
+    .pagina-auth .auth-lema {
+        display: none;
+    }
+
+    /* O cadastro tem mais campos: cabeçalho só com a marca */
+    .pagina-auth.auth-invertido .auth-marca {
+        padding: 1.5rem 1.5rem 3rem;
+    }
+
+    .pagina-auth.auth-invertido .auth-slogan {
+        display: none;
+    }
+
+    /* Folha do formulário, encaixada por cima do cabeçalho */
+    .pagina-auth .auth-form {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        position: relative;
+        z-index: 1;
+        flex: 1 1 auto;
+        width: 100%;
+        max-width: none;
+        height: auto;
+        min-height: 0;
+        margin-top: -1.75rem;
+        padding: 2rem 1.5rem calc(2rem + env(safe-area-inset-bottom, 0px));
+        border-radius: 1.75rem 1.75rem 0 0;
+        background: var(--bs-body-bg, #fff);
+    }
+
+    /* A folha já é o cartão: a caixa interna perde fundo, sombra e largura fixa */
+    .pagina-auth .auth-caixa,
+    .pagina-auth .auth-caixa.auth-caixa-larga {
+        width: 100%;
+        max-width: 26rem;
+        margin: 0 auto;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+    }
+
+    .pagina-auth .auth-caixa h1 {
+        margin-bottom: 0.25rem;
+        font-size: 1.65rem;
+    }
+
+    .pagina-auth .auth-subtitulo {
+        margin-bottom: 1.5rem;
+    }
+
+    /* Campos e botão confortáveis para o toque (16px evita zoom no iPhone) */
+    .pagina-auth .form-control {
+        min-height: 3rem;
+        padding: 0.65rem 0.9rem;
+        border-radius: 0.75rem;
+        font-size: 1rem;
+    }
+
+    .pagina-auth .auth-botao {
+        min-height: 3.1rem;
+        border-radius: 0.75rem;
+        font-size: 1rem;
+    }
+
+    /* Regras da senha, mais discretas para não alongar o cadastro */
+    .pagina-auth .form-text {
+        font-size: 0.8rem;
+        line-height: 1.4;
+    }
+
+    .pagina-auth .form-text ul {
+        margin: 0.35rem 0 0;
+        padding-left: 1.1rem;
+    }
+
+    /* Link do rodapé com área de toque maior */
+    .pagina-auth .auth-rodape {
+        margin-top: 1.5rem;
+        text-align: center;
+        font-size: 0.95rem;
+    }
+
+    .pagina-auth .auth-rodape a {
+        display: inline-block;
+        margin-left: 0.25rem;
+        padding: 0.5rem 0.35rem;
+        font-weight: 600;
+    }
+
+    /* Movimento: no celular os painéis não trocam de lado (estão empilhados),
+       então a folha apenas sobe suavemente ao abrir a tela. */
+    @media (prefers-reduced-motion: no-preference) {
+        .auth-marca,
+        .auth-form {
+            view-transition-name: none;
+        }
+
+        .pagina-auth .auth-form {
+            animation: auth-folha-sobe 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+        }
+    }
+}

@@ -1,0 +1,55 @@
+/* ==========================================================================
+   Login e cadastro: lados invertidos + animação na troca
+
+   Login    -> painel bordô à ESQUERDA, formulário à DIREITA
+   Cadastro -> formulário à ESQUERDA, painel bordô à DIREITA
+
+   Salve em static/css/auth-animacao.css (carregado depois de auth.css).
+   ========================================================================== */
+
+
+/* 1) Troca de lados --------------------------------------------------------
+   O cadastro leva a classe .auth-invertido no <body>. Com direction: rtl o
+   container espelha as colunas (funciona tanto com flex quanto com grid e
+   mantém a largura de cada painel). Os filhos voltam para ltr, então o texto
+   continua lendo da esquerda para a direita. No celular, onde os painéis
+   ficam empilhados, nada muda. */
+.pagina-auth.auth-invertido .auth {
+    direction: rtl;
+}
+
+.pagina-auth.auth-invertido .auth > * {
+    direction: ltr;
+}
+
+
+/* 2) Animação ---------------------------------------------------------------
+   Ao ir de um para o outro, o painel bordô e a área do formulário deslizam
+   e trocam de lugar. É feito pelo próprio navegador (View Transitions entre
+   páginas), então não precisa de JavaScript e funciona com o botão Voltar.
+   Navegadores sem suporte (como o Firefox) fazem a troca sem animação.
+   Quem prefere menos movimento no sistema também não vê a animação. */
+@media (prefers-reduced-motion: no-preference) {
+    @view-transition {
+        navigation: auto;
+    }
+
+    .auth-marca {
+        view-transition-name: auth-marca;
+    }
+
+    .auth-form {
+        view-transition-name: auth-form;
+    }
+
+    ::view-transition-group(auth-marca),
+    ::view-transition-group(auth-form) {
+        animation-duration: 0.7s;
+        animation-timing-function: cubic-bezier(0.77, 0, 0.18, 1);
+    }
+
+    /* Durante a troca, o painel bordô passa por cima do formulário. */
+    ::view-transition-group(auth-marca) {
+        z-index: 2;
+    }
+}
