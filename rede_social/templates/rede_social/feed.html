@@ -41,6 +41,7 @@
   {% endfor %}
 </nav>
 
+<div data-mostrar-mais data-limite="5">
 {% for p in page %}
   {% include "rede_social/_post.html" %}
 {% empty %}
@@ -50,6 +51,7 @@
     {% else %}Nenhuma publicação ainda. Seja o primeiro a compartilhar!{% endif %}
   </p>
 {% endfor %}
+</div>
 {% include "rede_social/_paginacao.html" %}
 
 {% endblock %}

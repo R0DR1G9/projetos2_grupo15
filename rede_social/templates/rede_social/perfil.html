@@ -31,8 +31,10 @@
   <a class="{% if aba == 'curtidas' %}ativa{% endif %}" href="?aba=curtidas">Curtidas</a>
 </nav>
 
+<div data-mostrar-mais data-limite="5">
 {% for p in page %}{% include "rede_social/_post.html" %}{% empty %}
   <p class="rs-card rs-vazio">Nada por aqui ainda.</p>
 {% endfor %}
+</div>
 {% include "rede_social/_paginacao.html" %}
 {% endblock %}

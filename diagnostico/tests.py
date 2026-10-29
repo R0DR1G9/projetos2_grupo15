@@ -354,3 +354,43 @@ class MelhoriasVisuaisTests(ComLogin):
         base = Path(__file__).resolve().parent
         for arquivo in base.rglob('*.html'):
             self.assertNotIn('—', arquivo.read_text(encoding='utf-8'), str(arquivo))
+
+
+class ExportarPdfTests(ComLogin):
+    def test_pdf_do_diagnostico(self):
+        self.client.post(reverse('novo_diagnostico'), post_completo(2, kg_sobras_geradas='100', kg_sobras_reaproveitadas='20'))
+        d = DiagnosticoESG.objects.get()
+        r = self.client.get(reverse('resultado_pdf', args=[d.pk]))
+        self.assertEqual(r.status_code, 200)
+        self.assertEqual(r['Content-Type'], 'application/pdf')
+        self.assertTrue(r.content.startswith(b'%PDF'))
+        self.assertIn('attachment', r['Content-Disposition'])
+
+    def test_pdf_de_outra_empresa_negado(self):
+        self.client.post(reverse('novo_diagnostico'), post_completo(2))
+        d = DiagnosticoESG.objects.get()
+        self.client.logout()
+        self.client.force_login(novo_usuario('outra', 'Outra'))
+        self.assertEqual(self.client.get(reverse('resultado_pdf', args=[d.pk])).status_code, 404)
+
+    def test_botao_de_exportar_no_resultado(self):
+        self.client.post(reverse('novo_diagnostico'), post_completo(2))
+        d = DiagnosticoESG.objects.get()
+        self.assertContains(self.client.get(reverse('resultado_diagnostico', args=[d.pk])), 'Exportar em PDF')
+
+    def test_pdf_de_diagnostico_com_cnpj_e_formato_antigo(self):
+        from contas.models import Empresa
+        Empresa.objects.create(usuario=self.user, cnpj='11222333000181')
+        d = DiagnosticoESG.objects.create(usuario=self.user, nome_empresa='Antiga', residuos_textesis=True)
+        r = self.client.get(reverse('resultado_pdf', args=[d.pk]))
+        self.assertTrue(r.content.startswith(b'%PDF'))
+
+    def test_pdf_da_evolucao(self):
+        self.client.post(reverse('novo_diagnostico'), post_completo(1))
+        self.client.post(reverse('novo_diagnostico'), post_completo(3))
+        r = self.client.get(reverse('evolucao_pdf'))
+        self.assertTrue(r.content.startswith(b'%PDF'))
+        self.assertContains(self.client.get(reverse('evolucao')), 'Exportar em PDF')
+
+    def test_pdf_da_evolucao_sem_dados_redireciona(self):
+        self.assertRedirects(self.client.get(reverse('evolucao_pdf')), reverse('evolucao'))

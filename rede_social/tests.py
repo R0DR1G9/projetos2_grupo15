@@ -333,3 +333,18 @@ class ImagemPostTests(BaseTestCase):
         resp = self.client.get(reverse("rede_social:feed"))
         self.assertContains(resp, 'id="rs-lightbox"')
         self.assertContains(resp, "data-rs-zoom")
+
+
+class MostrarMaisTests(TestCase):
+    def test_feed_e_detalhe_tem_listas_com_limite_de_5(self):
+        usuario = get_user_model().objects.create_user("lista", password="senha-forte-123")
+        self.client.force_login(usuario)
+        post = Post.objects.create(autor=usuario, conteudo="Primeiro")
+        for i in range(7):
+            Comentario.objects.create(post=post, autor=usuario, conteudo=f"c{i}")
+        feed = self.client.get(reverse("rede_social:feed"))
+        self.assertContains(feed, 'data-mostrar-mais data-limite="5"')
+        self.assertContains(feed, "mostrar_mais.js")
+        detalhe = self.client.get(reverse("rede_social:detalhe_post", args=[post.pk]))
+        self.assertContains(detalhe, 'data-mostrar-mais data-limite="5"')
+        self.assertContains(detalhe, "c6")
