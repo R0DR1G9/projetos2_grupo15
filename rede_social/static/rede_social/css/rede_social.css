@@ -179,3 +179,5 @@
 @media (prefers-reduced-motion:reduce){
   .rs *,.rs *::before,.rs *::after{animation:none!important;transition:none!important}
 }
+.rs .rs-mostrar-mais{display:block;margin:12px auto}
+.rs [hidden]{display:none !important}
