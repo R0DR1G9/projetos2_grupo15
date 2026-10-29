@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Quadro de atividades — Plataforma ESG{% endblock %}
+{% block title %}Quadro de atividades - Plataforma ESG{% endblock %}
 
 {% block extra_head %}
 <link rel="stylesheet" href="{% static 'css/quadro.css' %}">
@@ -11,7 +11,7 @@
 <header class="bg-success bg-gradient text-white py-5 text-center shadow-sm">
     <div class="container py-3">
         <h1 class="display-5 fw-bold">Quadro de atividades</h1>
-        <p class="lead mb-0">Organize suas ações de sustentabilidade por status</p>
+        <p class="lead mb-0">Organize suas ações de sustentabilidade por status. Arraste os cartões entre as colunas.</p>
     </div>
 </header>
 
@@ -40,17 +40,18 @@
     <div class="row g-3">
         {% for coluna in colunas %}
         <div class="col-lg-4">
-            <div class="card shadow-sm h-100 coluna-{{ coluna.chave }}">
+            <div class="card shadow-sm h-100 coluna-{{ coluna.chave }}" data-coluna="{{ coluna.chave }}">
                 <div class="card-header bg-white d-flex justify-content-between align-items-center">
                     <h2 class="h6 fw-bold mb-0">{{ coluna.nome }}</h2>
                     <span class="badge rounded-pill text-bg-secondary" id="contador-{{ coluna.chave }}">{{ coluna.atividades|length }}</span>
                 </div>
                 <div class="card-body bg-light">
                     {% for a in coluna.atividades %}
-                    <div class="card card-atividade shadow-sm mb-2">
+                    <div class="card card-atividade shadow-sm mb-2" data-atividade>
                         <div class="card-body p-3">
                             <div class="d-flex justify-content-between align-items-start mb-2">
-                                <span class="fw-semibold">{{ a.titulo }}</span>
+                                <span class="alca-arrastar" aria-hidden="true" title="Arraste para mudar de coluna"><i class="ci ci-drag-vertical"></i></span>
+                                <span class="fw-semibold flex-grow-1">{{ a.titulo }}</span>
                                 <form method="post" action="{% url 'deletar_atividade' a.pk %}" data-confirmar="Remover esta atividade?">
                                     {% csrf_token %}
                                     <button type="submit" class="btn btn-sm btn-link text-danger p-0 ms-2" title="Remover" aria-label="Remover atividade">
@@ -83,3 +84,5 @@
     </div>
 </main>
 {% endblock %}
+
+{% block extra_scripts %}<script src="{% static 'js/quadro.js' %}"></script>{% endblock %}

@@ -3,3 +3,11 @@
 .coluna-concluido  { border-top: 4px solid var(--oliva); }
 .card-atividade .badge-cat { font-size: .7rem; }
 .atividade-detalhe { font-size: .78rem; color: var(--texto-suave); margin: 0 0 .5rem; }
+
+.alca-arrastar { cursor: grab; touch-action: none; user-select: none; color: var(--texto-suave); font-size: 1.25rem; line-height: 1; margin: 0 .25rem 0 -.4rem; padding: .1rem; }
+.card-atividade { touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+@media (pointer: fine) { .card-atividade { cursor: grab; } }
+.card-atividade.arrastando-origem { opacity: .35; }
+.cartao-fantasma { position: fixed; z-index: 2000; pointer-events: none; margin: 0 !important; opacity: .95; box-shadow: 0 12px 28px rgba(103, 58, 64, .35) !important; transform: rotate(2deg); cursor: grabbing; }
+.coluna-alvo { outline: 3px dashed var(--ouro); outline-offset: 2px; background: var(--creme-ouro); }
+body.arrastando, body.arrastando * { cursor: grabbing !important; }

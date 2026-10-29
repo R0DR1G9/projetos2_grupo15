@@ -20,7 +20,7 @@
 .nivel { margin: 0; cursor: pointer; }
 .nivel input { position: absolute; opacity: 0; pointer-events: none; }
 .nivel span {
-    display: block; height: 100%; padding: .6rem .55rem; border-radius: 12px;
+    display: flex; flex-direction: column; justify-content: flex-start; height: 100%; min-height: 8.5rem; padding: .6rem .55rem; border-radius: 12px;
     border: 2px solid var(--borda); background: #fff; font-size: .8rem; font-weight: 700; color: var(--texto);
     transition: border-color .15s, background .15s;
 }
@@ -31,8 +31,13 @@
 .nivel input:checked + span small { color: var(--creme-ouro); }
 .nivel-na span { background: var(--bege); font-weight: 600; }
 .nivel-na small { display: none; }
+.nivel-na span { justify-content: center; }
 .opcionais { background: var(--bege); border-radius: 16px; padding: 1rem 1.25rem; }
-@media (max-width: 1399.98px) { .escala { grid-template-columns: 1fr; } .nivel span { text-align: left; } }
+@media (max-width: 1399.98px) { .escala { grid-template-columns: 1fr; } .nivel span { text-align: left; min-height: 4.75rem; } .nivel-na span { min-height: 3.25rem; } }
+.escala { grid-auto-rows: 1fr; }
+
+.progresso-respostas { display: flex; justify-content: space-between; align-items: baseline; font-size: .85rem; font-weight: 700; color: var(--vinho); margin: .75rem 0 .35rem; }
+.progresso-respostas .pct { font-size: 1.05rem; }
 
 /* ===== Lista de diagnósticos ===== */
 .min-w-0 { min-width: 0; }
@@ -71,3 +76,4 @@
 /* ===== Metodologia ===== */
 .tabela-metodologia { font-size: .85rem; }
 .tabela-metodologia th { white-space: nowrap; }
+#barraRespondidas { background: var(--vinho); transition: width .25s; }

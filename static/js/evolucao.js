@@ -14,7 +14,7 @@ const tooltipDiagnostico = {
     callbacks: {
         title: itens => {
             const i = itens[0].dataIndex;
-            return `${dados.rotulos[i]} — ${dados.empresas[i]} (${dados.datas[i]})`;
+            return `${dados.rotulos[i]} - ${dados.empresas[i]} (${dados.datas[i]})`;
         },
         label: item => ` ${item.dataset.label}: ${item.parsed.y}%`
     }

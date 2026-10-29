@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Novo diagnóstico — Plataforma ESG{% endblock %}
+{% block title %}Novo diagnóstico - Plataforma ESG{% endblock %}
 
 {% block extra_head %}<link rel="stylesheet" href="{% static 'css/diagnostico.css' %}">{% endblock %}
 
@@ -24,6 +24,11 @@
                 {% for pilar in pilares %}<span class="etapa-nome">{{ forloop.counter|add:1 }}. {{ pilar.nome }}</span>{% endfor %}
             </div>
             <div class="progress progress-fino"><div class="progress-bar bg-success" id="barra" data-largura="25"></div></div>
+            <div class="progresso-respostas" aria-live="polite">
+                <span id="textoRespondidas">Respondeu 0 de 0 perguntas</span>
+                <span class="pct" id="pctRespondidas">0%</span>
+            </div>
+            <div class="progress progress-fino"><div class="progress-bar" id="barraRespondidas" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div></div>
         </div>
 
         {% if erro_respostas or form.errors %}
@@ -66,17 +71,27 @@
                     <h3 class="h6 fw-bold mb-1">Dados opcionais</h3>
                     <p class="text-muted small mb-3">Se souber, preencha. São números reais que enriquecem o seu relatório. Pode deixar em branco.</p>
                     <div class="row g-3">
-                        <div class="col-md-4">
-                            <label class="form-label small fw-bold" for="{{ form.pct_residuos_reaproveitados.id_for_label }}">% das sobras de tecido reaproveitadas</label>
-                            {{ form.pct_residuos_reaproveitados }}
-                            {% for e in form.pct_residuos_reaproveitados.errors %}<div class="text-danger small mt-1">{{ e }}</div>{% endfor %}
+                        <div class="col-md-6 col-lg-4">
+                            <label class="form-label small fw-bold" for="{{ form.kg_sobras_geradas.id_for_label }}">Kg de sobras de tecido geradas por mês</label>
+                            {{ form.kg_sobras_geradas }}
+                            {% for e in form.kg_sobras_geradas.errors %}<div class="text-danger small mt-1">{{ e }}</div>{% endfor %}
                         </div>
-                        <div class="col-md-4">
-                            <label class="form-label small fw-bold" for="{{ form.pct_mulheres_lideranca.id_for_label }}">% de mulheres na liderança</label>
-                            {{ form.pct_mulheres_lideranca }}
-                            {% for e in form.pct_mulheres_lideranca.errors %}<div class="text-danger small mt-1">{{ e }}</div>{% endfor %}
+                        <div class="col-md-6 col-lg-4">
+                            <label class="form-label small fw-bold" for="{{ form.kg_sobras_reaproveitadas.id_for_label }}">Kg dessas sobras reaproveitadas</label>
+                            {{ form.kg_sobras_reaproveitadas }}
+                            {% for e in form.kg_sobras_reaproveitadas.errors %}<div class="text-danger small mt-1">{{ e }}</div>{% endfor %}
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6 col-lg-4">
+                            <label class="form-label small fw-bold" for="{{ form.pessoas_lideranca.id_for_label }}">Quantas pessoas ocupam cargos de liderança</label>
+                            {{ form.pessoas_lideranca }}
+                            {% for e in form.pessoas_lideranca.errors %}<div class="text-danger small mt-1">{{ e }}</div>{% endfor %}
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <label class="form-label small fw-bold" for="{{ form.mulheres_lideranca.id_for_label }}">Quantas delas são mulheres</label>
+                            {{ form.mulheres_lideranca }}
+                            {% for e in form.mulheres_lideranca.errors %}<div class="text-danger small mt-1">{{ e }}</div>{% endfor %}
+                        </div>
+                        <div class="col-md-6 col-lg-4">
                             <label class="form-label small fw-bold" for="{{ form.horas_treinamento_ano.id_for_label }}">Horas de treinamento por pessoa ao ano</label>
                             {{ form.horas_treinamento_ano }}
                             {% for e in form.horas_treinamento_ano.errors %}<div class="text-danger small mt-1">{{ e }}</div>{% endfor %}

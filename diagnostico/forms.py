@@ -10,15 +10,17 @@ class DiagnosticoForm(forms.ModelForm):
         model = DiagnosticoESG
         fields = [
             'nome_empresa', 'porte', 'tipo_operacao', 'numero_funcionarios',
-            'pct_residuos_reaproveitados', 'pct_mulheres_lideranca', 'horas_treinamento_ano',
+            'kg_sobras_geradas', 'kg_sobras_reaproveitadas', 'pessoas_lideranca', 'mulheres_lideranca', 'horas_treinamento_ano',
         ]
         widgets = {
             'nome_empresa': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ex: Confecções Moda Sustentável'}),
             'porte': forms.Select(attrs={'class': 'form-select'}),
             'tipo_operacao': forms.Select(attrs={'class': 'form-select'}),
             'numero_funcionarios': forms.NumberInput(attrs={'class': 'form-control', 'min': 0, 'placeholder': 'Ex: 25'}),
-            'pct_residuos_reaproveitados': forms.NumberInput(attrs={'class': 'form-control', 'min': 0, 'max': 100, 'placeholder': 'Ex: 30'}),
-            'pct_mulheres_lideranca': forms.NumberInput(attrs={'class': 'form-control', 'min': 0, 'max': 100, 'placeholder': 'Ex: 40'}),
+            'kg_sobras_geradas': forms.NumberInput(attrs={'class': 'form-control', 'min': 0, 'placeholder': 'Ex: 120'}),
+            'kg_sobras_reaproveitadas': forms.NumberInput(attrs={'class': 'form-control', 'min': 0, 'placeholder': 'Ex: 40'}),
+            'pessoas_lideranca': forms.NumberInput(attrs={'class': 'form-control', 'min': 0, 'placeholder': 'Ex: 5'}),
+            'mulheres_lideranca': forms.NumberInput(attrs={'class': 'form-control', 'min': 0, 'placeholder': 'Ex: 2'}),
             'horas_treinamento_ano': forms.NumberInput(attrs={'class': 'form-control', 'min': 0, 'placeholder': 'Ex: 8'}),
         }
 
@@ -31,8 +33,12 @@ class DiagnosticoForm(forms.ModelForm):
 
     def clean(self):
         dados = super().clean()
-        for campo in ('pct_residuos_reaproveitados', 'pct_mulheres_lideranca'):
-            valor = dados.get(campo)
-            if valor is not None and valor > 100:
-                self.add_error(campo, 'Informe um valor entre 0 e 100.')
+        pares = (
+            ('kg_sobras_reaproveitadas', 'kg_sobras_geradas', 'O reaproveitado não pode ser maior que o total de sobras geradas.'),
+            ('mulheres_lideranca', 'pessoas_lideranca', 'O número de mulheres não pode ser maior que o total de pessoas em liderança.'),
+        )
+        for parte, total, mensagem in pares:
+            valor_parte, valor_total = dados.get(parte), dados.get(total)
+            if valor_parte is not None and valor_total is not None and valor_parte > valor_total:
+                self.add_error(parte, mensagem)
         return dados

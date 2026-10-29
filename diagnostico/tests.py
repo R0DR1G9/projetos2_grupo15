@@ -187,9 +187,24 @@ class FluxoDoDiagnosticoTests(ComLogin):
         self.assertEqual(DiagnosticoESG.objects.count(), 0)
         self.assertContains(r, 'value="2" checked')
 
-    def test_percentual_acima_de_100_rejeitado(self):
-        self.client.post(reverse('novo_diagnostico'), post_completo(3, pct_mulheres_lideranca='150'))
+    def test_parte_maior_que_total_rejeitada(self):
+        self.client.post(reverse('novo_diagnostico'), post_completo(3, pessoas_lideranca='4', mulheres_lideranca='5'))
         self.assertEqual(DiagnosticoESG.objects.count(), 0)
+        self.client.post(reverse('novo_diagnostico'), post_completo(3, kg_sobras_geradas='10', kg_sobras_reaproveitadas='11'))
+        self.assertEqual(DiagnosticoESG.objects.count(), 0)
+
+    def test_numeros_viram_percentual_calculado(self):
+        self.client.post(reverse('novo_diagnostico'), post_completo(
+            3, kg_sobras_geradas='200', kg_sobras_reaproveitadas='50', pessoas_lideranca='5', mulheres_lideranca='2'))
+        d = DiagnosticoESG.objects.get()
+        self.assertEqual(d.pct_residuos_reaproveitados, 25)
+        self.assertEqual(d.pct_mulheres_lideranca, 40)
+
+    def test_percentual_sem_total_e_nulo(self):
+        self.client.post(reverse('novo_diagnostico'), post_completo(3))
+        d = DiagnosticoESG.objects.get()
+        self.assertIsNone(d.pct_residuos_reaproveitados)
+        self.assertIsNone(d.pct_mulheres_lideranca)
 
     def test_horario_exibido_no_fuso_de_recife(self):
         from django.conf import settings
@@ -312,3 +327,30 @@ class AcessoPorUsuarioTests(TestCase):
         self.client.force_login(self.dona)
         self.client.post(reverse('novo_diagnostico'), post_completo(3))
         self.assertEqual(DiagnosticoESG.objects.filter(usuario=self.dona).count(), 2)
+
+
+class MelhoriasVisuaisTests(ComLogin):
+    def test_form_tem_barra_de_perguntas_respondidas(self):
+        r = self.client.get(reverse('novo_diagnostico'))
+        self.assertContains(r, 'id="barraRespondidas"')
+        self.assertContains(r, 'Respondeu')
+
+    def test_form_pede_numeros_e_nao_percentuais(self):
+        r = self.client.get(reverse('novo_diagnostico'))
+        self.assertContains(r, 'name="kg_sobras_geradas"')
+        self.assertContains(r, 'name="pessoas_lideranca"')
+        self.assertNotContains(r, 'name="pct_')
+
+    def test_resultado_mostra_hora_selo_e_proximo_nivel(self):
+        self.client.post(reverse('novo_diagnostico'), post_completo(2))
+        d = DiagnosticoESG.objects.get()
+        r = self.client.get(reverse('resultado_diagnostico', args=[d.pk]))
+        self.assertContains(r, ' às ')
+        self.assertContains(r, 'selo-nivel')
+        self.assertContains(r, 'pontos para o nível')
+
+    def test_sem_travessao_longo_nos_templates(self):
+        from pathlib import Path
+        base = Path(__file__).resolve().parent
+        for arquivo in base.rglob('*.html'):
+            self.assertNotIn('—', arquivo.read_text(encoding='utf-8'), str(arquivo))

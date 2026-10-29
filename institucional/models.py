@@ -25,4 +25,4 @@ class MensagemContato(models.Model):
         verbose_name_plural = "Mensagens de contato"
 
     def __str__(self):
-        return f"{self.get_assunto_display()} — {self.nome} ({self.data_criacao:%d/%m/%Y})"
+        return f"{self.get_assunto_display()} - {self.nome} ({self.data_criacao:%d/%m/%Y})"

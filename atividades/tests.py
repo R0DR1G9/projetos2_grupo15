@@ -37,3 +37,13 @@ class QuadroAtividadesTests(TestCase):
         a = Atividade.objects.create(titulo="X", categoria="governanca")
         self.client.post(reverse("deletar_atividade", args=[a.pk]))
         self.assertEqual(Atividade.objects.count(), 0)
+
+
+class ArrastarCartoesTests(TestCase):
+    def test_colunas_e_cartoes_tem_ganchos_para_arrastar(self):
+        Atividade.objects.create(titulo="Treinar equipe", categoria="social")
+        resp = self.client.get(reverse("quadro_atividades"))
+        for chave in ("aguardando", "andamento", "concluido"):
+            self.assertContains(resp, f'data-coluna="{chave}"')
+        self.assertContains(resp, "data-atividade")
+        self.assertContains(resp, "js/quadro.js")
