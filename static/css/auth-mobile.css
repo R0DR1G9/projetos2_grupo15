@@ -152,11 +152,6 @@
     /* Movimento: no celular os painéis não trocam de lado (estão empilhados),
        então a folha apenas sobe suavemente ao abrir a tela. */
     @media (prefers-reduced-motion: no-preference) {
-        .auth-marca,
-        .auth-form {
-            view-transition-name: none;
-        }
-
         .pagina-auth .auth-form {
             animation: auth-folha-sobe 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
         }
