@@ -14,9 +14,11 @@
     {% empty %}<p class="rs-mudo">Nenhuma pessoa encontrada.</p>{% endfor %}
   </section>
   <h2 class="rs-titulo-secao">Publicações</h2>
+  <div data-mostrar-mais data-limite="5">
   {% for p in page %}{% include "rede_social/_post.html" %}{% empty %}
     <p class="rs-card rs-vazio">Nenhuma publicação encontrada.</p>
   {% endfor %}
+  </div>
   {% include "rede_social/_paginacao.html" %}
 {% endif %}
 {% endblock %}

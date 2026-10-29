@@ -14,6 +14,7 @@
     <div class="rs-compositor-rodape"><button class="rs-btn" type="submit">Responder</button></div>
   </form>
 
+  <div data-mostrar-mais data-limite="5">
   {% for c in comentarios %}
     <div class="rs-comentario">
       <a class="rs-avatar rs-avatar-p" href="{% url 'rede_social:perfil' c.autor|login_usuario %}">{{ c.autor|iniciais }}</a>
@@ -26,5 +27,6 @@
   {% empty %}
     <p class="rs-mudo">Seja o primeiro a comentar.</p>
   {% endfor %}
+  </div>
 </section>
 {% endblock %}
