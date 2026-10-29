@@ -14,7 +14,7 @@ Como foi construído (detalhes na página /diagnostico/metodologia/):
 FONTES = {
     "gri": {
         "sigla": "GRI",
-        "nome": "GRI — Padrão Setorial para Têxteis e Vestuário (minuta em consulta pública, 18 tópicos prováveis)",
+        "nome": "GRI - Padrão Setorial para Têxteis e Vestuário (minuta em consulta pública, 18 tópicos prováveis)",
         "url": "https://globalreporting.org/media/snzig5ft/gri-textiles-apparel-faq.pdf",
     },
     "higg": {
@@ -29,32 +29,32 @@ FONTES = {
     },
     "iso26000": {
         "sigla": "ISO 26000",
-        "nome": "ISO 26000 — 7 temas centrais de responsabilidade social",
+        "nome": "ISO 26000 - 7 temas centrais de responsabilidade social",
         "url": "https://www.fm2s.com.br/blog/iso-26000",
     },
     "bcorp": {
         "sigla": "B Impact",
-        "nome": "B Impact Assessment (B Lab) — áreas: trabalhadores, comunidade, meio ambiente, clientes e governança",
+        "nome": "B Impact Assessment (B Lab) - áreas: trabalhadores, comunidade, meio ambiente, clientes e governança",
         "url": "https://www.bcorporation.net/en-us/faq/what-topics-are-covered-b-impact-assessment/",
     },
     "orrick": {
         "sigla": "Orrick",
-        "nome": "Orrick — ESG Maturity Model (8 componentes, 3 a 4 níveis cada)",
+        "nome": "Orrick - ESG Maturity Model (8 componentes, 3 a 4 níveis cada)",
         "url": "https://media.orrick.com/Media%20Library/public/files/misc/2023/esg-maturity-model.pdf",
     },
     "crosscountry": {
         "sigla": "CrossCountry",
-        "nome": "CrossCountry Consulting — ESG Maturity Model (Mindful, Defined, Managed, Integrated)",
+        "nome": "CrossCountry Consulting - ESG Maturity Model (Mindful, Defined, Managed, Integrated)",
         "url": "https://www.crosscountry-consulting.com/insights/blog/esg-maturity-model/",
     },
     "oren": {
         "sigla": "Oren",
-        "nome": "Oren — níveis de maturidade ESG (Compliant, Efficient, Strategic, Leader)",
+        "nome": "Oren - níveis de maturidade ESG (Compliant, Efficient, Strategic, Leader)",
         "url": "https://www.orennow.com/blog/esg-maturity-guide-to-evaluating-your-companys-esg-progress",
     },
     "fiemg": {
         "sigla": "FIEMG/NRs",
-        "nome": "FIEMG — E-book do Setor Vestuário (NR-1, NR-5, NR-6, NR-7, NR-12, NR-17, NR-26 aplicadas à confecção)",
+        "nome": "FIEMG - E-book do Setor Vestuário (NR-1, NR-5, NR-6, NR-7, NR-12, NR-17, NR-26 aplicadas à confecção)",
         "url": "https://www.fiemg.com.br/wp-content/uploads/2024/09/EBOOK-DO-SETOR-VESTUARIO.pdf",
     },
     "abvtex": {

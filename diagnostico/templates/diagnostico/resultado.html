@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load l10n static %}
 
-{% block title %}Resultado — {{ diagnostico.nome_empresa }}{% endblock %}
+{% block title %}Resultado - {{ diagnostico.nome_empresa }}{% endblock %}
 
 {% block extra_head %}<link rel="stylesheet" href="{% static 'css/inicio.css' %}"><link rel="stylesheet" href="{% static 'css/diagnostico.css' %}">{% endblock %}
 
@@ -9,7 +9,7 @@
 <header class="bg-success bg-gradient text-white py-5 text-center shadow-sm">
     <div class="container py-3">
         <h1 class="display-5 fw-bold">Resultado do diagnóstico</h1>
-        <p class="lead mb-0">{{ diagnostico.nome_empresa }} · {{ diagnostico.data_criacao|date:"d/m/Y" }}</p>
+        <p class="lead mb-0">{{ diagnostico.nome_empresa }} · {{ diagnostico.data_criacao|date:"d/m/Y" }} às {{ diagnostico.data_criacao|date:"H:i" }}</p>
     </div>
 </header>
 
@@ -20,7 +20,11 @@
                 <div class="d-flex align-items-center gap-4">
                     <div class="anel anel-grande" data-pct="{{ pontuacao.geral|unlocalize }}"><div class="anel-interno">{{ pontuacao.geral|floatformat:"-1" }}%</div></div>
                     <div>
-                        <span class="badge rounded-pill fs-6 text-white mb-2 medalha-{{ pontuacao.medalha_geral.chave }}">{{ pontuacao.medalha_geral.emoji }} {{ pontuacao.medalha_geral.nome }}</span>
+                        <div class="selo-nivel medalha-{{ pontuacao.medalha_geral.chave }} mb-2">
+                            <span class="selo-emoji">{{ pontuacao.medalha_geral.emoji }}</span>
+                            <span class="selo-texto"><small>Seu nível</small><strong>{{ pontuacao.medalha_geral.nome }}</strong></span>
+                        </div>
+                        {% if pontuacao.proximo_nivel %}<div class="small fw-bold mb-1">Faltam {{ pontuacao.proximo_nivel.faltam|floatformat:"-1" }} pontos para o nível {{ pontuacao.proximo_nivel.nome }}</div>{% else %}<div class="small fw-bold mb-1">Nível máximo alcançado</div>{% endif %}
                         <div class="small text-muted">Nota ESG geral</div>
                         {% if diagnostico.porte %}<div class="small mt-2">{{ diagnostico.get_tipo_operacao_display }}<br>{{ diagnostico.get_porte_display }}</div>{% endif %}
                     </div>
@@ -114,13 +118,13 @@
                 {% endfor %}
             </div></div>
 
-            {% if diagnostico.numero_funcionarios is not None or diagnostico.pct_residuos_reaproveitados is not None or diagnostico.pct_mulheres_lideranca is not None or diagnostico.horas_treinamento_ano is not None %}
+            {% if diagnostico.numero_funcionarios is not None or diagnostico.kg_sobras_geradas is not None or diagnostico.pessoas_lideranca is not None or diagnostico.horas_treinamento_ano is not None %}
             <div class="card mb-4"><div class="card-body p-4">
                 <h2 class="h5 fw-bold mb-3">Seus números</h2>
                 <div class="row g-2">
                     {% if diagnostico.numero_funcionarios is not None %}<div class="col-6"><div class="dado"><strong>{{ diagnostico.numero_funcionarios }}</strong><span class="small">funcionários</span></div></div>{% endif %}
-                    {% if diagnostico.pct_residuos_reaproveitados is not None %}<div class="col-6"><div class="dado"><strong>{{ diagnostico.pct_residuos_reaproveitados }}%</strong><span class="small">sobras reaproveitadas</span></div></div>{% endif %}
-                    {% if diagnostico.pct_mulheres_lideranca is not None %}<div class="col-6"><div class="dado"><strong>{{ diagnostico.pct_mulheres_lideranca }}%</strong><span class="small">mulheres na liderança</span></div></div>{% endif %}
+                    {% if diagnostico.kg_sobras_geradas is not None %}<div class="col-6"><div class="dado"><strong>{{ diagnostico.kg_sobras_reaproveitadas|default:0 }} de {{ diagnostico.kg_sobras_geradas }} kg</strong><span class="small">sobras reaproveitadas{% if diagnostico.pct_residuos_reaproveitados is not None %} ({{ diagnostico.pct_residuos_reaproveitados }}%){% endif %}</span></div></div>{% endif %}
+                    {% if diagnostico.pessoas_lideranca is not None %}<div class="col-6"><div class="dado"><strong>{{ diagnostico.mulheres_lideranca|default:0 }} de {{ diagnostico.pessoas_lideranca }}</strong><span class="small">mulheres na liderança{% if diagnostico.pct_mulheres_lideranca is not None %} ({{ diagnostico.pct_mulheres_lideranca }}%){% endif %}</span></div></div>{% endif %}
                     {% if diagnostico.horas_treinamento_ano is not None %}<div class="col-6"><div class="dado"><strong>{{ diagnostico.horas_treinamento_ano }} h</strong><span class="small">treino/pessoa/ano</span></div></div>{% endif %}
                 </div>
             </div></div>

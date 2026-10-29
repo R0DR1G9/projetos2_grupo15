@@ -1,4 +1,4 @@
-# Fotos nos posts — o que falta fora do app `rede_social`
+# Fotos nos posts - o que falta fora do app `rede_social`
 
 ## 1. Dependência e migração
 ```bash
@@ -68,7 +68,7 @@ O `<form>` **precisa** de `enctype`, senão o arquivo não chega ao Django:
 ```
 
 ## 5. Template do card do post (feed, detalhe, perfil, hashtag, busca)
-Dentro do card, logo abaixo do texto. Use `p.alvo` — assim o repost mostra a foto do original:
+Dentro do card, logo abaixo do texto. Use `p.alvo` - assim o repost mostra a foto do original:
 ```django
 {% if p.alvo.imagem %}
   <a href="{{ p.alvo.imagem.url }}" target="_blank" rel="noopener" class="rs-post-imagem">

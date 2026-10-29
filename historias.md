@@ -1,4 +1,4 @@
-# Histórias de Usuário — Vastra
+# Histórias de Usuário - Vastra
 
 Plataforma de gestão ESG para PMEs (confecções e negócios têxteis).
 Cada história segue o formato **Como / Quero / Para** e tem cenários de validação em **BDD** (Dado / Quando / Então).
@@ -14,7 +14,7 @@ Cada história segue o formato **Como / Quero / Para** e tem cenários de valida
 
 ---
 
-## H1 — IA no diagnóstico ESG
+## H1 - IA no diagnóstico ESG
 
 **Como** gestor(a) de uma confecção,
 **quero** receber recomendações geradas por IA com base nas minhas respostas do diagnóstico,
@@ -39,7 +39,7 @@ Cada história segue o formato **Como / Quero / Para** e tem cenários de valida
 
 ---
 
-## H2 — Quadro de atividades
+## H2 - Quadro de atividades
 
 **Como** gestor(a) de uma confecção,
 **quero** organizar minhas ações de sustentabilidade em um quadro com colunas de status,
@@ -64,7 +64,7 @@ Cada história segue o formato **Como / Quero / Para** e tem cenários de valida
 
 ---
 
-## H3 — Sistema de avaliação com ranks (Bronze, Prata e Ouro)
+## H3 - Sistema de avaliação com ranks (Bronze, Prata e Ouro)
 
 **Como** gestor(a) de uma confecção,
 **quero** ver um rank (Bronze, Prata ou Ouro) baseado na minha nota ESG geral,
@@ -102,7 +102,7 @@ Cada história segue o formato **Como / Quero / Para** e tem cenários de valida
 
 ---
 
-## H4 — Evolução ESG com diferentes gráficos
+## H4 - Evolução ESG com diferentes gráficos
 
 **Como** gestor(a) de uma confecção,
 **quero** ver a evolução das minhas notas ESG em diferentes tipos de gráfico,
@@ -127,7 +127,7 @@ Cada história segue o formato **Como / Quero / Para** e tem cenários de valida
 
 ---
 
-## H5 — Rede social entre empresas
+## H5 - Rede social entre empresas
 
 **Como** gestor(a) de uma confecção,
 **quero** publicar e comentar em um feed compartilhado com outras empresas,
@@ -152,7 +152,7 @@ Cada história segue o formato **Como / Quero / Para** e tem cenários de valida
 
 ---
 
-## H6 — Biblioteca de tutoriais e vídeos
+## H6 - Biblioteca de tutoriais e vídeos
 
 **Como** gestor(a) de uma confecção,
 **quero** acessar uma biblioteca com tutoriais e vídeos explicativos sobre ESG,

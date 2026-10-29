@@ -7,6 +7,9 @@
     const etapas = Array.from(form.querySelectorAll('.etapa'));
     const nomes = Array.from(document.querySelectorAll('#etapaNomes .etapa-nome'));
     const barra = document.getElementById('barra');
+    const barraRespondidas = document.getElementById('barraRespondidas');
+    const textoRespondidas = document.getElementById('textoRespondidas');
+    const pctRespondidas = document.getElementById('pctRespondidas');
     const btnVoltar = document.getElementById('btnVoltar');
     const btnProximo = document.getElementById('btnProximo');
     const btnFinalizar = document.getElementById('btnFinalizar');
@@ -21,9 +24,21 @@
             const vale = !escolhido || p.dataset.aplica.split(' ').includes(escolhido);
             p.classList.toggle('oculta', !vale);
         });
+        atualizarProgresso();
         form.querySelectorAll('.subtema').forEach(s => {
             s.classList.toggle('oculto', !s.querySelector('.pergunta:not(.oculta)'));
         });
+    }
+
+    function atualizarProgresso() {
+        const validas = Array.from(form.querySelectorAll('.pergunta:not(.oculta)'));
+        const respondidas = validas.filter(p => p.querySelector('input:checked')).length;
+        const total = validas.length;
+        const pct = total ? Math.round(respondidas / total * 100) : 0;
+        textoRespondidas.textContent = 'Respondeu ' + respondidas + ' de ' + total + (total === 1 ? ' pergunta' : ' perguntas');
+        pctRespondidas.textContent = pct + '%';
+        barraRespondidas.style.width = pct + '%';
+        barraRespondidas.setAttribute('aria-valuenow', pct);
     }
 
     function mostrar(i) {
@@ -61,7 +76,7 @@
     }
 
     form.querySelectorAll('input, select').forEach(c => c.addEventListener('input', () => c.classList.remove('is-invalid')));
-    form.querySelectorAll('.pergunta input').forEach(r => r.addEventListener('change', () => r.closest('.pergunta').classList.remove('erro')));
+    form.querySelectorAll('.pergunta input').forEach(r => r.addEventListener('change', () => { r.closest('.pergunta').classList.remove('erro'); atualizarProgresso(); }));
     tipo.addEventListener('change', aplicarTipo);
     btnProximo.addEventListener('click', () => { if (validar(atual)) mostrar(atual + 1); });
     btnVoltar.addEventListener('click', () => mostrar(atual - 1));

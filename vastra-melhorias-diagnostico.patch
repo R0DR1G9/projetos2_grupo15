@@ -1,0 +1,1098 @@
+diff --git a/README.md b/README.md
+index ee9b1af..415939f 100644
+--- a/README.md
++++ b/README.md
+@@ -1,10 +1,10 @@
+-# [Vastra] — Plataforma de Gestão ESG para PMEs
++# [Vastra] - Plataforma de Gestão ESG para PMEs
+ 
+ [![CI](https://github.com/R0DR1G9/projetos2_grupo15/actions/workflows/ci.yml/badge.svg)](https://github.com/R0DR1G9/projetos2_grupo15/actions/workflows/ci.yml)
+ 
+ ## 📋 Descrição do Projeto
+ 
+-Plataforma web para pequenas e médias empresas acompanharem seus indicadores, metas e ações de sustentabilidade (ESG — Ambiental, Social e Governança) em um único painel centralizado, inspirada na análise de mercado de ferramentas como Paresi, ESG Business, Minha Pegada, Orkea e EcoVadis.
++Plataforma web para pequenas e médias empresas acompanharem seus indicadores, metas e ações de sustentabilidade (ESG - Ambiental, Social e Governança) em um único painel centralizado, inspirada na análise de mercado de ferramentas como Paresi, ESG Business, Minha Pegada, Orkea e EcoVadis.
+ 
+ ## 🧭 Páginas do site
+ 
+@@ -16,7 +16,7 @@ Plataforma web para pequenas e médias empresas acompanharem seus indicadores, m
+ | Metodologia e fontes | `/diagnostico/metodologia/` | Como o diagnóstico foi construído (GRI Têxtil/Vestuário, Higg FEM, OCDE, ISO 26000, B Impact, modelos de maturidade ESG), pesos, limitações e fontes por pergunta |
+ | Sobre o projeto | `/sobre/` | O que estamos construindo, para quem, e como chegamos até aqui |
+ | Quem somos | `/quem-somos/` | Integrantes da equipe |
+-| Fale conosco | `/contato/` | Formulário de contato (bug, sugestão, dúvida) — respostas ficam salvas no banco e são visíveis no `/admin/` |
++| Fale conosco | `/contato/` | Formulário de contato (bug, sugestão, dúvida) - respostas ficam salvas no banco e são visíveis no `/admin/` |
+ | Quadro de atividades | `/atividades/` | Quadro com colunas de status (Aguardando início, Em andamento, Concluído) para as ações de sustentabilidade (H2) |
+ | Evolução ESG | `/evolucao/` | Gráficos de linha, barras e radar com a evolução das notas ESG entre diagnósticos (H4) |
+ | Ranking | `/ranking/` | Rank Bronze, Prata ou Ouro baseado na nota ESG geral (H3) |
+@@ -37,17 +37,17 @@ Plataforma web para pequenas e médias empresas acompanharem seus indicadores, m
+ 
+ ## 📄 Documentação
+ 
+-- [Documento de Análise de Competidores](./relatório_de_análise_de_competidores.md) — benchmark com 5 concorrentes, pontos fortes/fracos e requisitos levantados
+-- [Histórias de Usuário](./historias.md) — 6 histórias no formato Como/Quero/Para, com cenários de validação em BDD (Dado/Quando/Então)
+-- [Como contribuir](./CONTRIBUTING.md) — como rodar o projeto, fluxo de branches e Pull Requests, testes e pipeline de CI
++- [Documento de Análise de Competidores](./relatório_de_análise_de_competidores.md) - benchmark com 5 concorrentes, pontos fortes/fracos e requisitos levantados
++- [Histórias de Usuário](./historias.md) - 6 histórias no formato Como/Quero/Para, com cenários de validação em BDD (Dado/Quando/Então)
++- [Como contribuir](./CONTRIBUTING.md) - como rodar o projeto, fluxo de branches e Pull Requests, testes e pipeline de CI
+ 
+ ## ✅ Requisitos do Produto (não triviais)
+ 
+-1. **Matriz de setores ESG filtrável** — o sistema deve permitir visualizar e filtrar indicadores por categoria (Ambiental, Social, Governança/Econômico) e por "Todos", cruzando dados de diferentes frentes em uma única matriz.
+-2. **Painel de indicadores com meta e progresso** — o sistema deve calcular e exibir o percentual de atingimento de uma meta (ex: 60%) com barra de progresso, junto de métricas auxiliares (nº total de tarefas, % de tarefas em dia/TPR, status de faturamento ativo).
+-3. **Comparativo de desempenho por período** — o sistema deve gerar um gráfico de evolução (ex: linha temporal) comparando o desempenho do período atual com o anterior, calculando automaticamente a variação percentual (ex: +14%).
+-4. **Gestão de status de ações** — o sistema deve classificar e contabilizar ações em pelo menos três estados (em andamento, aguardando início, concluídas), permitindo atualização do status por meio de checkboxes.
+-5. **Acompanhamento de metas trimestrais de ações sustentáveis** — o sistema deve rastrear o progresso de ações sustentáveis planejadas versus realizadas dentro de um período trimestral (ex: 4/10 ações), exibindo o percentual concluído.
++1. **Matriz de setores ESG filtrável** - o sistema deve permitir visualizar e filtrar indicadores por categoria (Ambiental, Social, Governança/Econômico) e por "Todos", cruzando dados de diferentes frentes em uma única matriz.
++2. **Painel de indicadores com meta e progresso** - o sistema deve calcular e exibir o percentual de atingimento de uma meta (ex: 60%) com barra de progresso, junto de métricas auxiliares (nº total de tarefas, % de tarefas em dia/TPR, status de faturamento ativo).
++3. **Comparativo de desempenho por período** - o sistema deve gerar um gráfico de evolução (ex: linha temporal) comparando o desempenho do período atual com o anterior, calculando automaticamente a variação percentual (ex: +14%).
++4. **Gestão de status de ações** - o sistema deve classificar e contabilizar ações em pelo menos três estados (em andamento, aguardando início, concluídas), permitindo atualização do status por meio de checkboxes.
++5. **Acompanhamento de metas trimestrais de ações sustentáveis** - o sistema deve rastrear o progresso de ações sustentáveis planejadas versus realizadas dentro de um período trimestral (ex: 4/10 ações), exibindo o percentual concluído.
+ 
+ ## 📊 Benchmark
+ 
+@@ -81,11 +81,11 @@ Tabela comparativa disponível no [documento de análise de competidores](./rela
+ 
+ ![Quadro da Sprint 02](./assets/imagem_2026-09-22_180543355.png)
+ 
+-### Sprint 03 — Backlog (JIRA)
++### Sprint 03 - Backlog (JIRA)
+ 
+ ![Backlog da Sprint 03 no JIRA](./assets/jira_backlog_sprint03.png)
+ 
+-### Sprint 03 — Backlog finalizado
++### Sprint 03 - Backlog finalizado
+ 
+ ![Quadro da Sprint 03](./assets/imagem_2026-10-19_141712851.png)
+ 
+@@ -122,7 +122,7 @@ python manage.py runserver
+ - **Uso do sistema:** [link do YouTube](https://youtu.be/2ni9VbnhRu0)
+ - **Explicação do código:** [link do YouTube](https://youtu.be/rq166RePr94)
+ 
+-### Novas funcionalidades — Entrega 03 (H2, H3 e H4)
++### Novas funcionalidades - Entrega 03 (H2, H3 e H4)
+ 
+ Vídeos gravados apenas com as funcionalidades novas (Quadro de atividades, Ranking e Evolução ESG).
+ 
+diff --git a/atividades/templates/atividades/quadro.html b/atividades/templates/atividades/quadro.html
+index 7e1f3d5..61eae31 100644
+--- a/atividades/templates/atividades/quadro.html
++++ b/atividades/templates/atividades/quadro.html
+@@ -1,7 +1,7 @@
+ {% extends "base.html" %}
+ {% load static %}
+ 
+-{% block title %}Quadro de atividades — Plataforma ESG{% endblock %}
++{% block title %}Quadro de atividades - Plataforma ESG{% endblock %}
+ 
+ {% block extra_head %}
+ <link rel="stylesheet" href="{% static 'css/quadro.css' %}">
+@@ -11,7 +11,7 @@
+ <header class="bg-success bg-gradient text-white py-5 text-center shadow-sm">
+     <div class="container py-3">
+         <h1 class="display-5 fw-bold">Quadro de atividades</h1>
+-        <p class="lead mb-0">Organize suas ações de sustentabilidade por status</p>
++        <p class="lead mb-0">Organize suas ações de sustentabilidade por status. Arraste os cartões entre as colunas.</p>
+     </div>
+ </header>
+ 
+@@ -40,17 +40,18 @@
+     <div class="row g-3">
+         {% for coluna in colunas %}
+         <div class="col-lg-4">
+-            <div class="card shadow-sm h-100 coluna-{{ coluna.chave }}">
++            <div class="card shadow-sm h-100 coluna-{{ coluna.chave }}" data-coluna="{{ coluna.chave }}">
+                 <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                     <h2 class="h6 fw-bold mb-0">{{ coluna.nome }}</h2>
+                     <span class="badge rounded-pill text-bg-secondary" id="contador-{{ coluna.chave }}">{{ coluna.atividades|length }}</span>
+                 </div>
+                 <div class="card-body bg-light">
+                     {% for a in coluna.atividades %}
+-                    <div class="card card-atividade shadow-sm mb-2">
++                    <div class="card card-atividade shadow-sm mb-2" data-atividade>
+                         <div class="card-body p-3">
+                             <div class="d-flex justify-content-between align-items-start mb-2">
+-                                <span class="fw-semibold">{{ a.titulo }}</span>
++                                <span class="alca-arrastar" aria-hidden="true" title="Arraste para mudar de coluna"><i class="ci ci-drag-vertical"></i></span>
++                                <span class="fw-semibold flex-grow-1">{{ a.titulo }}</span>
+                                 <form method="post" action="{% url 'deletar_atividade' a.pk %}" data-confirmar="Remover esta atividade?">
+                                     {% csrf_token %}
+                                     <button type="submit" class="btn btn-sm btn-link text-danger p-0 ms-2" title="Remover" aria-label="Remover atividade">
+@@ -83,3 +84,5 @@
+     </div>
+ </main>
+ {% endblock %}
++
++{% block extra_scripts %}<script src="{% static 'js/quadro.js' %}"></script>{% endblock %}
+diff --git a/atividades/tests.py b/atividades/tests.py
+index a4bafbd..37ca921 100644
+--- a/atividades/tests.py
++++ b/atividades/tests.py
+@@ -37,3 +37,13 @@ class QuadroAtividadesTests(TestCase):
+         a = Atividade.objects.create(titulo="X", categoria="governanca")
+         self.client.post(reverse("deletar_atividade", args=[a.pk]))
+         self.assertEqual(Atividade.objects.count(), 0)
++
++
++class ArrastarCartoesTests(TestCase):
++    def test_colunas_e_cartoes_tem_ganchos_para_arrastar(self):
++        Atividade.objects.create(titulo="Treinar equipe", categoria="social")
++        resp = self.client.get(reverse("quadro_atividades"))
++        for chave in ("aguardando", "andamento", "concluido"):
++            self.assertContains(resp, f'data-coluna="{chave}"')
++        self.assertContains(resp, "data-atividade")
++        self.assertContains(resp, "js/quadro.js")
+diff --git a/diagnostico/forms.py b/diagnostico/forms.py
+index 808f18d..3e87d99 100644
+--- a/diagnostico/forms.py
++++ b/diagnostico/forms.py
+@@ -10,15 +10,17 @@ class DiagnosticoForm(forms.ModelForm):
+         model = DiagnosticoESG
+         fields = [
+             'nome_empresa', 'porte', 'tipo_operacao', 'numero_funcionarios',
+-            'pct_residuos_reaproveitados', 'pct_mulheres_lideranca', 'horas_treinamento_ano',
++            'kg_sobras_geradas', 'kg_sobras_reaproveitadas', 'pessoas_lideranca', 'mulheres_lideranca', 'horas_treinamento_ano',
+         ]
+         widgets = {
+             'nome_empresa': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ex: Confecções Moda Sustentável'}),
+             'porte': forms.Select(attrs={'class': 'form-select'}),
+             'tipo_operacao': forms.Select(attrs={'class': 'form-select'}),
+             'numero_funcionarios': forms.NumberInput(attrs={'class': 'form-control', 'min': 0, 'placeholder': 'Ex: 25'}),
+-            'pct_residuos_reaproveitados': forms.NumberInput(attrs={'class': 'form-control', 'min': 0, 'max': 100, 'placeholder': 'Ex: 30'}),
+-            'pct_mulheres_lideranca': forms.NumberInput(attrs={'class': 'form-control', 'min': 0, 'max': 100, 'placeholder': 'Ex: 40'}),
++            'kg_sobras_geradas': forms.NumberInput(attrs={'class': 'form-control', 'min': 0, 'placeholder': 'Ex: 120'}),
++            'kg_sobras_reaproveitadas': forms.NumberInput(attrs={'class': 'form-control', 'min': 0, 'placeholder': 'Ex: 40'}),
++            'pessoas_lideranca': forms.NumberInput(attrs={'class': 'form-control', 'min': 0, 'placeholder': 'Ex: 5'}),
++            'mulheres_lideranca': forms.NumberInput(attrs={'class': 'form-control', 'min': 0, 'placeholder': 'Ex: 2'}),
+             'horas_treinamento_ano': forms.NumberInput(attrs={'class': 'form-control', 'min': 0, 'placeholder': 'Ex: 8'}),
+         }
+ 
+@@ -31,8 +33,12 @@ class DiagnosticoForm(forms.ModelForm):
+ 
+     def clean(self):
+         dados = super().clean()
+-        for campo in ('pct_residuos_reaproveitados', 'pct_mulheres_lideranca'):
+-            valor = dados.get(campo)
+-            if valor is not None and valor > 100:
+-                self.add_error(campo, 'Informe um valor entre 0 e 100.')
++        pares = (
++            ('kg_sobras_reaproveitadas', 'kg_sobras_geradas', 'O reaproveitado não pode ser maior que o total de sobras geradas.'),
++            ('mulheres_lideranca', 'pessoas_lideranca', 'O número de mulheres não pode ser maior que o total de pessoas em liderança.'),
++        )
++        for parte, total, mensagem in pares:
++            valor_parte, valor_total = dados.get(parte), dados.get(total)
++            if valor_parte is not None and valor_total is not None and valor_parte > valor_total:
++                self.add_error(parte, mensagem)
+         return dados
+diff --git a/diagnostico/migrations/0006_numeros_em_vez_de_percentuais.py b/diagnostico/migrations/0006_numeros_em_vez_de_percentuais.py
+new file mode 100644
+index 0000000..61a9ac7
+--- /dev/null
++++ b/diagnostico/migrations/0006_numeros_em_vez_de_percentuais.py
+@@ -0,0 +1,53 @@
++# Generated by Django 5.0.4 on 2026-10-28 16:46
++
++from django.db import migrations, models
++
++
++class Migration(migrations.Migration):
++
++    dependencies = [
++        ("diagnostico", "0005_versao_questionario"),
++    ]
++
++    operations = [
++        migrations.RemoveField(
++            model_name="diagnosticoesg",
++            name="pct_mulheres_lideranca",
++        ),
++        migrations.RemoveField(
++            model_name="diagnosticoesg",
++            name="pct_residuos_reaproveitados",
++        ),
++        migrations.AddField(
++            model_name="diagnosticoesg",
++            name="kg_sobras_geradas",
++            field=models.PositiveIntegerField(
++                blank=True,
++                null=True,
++                verbose_name="Kg de sobras de tecido geradas por mês",
++            ),
++        ),
++        migrations.AddField(
++            model_name="diagnosticoesg",
++            name="kg_sobras_reaproveitadas",
++            field=models.PositiveIntegerField(
++                blank=True,
++                null=True,
++                verbose_name="Kg de sobras reaproveitadas por mês",
++            ),
++        ),
++        migrations.AddField(
++            model_name="diagnosticoesg",
++            name="mulheres_lideranca",
++            field=models.PositiveIntegerField(
++                blank=True, null=True, verbose_name="Mulheres em cargos de liderança"
++            ),
++        ),
++        migrations.AddField(
++            model_name="diagnosticoesg",
++            name="pessoas_lideranca",
++            field=models.PositiveIntegerField(
++                blank=True, null=True, verbose_name="Pessoas em cargos de liderança"
++            ),
++        ),
++    ]
+diff --git a/diagnostico/models.py b/diagnostico/models.py
+index d173faa..d012bb1 100644
+--- a/diagnostico/models.py
++++ b/diagnostico/models.py
+@@ -16,6 +16,14 @@ def classificar(pct):
+     if pct >= 40:
+         return MEDALHAS['prata']
+     return MEDALHAS['bronze']
++
++
++def proximo_nivel(pct):
++    if pct >= 70:
++        return None
++    alvo, nome = (70, MEDALHAS['ouro']['nome']) if pct >= 40 else (40, MEDALHAS['prata']['nome'])
++    return {'nome': nome, 'faltam': round(alvo - pct, 1)}
++
+ # Create your models here.
+ class DiagnosticoESG(models.Model):
+     nome_empresa = models.CharField(max_length=150, verbose_name="Nome da Empresa / Confecção")
+@@ -40,11 +48,27 @@ class DiagnosticoESG(models.Model):
+     numero_funcionarios = models.PositiveIntegerField(null=True, blank=True, verbose_name="Número de funcionários")
+     tipo_operacao = models.CharField(max_length=10, choices=perguntas.TIPOS_OPERACAO, blank=True, verbose_name="Tipo de operação")
+     respostas = models.JSONField(default=dict, blank=True)
+-    pct_residuos_reaproveitados = models.PositiveSmallIntegerField(null=True, blank=True, verbose_name="% de sobras de tecido reaproveitadas")
+-    pct_mulheres_lideranca = models.PositiveSmallIntegerField(null=True, blank=True, verbose_name="% de mulheres na liderança")
++    kg_sobras_geradas = models.PositiveIntegerField(null=True, blank=True, verbose_name="Kg de sobras de tecido geradas por mês")
++    kg_sobras_reaproveitadas = models.PositiveIntegerField(null=True, blank=True, verbose_name="Kg de sobras reaproveitadas por mês")
++    pessoas_lideranca = models.PositiveIntegerField(null=True, blank=True, verbose_name="Pessoas em cargos de liderança")
++    mulheres_lideranca = models.PositiveIntegerField(null=True, blank=True, verbose_name="Mulheres em cargos de liderança")
+     horas_treinamento_ano = models.PositiveIntegerField(null=True, blank=True, verbose_name="Horas de treinamento por pessoa ao ano")
+ 
+     data_criacao = models.DateTimeField(auto_now_add=True)
++
++    @staticmethod
++    def _percentual(parte, total):
++        if parte is None or not total:
++            return None
++        return round(parte * 100 / total)
++
++    @property
++    def pct_residuos_reaproveitados(self):
++        return self._percentual(self.kg_sobras_reaproveitadas, self.kg_sobras_geradas)
++
++    @property
++    def pct_mulheres_lideranca(self):
++        return self._percentual(self.mulheres_lideranca, self.pessoas_lideranca)
+     usuario = models.ForeignKey(
+         settings.AUTH_USER_MODEL, null=True, blank=True,
+         on_delete=models.CASCADE, related_name='diagnosticos'
+@@ -72,6 +96,7 @@ class DiagnosticoESG(models.Model):
+             'governanca': round(score_g, 1),
+             'geral': round(score_geral, 1),
+             'medalha_geral': classificar(score_geral),
++            'proximo_nivel': proximo_nivel(score_geral),
+             'medalha_ambiental': classificar(score_e),
+             'medalha_social': classificar(score_s),
+             'medalha_governanca': classificar(score_g),
+diff --git a/diagnostico/perguntas.py b/diagnostico/perguntas.py
+index 2e4bcb4..2612b03 100644
+--- a/diagnostico/perguntas.py
++++ b/diagnostico/perguntas.py
+@@ -14,7 +14,7 @@ Como foi construído (detalhes na página /diagnostico/metodologia/):
+ FONTES = {
+     "gri": {
+         "sigla": "GRI",
+-        "nome": "GRI — Padrão Setorial para Têxteis e Vestuário (minuta em consulta pública, 18 tópicos prováveis)",
++        "nome": "GRI - Padrão Setorial para Têxteis e Vestuário (minuta em consulta pública, 18 tópicos prováveis)",
+         "url": "https://globalreporting.org/media/snzig5ft/gri-textiles-apparel-faq.pdf",
+     },
+     "higg": {
+@@ -29,32 +29,32 @@ FONTES = {
+     },
+     "iso26000": {
+         "sigla": "ISO 26000",
+-        "nome": "ISO 26000 — 7 temas centrais de responsabilidade social",
++        "nome": "ISO 26000 - 7 temas centrais de responsabilidade social",
+         "url": "https://www.fm2s.com.br/blog/iso-26000",
+     },
+     "bcorp": {
+         "sigla": "B Impact",
+-        "nome": "B Impact Assessment (B Lab) — áreas: trabalhadores, comunidade, meio ambiente, clientes e governança",
++        "nome": "B Impact Assessment (B Lab) - áreas: trabalhadores, comunidade, meio ambiente, clientes e governança",
+         "url": "https://www.bcorporation.net/en-us/faq/what-topics-are-covered-b-impact-assessment/",
+     },
+     "orrick": {
+         "sigla": "Orrick",
+-        "nome": "Orrick — ESG Maturity Model (8 componentes, 3 a 4 níveis cada)",
++        "nome": "Orrick - ESG Maturity Model (8 componentes, 3 a 4 níveis cada)",
+         "url": "https://media.orrick.com/Media%20Library/public/files/misc/2023/esg-maturity-model.pdf",
+     },
+     "crosscountry": {
+         "sigla": "CrossCountry",
+-        "nome": "CrossCountry Consulting — ESG Maturity Model (Mindful, Defined, Managed, Integrated)",
++        "nome": "CrossCountry Consulting - ESG Maturity Model (Mindful, Defined, Managed, Integrated)",
+         "url": "https://www.crosscountry-consulting.com/insights/blog/esg-maturity-model/",
+     },
+     "oren": {
+         "sigla": "Oren",
+-        "nome": "Oren — níveis de maturidade ESG (Compliant, Efficient, Strategic, Leader)",
++        "nome": "Oren - níveis de maturidade ESG (Compliant, Efficient, Strategic, Leader)",
+         "url": "https://www.orennow.com/blog/esg-maturity-guide-to-evaluating-your-companys-esg-progress",
+     },
+     "fiemg": {
+         "sigla": "FIEMG/NRs",
+-        "nome": "FIEMG — E-book do Setor Vestuário (NR-1, NR-5, NR-6, NR-7, NR-12, NR-17, NR-26 aplicadas à confecção)",
++        "nome": "FIEMG - E-book do Setor Vestuário (NR-1, NR-5, NR-6, NR-7, NR-12, NR-17, NR-26 aplicadas à confecção)",
+         "url": "https://www.fiemg.com.br/wp-content/uploads/2024/09/EBOOK-DO-SETOR-VESTUARIO.pdf",
+     },
+     "abvtex": {
+diff --git a/diagnostico/templates/diagnostico/form.html b/diagnostico/templates/diagnostico/form.html
+index f4ca42e..fbf458c 100644
+--- a/diagnostico/templates/diagnostico/form.html
++++ b/diagnostico/templates/diagnostico/form.html
+@@ -1,7 +1,7 @@
+ {% extends "base.html" %}
+ {% load static %}
+ 
+-{% block title %}Novo diagnóstico — Plataforma ESG{% endblock %}
++{% block title %}Novo diagnóstico - Plataforma ESG{% endblock %}
+ 
+ {% block extra_head %}<link rel="stylesheet" href="{% static 'css/diagnostico.css' %}">{% endblock %}
+ 
+@@ -24,6 +24,11 @@
+                 {% for pilar in pilares %}<span class="etapa-nome">{{ forloop.counter|add:1 }}. {{ pilar.nome }}</span>{% endfor %}
+             </div>
+             <div class="progress progress-fino"><div class="progress-bar bg-success" id="barra" data-largura="25"></div></div>
++            <div class="progresso-respostas" aria-live="polite">
++                <span id="textoRespondidas">Respondeu 0 de 0 perguntas</span>
++                <span class="pct" id="pctRespondidas">0%</span>
++            </div>
++            <div class="progress progress-fino"><div class="progress-bar" id="barraRespondidas" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div></div>
+         </div>
+ 
+         {% if erro_respostas or form.errors %}
+@@ -66,17 +71,27 @@
+                     <h3 class="h6 fw-bold mb-1">Dados opcionais</h3>
+                     <p class="text-muted small mb-3">Se souber, preencha. São números reais que enriquecem o seu relatório. Pode deixar em branco.</p>
+                     <div class="row g-3">
+-                        <div class="col-md-4">
+-                            <label class="form-label small fw-bold" for="{{ form.pct_residuos_reaproveitados.id_for_label }}">% das sobras de tecido reaproveitadas</label>
+-                            {{ form.pct_residuos_reaproveitados }}
+-                            {% for e in form.pct_residuos_reaproveitados.errors %}<div class="text-danger small mt-1">{{ e }}</div>{% endfor %}
++                        <div class="col-md-6 col-lg-4">
++                            <label class="form-label small fw-bold" for="{{ form.kg_sobras_geradas.id_for_label }}">Kg de sobras de tecido geradas por mês</label>
++                            {{ form.kg_sobras_geradas }}
++                            {% for e in form.kg_sobras_geradas.errors %}<div class="text-danger small mt-1">{{ e }}</div>{% endfor %}
++                        </div>
++                        <div class="col-md-6 col-lg-4">
++                            <label class="form-label small fw-bold" for="{{ form.kg_sobras_reaproveitadas.id_for_label }}">Kg dessas sobras reaproveitadas</label>
++                            {{ form.kg_sobras_reaproveitadas }}
++                            {% for e in form.kg_sobras_reaproveitadas.errors %}<div class="text-danger small mt-1">{{ e }}</div>{% endfor %}
++                        </div>
++                        <div class="col-md-6 col-lg-4">
++                            <label class="form-label small fw-bold" for="{{ form.pessoas_lideranca.id_for_label }}">Quantas pessoas ocupam cargos de liderança</label>
++                            {{ form.pessoas_lideranca }}
++                            {% for e in form.pessoas_lideranca.errors %}<div class="text-danger small mt-1">{{ e }}</div>{% endfor %}
+                         </div>
+-                        <div class="col-md-4">
+-                            <label class="form-label small fw-bold" for="{{ form.pct_mulheres_lideranca.id_for_label }}">% de mulheres na liderança</label>
+-                            {{ form.pct_mulheres_lideranca }}
+-                            {% for e in form.pct_mulheres_lideranca.errors %}<div class="text-danger small mt-1">{{ e }}</div>{% endfor %}
++                        <div class="col-md-6 col-lg-4">
++                            <label class="form-label small fw-bold" for="{{ form.mulheres_lideranca.id_for_label }}">Quantas delas são mulheres</label>
++                            {{ form.mulheres_lideranca }}
++                            {% for e in form.mulheres_lideranca.errors %}<div class="text-danger small mt-1">{{ e }}</div>{% endfor %}
+                         </div>
+-                        <div class="col-md-4">
++                        <div class="col-md-6 col-lg-4">
+                             <label class="form-label small fw-bold" for="{{ form.horas_treinamento_ano.id_for_label }}">Horas de treinamento por pessoa ao ano</label>
+                             {{ form.horas_treinamento_ano }}
+                             {% for e in form.horas_treinamento_ano.errors %}<div class="text-danger small mt-1">{{ e }}</div>{% endfor %}
+diff --git a/diagnostico/templates/diagnostico/index.html b/diagnostico/templates/diagnostico/index.html
+index 6b05fda..2e1f6b7 100644
+--- a/diagnostico/templates/diagnostico/index.html
++++ b/diagnostico/templates/diagnostico/index.html
+@@ -1,7 +1,7 @@
+ {% extends "base.html" %}
+ {% load static %}
+ 
+-{% block title %}Diagnóstico ESG — Plataforma ESG{% endblock %}
++{% block title %}Diagnóstico ESG - Plataforma ESG{% endblock %}
+ 
+ {% block extra_head %}<link rel="stylesheet" href="{% static 'css/diagnostico.css' %}">{% endblock %}
+ 
+diff --git a/diagnostico/templates/diagnostico/metodologia.html b/diagnostico/templates/diagnostico/metodologia.html
+index 37cd03b..e2ecb71 100644
+--- a/diagnostico/templates/diagnostico/metodologia.html
++++ b/diagnostico/templates/diagnostico/metodologia.html
+@@ -1,7 +1,7 @@
+ {% extends "base.html" %}
+ {% load static %}
+ 
+-{% block title %}Metodologia do diagnóstico — Plataforma ESG{% endblock %}
++{% block title %}Metodologia do diagnóstico - Plataforma ESG{% endblock %}
+ 
+ {% block extra_head %}<link rel="stylesheet" href="{% static 'css/diagnostico.css' %}">{% endblock %}
+ 
+diff --git a/diagnostico/templates/diagnostico/resultado.html b/diagnostico/templates/diagnostico/resultado.html
+index b0d9ce3..1e6a3f0 100644
+--- a/diagnostico/templates/diagnostico/resultado.html
++++ b/diagnostico/templates/diagnostico/resultado.html
+@@ -1,7 +1,7 @@
+ {% extends "base.html" %}
+ {% load l10n static %}
+ 
+-{% block title %}Resultado — {{ diagnostico.nome_empresa }}{% endblock %}
++{% block title %}Resultado - {{ diagnostico.nome_empresa }}{% endblock %}
+ 
+ {% block extra_head %}<link rel="stylesheet" href="{% static 'css/inicio.css' %}"><link rel="stylesheet" href="{% static 'css/diagnostico.css' %}">{% endblock %}
+ 
+@@ -9,7 +9,7 @@
+ <header class="bg-success bg-gradient text-white py-5 text-center shadow-sm">
+     <div class="container py-3">
+         <h1 class="display-5 fw-bold">Resultado do diagnóstico</h1>
+-        <p class="lead mb-0">{{ diagnostico.nome_empresa }} · {{ diagnostico.data_criacao|date:"d/m/Y" }}</p>
++        <p class="lead mb-0">{{ diagnostico.nome_empresa }} · {{ diagnostico.data_criacao|date:"d/m/Y" }} às {{ diagnostico.data_criacao|date:"H:i" }}</p>
+     </div>
+ </header>
+ 
+@@ -20,7 +20,11 @@
+                 <div class="d-flex align-items-center gap-4">
+                     <div class="anel anel-grande" data-pct="{{ pontuacao.geral|unlocalize }}"><div class="anel-interno">{{ pontuacao.geral|floatformat:"-1" }}%</div></div>
+                     <div>
+-                        <span class="badge rounded-pill fs-6 text-white mb-2 medalha-{{ pontuacao.medalha_geral.chave }}">{{ pontuacao.medalha_geral.emoji }} {{ pontuacao.medalha_geral.nome }}</span>
++                        <div class="selo-nivel medalha-{{ pontuacao.medalha_geral.chave }} mb-2">
++                            <span class="selo-emoji">{{ pontuacao.medalha_geral.emoji }}</span>
++                            <span class="selo-texto"><small>Seu nível</small><strong>{{ pontuacao.medalha_geral.nome }}</strong></span>
++                        </div>
++                        {% if pontuacao.proximo_nivel %}<div class="small fw-bold mb-1">Faltam {{ pontuacao.proximo_nivel.faltam|floatformat:"-1" }} pontos para o nível {{ pontuacao.proximo_nivel.nome }}</div>{% else %}<div class="small fw-bold mb-1">Nível máximo alcançado</div>{% endif %}
+                         <div class="small text-muted">Nota ESG geral</div>
+                         {% if diagnostico.porte %}<div class="small mt-2">{{ diagnostico.get_tipo_operacao_display }}<br>{{ diagnostico.get_porte_display }}</div>{% endif %}
+                     </div>
+@@ -114,13 +118,13 @@
+                 {% endfor %}
+             </div></div>
+ 
+-            {% if diagnostico.numero_funcionarios is not None or diagnostico.pct_residuos_reaproveitados is not None or diagnostico.pct_mulheres_lideranca is not None or diagnostico.horas_treinamento_ano is not None %}
++            {% if diagnostico.numero_funcionarios is not None or diagnostico.kg_sobras_geradas is not None or diagnostico.pessoas_lideranca is not None or diagnostico.horas_treinamento_ano is not None %}
+             <div class="card mb-4"><div class="card-body p-4">
+                 <h2 class="h5 fw-bold mb-3">Seus números</h2>
+                 <div class="row g-2">
+                     {% if diagnostico.numero_funcionarios is not None %}<div class="col-6"><div class="dado"><strong>{{ diagnostico.numero_funcionarios }}</strong><span class="small">funcionários</span></div></div>{% endif %}
+-                    {% if diagnostico.pct_residuos_reaproveitados is not None %}<div class="col-6"><div class="dado"><strong>{{ diagnostico.pct_residuos_reaproveitados }}%</strong><span class="small">sobras reaproveitadas</span></div></div>{% endif %}
+-                    {% if diagnostico.pct_mulheres_lideranca is not None %}<div class="col-6"><div class="dado"><strong>{{ diagnostico.pct_mulheres_lideranca }}%</strong><span class="small">mulheres na liderança</span></div></div>{% endif %}
++                    {% if diagnostico.kg_sobras_geradas is not None %}<div class="col-6"><div class="dado"><strong>{{ diagnostico.kg_sobras_reaproveitadas|default:0 }} de {{ diagnostico.kg_sobras_geradas }} kg</strong><span class="small">sobras reaproveitadas{% if diagnostico.pct_residuos_reaproveitados is not None %} ({{ diagnostico.pct_residuos_reaproveitados }}%){% endif %}</span></div></div>{% endif %}
++                    {% if diagnostico.pessoas_lideranca is not None %}<div class="col-6"><div class="dado"><strong>{{ diagnostico.mulheres_lideranca|default:0 }} de {{ diagnostico.pessoas_lideranca }}</strong><span class="small">mulheres na liderança{% if diagnostico.pct_mulheres_lideranca is not None %} ({{ diagnostico.pct_mulheres_lideranca }}%){% endif %}</span></div></div>{% endif %}
+                     {% if diagnostico.horas_treinamento_ano is not None %}<div class="col-6"><div class="dado"><strong>{{ diagnostico.horas_treinamento_ano }} h</strong><span class="small">treino/pessoa/ano</span></div></div>{% endif %}
+                 </div>
+             </div></div>
+diff --git a/diagnostico/tests.py b/diagnostico/tests.py
+index 18f3729..7a2bbd9 100644
+--- a/diagnostico/tests.py
++++ b/diagnostico/tests.py
+@@ -187,9 +187,24 @@ class FluxoDoDiagnosticoTests(ComLogin):
+         self.assertEqual(DiagnosticoESG.objects.count(), 0)
+         self.assertContains(r, 'value="2" checked')
+ 
+-    def test_percentual_acima_de_100_rejeitado(self):
+-        self.client.post(reverse('novo_diagnostico'), post_completo(3, pct_mulheres_lideranca='150'))
++    def test_parte_maior_que_total_rejeitada(self):
++        self.client.post(reverse('novo_diagnostico'), post_completo(3, pessoas_lideranca='4', mulheres_lideranca='5'))
+         self.assertEqual(DiagnosticoESG.objects.count(), 0)
++        self.client.post(reverse('novo_diagnostico'), post_completo(3, kg_sobras_geradas='10', kg_sobras_reaproveitadas='11'))
++        self.assertEqual(DiagnosticoESG.objects.count(), 0)
++
++    def test_numeros_viram_percentual_calculado(self):
++        self.client.post(reverse('novo_diagnostico'), post_completo(
++            3, kg_sobras_geradas='200', kg_sobras_reaproveitadas='50', pessoas_lideranca='5', mulheres_lideranca='2'))
++        d = DiagnosticoESG.objects.get()
++        self.assertEqual(d.pct_residuos_reaproveitados, 25)
++        self.assertEqual(d.pct_mulheres_lideranca, 40)
++
++    def test_percentual_sem_total_e_nulo(self):
++        self.client.post(reverse('novo_diagnostico'), post_completo(3))
++        d = DiagnosticoESG.objects.get()
++        self.assertIsNone(d.pct_residuos_reaproveitados)
++        self.assertIsNone(d.pct_mulheres_lideranca)
+ 
+     def test_horario_exibido_no_fuso_de_recife(self):
+         from django.conf import settings
+@@ -312,3 +327,30 @@ class AcessoPorUsuarioTests(TestCase):
+         self.client.force_login(self.dona)
+         self.client.post(reverse('novo_diagnostico'), post_completo(3))
+         self.assertEqual(DiagnosticoESG.objects.filter(usuario=self.dona).count(), 2)
++
++
++class MelhoriasVisuaisTests(ComLogin):
++    def test_form_tem_barra_de_perguntas_respondidas(self):
++        r = self.client.get(reverse('novo_diagnostico'))
++        self.assertContains(r, 'id="barraRespondidas"')
++        self.assertContains(r, 'Respondeu')
++
++    def test_form_pede_numeros_e_nao_percentuais(self):
++        r = self.client.get(reverse('novo_diagnostico'))
++        self.assertContains(r, 'name="kg_sobras_geradas"')
++        self.assertContains(r, 'name="pessoas_lideranca"')
++        self.assertNotContains(r, 'name="pct_')
++
++    def test_resultado_mostra_hora_selo_e_proximo_nivel(self):
++        self.client.post(reverse('novo_diagnostico'), post_completo(2))
++        d = DiagnosticoESG.objects.get()
++        r = self.client.get(reverse('resultado_diagnostico', args=[d.pk]))
++        self.assertContains(r, ' às ')
++        self.assertContains(r, 'selo-nivel')
++        self.assertContains(r, 'pontos para o nível')
++
++    def test_sem_travessao_longo_nos_templates(self):
++        from pathlib import Path
++        base = Path(__file__).resolve().parent
++        for arquivo in base.rglob('*.html'):
++            self.assertNotIn('—', arquivo.read_text(encoding='utf-8'), str(arquivo))
+diff --git a/evolucao/templates/evolucao/evolucao.html b/evolucao/templates/evolucao/evolucao.html
+index 729e911..2ecb44c 100644
+--- a/evolucao/templates/evolucao/evolucao.html
++++ b/evolucao/templates/evolucao/evolucao.html
+@@ -1,7 +1,7 @@
+ {% extends "base.html" %}
+ {% load static %}
+ 
+-{% block title %}Evolução ESG — Plataforma ESG{% endblock %}
++{% block title %}Evolução ESG - Plataforma ESG{% endblock %}
+ 
+ {% block extra_head %}<link rel="stylesheet" href="{% static 'css/evolucao.css' %}">{% endblock %}
+ 
+diff --git a/historias.md b/historias.md
+index d01cf61..025e5d4 100644
+--- a/historias.md
++++ b/historias.md
+@@ -1,4 +1,4 @@
+-# Histórias de Usuário — Vastra
++# Histórias de Usuário - Vastra
+ 
+ Plataforma de gestão ESG para PMEs (confecções e negócios têxteis).
+ Cada história segue o formato **Como / Quero / Para** e tem cenários de validação em **BDD** (Dado / Quando / Então).
+@@ -14,7 +14,7 @@ Cada história segue o formato **Como / Quero / Para** e tem cenários de valida
+ 
+ ---
+ 
+-## H1 — IA no diagnóstico ESG
++## H1 - IA no diagnóstico ESG
+ 
+ **Como** gestor(a) de uma confecção,
+ **quero** receber recomendações geradas por IA com base nas minhas respostas do diagnóstico,
+@@ -39,7 +39,7 @@ Cada história segue o formato **Como / Quero / Para** e tem cenários de valida
+ 
+ ---
+ 
+-## H2 — Quadro de atividades
++## H2 - Quadro de atividades
+ 
+ **Como** gestor(a) de uma confecção,
+ **quero** organizar minhas ações de sustentabilidade em um quadro com colunas de status,
+@@ -64,7 +64,7 @@ Cada história segue o formato **Como / Quero / Para** e tem cenários de valida
+ 
+ ---
+ 
+-## H3 — Sistema de avaliação com ranks (Bronze, Prata e Ouro)
++## H3 - Sistema de avaliação com ranks (Bronze, Prata e Ouro)
+ 
+ **Como** gestor(a) de uma confecção,
+ **quero** ver um rank (Bronze, Prata ou Ouro) baseado na minha nota ESG geral,
+@@ -102,7 +102,7 @@ Cada história segue o formato **Como / Quero / Para** e tem cenários de valida
+ 
+ ---
+ 
+-## H4 — Evolução ESG com diferentes gráficos
++## H4 - Evolução ESG com diferentes gráficos
+ 
+ **Como** gestor(a) de uma confecção,
+ **quero** ver a evolução das minhas notas ESG em diferentes tipos de gráfico,
+@@ -127,7 +127,7 @@ Cada história segue o formato **Como / Quero / Para** e tem cenários de valida
+ 
+ ---
+ 
+-## H5 — Rede social entre empresas
++## H5 - Rede social entre empresas
+ 
+ **Como** gestor(a) de uma confecção,
+ **quero** publicar e comentar em um feed compartilhado com outras empresas,
+@@ -152,7 +152,7 @@ Cada história segue o formato **Como / Quero / Para** e tem cenários de valida
+ 
+ ---
+ 
+-## H6 — Biblioteca de tutoriais e vídeos
++## H6 - Biblioteca de tutoriais e vídeos
+ 
+ **Como** gestor(a) de uma confecção,
+ **quero** acessar uma biblioteca com tutoriais e vídeos explicativos sobre ESG,
+diff --git a/inicio/templates/inicio/inicio.html b/inicio/templates/inicio/inicio.html
+index e576570..ecc1e66 100644
+--- a/inicio/templates/inicio/inicio.html
++++ b/inicio/templates/inicio/inicio.html
+@@ -1,7 +1,7 @@
+ {% extends "base.html" %}
+ {% load l10n static %}
+ 
+-{% block title %}Início — Plataforma ESG{% endblock %}
++{% block title %}Início - Plataforma ESG{% endblock %}
+ 
+ {% block extra_head %}
+ <link rel="stylesheet" href="{% static 'css/inicio.css' %}">
+@@ -30,9 +30,10 @@
+                                     <div class="anel-interno">{{ score.geral|floatformat:"-1" }}%</div>
+                                 </div>
+                                 <div>
+-                                    <span class="badge rounded-pill fs-6 text-white mb-2 medalha-{{ score.medalha_geral.chave }}">
+-                                        {{ score.medalha_geral.emoji }} {{ score.medalha_geral.nome }}
+-                                    </span>
++                                    <div class="selo-nivel medalha-{{ score.medalha_geral.chave }} mb-2">
++                                        <span class="selo-emoji">{{ score.medalha_geral.emoji }}</span>
++                                        <span class="selo-texto"><small>Seu nível</small><strong>{{ score.medalha_geral.nome }}</strong></span>
++                                    </div>
+                                     <div class="small">
+                                         {% if variacao is None %}
+                                             <span class="text-muted">Primeiro diagnóstico de <strong>{{ empresa }}</strong></span>
+diff --git a/institucional/models.py b/institucional/models.py
+index ad2ac08..a0630da 100644
+--- a/institucional/models.py
++++ b/institucional/models.py
+@@ -25,4 +25,4 @@ class MensagemContato(models.Model):
+         verbose_name_plural = "Mensagens de contato"
+ 
+     def __str__(self):
+-        return f"{self.get_assunto_display()} — {self.nome} ({self.data_criacao:%d/%m/%Y})"
++        return f"{self.get_assunto_display()} - {self.nome} ({self.data_criacao:%d/%m/%Y})"
+diff --git a/institucional/templates/institucional/contato.html b/institucional/templates/institucional/contato.html
+index 9959bdb..4a1d824 100644
+--- a/institucional/templates/institucional/contato.html
++++ b/institucional/templates/institucional/contato.html
+@@ -1,6 +1,6 @@
+ {% extends "base.html" %}
+ 
+-{% block title %}Fale conosco — Plataforma ESG{% endblock %}
++{% block title %}Fale conosco - Plataforma ESG{% endblock %}
+ 
+ {% block content %}
+ <header class="bg-success bg-gradient text-white py-5 text-center shadow-sm">
+diff --git a/institucional/templates/institucional/quem_somos.html b/institucional/templates/institucional/quem_somos.html
+index f067ea8..e61acc2 100644
+--- a/institucional/templates/institucional/quem_somos.html
++++ b/institucional/templates/institucional/quem_somos.html
+@@ -1,6 +1,6 @@
+ {% extends "base.html" %}
+ 
+-{% block title %}Quem somos — Plataforma ESG{% endblock %}
++{% block title %}Quem somos - Plataforma ESG{% endblock %}
+ 
+ {% block content %}
+ <header class="bg-success bg-gradient text-white py-5 text-center shadow-sm">
+diff --git a/institucional/templates/institucional/sobre.html b/institucional/templates/institucional/sobre.html
+index 736c84d..4df31dd 100644
+--- a/institucional/templates/institucional/sobre.html
++++ b/institucional/templates/institucional/sobre.html
+@@ -1,6 +1,6 @@
+ {% extends "base.html" %}
+ 
+-{% block title %}Sobre o projeto — Plataforma ESG{% endblock %}
++{% block title %}Sobre o projeto - Plataforma ESG{% endblock %}
+ 
+ {% block content %}
+ <header class="bg-success bg-gradient text-white py-5 text-center shadow-sm">
+@@ -18,7 +18,7 @@
+                 <h2 class="h4 fw-bold text-success mb-3">O que estamos construindo</h2>
+                 <p>
+                     A Plataforma ESG é um painel web para pequenas e médias empresas acompanharem, em um só lugar,
+-                    seus indicadores, metas e ações de sustentabilidade — organizados nos três pilares do ESG
++                    seus indicadores, metas e ações de sustentabilidade - organizados nos três pilares do ESG
+                     (Ambiental, Social e Governança). A ideia é substituir planilhas soltas e controles manuais
+                     por um diagnóstico simples, com pontuação e progresso visíveis de forma clara.
+                 </p>
+@@ -27,7 +27,7 @@
+             <section class="mb-5">
+                 <h2 class="h4 fw-bold text-success mb-3">Para quem é</h2>
+                 <p>
+-                    O público-alvo são PMEs que ainda não têm maturidade nem ferramentas de ESG estruturadas —
++                    O público-alvo são PMEs que ainda não têm maturidade nem ferramentas de ESG estruturadas -
+                     empresas que precisam entender onde estão e o que priorizar, sem o custo e a complexidade de
+                     soluções corporativas voltadas a grandes companhias.
+                 </p>
+@@ -51,7 +51,7 @@
+                     A primeira funcionalidade em produção é o
+                     <a href="{% url 'home' %}">diagnóstico de maturidade ESG</a>: um formulário que avalia a empresa
+                     em 12 perguntas (4 por pilar) e calcula a pontuação em Ambiental, Social, Governança e uma nota
+-                    geral. É o ponto de partida — nos próximos ciclos, o plano é evoluir para o acompanhamento de
++                    geral. É o ponto de partida - nos próximos ciclos, o plano é evoluir para o acompanhamento de
+                     metas, comparativos por período e gestão de ações sustentáveis descritos nos requisitos do
+                     produto.
+                 </p>
+diff --git a/mensagens/INTEGRACAO.md b/mensagens/INTEGRACAO.md
+index c8fb0b2..2ca49ea 100644
+--- a/mensagens/INTEGRACAO.md
++++ b/mensagens/INTEGRACAO.md
+@@ -1,4 +1,4 @@
+-# Mensagens (Direct) — como ligar ao projeto
++# Mensagens (Direct) - como ligar ao projeto
+ 
+ Depende do app `rede_social` (nomes e perfis) e do seu `templates/base.html` (blocos `title`, `extra_head`, `content`, `extra_scripts`).
+ 
+@@ -35,7 +35,7 @@ Logo abaixo do item "Rede Social":
+ <a class="menu-item {% if request.resolver_match.app_name == 'mensagens' %}ativo{% endif %}" href="{% url 'mensagens:caixa' %}"{% if request.resolver_match.app_name == 'mensagens' %} aria-current="page"{% endif %}><i class="bi bi-send"></i><span>Mensagens</span>{% if mensagens_nao_lidas %}<b style="margin-left:auto;min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:#ffc20e;color:#2b2a22;font-size:12px;font-weight:800;line-height:20px;text-align:center">{{ mensagens_nao_lidas }}</b>{% endif %}</a>
+ ```
+ 
+-## 5. Botão "Mensagem" no perfil (opcional) — `rede_social/templates/rede_social/perfil.html`
++## 5. Botão "Mensagem" no perfil (opcional) - `rede_social/templates/rede_social/perfil.html`
+ Ao lado do botão Seguir (dentro do `{% else %}` de `alvo == request.user`):
+ ```django
+ <a class="rs-btn rs-btn-sec" href="{% url 'mensagens:conversa' alvo|login_usuario %}">Mensagem</a>
+diff --git a/mensagens/static/mensagens/css/mensagens.css b/mensagens/static/mensagens/css/mensagens.css
+index 7be29f4..dc6c3e3 100644
+--- a/mensagens/static/mensagens/css/mensagens.css
++++ b/mensagens/static/mensagens/css/mensagens.css
+@@ -1,5 +1,5 @@
+ /* ==========================================================================
+-   Mensagens (Direct) — estilos sob .ms, classes com prefixo ms-
++   Mensagens (Direct) - estilos sob .ms, classes com prefixo ms-
+    Cores combinam com a rede social; ajuste as variáveis abaixo se precisar.
+    ========================================================================== */
+ .ms{
+diff --git a/rede_social/INTEGRACAO.md b/rede_social/INTEGRACAO.md
+index 812e670..95bffea 100644
+--- a/rede_social/INTEGRACAO.md
++++ b/rede_social/INTEGRACAO.md
+@@ -1,4 +1,4 @@
+-# Fotos nos posts — o que falta fora do app `rede_social`
++# Fotos nos posts - o que falta fora do app `rede_social`
+ 
+ ## 1. Dependência e migração
+ ```bash
+@@ -68,7 +68,7 @@ O `<form>` **precisa** de `enctype`, senão o arquivo não chega ao Django:
+ ```
+ 
+ ## 5. Template do card do post (feed, detalhe, perfil, hashtag, busca)
+-Dentro do card, logo abaixo do texto. Use `p.alvo` — assim o repost mostra a foto do original:
++Dentro do card, logo abaixo do texto. Use `p.alvo` - assim o repost mostra a foto do original:
+ ```django
+ {% if p.alvo.imagem %}
+   <a href="{{ p.alvo.imagem.url }}" target="_blank" rel="noopener" class="rs-post-imagem">
+diff --git "a/relat\303\263rio_de_an\303\241lise_de_competidores.md" "b/relat\303\263rio_de_an\303\241lise_de_competidores.md"
+index f945359..51d2c6c 100644
+--- "a/relat\303\263rio_de_an\303\241lise_de_competidores.md"
++++ "b/relat\303\263rio_de_an\303\241lise_de_competidores.md"
+@@ -1,4 +1,4 @@
+-# [Nome do Projeto] — Documento de Benchmark
++# [Nome do Projeto] - Documento de Benchmark
+ 
+ ## 1. Introdução
+ - Propósito do documento: Definir produtos que darão inspiração para o nosso projeto, e ao mesmo tempo, definir quais serão nossos requisitos
+@@ -19,7 +19,7 @@
+ 
+ #### 2.1.2 Funcionamento
+ Segundo o site oficial, o fluxo é: a empresa coleta dados de suas ações ESG (via formulários, inclusive de forma descentralizada entre setores), a plataforma organiza esses dados nos 153 indicadores GRI pré-configurados e nos ODS correspondentes, gera dashboards de acompanhamento (investimentos, metas, evolução temporal) e, com apoio de IA, produz relatórios prontos para auditorias/certificações. *(Fonte: plataforma.paresi.social)*
+-[A PREENCHER — incluir fotos/prints de uso, se tiverem testado a plataforma]
++[A PREENCHER - incluir fotos/prints de uso, se tiverem testado a plataforma]
+ 
+ #### 2.1.3 Pontos fortes
+ - Foco declarado em PMEs, com plano gratuito disponível *(Fonte: plataforma.paresi.social)*
+@@ -37,11 +37,11 @@ Segundo o site oficial, o fluxo é: a empresa coleta dados de suas ações ESG (
+ - **Categoria:** Plataforma de gestão ESG
+ - **Proposta:** Diagnosticar, planejar, executar e acompanhar a jornada ESG das empresas.
+ - **Público-alvo:** Empresas de forma geral e também consultorias/assessorias que gerenciam a jornada ESG de seus clientes (a plataforma é comercializada inclusive como ferramenta de trabalho para consultores). *(Fonte: esgbusiness.com.br)*
+-- **Principais funcionalidades:** 5 módulos integrados — diagnóstico (avaliação de maturidade baseada na NBR 2030, com 3 pilares e 14 temas da Agenda 2030), planejamento (alinhamento de expectativas dos stakeholders, dupla materialidade), execução (orçamento, cronograma, responsáveis), monitoramento (metas e KPIs com painéis de acompanhamento) e comprovação (relatórios ESG com indicadores estratégicos). *(Fonte: esgbusiness.com.br)*
++- **Principais funcionalidades:** 5 módulos integrados - diagnóstico (avaliação de maturidade baseada na NBR 2030, com 3 pilares e 14 temas da Agenda 2030), planejamento (alinhamento de expectativas dos stakeholders, dupla materialidade), execução (orçamento, cronograma, responsáveis), monitoramento (metas e KPIs com painéis de acompanhamento) e comprovação (relatórios ESG com indicadores estratégicos). *(Fonte: esgbusiness.com.br)*
+ 
+ #### 2.2.2 Funcionamento
+ De acordo com o site oficial, o usuário identifica primeiro o nível de maturidade ESG da organização (ou de clientes, no caso de consultorias) através de uma avaliação baseada na NBR 2030; a partir disso a plataforma gera dashboards, rankings de temas e um "ESG Roadmap"; depois é possível planejar investimentos, executar projetos e gerar relatórios completos de forma rápida e personalizada. *(Fonte: esgbusiness.com.br/software)*
+-[A PREENCHER — incluir fotos/prints de uso]
++[A PREENCHER - incluir fotos/prints de uso]
+ 
+ #### 2.2.3 Pontos fortes
+ - Plataforma 360º com diagnóstico, dashboards, rankings e ESG Roadmap *(Fonte: imagem 2 / esgbusiness.com.br)*
+@@ -83,13 +83,13 @@ A contratação é realizada mediante a escolha de um plano (Starter, Profission
+ - *Principais funcionalidades:* Cálculo automático de Scope 1, 2 e 3 (GHG Protocol Brasil) com integração a ERPs (SAP, TOTVS); coleta de dados descentralizada por departamento, com IA validando inconsistências em tempo real; redação automática (via IA) dos textos do relatório de sustentabilidade nos frameworks GRI, SASB, TCFD e CVM 193; Score ESG com pilares E/S/G, benchmark setorial e alertas de desvio de metas; assistente de IA especializado em legislação ambiental e ESG brasileira, disponível 24h; integração de dados de satélite e sensoriamento remoto para monitorar uso do solo e biodiversidade. (Fonte: orkea.com.br)
+ 
+ #### 2.4.2 Funcionamento
+-De acordo com o site oficial, o processo tem 4 etapas: (1) configuração inicial — inserir dados da empresa, configurar departamentos e escolher frameworks (GRI, GHG, CVM 193), em menos de 1 hora; (2) cada responsável de área acessa a plataforma e insere seus próprios dados diretamente (sem e-mails ou planilhas), com validação em tempo real pela IA; (3) a IA analisa os dados, calcula os scores E/S/G, identifica riscos e compara com benchmarks do setor; (4) o relatório de sustentabilidade completo é gerado automaticamente, restando apenas revisão, aprovação e publicação. (Fonte: orkea.com.br)
+-[A PREENCHER — incluir fotos/prints de uso]
++De acordo com o site oficial, o processo tem 4 etapas: (1) configuração inicial - inserir dados da empresa, configurar departamentos e escolher frameworks (GRI, GHG, CVM 193), em menos de 1 hora; (2) cada responsável de área acessa a plataforma e insere seus próprios dados diretamente (sem e-mails ou planilhas), com validação em tempo real pela IA; (3) a IA analisa os dados, calcula os scores E/S/G, identifica riscos e compara com benchmarks do setor; (4) o relatório de sustentabilidade completo é gerado automaticamente, restando apenas revisão, aprovação e publicação. (Fonte: orkea.com.br)
++[A PREENCHER - incluir fotos/prints de uso]
+ 
+ #### 2.4.3 Pontos fortes
+ - Uso de IA em várias etapas (validação de dados, cálculo de score, redação do relatório) (Fonte: orkea.com.br)
+ - Integração com sistemas brasileiros (SAP, TOTVS) e foco na realidade regulatória do Brasil (CVM 193, Lei do Clima) (Fonte: imagem 2 / orkea.com.br)
+-- Diferencial exclusivo: uso de dados de satélite e sensoriamento remoto para monitorar uso do solo e biodiversidade — indicado como algo único no mercado pela própria empresa (Fonte: orkea.com.br)
++- Diferencial exclusivo: uso de dados de satélite e sensoriamento remoto para monitorar uso do solo e biodiversidade - indicado como algo único no mercado pela própria empresa (Fonte: orkea.com.br)
+ - Elimina entrada manual de dados via integração direta com ERPs (Fonte: orkea.com.br)
+ 
+   #### 2.4.4 Pontos fracos
+@@ -115,8 +115,8 @@ De acordo com o site oficial, o processo tem 4 etapas: (1) configuração inicia
+ #### 2.5.1 Visão geral
+ * **Categoria:** Avaliação e gestão de sustentabilidade
+ * **Proposta:** Avaliar o desempenho ESG de empresas e fornecedores e acompanhar riscos da cadeia de valor.
+-* **Público-alvo:** Empresas de médio/grande porte com cadeias de fornecimento amplas, e seus fornecedores — atua em 150 setores e mais de 175 países; fundada em 2007, em Paris. Mais de 150.000 empresas avaliadas globalmente até 2024 (750+ brasileiras). Compradores globais como L'Oréal, Carrefour, Renault, Microsoft, SAP e Apple exigem o rating EcoVadis de seus fornecedores. *(Fontes: linkana.com, sevenresiduos.com.br)*
+-* **Principais funcionalidades:** Questionário customizado por setor (ex: química recebe peso maior em "pollution prevention"); Scorecard quantitativo de 0 a 100, dividido em 4 temas — Environment, Labor & Human Rights, Ethics e Sustainable Procurement, com peso desigual e benchmark setorial; Carbon Action Module (lançado em 2024) para inventário GHG (escopos 1, 2 e 3), alinhado a SBTi, CDP e ESRS E1. *(Fonte: sevenresiduos.com.br)*
++* **Público-alvo:** Empresas de médio/grande porte com cadeias de fornecimento amplas, e seus fornecedores - atua em 150 setores e mais de 175 países; fundada em 2007, em Paris. Mais de 150.000 empresas avaliadas globalmente até 2024 (750+ brasileiras). Compradores globais como L'Oréal, Carrefour, Renault, Microsoft, SAP e Apple exigem o rating EcoVadis de seus fornecedores. *(Fontes: linkana.com, sevenresiduos.com.br)*
++* **Principais funcionalidades:** Questionário customizado por setor (ex: química recebe peso maior em "pollution prevention"); Scorecard quantitativo de 0 a 100, dividido em 4 temas - Environment, Labor & Human Rights, Ethics e Sustainable Procurement, com peso desigual e benchmark setorial; Carbon Action Module (lançado em 2024) para inventário GHG (escopos 1, 2 e 3), alinhado a SBTi, CDP e ESRS E1. *(Fonte: sevenresiduos.com.br)*
+ 
+ #### 2.5.2 Funcionamento
+ Segundo as fontes pesquisadas, o processo tem etapas formalizadas: a empresa se inscreve na plataforma e preenche um questionário customizado conforme seu setor; a EcoVadis avalia com base em evidências documentais, processos internos e dados de fontes externas; ao final, a empresa recebe uma pontuação de 0 a 100 (que resulta também em medalhas, como Prata, Ouro etc., conforme o percentil atingido) e pode consultar recomendações de melhoria. Empresas com boas pontuações entram em uma rede que compradores usam para prospectar fornecedores mais sustentáveis. *(Fontes: linkana.com, solarplex.com.br, intepplasticos.com.br, grafica43.com.br)*
+@@ -124,12 +124,12 @@ Segundo as fontes pesquisadas, o processo tem etapas formalizadas: a empresa se
+ 
+ #### 2.5.3 Pontos fortes
+ * Grande base de dados e avaliações personalizadas por setor, tamanho e localização do fornecedor *(Fonte: imagem 2)*
+-* Padrão amplamente reconhecido e exigido internacionalmente — funciona quase como "passaporte comercial" para fornecedores em cadeias globais *(Fonte: solarplex.com.br, sevenresiduos.com.br)*
++* Padrão amplamente reconhecido e exigido internacionalmente - funciona quase como "passaporte comercial" para fornecedores em cadeias globais *(Fonte: solarplex.com.br, sevenresiduos.com.br)*
+ * Metodologia baseada em padrões internacionais (GRI, ISO 26000, Pacto Global da ONU) *(Fonte: linkana.com)*
+ * Módulo específico para dados de carbono (Carbon Action Module), alinhado a frameworks regulatórios como CSRD/ESRS *(Fonte: sevenresiduos.com.br)*
+ 
+ #### 2.5.4 Pontos fracos
+-* O Carbon Action Module tem custo adicional de EUR 2.500 a EUR 15.000/ano, dependendo do escopo *(Fonte: sevenresiduos.com.br)* — sugerindo que a avaliação completa (além do básico) pode representar custo significativo para empresas menores. 
++* O Carbon Action Module tem custo adicional de EUR 2.500 a EUR 15.000/ano, dependendo do escopo *(Fonte: sevenresiduos.com.br)* - sugerindo que a avaliação completa (além do básico) pode representar custo significativo para empresas menores. 
+ * Sobrecarga e duplicidade de esforço do fornecedor (supplier fatigue), obrigado a pagar e responder a múltiplos questionários concorrentes como Sedex e CDP (Fontes: linkana.com, supplychainbrain.com)
+ * Demora de 6 a 8 semanas na emissão do Scorecard, o que pode atrasar processos de homologação ou concorrências comerciais urgentes (Fontes: support.ecovadis.com, impactatoesg.com.br)
+ 
+diff --git a/static/css/base.css b/static/css/base.css
+index ac6f4ac..4a7bdb9 100644
+--- a/static/css/base.css
++++ b/static/css/base.css
+@@ -158,7 +158,7 @@ body { background: var(--fundo); color: var(--texto); }
+ .text-danger { color: var(--vinho-escuro) !important; }
+ .progress { background-color: var(--bege); border-radius: 999px; }
+ 
+-.rodape { padding: 1.2rem 2rem 1.6rem; color: var(--texto-suave); font-size: .85rem; }
++.rodape { text-align: center; padding: 1.2rem 2rem 1.6rem; color: var(--texto-suave); font-size: .85rem; }
+ .rodape a { color: var(--texto-suave); }
+ 
+ @media (max-width: 575.98px) {
+@@ -174,6 +174,12 @@ body { background: var(--fundo); color: var(--texto); }
+ .medalha-prata  { background: #9aa0a6; }
+ .medalha-bronze { background: #cd7f32; }
+ 
++.selo-nivel { display: inline-flex; align-items: center; gap: .75rem; padding: .45rem 1.1rem .45rem .5rem; border-radius: 999px; color: #fff; box-shadow: 0 0 0 4px rgba(214, 198, 123, .45), 0 6px 14px rgba(103, 58, 64, .25); }
++.selo-emoji { display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: 50%; background: rgba(255, 255, 255, .92); font-size: 1.7rem; line-height: 1; }
++.selo-texto { display: flex; flex-direction: column; line-height: 1.1; }
++.selo-texto small { font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; opacity: .9; font-weight: 700; }
++.selo-texto strong { font-size: 1.5rem; font-weight: 800; }
++
+ /* Cores dos três pilares (usadas no Início, no diagnóstico e nos resultados) */
+ .pilar-e { background: #e4e7da; color: var(--oliva); }
+ .pilar-s { background: #f3dcdd; color: var(--vinho-escuro); }
+diff --git a/static/css/diagnostico.css b/static/css/diagnostico.css
+index 2b8a38d..045518e 100644
+--- a/static/css/diagnostico.css
++++ b/static/css/diagnostico.css
+@@ -20,7 +20,7 @@
+ .nivel { margin: 0; cursor: pointer; }
+ .nivel input { position: absolute; opacity: 0; pointer-events: none; }
+ .nivel span {
+-    display: block; height: 100%; padding: .6rem .55rem; border-radius: 12px;
++    display: flex; flex-direction: column; justify-content: flex-start; height: 100%; min-height: 8.5rem; padding: .6rem .55rem; border-radius: 12px;
+     border: 2px solid var(--borda); background: #fff; font-size: .8rem; font-weight: 700; color: var(--texto);
+     transition: border-color .15s, background .15s;
+ }
+@@ -31,8 +31,13 @@
+ .nivel input:checked + span small { color: var(--creme-ouro); }
+ .nivel-na span { background: var(--bege); font-weight: 600; }
+ .nivel-na small { display: none; }
++.nivel-na span { justify-content: center; }
+ .opcionais { background: var(--bege); border-radius: 16px; padding: 1rem 1.25rem; }
+-@media (max-width: 1399.98px) { .escala { grid-template-columns: 1fr; } .nivel span { text-align: left; } }
++@media (max-width: 1399.98px) { .escala { grid-template-columns: 1fr; } .nivel span { text-align: left; min-height: 4.75rem; } .nivel-na span { min-height: 3.25rem; } }
++.escala { grid-auto-rows: 1fr; }
++
++.progresso-respostas { display: flex; justify-content: space-between; align-items: baseline; font-size: .85rem; font-weight: 700; color: var(--vinho); margin: .75rem 0 .35rem; }
++.progresso-respostas .pct { font-size: 1.05rem; }
+ 
+ /* ===== Lista de diagnósticos ===== */
+ .min-w-0 { min-width: 0; }
+@@ -71,3 +76,4 @@
+ /* ===== Metodologia ===== */
+ .tabela-metodologia { font-size: .85rem; }
+ .tabela-metodologia th { white-space: nowrap; }
++#barraRespondidas { background: var(--vinho); transition: width .25s; }
+diff --git a/static/css/icones.css b/static/css/icones.css
+index 68b1eaf..78f5bf3 100644
+--- a/static/css/icones.css
++++ b/static/css/icones.css
+@@ -58,3 +58,4 @@
+ .ci-user { --ci-img: url('../icones/user.svg'); }
+ .ci-user-plus-corner { --ci-img: url('../icones/user-plus-corner.svg'); }
+ .ci-users { --ci-img: url('../icones/users.svg'); }
++.ci-drag-vertical { --ci-img: url('../icones/drag-vertical.svg'); }
+diff --git a/static/css/quadro.css b/static/css/quadro.css
+index cb2acdc..fc39325 100644
+--- a/static/css/quadro.css
++++ b/static/css/quadro.css
+@@ -3,3 +3,11 @@
+ .coluna-concluido  { border-top: 4px solid var(--oliva); }
+ .card-atividade .badge-cat { font-size: .7rem; }
+ .atividade-detalhe { font-size: .78rem; color: var(--texto-suave); margin: 0 0 .5rem; }
++
++.alca-arrastar { cursor: grab; touch-action: none; user-select: none; color: var(--texto-suave); font-size: 1.25rem; line-height: 1; margin: 0 .25rem 0 -.4rem; padding: .1rem; }
++.card-atividade { touch-action: pan-y; user-select: none; -webkit-user-select: none; }
++@media (pointer: fine) { .card-atividade { cursor: grab; } }
++.card-atividade.arrastando-origem { opacity: .35; }
++.cartao-fantasma { position: fixed; z-index: 2000; pointer-events: none; margin: 0 !important; opacity: .95; box-shadow: 0 12px 28px rgba(103, 58, 64, .35) !important; transform: rotate(2deg); cursor: grabbing; }
++.coluna-alvo { outline: 3px dashed var(--ouro); outline-offset: 2px; background: var(--creme-ouro); }
++body.arrastando, body.arrastando * { cursor: grabbing !important; }
+diff --git a/static/icones/drag-vertical.svg b/static/icones/drag-vertical.svg
+new file mode 100644
+index 0000000..c9706eb
+--- /dev/null
++++ b/static/icones/drag-vertical.svg
+@@ -0,0 +1,3 @@
++<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
++<path d="M8 6C8 6.55228 8.44772 7 9 7C9.55228 7 10 6.55228 10 6C10 5.44772 9.55228 5 9 5C8.44772 5 8 5.44772 8 6ZM14 6C14 6.55228 14.44772 7 15 7C15.55228 7 16 6.55228 16 6C16 5.44772 15.55228 5 15 5C14.44772 5 14 5.44772 14 6ZM8 12C8 12.55228 8.44772 13 9 13C9.55228 13 10 12.55228 10 12C10 11.44772 9.55228 11 9 11C8.44772 11 8 11.44772 8 12ZM14 12C14 12.55228 14.44772 13 15 13C15.55228 13 16 12.55228 16 12C16 11.44772 15.55228 11 15 11C14.44772 11 14 11.44772 14 12ZM8 18C8 18.55228 8.44772 19 9 19C9.55228 19 10 18.55228 10 18C10 17.44772 9.55228 17 9 17C8.44772 17 8 17.44772 8 18ZM14 18C14 18.55228 14.44772 19 15 19C15.55228 19 16 18.55228 16 18C16 17.44772 15.55228 17 15 17C14.44772 17 14 17.44772 14 18Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
++</svg>
+diff --git a/static/js/diagnostico_form.js b/static/js/diagnostico_form.js
+index 0213552..0171f4d 100644
+--- a/static/js/diagnostico_form.js
++++ b/static/js/diagnostico_form.js
+@@ -7,6 +7,9 @@
+     const etapas = Array.from(form.querySelectorAll('.etapa'));
+     const nomes = Array.from(document.querySelectorAll('#etapaNomes .etapa-nome'));
+     const barra = document.getElementById('barra');
++    const barraRespondidas = document.getElementById('barraRespondidas');
++    const textoRespondidas = document.getElementById('textoRespondidas');
++    const pctRespondidas = document.getElementById('pctRespondidas');
+     const btnVoltar = document.getElementById('btnVoltar');
+     const btnProximo = document.getElementById('btnProximo');
+     const btnFinalizar = document.getElementById('btnFinalizar');
+@@ -21,11 +24,23 @@
+             const vale = !escolhido || p.dataset.aplica.split(' ').includes(escolhido);
+             p.classList.toggle('oculta', !vale);
+         });
++        atualizarProgresso();
+         form.querySelectorAll('.subtema').forEach(s => {
+             s.classList.toggle('oculto', !s.querySelector('.pergunta:not(.oculta)'));
+         });
+     }
+ 
++    function atualizarProgresso() {
++        const validas = Array.from(form.querySelectorAll('.pergunta:not(.oculta)'));
++        const respondidas = validas.filter(p => p.querySelector('input:checked')).length;
++        const total = validas.length;
++        const pct = total ? Math.round(respondidas / total * 100) : 0;
++        textoRespondidas.textContent = 'Respondeu ' + respondidas + ' de ' + total + (total === 1 ? ' pergunta' : ' perguntas');
++        pctRespondidas.textContent = pct + '%';
++        barraRespondidas.style.width = pct + '%';
++        barraRespondidas.setAttribute('aria-valuenow', pct);
++    }
++
+     function mostrar(i) {
+         atual = i;
+         etapas.forEach((e, n) => e.classList.toggle('ativa', n === i));
+@@ -61,7 +76,7 @@
+     }
+ 
+     form.querySelectorAll('input, select').forEach(c => c.addEventListener('input', () => c.classList.remove('is-invalid')));
+-    form.querySelectorAll('.pergunta input').forEach(r => r.addEventListener('change', () => r.closest('.pergunta').classList.remove('erro')));
++    form.querySelectorAll('.pergunta input').forEach(r => r.addEventListener('change', () => { r.closest('.pergunta').classList.remove('erro'); atualizarProgresso(); }));
+     tipo.addEventListener('change', aplicarTipo);
+     btnProximo.addEventListener('click', () => { if (validar(atual)) mostrar(atual + 1); });
+     btnVoltar.addEventListener('click', () => mostrar(atual - 1));
+diff --git a/static/js/evolucao.js b/static/js/evolucao.js
+index 5db8769..e58f2d7 100644
+--- a/static/js/evolucao.js
++++ b/static/js/evolucao.js
+@@ -14,7 +14,7 @@ const tooltipDiagnostico = {
+     callbacks: {
+         title: itens => {
+             const i = itens[0].dataIndex;
+-            return `${dados.rotulos[i]} — ${dados.empresas[i]} (${dados.datas[i]})`;
++            return `${dados.rotulos[i]} - ${dados.empresas[i]} (${dados.datas[i]})`;
+         },
+         label: item => ` ${item.dataset.label}: ${item.parsed.y}%`
+     }
+diff --git a/static/js/quadro.js b/static/js/quadro.js
+new file mode 100644
+index 0000000..5e23c00
+--- /dev/null
++++ b/static/js/quadro.js
+@@ -0,0 +1,82 @@
++(function () {
++    const colunas = Array.from(document.querySelectorAll('[data-coluna]'));
++    if (!colunas.length) return;
++
++    const INTERATIVOS = 'select, button, a, input, textarea, label, form[data-confirmar]';
++    let arraste = null;
++
++    function colunaSob(x, y) {
++        const el = document.elementFromPoint(x, y);
++        return el ? el.closest('[data-coluna]') : null;
++    }
++
++    function marcarAlvo(coluna) {
++        colunas.forEach(c => c.classList.toggle('coluna-alvo', c === coluna));
++    }
++
++    function mover(e) {
++        if (!arraste || e.pointerId !== arraste.id) return;
++        const dx = e.clientX - arraste.x0;
++        const dy = e.clientY - arraste.y0;
++        if (!arraste.ativo) {
++            if (Math.hypot(dx, dy) < 6) return;
++            iniciar();
++        }
++        e.preventDefault();
++        arraste.fantasma.style.left = (e.clientX - arraste.offX) + 'px';
++        arraste.fantasma.style.top = (e.clientY - arraste.offY) + 'px';
++        marcarAlvo(colunaSob(e.clientX, e.clientY));
++        const borda = 70;
++        if (e.clientY < borda) window.scrollBy(0, -14);
++        else if (window.innerHeight - e.clientY < borda) window.scrollBy(0, 14);
++    }
++
++    function iniciar() {
++        const caixa = arraste.cartao.getBoundingClientRect();
++        const fantasma = arraste.cartao.cloneNode(true);
++        fantasma.classList.add('cartao-fantasma');
++        fantasma.style.width = caixa.width + 'px';
++        document.body.appendChild(fantasma);
++        arraste.fantasma = fantasma;
++        arraste.offX = arraste.x0 - caixa.left;
++        arraste.offY = arraste.y0 - caixa.top;
++        arraste.cartao.classList.add('arrastando-origem');
++        document.body.classList.add('arrastando');
++        arraste.ativo = true;
++    }
++
++    function terminar(e) {
++        if (!arraste || e.pointerId !== arraste.id) return;
++        const { cartao, ativo, fantasma } = arraste;
++        const destino = ativo && e.type === 'pointerup' ? colunaSob(e.clientX, e.clientY) : null;
++        if (fantasma) fantasma.remove();
++        cartao.classList.remove('arrastando-origem');
++        document.body.classList.remove('arrastando');
++        marcarAlvo(null);
++        document.removeEventListener('pointermove', mover);
++        document.removeEventListener('pointerup', terminar);
++        document.removeEventListener('pointercancel', terminar);
++        arraste = null;
++        if (!destino) return;
++        const select = cartao.querySelector('select[name="status"]');
++        if (!select || select.value === destino.dataset.coluna) return;
++        select.value = destino.dataset.coluna;
++        select.form.submit();
++    }
++
++    function comecar(e) {
++        if (arraste || (e.pointerType === 'mouse' && e.button !== 0)) return;
++        const cartao = e.target.closest('[data-atividade]');
++        if (!cartao) return;
++        const naAlca = e.target.closest('.alca-arrastar');
++        if (!naAlca && e.target.closest(INTERATIVOS)) return;
++        if (!naAlca && e.pointerType !== 'mouse') return;
++        arraste = { id: e.pointerId, cartao, x0: e.clientX, y0: e.clientY, ativo: false };
++        document.addEventListener('pointermove', mover, { passive: false });
++        document.addEventListener('pointerup', terminar);
++        document.addEventListener('pointercancel', terminar);
++    }
++
++    document.addEventListener('pointerdown', comecar);
++    document.addEventListener('dragstart', e => { if (e.target.closest('[data-atividade]')) e.preventDefault(); });
++})();

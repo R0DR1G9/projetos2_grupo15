@@ -158,7 +158,7 @@ body { background: var(--fundo); color: var(--texto); }
 .text-danger { color: var(--vinho-escuro) !important; }
 .progress { background-color: var(--bege); border-radius: 999px; }
 
-.rodape { padding: 1.2rem 2rem 1.6rem; color: var(--texto-suave); font-size: .85rem; }
+.rodape { text-align: center; padding: 1.2rem 2rem 1.6rem; color: var(--texto-suave); font-size: .85rem; }
 .rodape a { color: var(--texto-suave); }
 
 @media (max-width: 575.98px) {
@@ -173,6 +173,12 @@ body { background: var(--fundo); color: var(--texto); }
 .medalha-ouro   { background: #d4af37; }
 .medalha-prata  { background: #9aa0a6; }
 .medalha-bronze { background: #cd7f32; }
+
+.selo-nivel { display: inline-flex; align-items: center; gap: .75rem; padding: .45rem 1.1rem .45rem .5rem; border-radius: 999px; color: #fff; box-shadow: 0 0 0 4px rgba(214, 198, 123, .45), 0 6px 14px rgba(103, 58, 64, .25); }
+.selo-emoji { display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: 50%; background: rgba(255, 255, 255, .92); font-size: 1.7rem; line-height: 1; }
+.selo-texto { display: flex; flex-direction: column; line-height: 1.1; }
+.selo-texto small { font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; opacity: .9; font-weight: 700; }
+.selo-texto strong { font-size: 1.5rem; font-weight: 800; }
 
 /* Cores dos três pilares (usadas no Início, no diagnóstico e nos resultados) */
 .pilar-e { background: #e4e7da; color: var(--oliva); }

@@ -16,6 +16,14 @@ def classificar(pct):
     if pct >= 40:
         return MEDALHAS['prata']
     return MEDALHAS['bronze']
+
+
+def proximo_nivel(pct):
+    if pct >= 70:
+        return None
+    alvo, nome = (70, MEDALHAS['ouro']['nome']) if pct >= 40 else (40, MEDALHAS['prata']['nome'])
+    return {'nome': nome, 'faltam': round(alvo - pct, 1)}
+
 # Create your models here.
 class DiagnosticoESG(models.Model):
     nome_empresa = models.CharField(max_length=150, verbose_name="Nome da Empresa / Confecção")
@@ -40,11 +48,27 @@ class DiagnosticoESG(models.Model):
     numero_funcionarios = models.PositiveIntegerField(null=True, blank=True, verbose_name="Número de funcionários")
     tipo_operacao = models.CharField(max_length=10, choices=perguntas.TIPOS_OPERACAO, blank=True, verbose_name="Tipo de operação")
     respostas = models.JSONField(default=dict, blank=True)
-    pct_residuos_reaproveitados = models.PositiveSmallIntegerField(null=True, blank=True, verbose_name="% de sobras de tecido reaproveitadas")
-    pct_mulheres_lideranca = models.PositiveSmallIntegerField(null=True, blank=True, verbose_name="% de mulheres na liderança")
+    kg_sobras_geradas = models.PositiveIntegerField(null=True, blank=True, verbose_name="Kg de sobras de tecido geradas por mês")
+    kg_sobras_reaproveitadas = models.PositiveIntegerField(null=True, blank=True, verbose_name="Kg de sobras reaproveitadas por mês")
+    pessoas_lideranca = models.PositiveIntegerField(null=True, blank=True, verbose_name="Pessoas em cargos de liderança")
+    mulheres_lideranca = models.PositiveIntegerField(null=True, blank=True, verbose_name="Mulheres em cargos de liderança")
     horas_treinamento_ano = models.PositiveIntegerField(null=True, blank=True, verbose_name="Horas de treinamento por pessoa ao ano")
 
     data_criacao = models.DateTimeField(auto_now_add=True)
+
+    @staticmethod
+    def _percentual(parte, total):
+        if parte is None or not total:
+            return None
+        return round(parte * 100 / total)
+
+    @property
+    def pct_residuos_reaproveitados(self):
+        return self._percentual(self.kg_sobras_reaproveitadas, self.kg_sobras_geradas)
+
+    @property
+    def pct_mulheres_lideranca(self):
+        return self._percentual(self.mulheres_lideranca, self.pessoas_lideranca)
     usuario = models.ForeignKey(
         settings.AUTH_USER_MODEL, null=True, blank=True,
         on_delete=models.CASCADE, related_name='diagnosticos'
@@ -72,6 +96,7 @@ class DiagnosticoESG(models.Model):
             'governanca': round(score_g, 1),
             'geral': round(score_geral, 1),
             'medalha_geral': classificar(score_geral),
+            'proximo_nivel': proximo_nivel(score_geral),
             'medalha_ambiental': classificar(score_e),
             'medalha_social': classificar(score_s),
             'medalha_governanca': classificar(score_g),

@@ -1,4 +1,4 @@
-# [Nome do Projeto] — Documento de Benchmark
+# [Nome do Projeto] - Documento de Benchmark
 
 ## 1. Introdução
 - Propósito do documento: Definir produtos que darão inspiração para o nosso projeto, e ao mesmo tempo, definir quais serão nossos requisitos
@@ -19,7 +19,7 @@
 
 #### 2.1.2 Funcionamento
 Segundo o site oficial, o fluxo é: a empresa coleta dados de suas ações ESG (via formulários, inclusive de forma descentralizada entre setores), a plataforma organiza esses dados nos 153 indicadores GRI pré-configurados e nos ODS correspondentes, gera dashboards de acompanhamento (investimentos, metas, evolução temporal) e, com apoio de IA, produz relatórios prontos para auditorias/certificações. *(Fonte: plataforma.paresi.social)*
-[A PREENCHER — incluir fotos/prints de uso, se tiverem testado a plataforma]
+[A PREENCHER - incluir fotos/prints de uso, se tiverem testado a plataforma]
 
 #### 2.1.3 Pontos fortes
 - Foco declarado em PMEs, com plano gratuito disponível *(Fonte: plataforma.paresi.social)*
@@ -37,11 +37,11 @@ Segundo o site oficial, o fluxo é: a empresa coleta dados de suas ações ESG (
 - **Categoria:** Plataforma de gestão ESG
 - **Proposta:** Diagnosticar, planejar, executar e acompanhar a jornada ESG das empresas.
 - **Público-alvo:** Empresas de forma geral e também consultorias/assessorias que gerenciam a jornada ESG de seus clientes (a plataforma é comercializada inclusive como ferramenta de trabalho para consultores). *(Fonte: esgbusiness.com.br)*
-- **Principais funcionalidades:** 5 módulos integrados — diagnóstico (avaliação de maturidade baseada na NBR 2030, com 3 pilares e 14 temas da Agenda 2030), planejamento (alinhamento de expectativas dos stakeholders, dupla materialidade), execução (orçamento, cronograma, responsáveis), monitoramento (metas e KPIs com painéis de acompanhamento) e comprovação (relatórios ESG com indicadores estratégicos). *(Fonte: esgbusiness.com.br)*
+- **Principais funcionalidades:** 5 módulos integrados - diagnóstico (avaliação de maturidade baseada na NBR 2030, com 3 pilares e 14 temas da Agenda 2030), planejamento (alinhamento de expectativas dos stakeholders, dupla materialidade), execução (orçamento, cronograma, responsáveis), monitoramento (metas e KPIs com painéis de acompanhamento) e comprovação (relatórios ESG com indicadores estratégicos). *(Fonte: esgbusiness.com.br)*
 
 #### 2.2.2 Funcionamento
 De acordo com o site oficial, o usuário identifica primeiro o nível de maturidade ESG da organização (ou de clientes, no caso de consultorias) através de uma avaliação baseada na NBR 2030; a partir disso a plataforma gera dashboards, rankings de temas e um "ESG Roadmap"; depois é possível planejar investimentos, executar projetos e gerar relatórios completos de forma rápida e personalizada. *(Fonte: esgbusiness.com.br/software)*
-[A PREENCHER — incluir fotos/prints de uso]
+[A PREENCHER - incluir fotos/prints de uso]
 
 #### 2.2.3 Pontos fortes
 - Plataforma 360º com diagnóstico, dashboards, rankings e ESG Roadmap *(Fonte: imagem 2 / esgbusiness.com.br)*
@@ -83,13 +83,13 @@ A contratação é realizada mediante a escolha de um plano (Starter, Profission
 - *Principais funcionalidades:* Cálculo automático de Scope 1, 2 e 3 (GHG Protocol Brasil) com integração a ERPs (SAP, TOTVS); coleta de dados descentralizada por departamento, com IA validando inconsistências em tempo real; redação automática (via IA) dos textos do relatório de sustentabilidade nos frameworks GRI, SASB, TCFD e CVM 193; Score ESG com pilares E/S/G, benchmark setorial e alertas de desvio de metas; assistente de IA especializado em legislação ambiental e ESG brasileira, disponível 24h; integração de dados de satélite e sensoriamento remoto para monitorar uso do solo e biodiversidade. (Fonte: orkea.com.br)
 
 #### 2.4.2 Funcionamento
-De acordo com o site oficial, o processo tem 4 etapas: (1) configuração inicial — inserir dados da empresa, configurar departamentos e escolher frameworks (GRI, GHG, CVM 193), em menos de 1 hora; (2) cada responsável de área acessa a plataforma e insere seus próprios dados diretamente (sem e-mails ou planilhas), com validação em tempo real pela IA; (3) a IA analisa os dados, calcula os scores E/S/G, identifica riscos e compara com benchmarks do setor; (4) o relatório de sustentabilidade completo é gerado automaticamente, restando apenas revisão, aprovação e publicação. (Fonte: orkea.com.br)
-[A PREENCHER — incluir fotos/prints de uso]
+De acordo com o site oficial, o processo tem 4 etapas: (1) configuração inicial - inserir dados da empresa, configurar departamentos e escolher frameworks (GRI, GHG, CVM 193), em menos de 1 hora; (2) cada responsável de área acessa a plataforma e insere seus próprios dados diretamente (sem e-mails ou planilhas), com validação em tempo real pela IA; (3) a IA analisa os dados, calcula os scores E/S/G, identifica riscos e compara com benchmarks do setor; (4) o relatório de sustentabilidade completo é gerado automaticamente, restando apenas revisão, aprovação e publicação. (Fonte: orkea.com.br)
+[A PREENCHER - incluir fotos/prints de uso]
 
 #### 2.4.3 Pontos fortes
 - Uso de IA em várias etapas (validação de dados, cálculo de score, redação do relatório) (Fonte: orkea.com.br)
 - Integração com sistemas brasileiros (SAP, TOTVS) e foco na realidade regulatória do Brasil (CVM 193, Lei do Clima) (Fonte: imagem 2 / orkea.com.br)
-- Diferencial exclusivo: uso de dados de satélite e sensoriamento remoto para monitorar uso do solo e biodiversidade — indicado como algo único no mercado pela própria empresa (Fonte: orkea.com.br)
+- Diferencial exclusivo: uso de dados de satélite e sensoriamento remoto para monitorar uso do solo e biodiversidade - indicado como algo único no mercado pela própria empresa (Fonte: orkea.com.br)
 - Elimina entrada manual de dados via integração direta com ERPs (Fonte: orkea.com.br)
 
   #### 2.4.4 Pontos fracos
@@ -115,8 +115,8 @@ De acordo com o site oficial, o processo tem 4 etapas: (1) configuração inicia
 #### 2.5.1 Visão geral
 * **Categoria:** Avaliação e gestão de sustentabilidade
 * **Proposta:** Avaliar o desempenho ESG de empresas e fornecedores e acompanhar riscos da cadeia de valor.
-* **Público-alvo:** Empresas de médio/grande porte com cadeias de fornecimento amplas, e seus fornecedores — atua em 150 setores e mais de 175 países; fundada em 2007, em Paris. Mais de 150.000 empresas avaliadas globalmente até 2024 (750+ brasileiras). Compradores globais como L'Oréal, Carrefour, Renault, Microsoft, SAP e Apple exigem o rating EcoVadis de seus fornecedores. *(Fontes: linkana.com, sevenresiduos.com.br)*
-* **Principais funcionalidades:** Questionário customizado por setor (ex: química recebe peso maior em "pollution prevention"); Scorecard quantitativo de 0 a 100, dividido em 4 temas — Environment, Labor & Human Rights, Ethics e Sustainable Procurement, com peso desigual e benchmark setorial; Carbon Action Module (lançado em 2024) para inventário GHG (escopos 1, 2 e 3), alinhado a SBTi, CDP e ESRS E1. *(Fonte: sevenresiduos.com.br)*
+* **Público-alvo:** Empresas de médio/grande porte com cadeias de fornecimento amplas, e seus fornecedores - atua em 150 setores e mais de 175 países; fundada em 2007, em Paris. Mais de 150.000 empresas avaliadas globalmente até 2024 (750+ brasileiras). Compradores globais como L'Oréal, Carrefour, Renault, Microsoft, SAP e Apple exigem o rating EcoVadis de seus fornecedores. *(Fontes: linkana.com, sevenresiduos.com.br)*
+* **Principais funcionalidades:** Questionário customizado por setor (ex: química recebe peso maior em "pollution prevention"); Scorecard quantitativo de 0 a 100, dividido em 4 temas - Environment, Labor & Human Rights, Ethics e Sustainable Procurement, com peso desigual e benchmark setorial; Carbon Action Module (lançado em 2024) para inventário GHG (escopos 1, 2 e 3), alinhado a SBTi, CDP e ESRS E1. *(Fonte: sevenresiduos.com.br)*
 
 #### 2.5.2 Funcionamento
 Segundo as fontes pesquisadas, o processo tem etapas formalizadas: a empresa se inscreve na plataforma e preenche um questionário customizado conforme seu setor; a EcoVadis avalia com base em evidências documentais, processos internos e dados de fontes externas; ao final, a empresa recebe uma pontuação de 0 a 100 (que resulta também em medalhas, como Prata, Ouro etc., conforme o percentil atingido) e pode consultar recomendações de melhoria. Empresas com boas pontuações entram em uma rede que compradores usam para prospectar fornecedores mais sustentáveis. *(Fontes: linkana.com, solarplex.com.br, intepplasticos.com.br, grafica43.com.br)*
@@ -124,12 +124,12 @@ Segundo as fontes pesquisadas, o processo tem etapas formalizadas: a empresa se 
 
 #### 2.5.3 Pontos fortes
 * Grande base de dados e avaliações personalizadas por setor, tamanho e localização do fornecedor *(Fonte: imagem 2)*
-* Padrão amplamente reconhecido e exigido internacionalmente — funciona quase como "passaporte comercial" para fornecedores em cadeias globais *(Fonte: solarplex.com.br, sevenresiduos.com.br)*
+* Padrão amplamente reconhecido e exigido internacionalmente - funciona quase como "passaporte comercial" para fornecedores em cadeias globais *(Fonte: solarplex.com.br, sevenresiduos.com.br)*
 * Metodologia baseada em padrões internacionais (GRI, ISO 26000, Pacto Global da ONU) *(Fonte: linkana.com)*
 * Módulo específico para dados de carbono (Carbon Action Module), alinhado a frameworks regulatórios como CSRD/ESRS *(Fonte: sevenresiduos.com.br)*
 
 #### 2.5.4 Pontos fracos
-* O Carbon Action Module tem custo adicional de EUR 2.500 a EUR 15.000/ano, dependendo do escopo *(Fonte: sevenresiduos.com.br)* — sugerindo que a avaliação completa (além do básico) pode representar custo significativo para empresas menores. 
+* O Carbon Action Module tem custo adicional de EUR 2.500 a EUR 15.000/ano, dependendo do escopo *(Fonte: sevenresiduos.com.br)* - sugerindo que a avaliação completa (além do básico) pode representar custo significativo para empresas menores. 
 * Sobrecarga e duplicidade de esforço do fornecedor (supplier fatigue), obrigado a pagar e responder a múltiplos questionários concorrentes como Sedex e CDP (Fontes: linkana.com, supplychainbrain.com)
 * Demora de 6 a 8 semanas na emissão do Scorecard, o que pode atrasar processos de homologação ou concorrências comerciais urgentes (Fontes: support.ecovadis.com, impactatoesg.com.br)
 
