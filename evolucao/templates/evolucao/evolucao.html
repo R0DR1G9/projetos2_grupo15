@@ -21,6 +21,9 @@
             <a href="{% url 'home' %}">Fazer um diagnóstico</a>
         </div>
     {% else %}
+        <div class="d-flex justify-content-end mb-3">
+            <a class="btn btn-outline-success fw-bold" href="{% url 'evolucao_pdf' %}"><i class="ci ci-download me-1"></i>Exportar em PDF</a>
+        </div>
         <!-- Resumo -->
         <div class="row g-3 mb-4 text-center">
             <div class="col-md-4">

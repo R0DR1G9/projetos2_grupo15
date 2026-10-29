@@ -2,13 +2,13 @@ import copy
 
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.http import JsonResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.http import require_POST
 
 from atividades.models import Atividade
 
-from . import perguntas
+from . import pdf, perguntas
 from .forms import DiagnosticoForm
 from .models import VERSAO_ATUAL, DiagnosticoESG, classificar
 
@@ -67,9 +67,7 @@ def novo_diagnostico(request):
     })
 
 
-@login_required
-def resultado(request, pk):
-    diagnostico = get_object_or_404(DiagnosticoESG, pk=pk, usuario=request.user)
+def _contexto_resultado(diagnostico):
     pontuacao = diagnostico.calcular_pontuacao()
     contexto = {'diagnostico': diagnostico, 'pontuacao': pontuacao}
 
@@ -94,7 +92,25 @@ def resultado(request, pk):
             'pontos_fortes': perguntas.pontos_fortes(diagnostico.respostas),
             'nao_se_aplica': sum(1 for v in diagnostico.respostas.values() if v is None),
         })
-    return render(request, 'diagnostico/resultado.html', contexto)
+    return contexto
+
+
+@login_required
+def resultado(request, pk):
+    diagnostico = get_object_or_404(DiagnosticoESG, pk=pk, usuario=request.user)
+    return render(request, 'diagnostico/resultado.html', _contexto_resultado(diagnostico))
+
+
+@login_required
+def resultado_pdf(request, pk):
+    diagnostico = get_object_or_404(DiagnosticoESG, pk=pk, usuario=request.user)
+    ctx = _contexto_resultado(diagnostico)
+    conteudo = pdf.gerar_pdf_diagnostico(
+        diagnostico, request.user, ctx['pontuacao'], ctx.get('pilares'), ctx.get('recomendacoes'), ctx.get('pontos_fortes'),
+    )
+    resposta = HttpResponse(conteudo, content_type='application/pdf')
+    resposta['Content-Disposition'] = f'attachment; filename="diagnostico-esg-{diagnostico.data_criacao:%Y-%m-%d}-{diagnostico.pk}.pdf"'
+    return resposta
 
 
 def metodologia(request):
