@@ -72,8 +72,12 @@ class BibliotecaTests(TestCase):
 
 class ConteudosIniciaisTests(TestCase):
     def test_migration_cria_tutoriais_de_video_e_texto(self):
-        self.assertGreaterEqual(Conteudo.objects.count(), 6)
+        self.assertGreaterEqual(Conteudo.objects.count(), 9)
         self.assertTrue(Conteudo.objects.filter(tipo='video').exists())
         self.assertTrue(Conteudo.objects.filter(tipo='texto').exists())
         for categoria, _ in Conteudo.CATEGORIAS:
             self.assertTrue(Conteudo.objects.filter(categoria=categoria).exists())
+
+    def test_ha_um_video_para_cada_pilar(self):
+        for pilar in ('Ambiental (E)', 'Social (S)', 'Governança (G)'):
+            self.assertTrue(Conteudo.objects.filter(titulo__startswith=f'Pilar {pilar}', tipo='video').exists())
