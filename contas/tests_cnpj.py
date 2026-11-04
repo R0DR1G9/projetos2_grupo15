@@ -9,7 +9,7 @@ CNPJ_OK = '11.222.333/0001-81'
 
 
 def dados(**extra):
-    base = {'first_name': 'Aurora', 'cnpj': CNPJ_OK, 'username': 'aurora', 'password1': 'senha-forte-123', 'password2': 'senha-forte-123'}
+    base = {'first_name': 'Aurora', 'cnpj': CNPJ_OK, 'email': 'aurora@exemplo.com', 'username': 'aurora', 'password1': 'senha-forte-123', 'password2': 'senha-forte-123'}
     base.update(extra)
     return base
 
@@ -36,7 +36,7 @@ class CnpjTests(TestCase):
     def test_cnpj_repetido_rejeitado(self):
         self.client.post(reverse('cadastro'), dados())
         self.client.logout()
-        r = self.client.post(reverse('cadastro'), dados(username='outra'))
+        r = self.client.post(reverse('cadastro'), dados(username='outra', email='outra@exemplo.com'))
         self.assertContains(r, 'Já existe uma conta cadastrada com este CNPJ.')
         self.assertEqual(Empresa.objects.count(), 1)
 
