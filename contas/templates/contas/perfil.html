@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block title %}Meu perfil{% endblock %}
+
+{% block content %}
+<header class="bg-success bg-gradient text-white py-5 text-center shadow-sm">
+    <div class="container py-3">
+        <h1 class="display-5 fw-bold">Meu perfil</h1>
+        <p class="lead mb-0">Confira as informações da sua conta</p>
+    </div>
+</header>
+
+<main class="container py-5">
+    <div class="row g-4">
+
+        <!-- Dados da conta -->
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-sm rounded-4 h-100">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center gap-3 mb-4">
+                        <span class="avatar" style="width:64px;height:64px;font-size:1.6rem;">{{ usuario_nome|slice:":1"|upper }}</span>
+                        <div>
+                            <h2 class="h5 fw-bold mb-0">{{ usuario_nome }}</h2>
+                            <small class="text-muted">@{{ user.username }}</small>
+                        </div>
+                    </div>
+
+                    <dl class="row mb-0 gy-2">
+                        <dt class="col-sm-4 text-muted fw-semibold">Empresa</dt>
+                        <dd class="col-sm-8 mb-0">{{ user.first_name|default:"Não informado" }}</dd>
+
+                        <dt class="col-sm-4 text-muted fw-semibold">CNPJ</dt>
+                        <dd class="col-sm-8 mb-0">{% if empresa %}{{ empresa.cnpj_formatado }}{% else %}Não informado{% endif %}</dd>
+
+                        <dt class="col-sm-4 text-muted fw-semibold">Usuário</dt>
+                        <dd class="col-sm-8 mb-0">{{ user.username }}</dd>
+
+                        <dt class="col-sm-4 text-muted fw-semibold">E-mail</dt>
+                        <dd class="col-sm-8 mb-0">{{ user.email|default:"Não informado" }}</dd>
+
+                        <dt class="col-sm-4 text-muted fw-semibold">Conta criada em</dt>
+                        <dd class="col-sm-8 mb-0">{{ user.date_joined|date:"d/m/Y" }}</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+
+        <!-- Desempenho -->
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-sm rounded-4 h-100">
+                <div class="card-body p-4">
+                    <h2 class="h5 fw-bold mb-4">Seu desempenho</h2>
+
+                    {% if ultimo %}
+                        <div class="d-flex align-items-center gap-3 mb-4">
+                            <span class="display-5">{{ pontuacao.medalha_geral.emoji }}</span>
+                            <div>
+                                <span class="badge fs-6 text-white" style="background: {{ pontuacao.medalha_geral.cor }};">
+                                    {{ pontuacao.medalha_geral.nome }}
+                                </span>
+                                <div class="fs-3 fw-bold">{{ pontuacao.geral }}% ESG</div>
+                            </div>
+                        </div>
+
+                        <div class="row text-center g-2 mb-4">
+                            <div class="col-4">
+                                <div class="small text-muted">Ambiental</div>
+                                <div class="fw-bold">{{ pontuacao.medalha_ambiental.emoji }} {{ pontuacao.ambiental }}%</div>
+                            </div>
+                            <div class="col-4">
+                                <div class="small text-muted">Social</div>
+                                <div class="fw-bold">{{ pontuacao.medalha_social.emoji }} {{ pontuacao.social }}%</div>
+                            </div>
+                            <div class="col-4">
+                                <div class="small text-muted">Governança</div>
+                                <div class="fw-bold">{{ pontuacao.medalha_governanca.emoji }} {{ pontuacao.governanca }}%</div>
+                            </div>
+                        </div>
+
+                        <p class="text-muted small mb-1">
+                            {{ total_diagnosticos }} diagnóstico{{ total_diagnosticos|pluralize }} realizado{{ total_diagnosticos|pluralize }}
+                            &middot; último em {{ ultimo.data_criacao|date:"d/m/Y" }}
+                        </p>
+                    {% else %}
+                        <p class="text-muted">Você ainda não fez nenhum diagnóstico.</p>
+                    {% endif %}
+
+                    <div class="d-flex flex-wrap gap-2 mt-3">
+                        <a href="{% url 'home' %}" class="btn btn-success fw-bold">{% if ultimo %}Novo diagnóstico{% else %}Fazer diagnóstico{% endif %}</a>
+                        <a href="{% url 'ranking' %}" class="btn btn-outline-success fw-bold">Ver ranking</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+{% endblock %}

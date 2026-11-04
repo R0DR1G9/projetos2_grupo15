@@ -21,4 +21,5 @@ urlpatterns = [
         success_url=reverse_lazy('senha_redefinida')), name='password_reset_confirm'),
     path('senha/redefinida/', auth_views.PasswordResetCompleteView.as_view(
         template_name='contas/senha_redefinida.html'), name='senha_redefinida'),
+    path('perfil/', views.perfil, name='perfil'),
 ]

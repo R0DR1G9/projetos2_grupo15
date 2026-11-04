@@ -83,8 +83,10 @@
                     <div class="dropdown-menu dropdown-menu-end p-3 text-muted small">Nenhuma notificação por enquanto.</div>
                 </div>
                 {% if user.is_authenticated %}
-    <span class="topo-usuario">{{ usuario_nome }}</span>
-    <span class="avatar">{{ usuario_nome|slice:":1"|upper }}</span>
+       <a href="{% url 'perfil' %}" class="d-flex align-items-center gap-2 text-decoration-none" title="Meu perfil">
+        <span class="topo-usuario">{{ usuario_nome }}</span>
+        <span class="avatar">{{ usuario_nome|slice:":1"|upper }}</span>
+    </a>
     <button type="button" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#modalSair"><i class="ci ci-log-out me-1"></i>Sair</button>
 {% else %}
     <a href="{% url 'login' %}" class="btn btn-sm btn-outline-success">Entrar</a>
