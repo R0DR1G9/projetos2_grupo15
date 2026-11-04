@@ -18,7 +18,7 @@
             <div class="card border-0 shadow-sm rounded-4 h-100">
                 <div class="card-body p-4">
                     <div class="d-flex align-items-center gap-3 mb-4">
-                        <span class="avatar" style="width:64px;height:64px;font-size:1.6rem;">{{ usuario_nome|slice:":1"|upper }}</span>
+                        <span class="avatar avatar-grande">{{ usuario_nome|slice:":1"|upper }}</span>
                         <div>
                             <h2 class="h5 fw-bold mb-0">{{ usuario_nome }}</h2>
                             <small class="text-muted">@{{ user.username }}</small>
@@ -55,7 +55,7 @@
                         <div class="d-flex align-items-center gap-3 mb-4">
                             <span class="display-5">{{ pontuacao.medalha_geral.emoji }}</span>
                             <div>
-                                <span class="badge fs-6 text-white" style="background: {{ pontuacao.medalha_geral.cor }};">
+                                <span class="badge fs-6 text-white medalha-{{ pontuacao.medalha_geral.chave }}">
                                     {{ pontuacao.medalha_geral.nome }}
                                 </span>
                                 <div class="fs-3 fw-bold">{{ pontuacao.geral }}% ESG</div>

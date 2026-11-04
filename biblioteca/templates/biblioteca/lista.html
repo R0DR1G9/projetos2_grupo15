@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Biblioteca - Plataforma ESG{% endblock %}
+
+{% block extra_head %}<link rel="stylesheet" href="{% static 'css/biblioteca.css' %}">{% endblock %}
+
+{% block content %}
+<header class="bg-success bg-gradient text-white py-5 text-center shadow-sm">
+    <div class="container py-3">
+        <h1 class="display-5 fw-bold">Biblioteca</h1>
+        <p class="lead mb-0">Tutoriais e vídeos para aplicar ESG no seu negócio</p>
+    </div>
+</header>
+
+<main class="container py-4">
+    <nav class="bib-filtros" aria-label="Filtrar por categoria">
+        <a class="bib-filtro{% if not categoria %} ativo{% endif %}" href="{% url 'biblioteca' %}">Todos</a>
+        {% for valor, rotulo in categorias %}
+        <a class="bib-filtro{% if categoria == valor %} ativo{% endif %}" href="?categoria={{ valor }}">{{ rotulo }}</a>
+        {% endfor %}
+    </nav>
+
+    <div class="row g-3">
+        {% for c in conteudos %}
+        <div class="col-md-6 col-xl-4">
+            <a class="bib-cartao" href="{% url 'biblioteca_detalhe' c.pk %}">
+                <div class="bib-topo">
+                    <span class="bib-chip bib-chip-{{ c.categoria }}">{{ c.get_categoria_display }}</span>
+                    <span class="bib-tipo"><i class="ci {% if c.tipo == 'video' %}ci-circle-play{% else %}ci-book-open{% endif %}"></i>{{ c.get_tipo_display }}</span>
+                </div>
+                <h2 class="bib-titulo">{{ c.titulo }}</h2>
+                <p class="bib-resumo">{{ c.descricao }}</p>
+            </a>
+        </div>
+        {% empty %}
+        <div class="col-12"><p class="alert alert-info mb-0">Nenhum conteúdo nesta categoria ainda.</p></div>
+        {% endfor %}
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ conteudo.titulo }} - Biblioteca{% endblock %}
+
+{% block extra_head %}<link rel="stylesheet" href="{% static 'css/biblioteca.css' %}">{% endblock %}
+
+{% block content %}
+<main class="container py-4 bib-detalhe">
+    <p><a href="{% url 'biblioteca' %}"><i class="ci ci-arrow-left me-1"></i>Voltar à biblioteca</a></p>
+
+    <div class="mb-2">
+        <span class="bib-chip bib-chip-{{ conteudo.categoria }}">{{ conteudo.get_categoria_display }}</span>
+        <span class="bib-tipo"><i class="ci {% if conteudo.tipo == 'video' %}ci-circle-play{% else %}ci-book-open{% endif %}"></i>{{ conteudo.get_tipo_display }}</span>
+    </div>
+    <h1 class="h2 fw-bold mb-2">{{ conteudo.titulo }}</h1>
+    <p class="text-muted">{{ conteudo.descricao }}</p>
+
+    {% if conteudo.tipo == 'video' %}
+        {% if conteudo.id_youtube %}
+        <div class="bib-video">
+            <iframe src="https://www.youtube-nocookie.com/embed/{{ conteudo.id_youtube }}" title="{{ conteudo.titulo }}" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        {% else %}
+        <p class="alert alert-info">O vídeo deste conteúdo será publicado em breve.</p>
+        {% endif %}
+    {% endif %}
+
+    {% if conteudo.texto %}
+    <article class="bib-texto">{{ conteudo.texto|linebreaks }}</article>
+    {% endif %}
+</main>
+{% endblock %}

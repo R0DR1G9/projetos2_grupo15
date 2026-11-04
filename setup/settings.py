@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'contas',
     'rede_social',
     'mensagens',
+    'biblioteca',
 ]
 
 MIDDLEWARE = [

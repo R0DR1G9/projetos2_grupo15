@@ -200,3 +200,5 @@ body { background: var(--fundo); color: var(--texto); }
 }
 
 .cabecalho-vinho th { background: var(--vinho); color: var(--creme-ouro); border-color: var(--vinho); }
+
+.avatar.avatar-grande { width: 64px; height: 64px; font-size: 1.6rem; }
