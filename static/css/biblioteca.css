@@ -1,0 +1,22 @@
+.bib-filtros { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.25rem; }
+.bib-filtro { padding: .35rem 1rem; border-radius: 999px; background: var(--bege); color: var(--texto); font-weight: 700; font-size: .85rem; text-decoration: none; border: 1px solid var(--borda); }
+.bib-filtro:hover { border-color: var(--ouro); color: var(--vinho); }
+.bib-filtro.ativo { background: var(--vinho); color: var(--creme-ouro); border-color: var(--vinho); }
+
+.bib-cartao { display: block; height: 100%; padding: 1.1rem 1.25rem; background: var(--cartao); border: 1px solid var(--borda); border-radius: 16px; color: var(--texto); text-decoration: none; transition: border-color .15s, box-shadow .15s; }
+.bib-cartao:hover { border-color: var(--ouro); box-shadow: 0 6px 16px rgba(103, 58, 64, .12); color: var(--texto); }
+.bib-topo { display: flex; justify-content: space-between; align-items: center; margin-bottom: .6rem; }
+.bib-titulo { font-size: 1.05rem; font-weight: 800; color: var(--vinho); margin: 0 0 .4rem; }
+.bib-resumo { font-size: .88rem; color: var(--texto-suave); margin: 0; }
+.bib-tipo { font-size: .8rem; font-weight: 700; color: var(--texto-suave); }
+.bib-tipo .ci { margin-right: .3rem; }
+
+.bib-chip { display: inline-block; font-size: .72rem; font-weight: 700; padding: .15rem .6rem; border-radius: 999px; margin-right: .5rem; }
+.bib-chip-ambiental { background: #e4e7da; color: var(--oliva); }
+.bib-chip-social { background: #f3dcdd; color: var(--vinho-escuro); }
+.bib-chip-governanca { background: #dcedf4; color: #2d6a80; }
+
+.bib-detalhe { max-width: 860px; }
+.bib-video { position: relative; aspect-ratio: 16 / 9; border-radius: 16px; overflow: hidden; background: #000; margin: 1rem 0 1.5rem; }
+.bib-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.bib-texto { font-size: 1rem; line-height: 1.7; }

@@ -48,7 +48,7 @@
                 <a class="menu-item {% if rota_atual == 'evolucao' %}ativo{% endif %}" href="{% url 'evolucao' %}"{% if rota_atual == 'evolucao' %} aria-current="page"{% endif %}><i class="ci ci-chart-bar-vertical"></i><span>Relatórios</span></a>
                 <a class="menu-item {% if request.resolver_match.app_name == 'rede_social' %}ativo{% endif %}" href="{% url 'rede_social:feed' %}"{% if request.resolver_match.app_name == 'rede_social' %} aria-current="page"{% endif %}><i class="ci ci-chat-text"></i><span>Rede Social</span></a>
                 <a class="menu-item {% if request.resolver_match.app_name == 'mensagens' %}ativo{% endif %}" href="{% url 'mensagens:caixa' %}"{% if request.resolver_match.app_name == 'mensagens' %} aria-current="page"{% endif %}><i class="ci ci-paper-plane"></i><span>Mensagens</span>{% if mensagens_nao_lidas %}<b class="badge-mensagens">{{ mensagens_nao_lidas }}</b>{% endif %}</a>
-                <span class="menu-item desativado" aria-disabled="true" title="Em breve"><i class="ci ci-file-text"></i><span>Guias e Modelos</span><em>em breve</em></span>
+                <a class="menu-item {% if rota_atual == 'biblioteca' or rota_atual == 'biblioteca_detalhe' %}ativo{% endif %}" href="{% url 'biblioteca' %}"{% if rota_atual == 'biblioteca' or rota_atual == 'biblioteca_detalhe' %} aria-current="page"{% endif %}><i class="ci ci-book-open"></i><span>Biblioteca</span></a>
                 <span class="menu-item desativado" aria-disabled="true" title="Em breve"><i class="ci ci-settings"></i><span>Configurações</span><em>em breve</em></span>
             </nav>
 
@@ -111,7 +111,7 @@
         </div>
 
         <footer class="rodape">
-            Plataforma ESG para PMEs &mdash; Projeto acadêmico, Cesar School.
+            Plataforma ESG para PMEs - Projeto acadêmico, Cesar School.
             &middot; <a href="{% url 'contato' %}">Fale conosco</a>
         </footer>
     </div>
