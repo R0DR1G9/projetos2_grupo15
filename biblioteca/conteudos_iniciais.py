@@ -69,3 +69,54 @@ CONTEUDOS = [
         ),
     },
 ]
+
+
+CONTEUDOS_PILARES = [
+    {
+        'titulo': 'Pilar Ambiental (E): o que é e como aplicar na confecção',
+        'descricao': 'Entenda o pilar ambiental do ESG: resíduos, água, energia, produtos químicos e matérias-primas.',
+        'categoria': 'ambiental', 'tipo': 'video',
+        'texto': (
+            'O pilar Ambiental, o E de ESG, avalia como a empresa usa recursos naturais e que impacto causa no meio ambiente. Na confecção, o impacto aparece em cinco áreas principais.\n\n'
+            'Resíduos e materiais: sobras de corte, retalhos, embalagens e peças descartadas. A pergunta central é quanto se gera e quanto se reaproveita ou recicla.\n\n'
+            'Água e efluentes: consumo na lavanderia, no tingimento e no acabamento, e o tratamento da água usada antes do descarte.\n\n'
+            'Energia: consumo de eletricidade em máquinas, iluminação e climatização, e o uso de fontes renováveis ou ações de eficiência.\n\n'
+            'Produtos químicos: corantes, amaciantes e solventes, com controle de estoque, armazenamento correto e informações de segurança.\n\n'
+            'Matérias-primas: origem do tecido, uso de fibras recicladas ou certificadas e conhecimento sobre o fornecedor.\n\n'
+            'Por que importa: gastar menos água, energia e material reduz custos. Além disso, marcas e lojas maiores passaram a pedir comprovação ambiental dos fornecedores, e a legislação ambiental precisa ser cumprida.\n\n'
+            'Como começar: escolha um indicador simples e meça todo mês. Exemplos: quilos de sobras geradas e reaproveitadas, litros de água por peça e kWh por peça. Depois defina uma meta e acompanhe a evolução.\n\n'
+            'Referências usadas pela Vastra neste pilar: Higg Facility Environmental Module e o padrão setorial para têxteis e vestuário da GRI (Global Reporting Initiative).'
+        ),
+    },
+    {
+        'titulo': 'Pilar Social (S): o que é e como aplicar na confecção',
+        'descricao': 'Entenda o pilar social do ESG: pessoas, condições de trabalho, diversidade e relação com a comunidade.',
+        'categoria': 'social', 'tipo': 'video',
+        'texto': (
+            'O pilar Social, o S de ESG, avalia como a empresa trata as pessoas: quem trabalha nela, quem trabalha para ela e a comunidade ao redor. Na confecção, pesam especialmente os pontos abaixo.\n\n'
+            'Condições de trabalho: jornada dentro da lei, horas extras pagas, salários em dia e ambiente seguro.\n\n'
+            'Saúde e segurança: equipamentos de proteção, saídas livres, ergonomia e treinamento básico para evitar acidentes e lesões.\n\n'
+            'Diversidade e equidade: oportunidades iguais, critérios claros de contratação e promoção e acompanhamento de indicadores, como quantas mulheres ocupam cargos de liderança.\n\n'
+            'Cadeia de fornecimento: no setor de vestuário, parte da produção é terceirizada em facções e oficinas. O risco social, como trabalho irregular, também precisa ser conhecido e acompanhado nessa cadeia.\n\n'
+            'Comunidade: diálogo com os vizinhos, contratação local e apoio a iniciativas do entorno.\n\n'
+            'Por que importa: equipes seguras e valorizadas faltam menos, produzem melhor e ficam mais tempo na empresa. Clientes e marcas também exigem comprovação de boas condições de trabalho.\n\n'
+            'Como começar: registre indicadores simples, como acidentes por ano, horas de treinamento por pessoa e número de mulheres na liderança, e crie um canal para a equipe dar sugestões.\n\n'
+            'Referências usadas pela Vastra neste pilar: ISO 26000 (responsabilidade social), o Guia da OCDE de devida diligência para cadeias de vestuário e calçados e o B Impact Assessment.'
+        ),
+    },
+    {
+        'titulo': 'Pilar Governança (G): o que é e como aplicar na confecção',
+        'descricao': 'Entenda o pilar de governança do ESG: ética, transparência, controles e gestão dos riscos.',
+        'categoria': 'governanca', 'tipo': 'video',
+        'texto': (
+            'O pilar de Governança, o G de ESG, avalia como a empresa é dirigida: quem decide, com quais regras e com que transparência. É o pilar que sustenta os outros dois, porque sem regras e acompanhamento as ações ambientais e sociais não se mantêm.\n\n'
+            'Ética e integridade: código de ética, regras contra corrupção e suborno e um canal para receber denúncias com proteção a quem relata. No Brasil, vale conhecer a Lei Anticorrupção, a Lei 12.846 de 2013.\n\n'
+            'Transparência: documentos fiscais e trabalhistas em dia e informações claras para clientes, sócios e equipe.\n\n'
+            'Cadeia de fornecimento: saber de onde vêm os tecidos e quem são os fornecedores e as facções, com critérios mínimos de escolha e acompanhamento.\n\n'
+            'Gestão do ESG: alguém responsável pelo tema, metas definidas, indicadores acompanhados e revisão periódica.\n\n'
+            'Por que importa: empresas organizadas reduzem riscos de multas e conflitos, passam mais confiança a clientes e bancos e conseguem melhorar de forma contínua.\n\n'
+            'Como começar: escreva um código de ética curto, defina um responsável pelo ESG e escolha dois ou três indicadores para revisar a cada trimestre.\n\n'
+            'Maturidade: a Vastra avalia cada área em cinco níveis, de Inexistente a Integrado, inspirada em modelos de maturidade ESG como os da Orrick e da CrossCountry. O objetivo é subir um nível de cada vez, não resolver tudo ao mesmo tempo.'
+        ),
+    },
+]
