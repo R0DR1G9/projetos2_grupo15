@@ -1,0 +1,22 @@
+/* ==========================================================================
+   Login e cadastro: lados invertidos
+
+   Login    -> painel bordô à ESQUERDA, formulário à DIREITA
+   Cadastro -> formulário à ESQUERDA, painel bordô à DIREITA
+
+   Salve em static/css/auth-animacao.css (carregado depois de auth.css).
+   A animação da troca fica num pequeno script no fim do base_auth.html.
+   ========================================================================== */
+
+/* O cadastro leva a classe .auth-invertido no <body>. Com direction: rtl o
+   container espelha as colunas (serve para flex e para grid e mantém a largura
+   de cada painel). Os filhos voltam para ltr, então o texto continua lendo da
+   esquerda para a direita. No celular, onde os painéis ficam empilhados, nada
+   muda. */
+.pagina-auth.auth-invertido .auth {
+    direction: rtl;
+}
+
+.pagina-auth.auth-invertido .auth > * {
+    direction: ltr;
+}

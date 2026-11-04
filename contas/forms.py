@@ -26,11 +26,16 @@ class CadastroForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
         fields = ('first_name', 'cnpj', 'username')
+    email = forms.EmailField(label='E-mail')
+    class Meta(UserCreationForm.Meta):
+        model = User
+        fields = ('first_name', 'cnpj','email',  'username')
         labels = {'username': 'Usuário'}
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.order_fields(['first_name', 'cnpj', 'username', 'password1', 'password2'])
+        self.order_fields(['first_name', 'cnpj','email' ,'username', 'password1', 'password2'])
         for campo in self.fields.values():
             campo.widget.attrs['class'] = 'form-control'
 
@@ -42,6 +47,11 @@ class CadastroForm(UserCreationForm):
             raise forms.ValidationError('Já existe uma conta cadastrada com este CNPJ.')
         return numeros
 
+    def clean_email(self):
+        email = self.cleaned_data['email'].strip().lower()
+        if User.objects.filter(email__iexact=email).exists():
+            raise forms.ValidationError('Já existe uma conta com este e-mail.')
+        return email
     def save(self, commit=True):
         user = super().save(commit=commit)
         if commit:

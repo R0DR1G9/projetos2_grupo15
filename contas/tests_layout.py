@@ -15,3 +15,7 @@ class PaginasDeAcessoSemMenuTests(TestCase):
         resposta = self.client.get(reverse("sobre"))
         self.assertContains(resposta, 'id="menuLateral"')
         self.assertContains(resposta, 'id="alternarMenu"')
+
+    def test_cadastro_inverte_os_lados_em_relacao_ao_login(self):
+        self.assertContains(self.client.get(reverse("cadastro")), "auth-invertido")
+        self.assertNotContains(self.client.get(reverse("login")), "auth-invertido")

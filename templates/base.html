@@ -36,6 +36,11 @@
                 </span>
             </a>
 
+            <!-- Botão de recolher/expandir (só no computador; o menu.js troca o ícone e o texto de ajuda) -->
+            <div class="menu menu-recolher-area">
+                <button type="button" class="menu-item d-none d-lg-flex" id="alternarMenu" aria-controls="menuLateral" aria-pressed="false" aria-label="Recolher menu" title="Recolher menu"><i class="ci ci-chevron-double-left"></i><span>Recolher menu</span></button>
+            </div>
+
             <nav class="menu" aria-label="Seções">
                 <a class="menu-item {% if rota_atual == 'inicio' %}ativo{% endif %}" href="{% url 'inicio' %}"{% if rota_atual == 'inicio' %} aria-current="page"{% endif %}><i class="ci ci-house"></i><span>Início</span></a>
                 <a class="menu-item {% if rota_atual == 'home' %}ativo{% endif %}" href="{% url 'home' %}"{% if rota_atual == 'home' %} aria-current="page"{% endif %}><i class="ci ci-clipboard-check"></i><span>Diagnóstico</span></a>
@@ -68,7 +73,6 @@
         <!-- Topo: saudação, notificações e usuário -->
         <div class="topo">
             <button class="btn btn-sm btn-outline-success d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral" aria-controls="menuLateral" aria-label="Abrir menu"><i class="ci ci-menu fs-5"></i></button>
-            <button class="btn btn-sm btn-outline-success d-none d-lg-inline-flex align-items-center" type="button" id="alternarMenu" aria-controls="menuLateral" aria-pressed="false" aria-label="Recolher menu" title="Recolher menu"><i class="ci ci-chevron-double-left"></i></button>
             <div class="topo-saudacao">
                 <h1>Olá, {{ usuario_nome }}!</h1>
                 <p>Sua jornada ESG continua aqui.</p>

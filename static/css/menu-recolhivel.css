@@ -15,6 +15,8 @@
     --menu-recolhido: 76px;
     --menu-tempo: .38s;
     --menu-ease: cubic-bezier(.22, 1, .36, 1);
+    --botao-menu-altura: 2rem;    /* altura da pílula e diâmetro do círculo (menu recolhido) */
+    --botao-menu-largura: 10rem;  /* largura da pílula com o menu aberto */
   }
 
   /* ---- larguras (a coluna do conteúdo acompanha pelo grid) ---- */
@@ -70,6 +72,50 @@
   html.menu-recolhido .sidebar-rodape span,
   html.menu-recolhido .sidebar-rodape form { display: none !important; }
 
+  /* ---- botão de recolher/expandir, dentro do menu (logo abaixo da marca) ----
+     Formato próprio, diferente dos itens: uma pílula com contorno quando o menu está
+     aberto, que vira um círculo só com o ícone quando está recolhido. O tamanho sai das
+     variáveis --botao-menu-altura e --botao-menu-largura (no topo deste arquivo). As cores
+     vêm do texto do menu (currentColor), então acompanham o tema. O #menuLateral na frente
+     garante que estas regras vençam as do .menu-item do base.css. */
+  :where(button.menu-item) {
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+  }
+  .menu-recolher-area { margin: 6px 0 16px; }
+
+  #menuLateral .menu-recolher-area .menu-item {
+    justify-content: center;
+    gap: .4rem;
+    width: var(--botao-menu-largura);
+    max-width: 100%;
+    height: var(--botao-menu-altura);
+    margin-left: 0;
+    padding: 0 .75rem;
+    border: 1px solid color-mix(in srgb, currentColor 30%, transparent);
+    border-radius: 999px;
+    background: color-mix(in srgb, currentColor 8%, transparent);
+    font-size: .8rem;
+    font-weight: 600;
+  }
+  #menuLateral .menu-recolher-area .menu-item i { font-size: 1rem; }
+  #menuLateral .menu-recolher-area .menu-item span { white-space: nowrap; }
+  #menuLateral .menu-recolher-area .menu-item:hover {
+    border-color: color-mix(in srgb, currentColor 55%, transparent);
+    background: color-mix(in srgb, currentColor 16%, transparent);
+    transform: none;   /* sem o deslize de 3px dos outros itens */
+  }
+  /* recolhido: círculo centralizado na barra (76px menos 10px de cada lado) */
+  html.menu-recolhido #menuLateral .menu-recolher-area .menu-item {
+    width: var(--botao-menu-altura);
+    margin-left: calc((var(--menu-recolhido) - 20px - var(--botao-menu-altura)) / 2);
+    padding: 0;
+  }
+
   /* ---- transições (ligadas só depois do 1º desenho) ---- */
   html.menu-animavel .app { transition: grid-template-columns var(--menu-tempo) var(--menu-ease); }
   html.menu-animavel .sidebar {
@@ -77,6 +123,11 @@
                 max-width var(--menu-tempo) var(--menu-ease), flex-basis var(--menu-tempo) var(--menu-ease);
   }
   html.menu-animavel .sidebar-inner { transition: padding var(--menu-tempo) var(--menu-ease); }
+  html.menu-animavel #menuLateral .menu-recolher-area .menu-item {
+    transition: background .15s, border-color .15s, gap var(--menu-tempo) var(--menu-ease),
+                padding var(--menu-tempo) var(--menu-ease), width var(--menu-tempo) var(--menu-ease),
+                margin-left var(--menu-tempo) var(--menu-ease);
+  }
   html.menu-animavel .marca { transition: gap var(--menu-tempo) var(--menu-ease); }
   html.menu-animavel .menu-item {
     transition: background .15s, color .15s, transform .25s var(--menu-ease),
