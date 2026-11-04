@@ -95,7 +95,9 @@ class SairDoSiteTests(TestCase):
         html = self.client.get(reverse('inicio')).content.decode()
         formularios = re.findall(r'<form[^>]*action="/logout/"[^>]*>', html)
         self.assertEqual(len(formularios), 1)
-        self.assertIn('data-confirmar="Deseja realmente sair da sua conta?"', formularios[0])
+        self.assertIn('id="modalSair"', html)
+        self.assertIn('data-bs-target="#modalSair"', html)
+        self.assertIn('Sair da conta?', html)
 
     def test_topo_continua_com_entrar_e_criar_conta_deslogado(self):
         html = self.client.get(reverse('sobre')).content.decode()
