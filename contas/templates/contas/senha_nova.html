@@ -1,0 +1,27 @@
+{% extends "base_auth.html" %}
+{% block title %}Nova senha{% endblock %}
+{% block content %}
+{% if validlink %}
+<h1>Nova senha</h1>
+<p class="auth-subtitulo">Escolha uma senha nova para a sua conta.</p>
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label class="form-label" for="id_new_password1">Nova senha</label>
+        <input type="password" name="new_password1" id="id_new_password1" class="form-control" autocomplete="new-password" required autofocus>
+        {% for erro in form.new_password1.errors %}<div class="text-danger small mt-1">{{ erro }}</div>{% endfor %}
+        <div class="form-text">{{ form.new_password1.help_text|safe }}</div>
+    </div>
+    <div class="mb-4">
+        <label class="form-label" for="id_new_password2">Confirme a nova senha</label>
+        <input type="password" name="new_password2" id="id_new_password2" class="form-control" autocomplete="new-password" required>
+        {% for erro in form.new_password2.errors %}<div class="text-danger small mt-1">{{ erro }}</div>{% endfor %}
+    </div>
+    <div class="d-grid"><button type="submit" class="btn btn-success fw-bold auth-botao">Salvar nova senha</button></div>
+</form>
+{% else %}
+<h1>Link inválido</h1>
+<p class="auth-subtitulo">Este link expirou ou já foi usado. Peça um novo.</p>
+<p class="auth-rodape"><a href="{% url 'senha_esqueci' %}">Pedir novo link</a></p>
+{% endif %}
+{% endblock %}

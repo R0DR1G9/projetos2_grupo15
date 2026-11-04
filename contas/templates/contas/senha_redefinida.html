@@ -1,0 +1,7 @@
+{% extends "base_auth.html" %}
+{% block title %}Senha alterada{% endblock %}
+{% block content %}
+<h1>Senha alterada!</h1>
+<p class="auth-subtitulo">Pronto, agora você já pode entrar com a nova senha.</p>
+<div class="d-grid"><a href="{% url 'login' %}" class="btn btn-success fw-bold auth-botao">Entrar</a></div>
+{% endblock %}

@@ -17,9 +17,12 @@
         <label class="form-label" for="id_username">Usuário</label>
         <input type="text" name="username" id="id_username" class="form-control" placeholder="Seu usuário" required autofocus>
     </div>
-    <div class="mb-4">
+     <div class="mb-2">
         <label class="form-label" for="id_password">Senha</label>
         <input type="password" name="password" id="id_password" class="form-control" placeholder="Digite sua senha" required>
+    </div>
+    <div class="text-end mb-4">
+        <a href="{% url 'senha_esqueci' %}" class="small">Esqueci minha senha</a>
     </div>
     <div class="d-grid">
         <button type="submit" class="btn btn-success fw-bold auth-botao">Entrar</button>

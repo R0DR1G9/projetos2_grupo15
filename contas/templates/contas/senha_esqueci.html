@@ -1,0 +1,16 @@
+{% extends "base_auth.html" %}
+{% block title %}Esqueci minha senha{% endblock %}
+{% block content %}
+<h1>Esqueceu a senha?</h1>
+<p class="auth-subtitulo">Informe o e-mail da sua conta e enviaremos um link para criar uma nova senha.</p>
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-4">
+        <label class="form-label" for="id_email">E-mail</label>
+        <input type="email" name="email" id="id_email" class="form-control" placeholder="voce@empresa.com" required autofocus>
+        {% for erro in form.email.errors %}<div class="text-danger small mt-1">{{ erro }}</div>{% endfor %}
+    </div>
+    <div class="d-grid"><button type="submit" class="btn btn-success fw-bold auth-botao">Enviar link</button></div>
+</form>
+<p class="auth-rodape">Lembrou a senha?<a href="{% url 'login' %}">Entrar</a></p>
+{% endblock %}
