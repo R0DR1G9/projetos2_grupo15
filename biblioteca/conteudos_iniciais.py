@@ -4,11 +4,15 @@ CONTEUDOS = [
         'descricao': 'O que significam as letras E, S e G e como aplicar cada uma no dia a dia de uma confecção.',
         'categoria': 'governanca', 'tipo': 'video',
         'texto': (
-            'ESG é a sigla para Ambiental, Social e Governança. É uma forma de medir como a empresa cuida do meio ambiente, das pessoas e da própria gestão.\n\n'
-            'Ambiental: como a confecção lida com tecidos, sobras, água, energia e produtos químicos.\n\n'
-            'Social: condições de trabalho, saúde e segurança, salários justos, diversidade e relação com a comunidade.\n\n'
-            'Governança: regras claras, ética, transparência e controle sobre fornecedores.\n\n'
-            'Não é preciso fazer tudo de uma vez. O caminho é medir onde a empresa está, escolher as ações de maior impacto e acompanhar a evolução. É isso que o diagnóstico da Vastra faz.'
+            'ESG é a sigla em inglês para Ambiental, Social e Governança. É um jeito de olhar para a empresa além do lucro: como ela cuida do meio ambiente, das pessoas e da própria gestão. Para uma confecção, não é modismo. Clientes maiores, bancos e marcas passaram a perguntar sobre esses temas, e quem tem respostas organizadas ganha confiança e oportunidades.\n\n'
+            'O que cada letra significa na prática.\n\n'
+            'Ambiental (E): o que a confecção faz com tecidos, sobras de corte, água, energia e produtos químicos. Exemplo: separar e pesar as sobras para saber quanto vira lixo e quanto é reaproveitado.\n\n'
+            'Social (S): como a empresa trata quem trabalha nela e na cadeia de produção. Exemplo: jornada respeitada, ambiente seguro, treinamento, diversidade e cuidado com as oficinas e facções que produzem para a marca.\n\n'
+            'Governança (G): como a empresa é dirigida. Exemplo: código de ética, canal de denúncias, documentos em dia, controle de fornecedores e alguém responsável por acompanhar o tema.\n\n'
+            'Por que começar agora: reduzir desperdício diminui custos, uma equipe bem tratada produz melhor e fica mais tempo, e regras claras evitam multas e conflitos. Também ajuda a vender, porque cada vez mais compradores pedem comprovação.\n\n'
+            'Como começar sem complicação, em três passos. Primeiro, meça onde a empresa está hoje, com um diagnóstico honesto. Segundo, escolha poucas ações de maior impacto e defina um prazo. Terceiro, acompanhe os números e repita o diagnóstico para ver a evolução.\n\n'
+            'Níveis de maturidade: a Vastra avalia cada área em cinco níveis, de Inexistente a Integrado. O objetivo não é chegar ao topo de uma vez, e sim subir um nível de cada vez, começando pelo que está mais atrasado.\n\n'
+            'Referências que inspiram o diagnóstico: o padrão setorial para têxteis e vestuário da GRI, o Higg Facility Environmental Module, a ISO 26000, o Guia da OCDE para cadeias de vestuário e modelos de maturidade ESG.'
         ),
     },
     {
@@ -16,12 +20,16 @@ CONTEUDOS = [
         'descricao': 'Passos simples para separar, pesar e dar destino às sobras de corte.',
         'categoria': 'ambiental', 'tipo': 'video',
         'texto': (
-            'As sobras de corte são o resíduo mais comum de uma confecção. Em vez de descartar, dá para reduzir e reaproveitar.\n\n'
-            '1. Separe as sobras por tipo de tecido, em recipientes identificados.\n\n'
-            '2. Pese o total gerado em um mês. Sem número, não há como saber se melhorou.\n\n'
-            '3. Reaproveite internamente: peças pequenas, acessórios, enchimento e amostras.\n\n'
-            '4. Doe ou venda o que sobrar para ateliês, cooperativas e recicladoras de têxteis.\n\n'
-            '5. Registre quanto foi reaproveitado e compare mês a mês.'
+            'As sobras de corte e os retalhos são o resíduo mais visível de uma confecção. Em muitas empresas, tudo vai para o mesmo saco de lixo, e ninguém sabe quanto se perde. Tratar esse material com método reduz custo, gera renda e melhora a imagem da empresa.\n\n'
+            'Por que importa: tecido descartado é matéria-prima paga que não virou produto. Quanto menor o desperdício, menor o custo por peça. Além disso, o descarte inadequado de resíduos precisa seguir as regras ambientais, e marcas compradoras costumam perguntar o que o fornecedor faz com as sobras.\n\n'
+            'Passo 1: separar. Use recipientes identificados por tipo de tecido, como algodão, poliéster, malha e jeans. Material limpo e separado tem mais chance de ser reaproveitado ou vendido.\n\n'
+            'Passo 2: pesar. Anote o total de sobras geradas por mês, em quilos. Sem número, não há como saber se a situação melhora. É o indicador mais importante deste tema.\n\n'
+            'Passo 3: reduzir na origem. Revise o encaixe dos moldes no corte para aproveitar mais tecido. Pequenos ajustes no risco de corte podem diminuir bastante a sobra.\n\n'
+            'Passo 4: reaproveitar dentro da empresa. Peças pequenas podem virar acessórios, etiquetas, bolsos, forros, amostras e enchimento, ou ser usadas em treinamentos de costura.\n\n'
+            'Passo 5: dar destino externo ao que sobrar. Doe ou venda para ateliês, artesãos, cooperativas e empresas de reciclagem têxtil. Em algumas cidades há parcerias entre confecções e coletivos de moda.\n\n'
+            'Passo 6: acompanhar. Registre quantos quilos foram reaproveitados e calcule o percentual: reaproveitado dividido pelo total gerado. Compare mês a mês e defina uma meta realista, por exemplo subir alguns pontos percentuais a cada trimestre.\n\n'
+            'Cuidado com os números: registre sempre na mesma unidade e sem misturar tipos de tecido. Isso evita conclusões erradas.\n\n'
+            'Referências: o Higg Facility Environmental Module e o padrão setorial para têxteis e vestuário da GRI tratam resíduos e materiais como tema central do setor.'
         ),
     },
     {
@@ -40,11 +48,16 @@ CONTEUDOS = [
         'descricao': 'Boas práticas de saúde, segurança e valorização da equipe.',
         'categoria': 'social', 'tipo': 'video',
         'texto': (
-            'Uma equipe segura e valorizada produz melhor e fica mais tempo na empresa.\n\n'
-            'Segurança: mantenha extintores e saídas desobstruídos, forneça equipamentos de proteção e ofereça treinamento básico.\n\n'
-            'Ergonomia: cadeiras e bancadas na altura certa e pausas regulares evitam lesões nas costas e nos braços.\n\n'
-            'Justiça: cumpra jornada, horas extras e pagamentos em dia, e tenha um canal para ouvir sugestões e reclamações.\n\n'
-            'Registre o que foi feito. Isso mostra evolução e ajuda em auditorias e clientes que exigem comprovação.'
+            'Em uma confecção, o trabalho é manual e repetitivo, com máquinas, tesouras, ferros e longas horas sentado. Cuidar das condições de trabalho protege as pessoas e também o negócio, porque equipes seguras faltam menos, cometem menos erros e ficam mais tempo na empresa.\n\n'
+            'Quatro frentes para olhar.\n\n'
+            'Segurança: mantenha extintores válidos, saídas desobstruídas, fiação em ordem e proteções nas máquinas. Forneça equipamentos de proteção quando necessário e treine a equipe para os riscos do dia a dia, como corte, queimadura e incêndio.\n\n'
+            'Saúde e ergonomia: cadeiras reguláveis, bancadas na altura certa, boa iluminação e pausas regulares reduzem dores nas costas, nos ombros e nos punhos, que são problemas comuns no setor. Ventilação e controle de poeira de tecido também importam.\n\n'
+            'Justiça no trabalho: cumpra a jornada combinada, pague horas extras e salários em dia, e mantenha os registros organizados. Na cadeia do vestuário, o risco de trabalho irregular costuma aparecer em oficinas terceirizadas, por isso vale conhecer e acompanhar quem produz para você.\n\n'
+            'Voz da equipe: tenha um canal simples para sugestões e reclamações, como conversas periódicas ou uma caixa de ideias, e responda ao que for levantado.\n\n'
+            'Como começar: faça uma visita pela fábrica com um checklist, anote o que está fora do ideal e priorize o que oferece mais risco. Corrija primeiro o que pode causar acidente grave.\n\n'
+            'Indicadores simples: número de acidentes por ano, horas de treinamento por pessoa, rotatividade da equipe e percentual de mulheres em cargos de liderança. Registre todo ano e compare.\n\n'
+            'Registre o que foi feito: relatórios, fotos e listas de presença em treinamentos mostram evolução e servem como comprovação para clientes e auditorias.\n\n'
+            'Referências: a ISO 26000, o Guia da OCDE de devida diligência para cadeias de vestuário e calçados e o B Impact Assessment tratam desses temas.'
         ),
     },
     {
@@ -62,10 +75,18 @@ CONTEUDOS = [
         'descricao': 'Como escrever regras simples de conduta e receber relatos com segurança.',
         'categoria': 'governanca', 'tipo': 'video',
         'texto': (
-            'Um código de ética é um documento curto que diz como a empresa espera que todos ajam: com clientes, fornecedores e colegas.\n\n'
-            'Escreva em linguagem simples, em uma ou duas páginas, e entregue a todos. Inclua temas como respeito, conflito de interesses, brindes e uso correto dos recursos da empresa.\n\n'
-            'Combine com um canal de denúncias, que pode ser um e-mail ou um formulário, com garantia de que quem relata não sofrerá represália.\n\n'
-            'Revise o código uma vez por ano.'
+            'Um código de ética é um documento curto que explica como a empresa espera que todos ajam: sócios, gestores, funcionários e fornecedores. Junto com um canal de denúncias, ele forma a base da governança. Não é um assunto só de grandes empresas. Uma confecção pequena que tem regras claras evita conflitos, protege a reputação e passa confiança a clientes e bancos.\n\n'
+            'O que colocar no código, em linguagem simples e em uma ou duas páginas.\n\n'
+            'Respeito: tratamento digno entre colegas, sem assédio, discriminação ou humilhação.\n\n'
+            'Honestidade: nada de suborno, propina ou favores indevidos. No Brasil, a Lei Anticorrupção, a Lei 12.846 de 2013, responsabiliza empresas por atos de corrupção.\n\n'
+            'Conflito de interesses: o que fazer quando uma decisão pode favorecer um parente ou amigo.\n\n'
+            'Brindes e presentes: regras claras sobre o que pode ser aceito ou oferecido.\n\n'
+            'Uso dos recursos: como cuidar de dinheiro, máquinas, tecidos e informações da empresa.\n\n'
+            'Fornecedores e clientes: critérios mínimos de escolha e tratamento justo.\n\n'
+            'Canal de denúncias: é um meio para relatar problemas, como um e-mail dedicado, um formulário ou uma pessoa de confiança. Para funcionar, precisa de três garantias: quem relata não sofre represália, o relato é tratado com sigilo e a empresa responde e age.\n\n'
+            'Como implantar em quatro passos. Primeiro, escreva o código com a participação de sócios e equipe. Segundo, apresente em uma reunião e entregue uma cópia a todos. Terceiro, divulgue o canal de denúncias e explique como usá-lo. Quarto, revise o documento uma vez por ano e registre os casos tratados.\n\n'
+            'Como medir: veja se o código existe e é conhecido, se o canal está ativo e quantos relatos foram tratados. Na maturidade ESG da Vastra, ter o código apenas no papel é um nível inicial; o avanço vem quando a equipe conhece e a empresa age sobre os relatos.\n\n'
+            'Referências: a ISO 26000, o B Impact Assessment e os modelos de maturidade ESG tratam de ética e governança.'
         ),
     },
 ]

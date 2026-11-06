@@ -81,3 +81,7 @@ class ConteudosIniciaisTests(TestCase):
     def test_ha_um_video_para_cada_pilar(self):
         for pilar in ('Ambiental (E)', 'Social (S)', 'Governança (G)'):
             self.assertTrue(Conteudo.objects.filter(titulo__startswith=f'Pilar {pilar}', tipo='video').exists())
+
+    def test_tutoriais_de_video_tem_texto_completo(self):
+        for c in Conteudo.objects.filter(tipo='video'):
+            self.assertGreaterEqual(len(c.texto.split()), 200, c.titulo)
