@@ -42,6 +42,8 @@ class BibliotecaTests(TestCase):
     def test_video_abre_com_player_incorporado(self):
         r = self.client.get(reverse('biblioteca_detalhe', args=[self.amb.pk]))
         self.assertContains(r, 'youtube-nocookie.com/embed/dQw4w9WgXcQ')
+        self.assertContains(r, 'referrerpolicy="strict-origin-when-cross-origin"')
+        self.assertEqual(r['Referrer-Policy'], 'strict-origin-when-cross-origin')
 
     def test_video_sem_link_avisa_que_vem_em_breve(self):
         sem = Conteudo.objects.create(titulo='Sem link', descricao='d', categoria='social', tipo='video')

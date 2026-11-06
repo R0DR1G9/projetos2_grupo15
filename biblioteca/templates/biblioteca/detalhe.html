@@ -19,7 +19,7 @@
     {% if conteudo.tipo == 'video' %}
         {% if conteudo.id_youtube %}
         <div class="bib-video">
-            <iframe src="https://www.youtube-nocookie.com/embed/{{ conteudo.id_youtube }}" title="{{ conteudo.titulo }}" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+            <iframe src="https://www.youtube-nocookie.com/embed/{{ conteudo.id_youtube }}" title="{{ conteudo.titulo }}" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe>
         </div>
         {% else %}
         <p class="alert alert-info">O vídeo deste conteúdo será publicado em breve.</p>
