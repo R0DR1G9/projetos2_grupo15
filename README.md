@@ -65,6 +65,10 @@ Tabela comparativa disponível no [documento de análise de competidores](./rela
 - Como gestor(a) de uma confecção, quero acessar uma biblioteca de vídeos e textos sobre ESG, filtrando por pilar (Ambiental, Social e Governança), para aprender o que cada pilar significa e como melhorar minha empresa.
 - Página: `/biblioteca/`
 
+**H7: Acompanhamento do Plano de Ação (prazos, responsáveis e notificações)**
+- Como gestor(a) de uma confecção, quero definir prazo e responsável em cada ação do meu Plano de Ação e ser avisado sobre prazos próximos, comentários e mensagens, para não deixar nenhuma ação atrasar nem perder interações importantes.
+- Páginas: `/atividades/` e `/notificacoes/`
+
 ### Testes de ponta a ponta (Selenium)
 
 Os cenários de H5 e H6 têm testes E2E na pasta `e2e/`, que abrem um Chrome real e usam o sistema como o usuário.

@@ -48,6 +48,7 @@ Abra http://127.0.0.1:8000/ e crie uma conta em `/cadastro/`. O banco local é o
 | `ranking/` | Ranks Bronze, Prata e Ouro (H3) |
 | `evolucao/` | Gráficos de evolução (H4) |
 | `biblioteca/` | Biblioteca de vídeos e textos sobre ESG (H6) |
+| `notificacoes/` | Central de notificações: sino, comentários, mensagens e prazos (H7) |
 | `e2e/` | Testes de ponta a ponta com Selenium |
 | `rede_social/` e `mensagens/` | Rede social entre empresas e mensagens privadas |
 | `contas/` | Login, cadastro e saída |
