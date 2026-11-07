@@ -1,10 +1,19 @@
+from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
 
 from .models import Atividade
 
 
+def novo_usuario(nome='gestora'):
+    return get_user_model().objects.create_user(nome, password='senha-forte-123', first_name=nome.title())
+
+
 class QuadroAtividadesTests(TestCase):
+    def setUp(self):
+        self.user = novo_usuario()
+        self.client.force_login(self.user)
+
     def test_criar_atividade_vai_para_aguardando(self):
         resp = self.client.post(reverse("quadro_atividades"), {"titulo": "Reciclar retalhos", "categoria": "ambiental"})
         self.assertRedirects(resp, reverse("quadro_atividades"))
@@ -18,7 +27,7 @@ class QuadroAtividadesTests(TestCase):
         self.assertEqual(Atividade.objects.count(), 0)
 
     def test_mudar_status_atualiza_colunas(self):
-        a = Atividade.objects.create(titulo="Treinar equipe", categoria="social")
+        a = Atividade.objects.create(usuario=self.user, titulo="Treinar equipe", categoria="social")
         self.client.post(reverse("mudar_status_atividade", args=[a.pk]), {"status": "andamento"})
         a.refresh_from_db()
         self.assertEqual(a.status, "andamento")
@@ -28,22 +37,56 @@ class QuadroAtividadesTests(TestCase):
         self.assertEqual(len(colunas["andamento"]), 1)
 
     def test_status_invalido_ignorado(self):
-        a = Atividade.objects.create(titulo="X", categoria="governanca")
+        a = Atividade.objects.create(usuario=self.user, titulo="X", categoria="governanca")
         self.client.post(reverse("mudar_status_atividade", args=[a.pk]), {"status": "xyz"})
         a.refresh_from_db()
         self.assertEqual(a.status, "aguardando")
 
     def test_deletar(self):
-        a = Atividade.objects.create(titulo="X", categoria="governanca")
+        a = Atividade.objects.create(usuario=self.user, titulo="X", categoria="governanca")
         self.client.post(reverse("deletar_atividade", args=[a.pk]))
         self.assertEqual(Atividade.objects.count(), 0)
 
 
 class ArrastarCartoesTests(TestCase):
+    def setUp(self):
+        self.user = novo_usuario()
+        self.client.force_login(self.user)
+
     def test_colunas_e_cartoes_tem_ganchos_para_arrastar(self):
-        Atividade.objects.create(titulo="Treinar equipe", categoria="social")
+        Atividade.objects.create(usuario=self.user, titulo="Treinar equipe", categoria="social")
         resp = self.client.get(reverse("quadro_atividades"))
         for chave in ("aguardando", "andamento", "concluido"):
             self.assertContains(resp, f'data-coluna="{chave}"')
         self.assertContains(resp, "data-atividade")
         self.assertContains(resp, "js/quadro.js")
+
+
+class IsolamentoPorEmpresaTests(TestCase):
+    def setUp(self):
+        self.dona = novo_usuario('dona')
+        self.outra = novo_usuario('outra')
+        self.atividade = Atividade.objects.create(usuario=self.dona, titulo="So da dona", categoria="social")
+
+    def test_quadro_exige_login(self):
+        resp = self.client.get(reverse("quadro_atividades"))
+        self.assertEqual(resp.status_code, 302)
+        self.assertIn('/login/', resp['Location'])
+
+    def test_conta_nova_ve_o_quadro_vazio(self):
+        self.client.force_login(self.outra)
+        resp = self.client.get(reverse("quadro_atividades"))
+        self.assertNotContains(resp, "So da dona")
+        self.assertEqual(sum(len(c["atividades"]) for c in resp.context["colunas"]), 0)
+
+    def test_atividade_criada_fica_com_quem_criou(self):
+        self.client.force_login(self.outra)
+        self.client.post(reverse("quadro_atividades"), {"titulo": "Minha acao", "categoria": "ambiental"})
+        self.assertEqual(Atividade.objects.get(titulo="Minha acao").usuario, self.outra)
+
+    def test_nao_mexe_na_atividade_de_outra_empresa(self):
+        self.client.force_login(self.outra)
+        self.assertEqual(self.client.post(reverse("mudar_status_atividade", args=[self.atividade.pk]), {"status": "andamento"}).status_code, 404)
+        self.assertEqual(self.client.post(reverse("deletar_atividade", args=[self.atividade.pk])).status_code, 404)
+        self.atividade.refresh_from_db()
+        self.assertEqual(self.atividade.status, "aguardando")

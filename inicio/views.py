@@ -30,7 +30,7 @@ def inicio(request):
             anterior = recentes[1].calcular_pontuacao()
             variacao = round(score['geral'] - anterior['geral'], 1)
 
-    acoes = Atividade.objects.filter(status='andamento')
+    acoes = Atividade.objects.filter(usuario=request.user, status='andamento')
     semana = date.today().isocalendar()[1]
 
     return render(request, 'inicio/inicio.html', {

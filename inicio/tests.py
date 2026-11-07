@@ -26,8 +26,8 @@ class InicioTests(TestCase):
         self.assertEqual(resp.context['score']['geral'], 33.3)
 
     def test_inicio_lista_somente_acoes_em_andamento(self):
-        Atividade.objects.create(titulo='Coleta seletiva', status='andamento')
-        Atividade.objects.create(titulo='Politica de diversidade', status='aguardando')
+        Atividade.objects.create(usuario=self.user, titulo='Coleta seletiva', status='andamento')
+        Atividade.objects.create(usuario=self.user, titulo='Politica de diversidade', status='aguardando')
         resp = self.client.get(reverse('inicio'))
         self.assertContains(resp, 'Coleta seletiva')
         self.assertNotContains(resp, 'Politica de diversidade')

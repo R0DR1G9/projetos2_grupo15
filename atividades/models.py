@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 
 
@@ -13,6 +14,7 @@ class Atividade(models.Model):
         ("concluido", "Concluído"),
     ]
 
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.CASCADE, related_name="atividades")
     titulo = models.CharField(max_length=150, verbose_name="Título")
     categoria = models.CharField(max_length=20, choices=CATEGORIAS, default="ambiental", verbose_name="Categoria")
     status = models.CharField(max_length=20, choices=STATUS, default="aguardando", verbose_name="Status")

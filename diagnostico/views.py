@@ -80,7 +80,7 @@ def _contexto_resultado(diagnostico):
                 'chave': pilar['chave'], 'nome': pilar['nome'], 'sigla': pilar['sigla'],
                 'pct': nota['pct'], 'medalha': classificar(nota['pct']), 'subtemas': nota['subtemas'],
             })
-        titulos_no_plano = set(Atividade.objects.values_list('titulo', flat=True))
+        titulos_no_plano = set(Atividade.objects.filter(usuario=diagnostico.usuario).values_list('titulo', flat=True))
         recomendacoes = perguntas.recomendacoes(diagnostico.respostas, LIMITE_RECOMENDACOES)
         for r in recomendacoes:
             r['categoria_nome'] = NOMES_CATEGORIA[r['categoria']]
@@ -149,6 +149,7 @@ def adicionar_ao_plano(request, pk):
     criadas = 0
     for r in escolhidas:
         _, criada = Atividade.objects.get_or_create(
+            usuario=request.user,
             titulo=r['acao'],
             defaults={
                 'categoria': r['categoria'], 'status': 'aguardando',
