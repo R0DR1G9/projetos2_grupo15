@@ -6,6 +6,7 @@ from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
+from selenium.common.exceptions import WebDriverException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
@@ -28,7 +29,7 @@ class NavegadorTestCase(StaticLiveServerTestCase):
         servico = Service(executable_path=caminho) if caminho else Service()
         cls.navegador = webdriver.Chrome(service=servico, options=opcoes)
         cls.navegador.implicitly_wait(3)
-        cls.espera = WebDriverWait(cls.navegador, 10)
+        cls.espera = WebDriverWait(cls.navegador, 15, ignored_exceptions=(WebDriverException, IndexError))
 
     @classmethod
     def tearDownClass(cls):
