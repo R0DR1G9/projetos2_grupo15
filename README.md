@@ -17,9 +17,13 @@ Plataforma web para pequenas e médias empresas acompanharem seus indicadores, m
 | Sobre o projeto | `/sobre/` | O que estamos construindo, para quem, e como chegamos até aqui |
 | Quem somos | `/quem-somos/` | Integrantes da equipe |
 | Fale conosco | `/contato/` | Formulário de contato (bug, sugestão, dúvida) - respostas ficam salvas no banco e são visíveis no `/admin/` |
-| Quadro de atividades | `/atividades/` | Quadro com colunas de status (Aguardando início, Em andamento, Concluído) para as ações de sustentabilidade (H2) |
+| Quadro de atividades | `/atividades/` | Quadro com colunas de status (Aguardando início, Em andamento, Concluído) para as ações de sustentabilidade, com prazo e responsável em cada ação (H2 e H7) |
 | Evolução ESG | `/evolucao/` | Gráficos de linha, barras e radar com a evolução das notas ESG entre diagnósticos (H4) |
 | Ranking | `/ranking/` | Rank Bronze, Prata ou Ouro baseado na nota ESG geral (H3) |
+| Rede social | `/social/` | Feed de publicações entre empresas, com comentários, curtidas, hashtags e perfis (H5) |
+| Mensagens | `/mensagens/` | Conversas privadas entre empresas |
+| Biblioteca | `/biblioteca/` | Vídeos e textos sobre ESG, com filtro por pilar (H6) |
+| Notificações | `/notificacoes/` | Avisos de comentários, mensagens e prazos do Plano de Ação; o sino no topo mostra os não lidos (H7) |
 
 ## 👥 Equipe
 
@@ -71,7 +75,19 @@ Tabela comparativa disponível no [documento de análise de competidores](./rela
 
 ### Testes de ponta a ponta (Selenium)
 
-Os cenários de H5 e H6 têm testes E2E na pasta `e2e/`, que abrem um Chrome real e usam o sistema como o usuário.
+As três histórias têm testes E2E na pasta `e2e/` (9 cenários), que abrem um Chrome real e usam o sistema como o usuário.
+
+| História | Cenário | Arquivo |
+|---|---|---|
+| H5 | Publicar no feed | `e2e/e2e_rede_social.py` |
+| H5 | Comentar na publicação de outra empresa | `e2e/e2e_rede_social.py` |
+| H5 | Publicação vazia não é publicada | `e2e/e2e_rede_social.py` |
+| H6 | Listar conteúdos | `e2e/e2e_biblioteca.py` |
+| H6 | Filtrar por categoria | `e2e/e2e_biblioteca.py` |
+| H6 | Assistir a um vídeo | `e2e/e2e_biblioteca.py` |
+| H7 | Criar ação com prazo e responsável | `e2e/e2e_plano_acao.py` |
+| H7 | Ação atrasada avisa no sino | `e2e/e2e_plano_acao.py` |
+| H7 | Comentário de outra empresa avisa e pode ser marcado como lido | `e2e/e2e_plano_acao.py` |
 
 ```bash
 pip install -r requirements-dev.txt
@@ -82,7 +98,10 @@ python manage.py test e2e --pattern="e2e_*.py" --verbosity 2
 
 O pipeline em [`.github/workflows/ci.yml`](./.github/workflows/ci.yml) roda os testes unitários, depois os testes Selenium e, **somente se os dois passarem** em um push na `main`, aplica as migrações no Neon e publica no Vercel.
 
-- **Execução do pipeline:** adicionar print da aba Actions em `./assets/`
+Etapas do pipeline: **Testes** (checagem do Django, migrações e testes unitários), **Testes E2E (Selenium)** e **Deploy na Vercel**. O deploy só roda depois que os dois primeiros passam.
+
+![Execução do pipeline no GitHub Actions](./assets/pipeline_ci_cd.png)
+
 - **Screencast do CI/CD:** [link do YouTube](#)
 
 ## 📦 Entrega 03
@@ -140,6 +159,7 @@ Bugs e pendências são registrados nas [Issues do repositório no GitHub](https
 ## 🚀 Deploy
 
 - **URL em produção:** https://projetos2-grupo15.vercel.app
+- **Como o deploy acontece:** a cada push na `main`, o pipeline de CI/CD roda os testes, aplica as migrações no banco de produção e publica no Vercel. Não é preciso fazer deploy manual.
 - **Como rodar localmente:**
 ```bash
 git clone https://github.com/R0DR1G9/projetos2_grupo15.git
@@ -164,7 +184,7 @@ Vídeos gravados apenas com as funcionalidades novas (Quadro de atividades, Rank
 
 - **Uso do sistema e Explicação do código:** [link do YouTube](https://youtu.be/0OdchLhlkLc)
 
-### Novas funcionalidades - Entrega 04 (H5 e H6)
+### Novas funcionalidades - Entrega 04 (H5, H6 e H7)
 
 - **Uso do sistema em produção (URL visível):** [link do YouTube](#)
 - **Testes Selenium (com áudio):** [link do YouTube](#)
@@ -183,7 +203,7 @@ Vídeos gravados apenas com as funcionalidades novas (Quadro de atividades, Rank
 
 - [x] Backend: Django 
 - [x] Frontend: HTML/CSS
-- [X] Banco de dados: Sqlite
+- [X] Banco de dados: SQLite (local) e PostgreSQL no Neon (produção)
 - [x] Interface: Bootstrap 5
 - [x] Gráficos: Chart.js (aba Evolução ESG)
 - [x] Testes E2E: Selenium
