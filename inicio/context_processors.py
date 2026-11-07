@@ -1,3 +1,6 @@
+from setup.versao import VERSAO
+
+
 def layout(request):
     """Dados que o layout (barra lateral e topo) usa em TODAS as páginas."""
     user = request.user
@@ -14,4 +17,5 @@ def layout(request):
         'empresa_nome': empresa,
         'usuario_nome': usuario,
         'rota_atual': match.url_name if match else '',
+        'versao_vastra': VERSAO,
     }
