@@ -47,6 +47,8 @@ Abra http://127.0.0.1:8000/ e crie uma conta em `/cadastro/`. O banco local é o
 | `atividades/` | Quadro de atividades / Plano de Ação (H2) |
 | `ranking/` | Ranks Bronze, Prata e Ouro (H3) |
 | `evolucao/` | Gráficos de evolução (H4) |
+| `biblioteca/` | Biblioteca de vídeos e textos sobre ESG (H6) |
+| `e2e/` | Testes de ponta a ponta com Selenium |
 | `rede_social/` e `mensagens/` | Rede social entre empresas e mensagens privadas |
 | `contas/` | Login, cadastro e saída |
 | `institucional/` | Sobre, Quem somos e Fale conosco |
@@ -80,12 +82,21 @@ python manage.py test
 
 Para rodar só um app: `python manage.py test diagnostico`.
 
+Os testes E2E (Selenium) ficam em `e2e/`, em arquivos `e2e_*.py`, por isso não rodam no `manage.py test` comum. Precisam do Chrome instalado:
+
+```bash
+pip install -r requirements-dev.txt
+python manage.py test e2e --pattern="e2e_*.py" --verbosity 2
+```
+
 Todo `push` na `main` e todo Pull Request disparam o pipeline em [`.github/workflows/ci.yml`](./.github/workflows/ci.yml), que faz, nesta ordem:
 
 1. instala as dependências;
 2. `python manage.py check`, que confere a configuração do Django;
 3. `python manage.py makemigrations --check --dry-run`, que falha se você mudou um model e esqueceu de criar a migração;
-4. `python manage.py test`, que roda toda a suíte.
+4. `python manage.py test`, que roda toda a suíte;
+5. testes de ponta a ponta com Selenium (job `e2e`);
+6. **deploy** no Vercel (job `deploy`), que só roda em push na `main` e só se os testes e o E2E passaram. Ele também aplica as migrações no Neon.
 
 Se algum passo falhar, o Pull Request fica vermelho e não deve ser aceito. Abra o passo que falhou na aba **Actions** do GitHub para ver o erro.
 
@@ -115,6 +126,17 @@ Localmente você não precisa configurar nada. Em produção, estas variáveis e
 | `SECRET_KEY` | Chave secreta do Django |
 | `DATABASE_URL` | Endereço do Postgres (Neon). Sem ela o projeto usa SQLite |
 | `BLOB_READ_WRITE_TOKEN` | Permite salvar as fotos da rede social no Vercel Blob. Sem ela as fotos vão para a pasta `media/` |
+
+Para o deploy automático, o repositório precisa destes **secrets** no GitHub (Settings > Secrets and variables > Actions):
+
+| Secret | Para que serve |
+|---|---|
+| `VERCEL_TOKEN` | Token da conta Vercel que publica o projeto |
+| `VERCEL_ORG_ID` | ID da conta/time no Vercel |
+| `VERCEL_PROJECT_ID` | ID do projeto no Vercel (Settings > General) |
+| `DATABASE_URL` | Endereço do Neon **sem pooling**, usado para rodar as migrações |
+
+O `vercel.json` desliga o deploy automático pelo Git do Vercel, para que só o pipeline publique.
 
 **Nunca** coloque senhas, tokens ou o arquivo `.env` no Git, e não cole essas informações em Issues, Pull Requests ou conversas públicas. Se algum segredo vazar, troque-o no serviço de origem (Neon, Vercel) e atualize a variável.
 
