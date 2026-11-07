@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Notificações - Plataforma ESG{% endblock %}
+
+{% block content %}
+<main class="container py-4">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+        <div>
+            <h1 class="h3 fw-bold mb-1">Notificações</h1>
+            <p class="text-muted mb-0">Comentários, mensagens e prazos do seu Plano de Ação.</p>
+        </div>
+        {% if notificacoes_nao_lidas %}
+        <form method="post" action="{% url 'notificacoes:marcar_todas' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-success"><i class="ci ci-circle-check me-1"></i>Marcar todas como lidas</button>
+        </form>
+        {% endif %}
+    </div>
+
+    <div class="list-group shadow-sm" data-lista-notificacoes>
+        {% for n in notificacoes %}
+        <a class="list-group-item list-group-item-action notificacao-item {% if not n.lida %}nao-lida{% endif %}" href="{% url 'notificacoes:abrir' n.pk %}">
+            <span class="notificacao-texto">{{ n.texto }}</span>
+            <small class="text-muted">{{ n.get_tipo_display }} - há {{ n.criada_em|timesince }}</small>
+        </a>
+        {% empty %}
+        <p class="text-muted text-center my-4">Nenhuma notificação por enquanto.</p>
+        {% endfor %}
+    </div>
+</main>
+{% endblock %}

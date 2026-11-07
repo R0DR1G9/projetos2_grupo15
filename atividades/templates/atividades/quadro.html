@@ -22,14 +22,21 @@
         <div class="card-body">
             <form method="post" class="row g-2 align-items-start" novalidate>
                 {% csrf_token %}
-                <div class="col-md-6">
+                <div class="col-lg-4">
                     {{ form.titulo }}
                     {% for erro in form.titulo.errors %}
                         <div class="text-danger small mt-1"><i class="ci ci-circle-warning me-1"></i>{{ erro }}</div>
                     {% endfor %}
                 </div>
-                <div class="col-md-3">{{ form.categoria }}</div>
-                <div class="col-md-3 d-grid">
+                <div class="col-6 col-lg-2">{{ form.categoria }}</div>
+                <div class="col-6 col-lg-2">
+                    {{ form.prazo }}
+                    {% for erro in form.prazo.errors %}
+                        <div class="text-danger small mt-1"><i class="ci ci-circle-warning me-1"></i>{{ erro }}</div>
+                    {% endfor %}
+                </div>
+                <div class="col-lg-2">{{ form.responsavel }}</div>
+                <div class="col-lg-2 d-grid">
                     <button type="submit" class="btn btn-success"><i class="ci ci-plus me-1"></i>Adicionar</button>
                 </div>
             </form>
@@ -64,6 +71,17 @@
                                 {% if a.categoria == 'ambiental' %}text-bg-success{% elif a.categoria == 'social' %}text-bg-info{% else %}text-bg-warning{% endif %}">
                                 {{ a.get_categoria_display }}
                             </span>
+                            {% if a.prazo %}<span class="badge badge-prazo prazo-{{ a.situacao_prazo|default:'concluido' }} mb-2" data-prazo>{{ a.rotulo_prazo }}</span>{% endif %}
+                            {% if a.responsavel %}<p class="atividade-detalhe mb-2" data-responsavel>Responsável: {{ a.responsavel }}</p>{% endif %}
+                            <details class="atividade-edicao mb-2">
+                                <summary>Prazo e responsável</summary>
+                                <form method="post" action="{% url 'editar_detalhes_atividade' a.pk %}" class="atividade-edicao-form">
+                                    {% csrf_token %}
+                                    <input type="date" name="prazo" value="{{ a.prazo|date:'Y-m-d' }}" class="form-control form-control-sm" aria-label="Prazo da atividade">
+                                    <input type="text" name="responsavel" value="{{ a.responsavel }}" maxlength="80" placeholder="Responsável" class="form-control form-control-sm" aria-label="Responsável pela atividade">
+                                    <button type="submit" class="btn btn-sm btn-outline-success">Salvar</button>
+                                </form>
+                            </details>
                             <form method="post" action="{% url 'mudar_status_atividade' a.pk %}">
                                 {% csrf_token %}
                                 <select name="status" class="form-select form-select-sm" data-auto-enviar aria-label="Mudar status">

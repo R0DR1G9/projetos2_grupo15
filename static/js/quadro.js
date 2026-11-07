@@ -2,7 +2,7 @@
     const colunas = Array.from(document.querySelectorAll('[data-coluna]'));
     if (!colunas.length) return;
 
-    const INTERATIVOS = 'select, button, a, input, textarea, label, form[data-confirmar]';
+    const INTERATIVOS = 'select, button, a, input, textarea, label, summary, details, form[data-confirmar]';
     let arraste = null;
 
     function colunaSob(x, y) {

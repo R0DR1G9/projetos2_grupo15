@@ -31,6 +31,7 @@ urlpatterns = [
     path('', include('biblioteca.urls')),
     path("social/", include("rede_social.urls")),
     path("mensagens/", include("mensagens.urls")),
+    path("notificacoes/", include("notificacoes.urls")),
 ]
 
 if settings.DEBUG:

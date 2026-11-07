@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.http import require_POST
 
-from .forms import AtividadeForm
+from .forms import AtividadeForm, DetalhesAtividadeForm
 from .models import Atividade
 
 
@@ -20,7 +20,10 @@ def quadro(request):
     else:
         form = AtividadeForm()
 
-    atividades = Atividade.objects.filter(usuario=request.user)
+    atividades = sorted(
+        Atividade.objects.filter(usuario=request.user),
+        key=lambda a: (a.prazo is None, a.prazo),
+    )
     colunas = [
         {
             "chave": chave,
@@ -46,6 +49,19 @@ def mudar_status(request, pk):
         atividade.save(update_fields=["status"])
     else:
         messages.error(request, "Status inválido.", extra_tags="danger")
+    return redirect("quadro_atividades")
+
+
+@login_required
+@require_POST
+def editar_detalhes(request, pk):
+    atividade = get_object_or_404(Atividade, pk=pk, usuario=request.user)
+    form = DetalhesAtividadeForm(request.POST, instance=atividade)
+    if form.is_valid():
+        form.save()
+        messages.success(request, "Detalhes da atividade atualizados.")
+    else:
+        messages.error(request, "Informe uma data de prazo válida.", extra_tags="danger")
     return redirect("quadro_atividades")
 
 
