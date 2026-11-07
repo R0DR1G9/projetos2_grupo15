@@ -13,6 +13,7 @@
     <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/notificacoes.css' %}">
     <link rel="stylesheet" href="{% static 'css/tipografia.css' %}">
     <link rel="stylesheet" href="{% static 'css/icones.css' %}">
     <link rel="stylesheet" href="{% static 'css/menu-recolhivel.css' %}">
@@ -80,8 +81,18 @@
             </div>
             <div class="topo-direita">
                 <div class="dropdown">
-                    <button class="btn-sino" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Notificações"><i class="ci ci-bell"></i></button>
-                    <div class="dropdown-menu dropdown-menu-end p-3 text-muted small">Nenhuma notificação por enquanto.</div>
+                    <button class="btn-sino" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Notificações"><i class="ci ci-bell"></i>{% if notificacoes_nao_lidas %}<span class="sino-contagem" data-sino-contagem>{{ notificacoes_nao_lidas }}</span>{% endif %}</button>
+                    <div class="dropdown-menu dropdown-menu-end sino-menu p-0" data-sino-menu>
+                        {% for n in notificacoes_recentes %}
+                        <a class="sino-item {% if not n.lida %}nao-lida{% endif %}" href="{% url 'notificacoes:abrir' n.pk %}">
+                            <span>{{ n.texto }}</span>
+                            <small>há {{ n.criada_em|timesince }}</small>
+                        </a>
+                        {% empty %}
+                        <p class="sino-vazio">Nenhuma notificação por enquanto.</p>
+                        {% endfor %}
+                        {% if user.is_authenticated %}<a class="sino-todas" href="{% url 'notificacoes:lista' %}">Ver todas</a>{% endif %}
+                    </div>
                 </div>
                 {% if user.is_authenticated %}
        <a href="{% url 'perfil' %}" class="d-flex align-items-center gap-2 text-decoration-none" title="Meu perfil">

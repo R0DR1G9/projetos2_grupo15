@@ -1,0 +1,9 @@
+.btn-sino .sino-contagem { position: absolute; top: -.25rem; right: -.4rem; min-width: 1.15rem; height: 1.15rem; padding: 0 .3rem; border-radius: 999px; background: var(--vinho); color: var(--creme-ouro); font-size: .68rem; font-weight: 800; line-height: 1.15rem; text-align: center; }
+.sino-menu { min-width: 20rem; max-width: 92vw; overflow: hidden; }
+.sino-item, .notificacao-item { display: flex; flex-direction: column; gap: .1rem; padding: .65rem 1rem; color: var(--texto); text-decoration: none; border-bottom: 1px solid var(--creme-ouro); }
+.sino-item:hover { background: var(--creme-ouro); color: var(--texto); }
+.sino-item small { color: var(--texto-suave); }
+.sino-item.nao-lida, .notificacao-item.nao-lida { background: #fff8e4; font-weight: 700; }
+.sino-vazio { margin: 0; padding: 1rem; color: var(--texto-suave); font-size: .9rem; }
+.sino-todas { display: block; padding: .6rem 1rem; text-align: center; font-weight: 700; color: var(--vinho); text-decoration: none; }
+.sino-todas:hover { background: var(--creme-ouro); }

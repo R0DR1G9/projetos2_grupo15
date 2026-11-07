@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'rede_social',
     'mensagens',
     'biblioteca',
+    'notificacoes',
 ]
 
 MIDDLEWARE = [
@@ -78,7 +79,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'inicio.context_processors.layout',
-                'mensagens.context_processors.nao_lidas'
+                'mensagens.context_processors.nao_lidas',
+                'notificacoes.context_processors.sino',
             ],
         },
     },
