@@ -1,5 +1,6 @@
 from io import BytesIO
 
+from django.utils import timezone
 from reportlab.lib import colors
 from reportlab.lib.enums import TA_CENTER
 from reportlab.lib.pagesizes import A4
@@ -30,6 +31,18 @@ def _esc(texto):
     return str(texto).replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
 
 
+def _agora():
+    return timezone.localtime()
+
+
+def _rotulo_geracao(momento):
+    return f'Relatório gerado em {momento:%d/%m/%Y} às {momento:%H:%M}'
+
+
+def _nome_da_empresa(usuario):
+    return usuario.first_name or usuario.get_username()
+
+
 def _rodape(canvas, doc):
     canvas.saveState()
     canvas.setFont('Helvetica', 8)
@@ -37,6 +50,26 @@ def _rodape(canvas, doc):
     canvas.drawString(2 * cm, 1.2 * cm, 'Plataforma ESG - relatório gerado automaticamente')
     canvas.drawRightString(A4[0] - 2 * cm, 1.2 * cm, f'Página {doc.page}')
     canvas.restoreState()
+
+
+def _fazer_paginas(identificacao, gerado_em):
+    def primeira(canvas, doc):
+        _rodape(canvas, doc)
+
+    def seguintes(canvas, doc):
+        _rodape(canvas, doc)
+        canvas.saveState()
+        canvas.setFont('Helvetica', 8)
+        canvas.setFillColor(SUAVE)
+        topo = A4[1] - 1.1 * cm
+        canvas.drawString(2 * cm, topo, identificacao)
+        canvas.drawRightString(A4[0] - 2 * cm, topo, _rotulo_geracao(gerado_em))
+        canvas.setStrokeColor(CREME)
+        canvas.setLineWidth(0.6)
+        canvas.line(2 * cm, topo - 0.2 * cm, A4[0] - 2 * cm, topo - 0.2 * cm)
+        canvas.restoreState()
+
+    return primeira, seguintes
 
 
 def _cabecalho(titulo, linhas):
@@ -74,21 +107,27 @@ def _empresa_linha(usuario):
     return f'CNPJ: {empresa.cnpj_formatado}' if empresa else ''
 
 
-def _montar(elementos):
+def _responsavel_linha(usuario):
+    return f'E-mail: {usuario.email}' if usuario.email else ''
+
+
+def _montar(elementos, identificacao, gerado_em):
     saida = BytesIO()
-    doc = SimpleDocTemplate(saida, pagesize=A4, leftMargin=2 * cm, rightMargin=2 * cm, topMargin=1.8 * cm, bottomMargin=2 * cm, title='Relatório ESG', author='Plataforma ESG')
-    doc.build(elementos, onFirstPage=_rodape, onLaterPages=_rodape)
+    doc = SimpleDocTemplate(saida, pagesize=A4, leftMargin=2 * cm, rightMargin=2 * cm, topMargin=2.2 * cm, bottomMargin=2 * cm, title='Relatório ESG', author='Plataforma ESG')
+    primeira, seguintes = _fazer_paginas(identificacao, gerado_em)
+    doc.build(elementos, onFirstPage=primeira, onLaterPages=seguintes)
     return saida.getvalue()
 
 
 def gerar_pdf_diagnostico(diagnostico, usuario, pontuacao, pilares, recomendacoes, pontos_fortes):
-    data = diagnostico.data_criacao
-    from django.utils import timezone
-    data = timezone.localtime(data)
+    data = timezone.localtime(diagnostico.data_criacao)
+    gerado_em = _agora()
     el = _cabecalho('Resultado do diagnóstico ESG', [
         diagnostico.nome_empresa,
         _empresa_linha(usuario),
-        f'Realizado em {data:%d/%m/%Y} às {data:%H:%M}',
+        _responsavel_linha(usuario),
+        f'Diagnóstico realizado em {data:%d/%m/%Y} às {data:%H:%M}',
+        _rotulo_geracao(gerado_em),
     ])
 
     medalha = pontuacao['medalha_geral']
@@ -157,14 +196,21 @@ def gerar_pdf_diagnostico(diagnostico, usuario, pontuacao, pilares, recomendacoe
 
     el.append(Spacer(1, 12))
     el.append(Paragraph('Nota calculada por média ponderada dos níveis de maturidade (0 a 4). Metodologia e fontes disponíveis na plataforma.', PEQUENO))
-    return _montar(el)
+    return _montar(el, f'{diagnostico.nome_empresa} - {_empresa_linha(usuario)}'.rstrip(' -'), gerado_em)
 
 
-def gerar_pdf_evolucao(usuario, dados, nota_atual, variacao):
+def gerar_pdf_evolucao(usuario, dados, nota_atual, variacao, periodo=None):
     from reportlab.graphics.charts.lineplots import LinePlot
     from reportlab.graphics.shapes import Drawing
 
-    el = _cabecalho('Evolução ESG', [usuario.first_name or usuario.get_username(), _empresa_linha(usuario)])
+    gerado_em = _agora()
+    el = _cabecalho('Evolução ESG', [
+        _nome_da_empresa(usuario),
+        _empresa_linha(usuario),
+        _responsavel_linha(usuario),
+        periodo,
+        _rotulo_geracao(gerado_em),
+    ])
     sinal = f'+{variacao}' if variacao > 0 else str(variacao)
     el.append(Paragraph(f'Nota geral atual: <b>{_fmt(nota_atual)}</b> - variação em relação ao diagnóstico anterior: <b>{sinal} pontos</b>', CORPO))
 
@@ -191,4 +237,4 @@ def gerar_pdf_evolucao(usuario, dados, nota_atual, variacao):
     for i in range(n):
         linhas.append([str(i + 1), dados['datas'][i], _fmt(dados['geral'][i]), _fmt(dados['ambiental'][i]), _fmt(dados['social'][i]), _fmt(dados['governanca'][i])])
     el.append(_tabela(linhas, [1 * cm, 4.5 * cm, 2.5 * cm, 3 * cm, 3 * cm, 3 * cm]))
-    return _montar(el)
+    return _montar(el, f'{_nome_da_empresa(usuario)} - {_empresa_linha(usuario)}'.rstrip(' -'), gerado_em)

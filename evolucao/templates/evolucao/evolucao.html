@@ -21,9 +21,20 @@
             <a href="{% url 'home' %}">Fazer um diagnóstico</a>
         </div>
     {% else %}
-        <div class="d-flex justify-content-end mb-3">
-            <a class="btn btn-outline-success fw-bold" href="{% url 'evolucao_pdf' %}"><i class="ci ci-download me-1"></i>Exportar em PDF</a>
-        </div>
+        <form class="card shadow-sm mb-3" method="get" action="{% url 'evolucao_pdf' %}">
+            <div class="card-body d-flex flex-wrap align-items-end gap-3">
+                <div>
+                    <label class="form-label fw-bold mb-1" for="filtro-de">Período: de</label>
+                    <input class="form-control" type="date" id="filtro-de" name="de">
+                </div>
+                <div>
+                    <label class="form-label fw-bold mb-1" for="filtro-ate">até</label>
+                    <input class="form-control" type="date" id="filtro-ate" name="ate">
+                </div>
+                <button class="btn btn-outline-success fw-bold ms-md-auto" type="submit"><i class="ci ci-download me-1"></i>Exportar em PDF</button>
+            </div>
+            <div class="card-footer small text-muted">Deixe as datas em branco para exportar todo o histórico.</div>
+        </form>
         <!-- Resumo -->
         <div class="row g-3 mb-4 text-center">
             <div class="col-md-4">
