@@ -11,3 +11,10 @@
 .cartao-fantasma { position: fixed; z-index: 2000; pointer-events: none; margin: 0 !important; opacity: .95; box-shadow: 0 12px 28px rgba(103, 58, 64, .35) !important; transform: rotate(2deg); cursor: grabbing; }
 .coluna-alvo { outline: 3px dashed var(--ouro); outline-offset: 2px; background: var(--creme-ouro); }
 body.arrastando, body.arrastando * { cursor: grabbing !important; }
+
+.badge-prazo { font-size: .7rem; margin-left: .25rem; }
+.prazo-atrasada { background: #8f2d2d; color: #fff; }
+.prazo-proxima { background: var(--ouro); color: var(--vinho); }
+.prazo-no_prazo, .prazo-concluido { background: var(--creme-ouro); color: var(--texto-suave); }
+.atividade-edicao summary { font-size: .78rem; color: var(--texto-suave); cursor: pointer; }
+.atividade-edicao-form { display: grid; gap: .4rem; margin-top: .5rem; }

@@ -1,6 +1,9 @@
+from datetime import timedelta
+
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
+from django.utils import timezone
 
 from .models import Atividade
 
@@ -90,3 +93,79 @@ class IsolamentoPorEmpresaTests(TestCase):
         self.assertEqual(self.client.post(reverse("deletar_atividade", args=[self.atividade.pk])).status_code, 404)
         self.atividade.refresh_from_db()
         self.assertEqual(self.atividade.status, "aguardando")
+
+
+class PrazoEResponsavelTests(TestCase):
+    def setUp(self):
+        self.user = novo_usuario()
+        self.client.force_login(self.user)
+        self.hoje = timezone.localdate()
+
+    def cria(self, dias=None, **extra):
+        prazo = None if dias is None else self.hoje + timedelta(days=dias)
+        return Atividade.objects.create(usuario=self.user, titulo="Acao", categoria="social", prazo=prazo, **extra)
+
+    def test_criar_com_prazo_e_responsavel(self):
+        data = self.hoje + timedelta(days=10)
+        self.client.post(reverse("quadro_atividades"), {
+            "titulo": "Trocar lampadas", "categoria": "ambiental", "prazo": data.isoformat(), "responsavel": "Marina",
+        })
+        a = Atividade.objects.get()
+        self.assertEqual(a.prazo, data)
+        self.assertEqual(a.responsavel, "Marina")
+        resp = self.client.get(reverse("quadro_atividades"))
+        self.assertContains(resp, "Responsável: Marina")
+        self.assertContains(resp, f"Prazo: {data:%d/%m/%Y}")
+
+    def test_prazo_e_responsavel_sao_opcionais(self):
+        self.client.post(reverse("quadro_atividades"), {"titulo": "Sem prazo", "categoria": "social"})
+        self.assertIsNone(Atividade.objects.get().prazo)
+
+    def test_prazo_no_passado_e_recusado_ao_criar(self):
+        ontem = self.hoje - timedelta(days=1)
+        resp = self.client.post(reverse("quadro_atividades"), {"titulo": "X", "categoria": "social", "prazo": ontem.isoformat()})
+        self.assertContains(resp, "O prazo não pode ser uma data que já passou.")
+        self.assertEqual(Atividade.objects.count(), 0)
+
+    def test_editar_prazo_e_responsavel_do_cartao(self):
+        a = self.cria()
+        data = self.hoje + timedelta(days=5)
+        resp = self.client.post(reverse("editar_detalhes_atividade", args=[a.pk]), {"prazo": data.isoformat(), "responsavel": "Carlos"})
+        self.assertRedirects(resp, reverse("quadro_atividades"))
+        a.refresh_from_db()
+        self.assertEqual((a.prazo, a.responsavel), (data, "Carlos"))
+
+    def test_editar_com_data_invalida_nao_altera(self):
+        a = self.cria(dias=4)
+        self.client.post(reverse("editar_detalhes_atividade", args=[a.pk]), {"prazo": "32/13/2026", "responsavel": "Z"})
+        a.refresh_from_db()
+        self.assertEqual(a.prazo, self.hoje + timedelta(days=4))
+
+    def test_nao_edita_atividade_de_outra_empresa(self):
+        outra = novo_usuario('outra')
+        a = Atividade.objects.create(usuario=outra, titulo="Dela", categoria="social")
+        resp = self.client.post(reverse("editar_detalhes_atividade", args=[a.pk]), {"responsavel": "Invasor"})
+        self.assertEqual(resp.status_code, 404)
+
+    def test_situacao_e_rotulos_do_prazo(self):
+        self.assertEqual(self.cria(dias=-2).rotulo_prazo, "Atrasada há 2 dias")
+        self.assertEqual(self.cria(dias=-1).rotulo_prazo, "Atrasada há 1 dia")
+        self.assertEqual(self.cria(dias=0).rotulo_prazo, "Vence hoje")
+        self.assertEqual(self.cria(dias=1).rotulo_prazo, "Vence amanhã")
+        self.assertEqual(self.cria(dias=3).rotulo_prazo, "Vence em 3 dias")
+        self.assertEqual(self.cria(dias=3).situacao_prazo, "proxima")
+        self.assertEqual(self.cria(dias=4).situacao_prazo, "no_prazo")
+        self.assertEqual(self.cria().situacao_prazo, "")
+
+    def test_concluida_nao_fica_atrasada(self):
+        a = self.cria(dias=-5)
+        a.status = "concluido"
+        self.assertEqual(a.situacao_prazo, "")
+
+    def test_cartoes_ordenados_por_prazo_mais_proximo(self):
+        Atividade.objects.create(usuario=self.user, titulo="Sem prazo", categoria="social")
+        longe = Atividade.objects.create(usuario=self.user, titulo="Longe", categoria="social", prazo=self.hoje + timedelta(days=20))
+        perto = Atividade.objects.create(usuario=self.user, titulo="Perto", categoria="social", prazo=self.hoje + timedelta(days=2))
+        resp = self.client.get(reverse("quadro_atividades"))
+        titulos = [a.titulo for a in resp.context["colunas"][0]["atividades"]]
+        self.assertEqual(titulos, ["Perto", "Longe", "Sem prazo"])
