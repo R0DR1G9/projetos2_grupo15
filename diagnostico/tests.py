@@ -392,5 +392,44 @@ class ExportarPdfTests(ComLogin):
         self.assertTrue(r.content.startswith(b'%PDF'))
         self.assertContains(self.client.get(reverse('evolucao')), 'Exportar em PDF')
 
+    def test_pdf_da_evolucao_com_periodo(self):
+        self.client.post(reverse('novo_diagnostico'), post_completo(1))
+        self.client.post(reverse('novo_diagnostico'), post_completo(3))
+        r = self.client.get(reverse('evolucao_pdf'), {'de': '2000-01-01', 'ate': '2999-12-31'})
+        self.assertTrue(r.content.startswith(b'%PDF'))
+
+    def test_pdf_da_evolucao_periodo_sem_diagnosticos_suficientes(self):
+        self.client.post(reverse('novo_diagnostico'), post_completo(1))
+        self.client.post(reverse('novo_diagnostico'), post_completo(3))
+        r = self.client.get(reverse('evolucao_pdf'), {'de': '2000-01-01', 'ate': '2000-12-31'})
+        self.assertRedirects(r, reverse('evolucao'))
+
+    def test_pdf_da_evolucao_periodo_invalido(self):
+        self.client.post(reverse('novo_diagnostico'), post_completo(1))
+        self.client.post(reverse('novo_diagnostico'), post_completo(3))
+        self.assertRedirects(self.client.get(reverse('evolucao_pdf'), {'de': 'abc'}), reverse('evolucao'))
+        self.assertRedirects(self.client.get(reverse('evolucao_pdf'), {'de': '2030-01-02', 'ate': '2030-01-01'}), reverse('evolucao'))
+
+    def test_filtro_de_periodo_aparece_na_evolucao(self):
+        self.client.post(reverse('novo_diagnostico'), post_completo(1))
+        self.client.post(reverse('novo_diagnostico'), post_completo(3))
+        self.assertContains(self.client.get(reverse('evolucao')), 'name="de"')
+
+    def test_pdf_tem_empresa_e_data_de_geracao(self):
+        from contas.models import Empresa
+        Empresa.objects.create(usuario=self.user, cnpj='11222333000181')
+        self.client.post(reverse('novo_diagnostico'), post_completo(2))
+        d = DiagnosticoESG.objects.get()
+        from diagnostico import pdf as modulo_pdf
+        textos = []
+        original = modulo_pdf._rotulo_geracao
+        modulo_pdf._rotulo_geracao = lambda m: textos.append(original(m)) or original(m)
+        try:
+            r = self.client.get(reverse('resultado_pdf', args=[d.pk]))
+        finally:
+            modulo_pdf._rotulo_geracao = original
+        self.assertTrue(r.content.startswith(b'%PDF'))
+        self.assertTrue(any('Relatório gerado em' in t for t in textos))
+
     def test_pdf_da_evolucao_sem_dados_redireciona(self):
         self.assertRedirects(self.client.get(reverse('evolucao_pdf')), reverse('evolucao'))
