@@ -11,7 +11,7 @@
      "animar" ao carregar com o menu já recolhido. */
 @media (min-width: 992px) {
   :root {
-    --menu-largura: 280px;      /* tem de ser igual à 1ª coluna do .app (base.css) */
+    --menu-largura: 240px;      /* tem de ser igual à 1ª coluna do .app (base.css) */
     --menu-recolhido: 76px;
     --menu-tempo: .38s;
     --menu-ease: cubic-bezier(.22, 1, .36, 1);
@@ -68,6 +68,7 @@
     align-items: center;
     gap: 10px;
   }
+  html.menu-recolhido .sidebar-versao { display: none; }
   html.menu-recolhido .sidebar-rodape .btn,
   html.menu-recolhido .sidebar-rodape span,
   html.menu-recolhido .sidebar-rodape form { display: none !important; }
