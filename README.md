@@ -53,6 +53,34 @@ Plataforma web para pequenas e médias empresas acompanharem seus indicadores, m
 
 Tabela comparativa disponível no [documento de análise de competidores](./relatório_de_análise_de_competidores.md).
 
+## 📦 Entrega 04
+
+### Histórias implementadas
+
+**H5: Rede social entre empresas**
+- Como gestor(a) de uma confecção, quero publicar novidades e comentar nas publicações de outras empresas, para trocar experiências de sustentabilidade com a comunidade.
+- Página: `/social/`
+
+**H6: Biblioteca de tutoriais e vídeos**
+- Como gestor(a) de uma confecção, quero acessar uma biblioteca de vídeos e textos sobre ESG, filtrando por pilar (Ambiental, Social e Governança), para aprender o que cada pilar significa e como melhorar minha empresa.
+- Página: `/biblioteca/`
+
+### Testes de ponta a ponta (Selenium)
+
+Os cenários de H5 e H6 têm testes E2E na pasta `e2e/`, que abrem um Chrome real e usam o sistema como o usuário.
+
+```bash
+pip install -r requirements-dev.txt
+python manage.py test e2e --pattern="e2e_*.py" --verbosity 2
+```
+
+### CI/CD
+
+O pipeline em [`.github/workflows/ci.yml`](./.github/workflows/ci.yml) roda os testes unitários, depois os testes Selenium e, **somente se os dois passarem** em um push na `main`, aplica as migrações no Neon e publica no Vercel.
+
+- **Execução do pipeline:** adicionar print da aba Actions em `./assets/`
+- **Screencast do CI/CD:** [link do YouTube](#)
+
 ## 📦 Entrega 03
 
 ### Histórias implementadas
@@ -88,6 +116,10 @@ Tabela comparativa disponível no [documento de análise de competidores](./rela
 ### Sprint 03 - Backlog finalizado
 
 ![Quadro da Sprint 03](./assets/imagem_2026-10-19_141712851.png)
+
+### Sprint 04
+
+![Quadro da Sprint 04](./assets/sprint04_quadro.png)
 
 ## 🐛 Issue Tracker
 
@@ -128,6 +160,13 @@ Vídeos gravados apenas com as funcionalidades novas (Quadro de atividades, Rank
 
 - **Uso do sistema e Explicação do código:** [link do YouTube](https://youtu.be/0OdchLhlkLc)
 
+### Novas funcionalidades - Entrega 04 (H5 e H6)
+
+- **Uso do sistema em produção (URL visível):** [link do YouTube](#)
+- **Testes Selenium (com áudio):** [link do YouTube](#)
+- **CI/CD funcionando:** [link do YouTube](#)
+- **Explicação do código (URL, view, template e model de cada história):** [link do YouTube](#)
+
 ## 🔗 Acesso ao Repositório
 
 - **Repositório GitHub:** https://github.com/R0DR1G9/projetos2_grupo15
@@ -143,4 +182,6 @@ Vídeos gravados apenas com as funcionalidades novas (Quadro de atividades, Rank
 - [X] Banco de dados: Sqlite
 - [x] Interface: Bootstrap 5
 - [x] Gráficos: Chart.js (aba Evolução ESG)
+- [x] Testes E2E: Selenium
+- [x] CI/CD: GitHub Actions + Vercel
 
