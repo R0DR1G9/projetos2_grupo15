@@ -59,10 +59,8 @@ body { background: var(--fundo); color: var(--texto); }
 
 .marca { display: flex; align-items: center; gap: .75rem; text-decoration: none; color: var(--creme-ouro); margin: .1rem .3rem 1rem; }
 .marca-logo {
-    flex: none; width: 40px; height: 40px; border-radius: 50%;
-    display: grid; place-items: center;
-    background: var(--ouro);
-    color: var(--vinho); font-weight: 800; font-size: 1.2rem;
+    flex: none; width: 40px; height: 40px;
+    object-fit: contain;
 }
 .marca-texto { display: flex; flex-direction: column; line-height: 1.2; min-width: 0; }
 .marca-texto strong { font-size: 1.05rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
