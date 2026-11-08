@@ -197,7 +197,8 @@ body { background: var(--fundo); color: var(--texto); }
 .texto-terracota { color: var(--laranja); }
 .invisivel { visibility: hidden; }
 .progress-fino { height: 8px; }
-.avatar-equipe { width: 72px; height: 72px; }
+.avatar-equipe { width: 96px; height: 96px; }
+.avatar-equipe-foto { object-fit: cover; object-position: center; }
 
 /* Telas de login e cadastro */
 .caixa-auth { max-width: 460px; }
