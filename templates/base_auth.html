@@ -1,10 +1,13 @@
 {% load static %}
+{% static 'img/logo.svg' as logo_url %}
 <!DOCTYPE html>
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Vastra{% endblock %} · Vastra</title>
+    <link rel="icon" href="{{ logo_url }}">
+    <link rel="apple-touch-icon" href="{{ logo_url }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +25,7 @@
 <main class="auth">
     <section class="auth-marca" aria-label="Apresentação">
         <div>
-            <a class="auth-logo" href="{% url 'inicio' %}">Vastra</a>
+            <a class="auth-logo" href="{% url 'inicio' %}"><img class="auth-logo-img" src="{{ logo_url }}" alt="Logo do Vastra">Vastra</a>
             <p class="auth-slogan">ESG de forma simples,<br>para a sua empresa de moda.</p>
         </div>
         <p class="auth-lema">Diagnostique. Planeje.<br>Acompanhe. Evolua.</p>

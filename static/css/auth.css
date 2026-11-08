@@ -10,6 +10,7 @@
     flex-direction: column;
     justify-content: space-between;
 }
+.auth-logo-img { width: 1.1em; height: 1.1em; object-fit: contain; vertical-align: -.15em; margin-right: .35em; }
 .auth-logo {
     display: inline-block;
     font-family: var(--fonte-titulo);
