@@ -28,16 +28,16 @@ Plataforma web para pequenas e médias empresas acompanharem seus indicadores, m
 ## 👥 Equipe
 
 - Rodrigo Barbosa
-- Joao Miguel
-- Arthur Siqueira
-- Rafael Queiroz
-- Fernando Sotero
-- Joao Victor Moraes
-- Paulo Andre
-- Marina Pontes
-- Ana Beatriz
-- Maria Clara
+- Ana Beatriz Pedrosa
+- Fernando Antônio Fernandes Sotero
+- João Miguel Ramos Galvão Couto
+- João Victor Moraes Pimentel
+- Arthur Guedes Siqueira
+- Maria Clara Angeiras Morato de Souza
+- Marina Pontes Xavier
 - Daniel
+- Paulo
+- Rafael Queiroz
 
 ## 📄 Documentação
 

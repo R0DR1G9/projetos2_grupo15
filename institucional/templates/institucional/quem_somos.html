@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block title %}Quem somos - Plataforma ESG{% endblock %}
 
 {% block content %}
@@ -25,9 +27,13 @@
             <div class="col-md-4 col-sm-6">
                 <div class="card h-100 text-center border-0 shadow-sm rounded-4">
                     <div class="card-body p-4">
-                        <div class="avatar-equipe mx-auto mb-3 d-flex align-items-center justify-content-center bg-success bg-opacity-10 text-success rounded-circle">
-                            <i class="ci ci-user fs-2"></i>
-                        </div>
+                        {% if membro.foto %}
+                            <img class="avatar-equipe avatar-equipe-foto mx-auto mb-3 d-block rounded-circle" src="{% static membro.foto %}" alt="Foto de {{ membro.nome }}">
+                        {% else %}
+                            <div class="avatar-equipe mx-auto mb-3 d-flex align-items-center justify-content-center bg-success bg-opacity-10 text-success rounded-circle">
+                                <i class="ci ci-user fs-2"></i>
+                            </div>
+                        {% endif %}
                         <h5 class="card-title fw-bold mb-0">{{ membro.nome }}</h5>
                     </div>
                 </div>
