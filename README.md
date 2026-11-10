@@ -100,7 +100,7 @@ O pipeline em [`.github/workflows/ci.yml`](./.github/workflows/ci.yml) roda os t
 
 Etapas do pipeline: **Testes** (checagem do Django, migrações e testes unitários), **Testes E2E (Selenium)** e **Deploy na Vercel**. O deploy só roda depois que os dois primeiros passam.
 
-![Execução do pipeline no GitHub Actions](./assets/pipeline_ci_cd.png)
+![Execução do pipeline no GitHub Actions](./assets/imagem_2026-11-10_112015967.png)
 
 - **Screencast do CI/CD:** [link do YouTube](https://youtu.be/fvv5GSj6bks)
 
