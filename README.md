@@ -142,7 +142,7 @@ Etapas do pipeline: **Testes** (checagem do Django, migrações e testes unitár
 
 ### Sprint 04
 
-![Quadro da Sprint 04](./assets/sprint04_quadro.png)
+![Quadro da Sprint 04](./assets/imagem_2026-11-10_111507229.png)
 
 ## 🐛 Issue Tracker
 
