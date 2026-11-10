@@ -102,7 +102,7 @@ Etapas do pipeline: **Testes** (checagem do Django, migrações e testes unitár
 
 ![Execução do pipeline no GitHub Actions](./assets/pipeline_ci_cd.png)
 
-- **Screencast do CI/CD:** [link do YouTube](#)
+- **Screencast do CI/CD:** [link do YouTube](https://youtu.be/fvv5GSj6bks)
 
 ## 📦 Entrega 03
 
@@ -186,10 +186,10 @@ Vídeos gravados apenas com as funcionalidades novas (Quadro de atividades, Rank
 
 ### Novas funcionalidades - Entrega 04 (H5, H6 e H7)
 
-- **Uso do sistema em produção (URL visível):** [link do YouTube](#)
-- **Testes Selenium (com áudio):** [link do YouTube](#)
-- **CI/CD funcionando:** [link do YouTube](#)
-- **Explicação do código (URL, view, template e model de cada história):** [link do YouTube](#)
+- **Uso do sistema em produção (URL visível):** [link do YouTube](https://youtu.be/6JW3tSw_xY0)
+- **Testes Selenium (com áudio):** [link do YouTube](https://youtu.be/eqQglSWcdso)
+- **CI/CD funcionando:** [link do YouTube](https://youtu.be/fvv5GSj6bks)
+- **Explicação do código (URL, view, template e model de cada história):** [link do YouTube](https://youtu.be/TcLywbk9PdI)
 
 ## 🔗 Acesso ao Repositório
 
