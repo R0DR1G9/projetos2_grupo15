@@ -1,0 +1,208 @@
+{% load static %}
+{% static 'img/logo.svg' as logo_url %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vastra · ESG para confecções e marcas de moda</title>
+    <meta name="description" content="Diagnóstico ESG, plano de ação e ranking feitos para pequenas e médias empresas de moda. Do diagnóstico à ação, num só lugar.">
+    <link rel="icon" href="{{ logo_url }}">
+    <link rel="apple-touch-icon" href="{{ logo_url }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/landing.css' %}">
+</head>
+<body class="landing">
+
+<header class="topo">
+    <a class="topo-marca" href="{% url 'inicio' %}"><img src="{{ logo_url }}" alt="" width="36" height="36"><span>Vastra</span></a>
+    <nav class="topo-links" aria-label="Seções da página">
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#comunidade">Comunidade</a>
+        <a href="#base">Base técnica</a>
+        <a href="#duvidas">Dúvidas</a>
+    </nav>
+    <div class="topo-acoes">
+        <a class="link-entrar" href="{% url 'login' %}">Entrar</a>
+        <a class="botao botao-ouro botao-pequeno" href="{% url 'cadastro' %}">Criar conta</a>
+    </div>
+</header>
+
+<main>
+<section class="heroi">
+    <div class="heroi-texto">
+        <h1>ESG para quem costura o dia a dia da moda.</h1>
+        <p class="heroi-sub">Responda ao diagnóstico, receba um plano de ação com prazos e acompanhe sua evolução. Feito para pequenas e médias empresas de moda, sem consultoria e sem planilha.</p>
+        <div class="heroi-botoes">
+            <a class="botao botao-ouro" href="{% url 'cadastro' %}">Criar conta e fazer o diagnóstico</a>
+            <a class="botao botao-contorno" href="#como-funciona">Ver como funciona</a>
+        </div>
+        <p class="heroi-nota">Criado no Recife, com empresas de moda da cidade.</p>
+    </div>
+
+    <div class="heroi-etiqueta" aria-label="Exemplo de etiqueta ESG de uma empresa">
+        <svg class="fio" viewBox="0 0 200 130" aria-hidden="true">
+            <path class="fio-linha" d="M100 120 C 100 70, 40 62, 52 28 S 140 -6, 172 32"/>
+        </svg>
+        <div class="etiqueta">
+            <span class="etiqueta-furo"></span>
+            <p class="etiqueta-titulo">Ateliê Aurora Moda</p>
+            <p class="etiqueta-exemplo">Exemplo ilustrativo</p>
+            <p class="etiqueta-nota"><span class="etiqueta-numero">72</span><span class="etiqueta-max">/100</span></p>
+            <p class="etiqueta-nivel">Nível Prata</p>
+            <ul class="pilares">
+                <li><span>Ambiental</span><span class="trilho"><span class="barra barra-a"></span></span><span class="valor">80</span></li>
+                <li><span>Social</span><span class="trilho"><span class="barra barra-s"></span></span><span class="valor">65</span></li>
+                <li><span>Governança</span><span class="trilho"><span class="barra barra-g"></span></span><span class="valor">70</span></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="problema" aria-labelledby="titulo-problema">
+    <h2 id="titulo-problema">O que ouvimos das empresas de moda do Recife</h2>
+    <div class="problema-lista">
+        <article>
+            <h3>"Não sei por onde começar."</h3>
+            <p>Muita empresa já faz práticas de ESG, como reaproveitar retalhos, e não sabe que isso conta.</p>
+        </article>
+        <article>
+            <h3>"Não tenho tempo nem verba."</h3>
+            <p>A produção ocupa a equipe inteira. Qualquer iniciativa precisa caber na rotina.</p>
+        </article>
+        <article>
+            <h3>"Não conheço quem ajude."</h3>
+            <p>Faltam especialistas em ESG para o setor de confecção na cidade.</p>
+        </article>
+    </div>
+    <p class="problema-fecho">O Vastra existe para fechar essas três lacunas.</p>
+</section>
+
+<section class="percurso" id="como-funciona" aria-labelledby="titulo-percurso">
+    <h2 id="titulo-percurso">Do diagnóstico à ação, ponto a ponto</h2>
+    <ol class="passos">
+        <li class="passo">
+            <div class="passo-texto">
+                <h3>Diagnostique</h3>
+                <p>Um questionário em 4 etapas, com perguntas adaptadas ao tipo de operação da sua empresa. Você recebe a nota por pilar e os pontos que mais pedem atenção.</p>
+                <ul class="passo-itens">
+                    <li>23 perguntas em linguagem de quem produz roupa</li>
+                    <li>Resultado em PDF para guardar ou mostrar a clientes</li>
+                </ul>
+            </div>
+            <figure class="moldura">
+                <img src="{% static 'img/landing/diagnostico.jpg' %}" alt="Tela do resultado do diagnóstico ESG, com notas por pilar" width="1400" height="788" loading="lazy">
+            </figure>
+        </li>
+        <li class="passo passo-inverso">
+            <div class="passo-texto">
+                <h3>Planeje</h3>
+                <p>Cada ponto fraco do diagnóstico vira uma ação no seu quadro de atividades. Defina responsável e prazo, arraste entre as colunas e receba avisos quando algo atrasar.</p>
+                <ul class="passo-itens">
+                    <li>Quadro com aguardando, em andamento e concluído</li>
+                    <li>Notificações de prazo e de atividade na rede</li>
+                </ul>
+            </div>
+            <figure class="moldura">
+                <img src="{% static 'img/landing/plano.jpg' %}" alt="Quadro de atividades do plano de ação com o menu de avisos aberto" width="1400" height="788" loading="lazy">
+            </figure>
+        </li>
+        <li class="passo">
+            <div class="passo-texto">
+                <h3>Evolua</h3>
+                <p>Refaça o diagnóstico quando quiser e veja a nota subir nos gráficos. O ranking compara sua empresa com as demais, no geral e por pilar, com selos de bronze, prata e ouro.</p>
+                <ul class="passo-itens">
+                    <li>Histórico de evolução por pilar</li>
+                    <li>Ouro a partir de 70%, prata de 40% a 69%</li>
+                </ul>
+            </div>
+            <figure class="moldura">
+                <img src="{% static 'img/landing/evolucao.jpg' %}" alt="Gráficos de evolução da nota ESG ao longo do tempo" width="1400" height="788" loading="lazy">
+            </figure>
+        </li>
+    </ol>
+</section>
+
+<section class="comunidade" id="comunidade" aria-labelledby="titulo-comunidade">
+    <div class="comunidade-topo">
+        <h2 id="titulo-comunidade">Ninguém precisa descobrir tudo sozinho</h2>
+        <p>Dentro da plataforma, as empresas trocam experiências e aprendem com quem já passou pelo mesmo problema.</p>
+    </div>
+    <div class="comunidade-grade">
+        <article class="comunidade-item">
+            <figure class="moldura moldura-escura">
+                <img src="{% static 'img/landing/social.jpg' %}" alt="Feed da rede social do Vastra com publicações de empresas" width="1400" height="788" loading="lazy">
+            </figure>
+            <h3>Rede social do setor</h3>
+            <p>Publique conquistas, siga outras empresas, converse por mensagem e acompanhe os temas em alta.</p>
+        </article>
+        <article class="comunidade-item">
+            <figure class="moldura moldura-escura">
+                <img src="{% static 'img/landing/biblioteca.jpg' %}" alt="Biblioteca com vídeos e textos curtos sobre ESG" width="1400" height="788" loading="lazy">
+            </figure>
+            <h3>Biblioteca de bolso</h3>
+            <p>Vídeos e textos curtos que explicam um tema de ESG por vez, do reaproveitamento de tecido à ergonomia.</p>
+        </article>
+    </div>
+</section>
+
+<section class="base" id="base" aria-labelledby="titulo-base">
+    <div class="base-texto">
+        <h2 id="titulo-base">Um diagnóstico com base, não com palpite</h2>
+        <p>As perguntas e os níveis de maturidade vêm de referências públicas de sustentabilidade. A metodologia e as fontes ficam abertas dentro da plataforma, para você conferir.</p>
+    </div>
+    <ul class="base-fontes">
+        <li>GRI Têxtil</li>
+        <li>Higg FEM</li>
+        <li>OCDE</li>
+        <li>ISO 26000</li>
+        <li>B Impact</li>
+    </ul>
+</section>
+
+<section class="duvidas" id="duvidas" aria-labelledby="titulo-duvidas">
+    <h2 id="titulo-duvidas">Dúvidas comuns</h2>
+    <div class="duvidas-lista">
+        <details>
+            <summary>Preciso entender de ESG para usar?</summary>
+            <p>Não. As perguntas usam exemplos do dia a dia de uma confecção, e a biblioteca explica os temas em textos e vídeos curtos.</p>
+        </details>
+        <details>
+            <summary>Para qual tipo de empresa o Vastra serve?</summary>
+            <p>Para pequenas e médias empresas de moda e confecção. O diagnóstico muda as perguntas conforme o tipo de operação.</p>
+        </details>
+        <details>
+            <summary>O que acontece depois do diagnóstico?</summary>
+            <p>Você escolhe quais pontos fracos viram ações e elas entram no seu quadro de atividades, com prazo e responsável.</p>
+        </details>
+        <details>
+            <summary>Posso refazer o diagnóstico?</summary>
+            <p>Sim. Cada novo diagnóstico entra no histórico, e os gráficos mostram a evolução entre eles.</p>
+        </details>
+    </div>
+</section>
+
+<section class="fecho" aria-labelledby="titulo-fecho">
+    <h2 id="titulo-fecho">Comece pelo diagnóstico da sua empresa.</h2>
+    <p>Crie a conta e descubra em que ponto do ESG você está.</p>
+    <div class="heroi-botoes fecho-botoes">
+        <a class="botao botao-ouro" href="{% url 'cadastro' %}">Criar conta</a>
+        <a class="botao botao-contorno" href="{% url 'login' %}">Já tenho conta</a>
+    </div>
+</section>
+</main>
+
+<footer class="rodape">
+    <a class="topo-marca" href="{% url 'inicio' %}"><img src="{{ logo_url }}" alt="" width="28" height="28"><span>Vastra</span></a>
+    <nav aria-label="Institucional">
+        <a href="{% url 'sobre' %}">Sobre o projeto</a>
+        <a href="{% url 'quem_somos' %}">Quem somos</a>
+        <a href="{% url 'contato' %}">Fale conosco</a>
+    </nav>
+    <p>Projeto acadêmico do Grupo 15, CESAR School, Recife.</p>
+</footer>
+
+</body>
+</html>
