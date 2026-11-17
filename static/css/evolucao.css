@@ -1,1 +1,36 @@
-.grafico-caixa { position: relative; height: 360px; }
+.grafico-caixa { position: relative; height: 380px; }
+
+.abas-grafico {
+    display: inline-flex;
+    gap: 4px;
+    padding: 4px;
+    border-radius: 999px;
+    background: #f6ecd4;
+}
+
+.abas-grafico button {
+    border: 0;
+    border-radius: 999px;
+    padding: 9px 20px;
+    background: transparent;
+    color: var(--vinho);
+    font-weight: 600;
+    font-size: .95rem;
+    transition: background-color .15s ease, color .15s ease;
+}
+
+.abas-grafico button:hover:not(.active) { background: rgba(103, 58, 64, .1); }
+
+.abas-grafico button.active {
+    background: var(--vinho);
+    color: #ffffff;
+    box-shadow: 0 2px 6px rgba(74, 42, 48, .3);
+}
+
+.abas-grafico button:focus-visible { outline: 3px solid #5fa8c2; outline-offset: 2px; }
+
+@media (max-width: 576px) {
+    .grafico-caixa { height: 300px; }
+    .abas-grafico { display: flex; }
+    .abas-grafico button { flex: 1; padding: 9px 10px; font-size: .88rem; }
+}
