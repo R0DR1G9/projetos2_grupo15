@@ -158,7 +158,7 @@ Bugs e pendências são registrados nas [Issues do repositório no GitHub](https
 
 ## 🚀 Deploy
 
-- **URL em produção:** https://projetos2-grupo15.vercel.app
+- **URL em produção:** https://vastra-esg.vercel.app
 - **Como o deploy acontece:** a cada push na `main`, o pipeline de CI/CD roda os testes, aplica as migrações no banco de produção e publica no Vercel. Não é preciso fazer deploy manual.
 - **Como rodar localmente:**
 ```bash
