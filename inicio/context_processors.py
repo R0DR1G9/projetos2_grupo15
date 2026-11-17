@@ -1,3 +1,5 @@
+from django.core.exceptions import ObjectDoesNotExist
+
 from setup.versao import VERSAO
 
 
@@ -12,10 +14,19 @@ def layout(request):
         empresa = 'Plataforma ESG'
         usuario = 'Visitante'
 
+    foto = ''
+    if user.is_authenticated:
+        try:
+            if user.perfil_social.foto:
+                foto = user.perfil_social.foto.url
+        except ObjectDoesNotExist:
+            pass
+
     match = request.resolver_match
     return {
         'empresa_nome': empresa,
         'usuario_nome': usuario,
+        'usuario_foto': foto,
         'rota_atual': match.url_name if match else '',
         'versao_vastra': VERSAO,
     }

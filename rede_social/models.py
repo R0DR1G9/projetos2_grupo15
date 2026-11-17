@@ -22,7 +22,10 @@ def caminho_imagem_post(instance, filename):
     extensao = os.path.splitext(filename)[1].lower()
     return f"rede_social/posts/{timezone.now():%Y/%m}/{uuid.uuid4().hex}{extensao}"
 
-
+def caminho_foto_perfil(instance, filename):
+    """Foto de perfil: nome aleatório dentro da pasta do usuário."""
+    extensao = os.path.splitext(filename)[1].lower()
+    return f"rede_social/perfis/{instance.usuario_id}/{uuid.uuid4().hex}{extensao}"
 def validar_tamanho_imagem(arquivo):
     if arquivo.size > TAMANHO_MAXIMO_IMAGEM:
         limite = TAMANHO_MAXIMO_IMAGEM / (1024 * 1024)
@@ -47,6 +50,12 @@ class Perfil(models.Model):
     cargo = models.CharField(max_length=80, blank=True)
     bio = models.CharField(max_length=280, blank=True)
     site = models.URLField(blank=True)
+    foto = models.ImageField(
+        "foto de perfil",
+        upload_to=caminho_foto_perfil,
+        blank=True,
+        validators=[FileExtensionValidator(EXTENSOES_IMAGEM), validar_tamanho_imagem],
+    )
     criado_em = models.DateTimeField(auto_now_add=True)
 
     class Meta:

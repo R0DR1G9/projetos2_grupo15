@@ -100,7 +100,7 @@
                 {% if user.is_authenticated %}
        <a href="{% url 'perfil' %}" class="d-flex align-items-center gap-2 text-decoration-none" title="Meu perfil">
         <span class="topo-usuario">{{ usuario_nome }}</span>
-        <span class="avatar">{{ usuario_nome|slice:":1"|upper }}</span>
+      <span class="avatar">{% if usuario_foto %}<img src="{{ usuario_foto }}" alt="">{% else %}{{ usuario_nome|slice:":1"|upper }}{% endif %}</span>
     </a>
     <button type="button" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#modalSair"><i class="ci ci-log-out me-1"></i>Sair</button>
 {% else %}

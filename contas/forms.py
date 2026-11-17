@@ -3,6 +3,10 @@ import re
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.core.files.uploadedfile import UploadedFile
+
+from rede_social.imagens import reduzir_imagem
+from rede_social.models import Perfil
 
 from .models import Empresa
 
@@ -54,3 +58,17 @@ class CadastroForm(UserCreationForm):
         if commit:
             Empresa.objects.create(usuario=user, cnpj=self.cleaned_data['cnpj'])
         return user
+class FotoPerfilForm(forms.ModelForm):
+    class Meta:
+        model = Perfil
+        fields = ['foto']
+        widgets = {'foto': forms.FileInput(attrs={
+            'class': 'form-control',
+            'accept': 'image/png,image/jpeg,image/webp,image/gif',
+        })}
+
+    def clean_foto(self):
+        foto = self.cleaned_data.get('foto')
+        if isinstance(foto, UploadedFile):
+            return reduzir_imagem(foto, lado_maximo=600)
+        return foto

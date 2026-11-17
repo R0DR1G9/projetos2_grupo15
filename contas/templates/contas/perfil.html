@@ -18,13 +18,28 @@
             <div class="card border-0 shadow-sm rounded-4 h-100">
                 <div class="card-body p-4">
                     <div class="d-flex align-items-center gap-3 mb-4">
-                        <span class="avatar avatar-grande">{{ usuario_nome|slice:":1"|upper }}</span>
+                    <span class="avatar avatar-grande">{% if perfil_social.foto %}<img src="{{ perfil_social.foto.url }}" alt="Foto de perfil">{% else %}{{ usuario_nome|slice:":1"|upper }}{% endif %}</span>
                         <div>
                             <h2 class="h5 fw-bold mb-0">{{ usuario_nome }}</h2>
                             <small class="text-muted">@{{ user.username }}</small>
                         </div>
                     </div>
-
+                                       <form method="post" enctype="multipart/form-data" class="mb-3">
+                        {% csrf_token %}
+                        <label for="id_foto" class="btn btn-success mb-0"><i class="ci ci-plus me-1"></i>Escolher foto</label>
+                        <input type="file" name="foto" id="id_foto" class="d-none"
+                               accept="image/png,image/jpeg,image/webp,image/gif"
+                               onchange="this.form.submit()">
+                        <noscript><button type="submit" class="btn btn-outline-success btn-sm ms-2">Enviar</button></noscript>
+                        {% for erro in form_foto.foto.errors %}<div class="text-danger small mt-2">{{ erro }}</div>{% endfor %}
+                        <div class="form-text">JPG, PNG, WEBP ou GIF, até 4 MB.</div>
+                    </form>
+                    {% if perfil_social.foto %}
+                        <form method="post" class="mb-4">
+                            {% csrf_token %}
+                            <button type="submit" name="remover_foto" value="1" class="btn btn-link btn-sm text-danger p-0">Remover foto</button>
+                        </form>
+                    {% endif %}
                     <dl class="row mb-0 gy-2">
                         <dt class="col-sm-4 text-muted fw-semibold">Empresa</dt>
                         <dd class="col-sm-8 mb-0">{{ user.first_name|default:"Não informado" }}</dd>
