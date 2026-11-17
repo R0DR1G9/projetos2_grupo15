@@ -22,3 +22,9 @@ def remover_imagem_do_post(sender, instance, **kwargs):
     if instance.imagem:
         armazenamento, nome = instance.imagem.storage, instance.imagem.name
         transaction.on_commit(lambda: armazenamento.delete(nome))
+@receiver(post_delete, sender=Perfil)
+def remover_foto_do_perfil(sender, instance, **kwargs):
+    """Apaga a foto do armazenamento quando o perfil (ou o usuário) é removido."""
+    if instance.foto:
+        armazenamento, nome = instance.foto.storage, instance.foto.name
+        transaction.on_commit(lambda: armazenamento.delete(nome))

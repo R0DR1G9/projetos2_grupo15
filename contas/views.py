@@ -26,6 +26,11 @@ def perfil(request):
     form_foto = FotoPerfilForm(instance=perfil_social)
 
     if request.method == 'POST':
+        if 'remover_foto' in request.POST:
+            if perfil_social.foto:
+                perfil_social.foto.delete(save=True)
+                messages.success(request, 'Foto de perfil removida.')
+            return redirect('perfil')
         if not request.FILES.get('foto'):
             messages.error(request, 'Escolha uma imagem antes de salvar.')
             return redirect('perfil')
