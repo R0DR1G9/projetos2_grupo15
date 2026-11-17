@@ -64,10 +64,9 @@
         <!-- Gráfico -->
         <div class="card shadow-sm">
             <div class="card-body">
-                <div class="btn-group mb-2" role="group">
-                    <button class="btn btn-outline-success active" data-tipo="linha">Nota geral</button>
-                    <button class="btn btn-outline-success" data-tipo="barras">Ambiental, Social e Governança</button>
-                    <button class="btn btn-outline-success" data-tipo="radar">Antes e depois</button>
+                <div class="abas-grafico mb-3" role="group" aria-label="Tipo de gráfico">
+                    <button type="button" class="active" data-tipo="linha" aria-pressed="true">Nota geral</button>
+                    <button type="button" data-tipo="pilares" aria-pressed="false">Por pilar</button>
                 </div>
                 <p class="text-muted small mb-3" id="explicacao"></p>
                 <div class="grafico-caixa">
