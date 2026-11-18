@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block title %}Meu perfil{% endblock %}
 
 {% block content %}
@@ -29,7 +29,7 @@
                         <label for="id_foto" class="btn btn-success mb-0"><i class="ci ci-plus me-1"></i>Escolher foto</label>
                         <input type="file" name="foto" id="id_foto" class="d-none"
                                accept="image/png,image/jpeg,image/webp,image/gif"
-                               onchange="this.form.submit()">
+                        >
                         <noscript><button type="submit" class="btn btn-outline-success btn-sm ms-2">Enviar</button></noscript>
                         {% for erro in form_foto.foto.errors %}<div class="text-danger small mt-2">{{ erro }}</div>{% endfor %}
                         <div class="form-text">JPG, PNG, WEBP ou GIF, até 4 MB.</div>
@@ -111,3 +111,4 @@
     </div>
 </main>
 {% endblock %}
+{% block extra_scripts %}<script src="{% static 'js/foto-perfil.js' %}"></script>{% endblock %}
