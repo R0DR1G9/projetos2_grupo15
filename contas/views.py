@@ -4,8 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 
 from rede_social.models import Perfil
-
-from .forms import CadastroForm, FotoPerfilForm
+from .forms import CadastroForm, EditarPerfilForm, FotoPerfilForm
 
 
 def cadastro(request):
@@ -55,3 +54,11 @@ def perfil(request):
         'perfil_social': perfil_social,
         'form_foto': form_foto,
     })
+@login_required
+def editar_perfil(request):
+    form = EditarPerfilForm(request.POST or None, instance=request.user)
+    if request.method == 'POST' and form.is_valid():
+        form.save()
+        messages.success(request, 'Informações atualizadas!')
+        return redirect('perfil')
+    return render(request, 'contas/editar_perfil.html', {'form': form})

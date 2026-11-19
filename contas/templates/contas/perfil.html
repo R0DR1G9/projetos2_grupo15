@@ -23,6 +23,7 @@
                             <h2 class="h5 fw-bold mb-0">{{ usuario_nome }}</h2>
                             <small class="text-muted">@{{ user.username }}</small>
                         </div>
+                        <a href="{% url 'editar_perfil' %}" class="btn btn-outline-success btn-sm ms-auto">Editar informações</a>
                     </div>
                                        <form method="post" enctype="multipart/form-data" class="mb-3">
                         {% csrf_token %}

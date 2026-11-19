@@ -72,3 +72,50 @@ class FotoPerfilForm(forms.ModelForm):
         if isinstance(foto, UploadedFile):
             return reduzir_imagem(foto, lado_maximo=600)
         return foto
+class EditarPerfilForm(forms.ModelForm):
+    first_name = forms.CharField(max_length=150, label='Nome da empresa')
+    email = forms.EmailField(label='E-mail')
+    cnpj = forms.CharField(
+        max_length=18, label='CNPJ', required=False,
+        widget=forms.TextInput(attrs={'placeholder': '00.000.000/0000-00', 'inputmode': 'numeric', 'autocomplete': 'off'}),
+    )
+
+    class Meta:
+        model = User
+        fields = ('first_name', 'email')
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.empresa = getattr(self.instance, 'empresa', None)   
+        if self.empresa:
+            self.fields['cnpj'].required = True
+            self.initial['cnpj'] = self.empresa.cnpj_formatado
+        for campo in self.fields.values():
+            campo.widget.attrs['class'] = 'form-control'
+
+    def clean_email(self):
+        email = self.cleaned_data['email'].strip().lower()
+        if User.objects.filter(email__iexact=email).exclude(pk=self.instance.pk).exists():
+            raise forms.ValidationError('Já existe uma conta com este e-mail.')
+        return email
+
+    def clean_cnpj(self):
+        bruto = self.cleaned_data.get('cnpj', '')
+        if not bruto:
+            return ''
+        numeros = re.sub(r'\D', '', bruto)
+        if not cnpj_valido(numeros):
+            raise forms.ValidationError('Informe um CNPJ válido.')
+        outros = Empresa.objects.filter(cnpj=numeros)
+        if self.empresa:
+            outros = outros.exclude(pk=self.empresa.pk)
+        if outros.exists():
+            raise forms.ValidationError('Já existe uma conta cadastrada com este CNPJ.')
+        return numeros
+
+    def save(self, commit=True):
+        user = super().save(commit=commit)
+        cnpj = self.cleaned_data.get('cnpj')
+        if commit and cnpj:
+            Empresa.objects.update_or_create(usuario=user, defaults={'cnpj': cnpj})
+        return user

@@ -22,4 +22,5 @@ urlpatterns = [
     path('senha/redefinida/', auth_views.PasswordResetCompleteView.as_view(
         template_name='contas/senha_redefinida.html'), name='senha_redefinida'),
     path('perfil/', views.perfil, name='perfil'),
+    path('perfil/editar/', views.editar_perfil, name='editar_perfil'),
 ]
