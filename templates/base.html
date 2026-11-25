@@ -1,5 +1,5 @@
 {% load static %}
-{% static 'img/logo.svg' as logo_url %}
+{% static 'img/vastra-icone.png' as logo_url %}
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="{% static 'css/tipografia.css' %}">
     <link rel="stylesheet" href="{% static 'css/icones.css' %}">
     <link rel="stylesheet" href="{% static 'css/menu-recolhivel.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vastra-logo.css' %}">
     <script src="{% static 'js/menu-inicial.js' %}"></script>
     {% block extra_head %}{% endblock %}
     <link rel="stylesheet" href="{% static 'css/animacoes.css' %}">
@@ -27,7 +28,7 @@
 <body>
 <div class="app">
 
-    <!-- Barra lateral (no celular vira um menu que abre pelo botão do topo) -->
+    
     <aside class="sidebar offcanvas-lg offcanvas-start" tabindex="-1" id="menuLateral" aria-label="Menu principal">
         <div class="sidebar-inner">
             <button type="button" class="btn-close btn-close-white d-lg-none sidebar-fechar" data-bs-dismiss="offcanvas" data-bs-target="#menuLateral" aria-label="Fechar menu"></button>
@@ -35,12 +36,12 @@
             <a class="marca" href="{% url 'inicio' %}">
                 <img class="marca-logo" src="{{ logo_url }}" alt="Logo do Vastra">
                 <span class="marca-texto">
-                    <strong>Vastra</strong>
+                    <span class="vastra-nome" role="img" aria-label="Vastra"></span>
                     <small>Plataforma ESG</small>
                 </span>
             </a>
 
-            <!-- Botão de recolher/expandir (só no computador; o menu.js troca o ícone e o texto de ajuda) -->
+           
             <div class="menu menu-recolher-area">
                 <button type="button" class="menu-item d-none d-lg-flex" id="alternarMenu" aria-controls="menuLateral" aria-pressed="false" aria-label="Recolher menu" title="Recolher menu"><i class="ci ci-chevron-double-left"></i><span>Recolher menu</span></button>
             </div>
@@ -75,7 +76,7 @@
     </aside>
 
     <div class="conteudo">
-        <!-- Topo: saudação, notificações e usuário -->
+        
         <div class="topo">
             <button class="btn btn-sm btn-outline-success d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral" aria-controls="menuLateral" aria-label="Abrir menu"><i class="ci ci-menu fs-5"></i></button>
             <div class="topo-saudacao">
