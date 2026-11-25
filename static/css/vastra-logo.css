@@ -1,0 +1,20 @@
+
+.vastra-nome {
+    display: inline-block;
+    vertical-align: middle;
+    height: var(--vastra-nome-altura, 1.4rem);
+    aspect-ratio: 756 / 204;
+    background-color: var(--vastra-nome-cor, currentColor);
+    -webkit-mask: url("../img/vastra-nome.png") no-repeat left center / contain;
+    mask: url("../img/vastra-nome.png") no-repeat left center / contain;
+}
+
+
+.marca-texto .vastra-nome { display: block; --vastra-nome-altura: 1.5rem; margin-bottom: .25rem; }
+
+
+.auth-logo .vastra-nome { --vastra-nome-altura: 2rem; }
+
+
+.topo-marca .vastra-nome { --vastra-nome-altura: 1.5rem; }
+.rodape .topo-marca .vastra-nome { --vastra-nome-altura: 1.2rem; }

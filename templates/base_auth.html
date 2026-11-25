@@ -1,5 +1,5 @@
 {% load static %}
-{% static 'img/logo.svg' as logo_url %}
+{% static 'img/vastra-icone.png' as logo_url %}
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -20,12 +20,13 @@
     <link rel="stylesheet" href="{% static 'css/auth.css' %}">
     <link rel="stylesheet" href="{% static 'css/auth-animacao.css' %}">
     <link rel="stylesheet" href="{% static 'css/auth-mobile.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vastra-logo.css' %}">
 </head>
 <body class="pagina-auth {% block classe_pagina %}{% endblock %}">
 <main class="auth">
     <section class="auth-marca" aria-label="Apresentação">
         <div>
-            <a class="auth-logo" href="{% url 'inicio' %}"><img class="auth-logo-img" src="{{ logo_url }}" alt="Logo do Vastra">Vastra</a>
+            <a class="auth-logo" href="{% url 'inicio' %}"><img class="auth-logo-img" src="{{ logo_url }}" alt="Logo do Vastra"><span class="vastra-nome" role="img" aria-label="Vastra"></span></a>
             <p class="auth-slogan">ESG de forma simples,<br>para a sua empresa de moda.</p>
         </div>
         <p class="auth-lema">Diagnostique. Planeje.<br>Acompanhe. Evolua.</p>

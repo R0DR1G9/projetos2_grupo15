@@ -1,5 +1,5 @@
 {% load static %}
-{% static 'img/logo.svg' as logo_url %}
+{% static 'img/vastra-icone.png' as logo_url %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -13,11 +13,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/landing.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vastra-logo.css' %}">
 </head>
 <body class="landing">
 
 <header class="topo">
-    <a class="topo-marca" href="{% url 'inicio' %}"><img src="{{ logo_url }}" alt="" width="36" height="36"><span>Vastra</span></a>
+    <a class="topo-marca" href="{% url 'inicio' %}"><img src="{{ logo_url }}" alt="" width="36" height="36"><span class="vastra-nome" role="img" aria-label="Vastra"></span></a>
     <nav class="topo-links" aria-label="Seções da página">
         <a href="#como-funciona">Como funciona</a>
         <a href="#comunidade">Comunidade</a>
@@ -195,7 +196,7 @@
 </main>
 
 <footer class="rodape">
-    <a class="topo-marca" href="{% url 'inicio' %}"><img src="{{ logo_url }}" alt="" width="28" height="28"><span>Vastra</span></a>
+    <a class="topo-marca" href="{% url 'inicio' %}"><img src="{{ logo_url }}" alt="" width="28" height="28"><span class="vastra-nome" role="img" aria-label="Vastra"></span></a>
     <nav aria-label="Institucional">
         <a href="{% url 'sobre' %}">Sobre o projeto</a>
         <a href="{% url 'quem_somos' %}">Quem somos</a>
